@@ -1360,6 +1360,13 @@ the solution set.  We thus have the following method:
  is a \dfn{linear combination} of $v_1,\dotsc,v_k$ if there exist
  scalars $\lm_1,\dots,\lm_k$ such that
  \[ w = \lm_1v_1 + \dotsb + \lm_kv_k. \]
+ 
+ In the same way, the notion of a linear combination is defined
+ for row vectors instead of columns.
+ (But it offers nothing new, since a row vector $w$ is a
+ linear combination of $k$ row vectors $v_1,\dotsc,v_k$
+ if and only if its transpose $w^T$ is a linear combination
+ of $v_1^T,\dotsc,v_k^T$.)
 \end{definition}
 
 \begin{example}\label{eg-lincomb-i}
@@ -1650,6 +1657,9 @@ method:
  $\CV$ is the trivial one, we instead say that $\CV$ is \dfn{linearly
   independent}.  We will often omit the word ``linearly'' for the sake
  of brevity.
+ 
+ All this language is defined in the same way for row vectors
+ instead of column vectors.
 \end{definition}
 
 \begin{example}\label{eg-dep-i}
