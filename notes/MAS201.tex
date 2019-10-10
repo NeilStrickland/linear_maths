@@ -72,6 +72,8 @@
 \newcommand{\dfn}[1]{\emph{{#1}}\index{#1}}
 \newcommand{\idx}[1]{{#1}\index{#1}}
 
+\newcommand{\nullity}{\operatorname{null}}
+
 \makeindex
 
 \begin{document}
@@ -2302,7 +2304,7 @@ We now explain why Method~\ref{meth-check-span} is valid.
   \item[(c)] Suppose instead that $C'$ is obtained from $C$ by adding
    $u$ times the second row to the first row, so the rows of $C'$ are
    $r_1+ur_2,r_2,r_3,\dotsc,r_m$.  The sequence of numbers
-   $\lm_1,\lm_2-u\lm_1,\lm_3,\dotsc,\lm_n$ then satisfies
+   $\lm_1,\lm_2-u\lm_1,\lm_3,\dotsc,\lm_m$ then satisfies
    \[ \lm_1(r_1+ur_2)+(\lm_2-u\lm_1)r_2+\lm_3r_3+\dotsb+\lm_mr_m =
        \lm_1r_1+\lm_2r_2+\dotsb+\lm_mr_m=s,
    \]
@@ -2431,7 +2433,7 @@ We now explain why Method~\ref{meth-check-span} is valid.
  Corollary~\ref{cor-span-invariant}, this happens if and only if every
  row vector is a linear combination of the rows of $D$.
  Lemma~\ref{lem-check-span-RREF} tells us that this happens if and
- only if $m\geq n$ and $D$ has a pivot in every column.
+ only if $D$ has a pivot in every column.
 \end{proof}
 
 We can now prove the following result, which is one of a number of
@@ -2640,7 +2642,7 @@ basis.
   p_4 = \bbm  1 \\ 11 \\ 11 \\ 11 \ebm
  \]
  To decide whether they form a basis, we construct the corresponding
- matrix $A$ and row reduce it:
+ matrix $A$ and row-reduce it:
  \[ \bbm  1 &  1 &  1 &  1 \\
           1 & 11 &  1 & 11 \\
          11 &  1 &  1 & 11 \\
@@ -3156,6 +3158,23 @@ then
  \end{itemize}
 \end{example}
 
+\begin{proof}
+All the equalities claimed here follow from Proposition~\ref{prop-ro-elem}.
+For example, in order to see that $E_{pq}(\mu) E_{pq}(-\mu) = I_n$, we can
+proceed as follows: Proposition~\ref{prop-ro-elem} (b) shows that the
+matrix $E_{pq}(-\mu) I_n$ is obtained from $I_n$ by adding $-\mu$ times
+the $q$'th row to the $p$'th row. In other words, the matrix $E_{pq}(-\mu)$
+is obtained from $I_n$ by adding $-\mu$ times the $q$'th row to the $p$'th
+row. But Proposition~\ref{prop-ro-elem} (b) further shows that the matrix
+$E_{pq}(\mu) E_{pq}(-\mu)$ is obtained from $E_{pq}(-\mu)$ by adding $\mu$
+times the $q$'th row to the $p$'th row. Combining these, we see that the
+matrix $E_{pq}(\mu) E_{pq}(-\mu)$ is obtained from $I_n$ by first adding
+$-\mu$ times the $q$'th row to the $p$'th row, and then adding $\mu$ times
+the $q$'th row to the $p$'th row. But these two operations obviously undo
+each other. Hence, $E_{pq}(\mu) E_{pq}(-\mu) = I_n$.
+Similar reasoning proves the other inequalities.
+\end{proof}
+
 \begin{proposition}\label{prop-product-inverse}
  \index{invertible}
  If $A$ and $B$ are invertible $n\tm n$ matrices, then $AB$ is also
@@ -3172,7 +3191,7 @@ then
  $CD=ABB^{-1}A^{-1}=AI_nA^{-1}=AA^{-1}=I_n$.  This shows that $D$ is
  an inverse for $C$, so $C$ is invertible with $C^{-1}=D$ as claimed.
 
- More the more general statement, we put $P=A_1A_2\dotsb A_r$ and
+ For the more general statement, we put $P=A_1A_2\dotsb A_r$ and
  $Q=A_r^{-1}\dotsb A_2^{-1}A_1^{-1}$.  We then have
  \begin{align*}
   PQ &= A_1\dotsb A_{r-2}A_{r-1}A_r 
@@ -3311,11 +3330,16 @@ official definition:
  \index{determinant}
  Let $A$ be an $n\tm n$ matrix, and let $a_{ij}$ denote the entry in
  the $i$'th row of the $j$'th column.  We define
- \[ \det(A) =
+ \begin{equation}
+   \det(A) =
      \sum_\sg \sgn(\sg) \prod_{i=1}^n a_{i,\sg(i)},
- \]
+   \label{eq.defn-det-pre.leibniz}
+ \end{equation}
  where the sum runs over all permutations $\sg$ of the set
  $\{1,\dotsc,n\}$, and $\sgn(\sg)$ is the signature of $\sg$.
+ 
+ The equation \eqref{eq.defn-det-pre.leibniz} is known as the
+ \dfn{Leibniz formula for determinants}.
 \end{definition}
 
 \begin{remark}
@@ -3340,6 +3364,8 @@ appendix.
  formula $\det(A)=ad-bc$.  For a $3\tm 3$ matrix
  $A=\bbm a&b&c\\ d&e&f\\ g&h&i\ebm$ we have
  \[ \det(A) = aei - afh - bdi + bfg + cdh - ceg. \]
+ For a $1\tm 1$ matrix $A = \bbm a \ebm$, the determinant
+ $\det(A)$ equals its unique entry $a$.
  For more details of how this matches up with
  Definition~\ref{defn-det-pre}, see Examples~\ref{eg-det-two}
  and~\ref{eg-det-three} in Appendix~\ref{apx-det}.
@@ -3349,18 +3375,21 @@ appendix.
  \index{determinant}\index{triangular matrix}
  Let $A$ be an $n\tm n$ matrix.
  \begin{itemize}
-  \item[(a)] If all the entries below the diagonal are zero, then the
+  \item[(a)] We say that $A$ is
+   \dfn{upper-triangular} if all entries of $A$ below the diagonal
+   are zero. In this case, the
    determinant is just the product of the diagonal entries:
    $\det(A)=a_{11}a_{22}\dotsb a_{nn}=\prod_{i=1}^na_{ii}$.  For
    example, we have
    \[ \det\bbm 1&2&3&4 \\ 0&5&6&7 \\ 0&0&8&9 \\ 0&0&0&10\ebm =
        1 \tm 5 \tm 8 \tm 10 = 400.
    \]
-  \item[(b)] Similarly, if all the entries above the diagonal are
-   zero, then the determinant is just the product of the diagonal
-   entries.
+  \item[(b)] Similarly, we say that $A$ is \dfn{lower-triangular}
+   if all the entries of $A$ above the diagonal are
+   zero. In this case, the determinant is just the product of the
+   diagonal entries.
   \item[(c)] In particular, if $A$ is a diagonal matrix (so all
-   entries off the diagonal are zero) then both~(a) and~(b) apply and
+   entries off the diagonal are zero), then both~(a) and~(b) apply and
    we have $\det(A)=\prod_{i=1}^na_{ii}$.
   \item[(d)] In particular, we have $\det(I_n)=1$.
  \end{itemize}
@@ -3419,7 +3448,8 @@ more efficient to stop the row-reduction at an earlier stage.
 
 \begin{example}\label{eg-det-ro-i}
  Take $A=\bbm 3&5&5&5 \\ 1&3&5&5 \\ 1&1&3&5 \\ 1&1&1&3 \ebm$.  We can
- row-reduce this as follows:
+ row-reduce this (not quite to RREF, but to an upper-triangular matrix)
+ as follows:
  \[ A
   \xra{}
   \bbm 0&2&2&-4 \\
@@ -3466,7 +3496,7 @@ more efficient to stop the row-reduction at an earlier stage.
   \item[(5)] We exchange rows $2$ and $4$, giving a factor of $-1$.
   \item[(6)] We exchange rows $1$ and $2$, giving another factor of $-1$.
  \end{itemize}
- The final matrix $B$ is upper-triangular, so the determinant is just
+ The final matrix $B$ is upper-triangular, so its determinant is just
  the product of the diagonal entries, which is $\det(B)=2$.  The
  product of the factors is $\mu=1/8$, so $\det(A)=\det(B)/\mu=16$.
 \end{example}
@@ -3615,7 +3645,34 @@ more efficient to stop the row-reduction at an earlier stage.
  \end{itemize}
 \end{theorem}
 \begin{proof}
- See Theorem~\ref{thm-inv-det}.
+\begin{itemize}
+\item[(a)]
+ Theorem~\ref{thm-inv-det} proves most of part (a);
+ the rest of part (a) is obvious:
+ If $A$ has an inverse $A^{-1}$, and $v\in\R^n$ is a vector satisfying
+ $Av = 0$, then $v = Iv = A^{-1}Av = A^{-1}0 = 0$.
+
+\item[(b)]
+ Assume that $\det(A)=0$.
+ Then, if $B$ was an $n\tm n$ matrix with $BA=I_n$,
+ then we would have $\det(BA) = \det(I_n) = 1$,
+ while Theorem~\ref{thm-det-prod} would yield
+ $\det(BA) = \det(B) \det(A) = 0$ (since $\det(A) = 0$);
+ these two equalities clearly cannot coexist.
+ Thus, there is no matrix $B$ with $BA = I_n$.
+ Similarly, there is no matrix $C$ with $AC = I_n$.
+ In other words, statement~(j) of Theorem~\ref{thm-inverse}
+ does not hold.
+ Thus, statement~(b) of Theorem~\ref{thm-inverse} does
+ not hold either.
+ This means that the columns of $A$ are linearly dependent.
+ Denoting these columns by $v_1, \dotsc, v_n$,
+ we thus have a nontrivial linear relation
+ $\lm_1 v_1 + \cdots + \lm_n v_n = 0$.
+ This relation can be rewritten as $Av = 0$,
+ where $v$ is the (nonzero) vector
+ $\begin{bmatrix} \lm_1 & \cdots & \lm_n \end{bmatrix}^T$.
+\end{itemize}
 \end{proof}
 
 While the above formula for $A^{-1}$ is theoretically appealing,
@@ -3644,11 +3701,11 @@ Method~\ref{meth-find-inverse} is generally better.
 \end{example}
 
 \begin{example}\label{eg-adjugate-tri}
- Consider an upper triangular matrix
+ Consider an upper-triangular matrix
  $A=\bbm 1&a&b \\
          0&1&c \\
          0&0&1\ebm$.
- This has $\det(A)=1$ by Example~\ref{eg-det-tri}.  The minor
+ This has $\det(A)=1$ by Example~\ref{eg-det-tri} (a).  The minor
  determinants are
  \begin{align*}
   m_{11} &= \det\bbm 1&c\\0&1\ebm = 1 &
@@ -3701,8 +3758,8 @@ Method~\ref{meth-find-inverse} is generally better.
   M_{43} &= \bbm 1&1&0\\ 0&1&0 \\ 0&0&1 \ebm &
   M_{44} &= \bbm 1&1&0\\ 0&1&1 \\ 0&0&1 \ebm
  \end{align*}
- By inspection, each of these matrices is either upper triangular or
- lower triangular, so in each case the determinant is the product of
+ By inspection, each of these matrices is either upper-triangular or
+ lower-triangular, so in each case the determinant is the product of
  the diagonal entries.  This gives
  \begin{align*}
   m_{11} &= 1 &
@@ -3738,7 +3795,7 @@ Method~\ref{meth-find-inverse} is generally better.
      0 &  0 &  0 &  1
    \ebm
  \]
- As $P$ is upper triangular it is easy to see that $\det(P)=1$ and so
+ As $P$ is upper-triangular, it is easy to see that $\det(P)=1$ and so
  $P^{-1}$ is the same as $\adj(P)$. 
 \end{example}
 
@@ -3925,7 +3982,7 @@ Using this, we obtain the following result:
 \begin{corollary}\label{cor-eigen-transpose}
  \index{characteristic polynomial}\index{transpose}
  For any $n\tm n$ matrix $A$ we have $\chi_A(t)=\chi_{A^T}(t)$, so $A$
- and $A^T$ havs the same eigenvalues.
+ and $A^T$ have the same eigenvalues.
 \end{corollary}
 \begin{proof}
  As $I_n^T=I_n$, we have
@@ -3979,7 +4036,7 @@ reduction, as follows.
    $\chi_A(t)=\det(A-t I_n)$.
   \item[(b)] Find all the real roots of $\chi_A(t)$, and list them as
    $\lm_1,\dotsc,\lm_k$.  These are the eigenvalues of $A$.
-  \item[(c)] For each eigenvalue $\lm_i$, row reduce the matrix
+  \item[(c)] For each eigenvalue $\lm_i$, row-reduce the matrix
    $A-\lm_i I_n$ to get a matrix $B$.
   \item[(d)] Read off solutions to the equation $Bu=0$ as in
    Method~\ref{meth-RREF-solve}.  These are the $\lm_i$-eigenvectors
@@ -4128,7 +4185,7 @@ reduction, as follows.
  \[ u = \bbm 0 \\ c \\ c \\ 0 \ebm = c \bbm 0 \\ 1 \\ 1 \\ 0 \ebm. \]
  for some $c\in\R$.  The eigenvectors of eigenvalue $2$ are
  precisely the nonzero vectors of the above form.  In particular, the
- vector $\bbm 0 & 1 & 1 & 0\ebm$ is an eigenvector of eigenvalue $2$.
+ vector $\bbm 0 & 1 & 1 & 0\ebm^T$ is an eigenvector of eigenvalue $2$.
 \end{example}
 
 There is an important connecton between eigenvectors and linear
@@ -4151,7 +4208,7 @@ independence, as follows.
  \[ \al_1v_1 + \al_2v_2 = 0. \tag{P} \]
  We now multiply both sides of this vector equation by the matrix
  $A-\lm_2I$.  Because $Av_i=\lm_iv_i$ we have
- $(A-\lm_2I)v_1=(\lm_1-\lm_2)v_1$ and $(A-\lm_2)v_2=0$, so we get
+ $(A-\lm_2I)v_1=(\lm_1-\lm_2)v_1$ and $(A-\lm_2I)v_2=0$, so we get
  \[ (\lm_1-\lm_2)\al_1 v_1 = 0. \]
  As the number $\lm_1-\lm_2$ and the vector $v_1$ are nonzero, we can
  conclude that $\al_1=0$.  If we instead multiply equation~(P) by
@@ -4197,9 +4254,9 @@ independence, as follows.
  For any index $k$, we can multiply by all the matrices $A-\lm_iI$ for
  $i\neq k$.  This makes all the terms go away except for the $k$'th
  term, leaving
- \[ \left(\prod_{i\neq k}(\lm_i-\lm_k)\right) \al_kv_k = 0. \]
+ \[ \left(\prod_{i\neq k}(\lm_k-\lm_i)\right) \al_kv_k = 0. \]
  As all the eigenvalues $\lm_j$ are assumed to be different, the
- product $\prod_{i\neq k}(\lm_i-\lm_k)$ is nonzero, so we can divide
+ product $\prod_{i\neq k}(\lm_k-\lm_i)$ is nonzero, so we can divide
  by it to get $\al_kv_k=0$.  As $v_k\neq 0$ this gives $\al_k=0$.
  This works for all $k$, so~(S) is the trivial relation.
 \end{proof}
@@ -4435,7 +4492,7 @@ To prove this, we need two standard facts about matrix multiplication.
  \[ AU = 
      \bbm 
       a_1.u_1 & \cdots & a_1.u_n \\
-      \cdots  & \cdots & \cdots \\
+      \vdots  & \ddots & \vdots \\
       a_n.u_1 & \cdots & a_n.u_n
      \ebm 
  \]
@@ -4502,7 +4559,7 @@ To prove this, we need two standard facts about matrix multiplication.
    && \\ Au_1 & \cdots & Au_n \\ &&
   \end{array}\right].
  \]
- from this it is clear that $Au_i=\lm_iu_i$ for all $i$, so $u_i$ is
+ From this it is clear that $Au_i=\lm_iu_i$ for all $i$, so $u_i$ is
  an eigenvector of eigenvalue $\lm_i$.
 \end{proof}
 
@@ -4746,7 +4803,14 @@ easy.  This can be souped up to give a formula for $A^k$, as follows.
  \]
  We will calculate this by Method~\ref{meth-det-ro} (which involves
  row-reducing $B$ and keeping track of various factors that arise from
- the row operations).  The row-reduction is as follows:
+ the row operations).  The row-reduction proceeds as follows:\footnote{%
+ This is not a complete row-reduction; we perform just enough
+ row operations to render the determinant easy to compute.
+ Also, it should be noticed that we are tacitly assuming that
+ $t \neq 0$, since some of our row operations will involve
+ division by $t$.  However, it is easy to check that the
+ end result (a formula for $\det(C)$) will hold in the
+ $t = 0$ case as well.}
  \[
     \bbm 2-t & 2   & 2   & 2 \\
          2   & 5-t & 5   & 2 \\
@@ -4860,9 +4924,8 @@ easy.  This can be souped up to give a formula for $A^k$, as follows.
  \]
  We therefore take 
  \[ u_3 = \bbm 1&0&0&-1\ebm^T \hspace{5em}
-    u_4 = \bbm 0&1&-1&0\ebm^T
+    u_4 = \bbm 0&1&-1&0\ebm^T .
  \]
- form a basis.
 
  Now put 
  \[ U = [u_1|u_2|u_3|u_4] =
@@ -4893,7 +4956,7 @@ easy.  This can be souped up to give a formula for $A^k$, as follows.
         \ebm.
  \] 
  One can then check by just multiplying out that $UV=I_4$, so
- $U^{-1}=V$.  We therefore have a diagonalisation $A=UDU^{-1}=UDV$, 
+ $U^{-1}=V$.  We therefore have a diagonalisation $A=UDU^{-1}=UDV$.
 \end{example}
 
 \section{Differential equations}
@@ -5133,7 +5196,7 @@ some ideas that are less visible in more streamlined methods.
  \[ \chi_A(t) = \det\bbm -t&1 \\ -8&6-t\ebm =
      t^2-6t+8 = (t-2)(t-4),
  \]
- so the eigenvectors are $2$ and $4$.  Using the row-reductions
+ so the eigenvalues are $2$ and $4$.  Using the row-reductions
  \[ A-2I = \bbm -2&1\\-8&4\ebm \to \bbm 1&-1/2\\0&0\ebm
     \hspace{4em}
     A-4I = \bbm -4&1\\-8&2\ebm \to \bbm 1&-1/4\\0&0\ebm
@@ -5780,7 +5843,7 @@ effect of each link.
 For a different perspective, we could imagine surfing the web
 randomly.  Once per second, we choose one of the links on the current
 page at random, and click it.  Let $r_i$ denote the long run average
-proportion of the time that we spend on page $i$.  It turns out that
+proportion of the time that we spend on page $S_i$.  It turns out that
 this is a reasonable measure of the quality of $S_i$, in terms of the
 principles mentioned above.  Indeed, if there are lots of links from
 other pages $S_j$ to $S_i$, then the probability of visiting $S_i$
@@ -5903,7 +5966,8 @@ The corresponding matrix $P$ is as follows:
    \ebm.
 \]
 
-We can use Maple to calculate the corresponding ranking vector:
+We can use Maple to calculate the corresponding ranking vector
+(for now, with no damping factor):
 \index{Maple}
 \begin{verbatim}
  with(LinearAlgebra):
@@ -6335,7 +6399,7 @@ slightly disguised form.
 \begin{example}\label{eg-ker-ann}
  Consider the matrix
  \[ A = \bbm 1 & 2 & 3 \\ 30 & 20 & 10 \\ 100 & 100 & 100 \ebm, \]
- so if $v=\bbm x \\ y \\ z \ebm^T$ we have
+ so if $v=\bbm x & y & z \ebm^T$ we have
  \[ A v = \bbm x+2y+3z \\ 30x+20y+10z \\ 100x+100y+100z \ebm. \]
  We thus have 
  \begin{align*}
@@ -6638,10 +6702,10 @@ to identify $V$ with $\R^r$ for some $r$.  In more detail:
  Let $V$ be a subspace of $\R^n$, and let $\CV=(v_1,\dotsc,v_r)$ be a
  basis for $V$.  Define a function $\phi\colon\R^r\to V$ by
  \[ \phi(\lm) = \lm_1v_1 + \dotsb + \lm_rv_r. \]
- (If we need to emphasis the dependence on $\CV$, we will write
+ (If we need to emphasise the dependence on $\CV$, we will write
  $\phi_{\CV}$ rather than just $\phi$.)  Then there is an inverse
  function $\psi\colon V\to\R^r$ with $\phi(\psi(v))=v$ for all $v\in V$,
- and $\psi(\phi(\lm))=\lm$ for all $\lm\in\R^d$.  Moreover, both
+ and $\psi(\phi(\lm))=\lm$ for all $\lm\in\R^r$.  Moreover, both
  $\phi$ and $\psi$ respect addition and scalar multiplication:
  \begin{align*}
   \phi(\lm+\mu) &= \phi(\lm)+\phi(\mu) & \phi(t\lm) &=t\phi(\lm) \\
@@ -6876,18 +6940,24 @@ We now return to the proof of Proposition~\ref{prop-canonical-basis}.
  First put $d=\dim(V)$.  Using Corollary~\ref{cor-basis-numerical}(c)
  we see that both $B^T$ and $C^T$ must have $d$ columns, so both $B$
  and $C$ are $d\tm n$ matrices.  Let $v_1,\dotsc,v_d$ be the columns
- of $B$ and let $w_1,\dotsc,w_d$ be the columns of $C$.  As the
- vectors $v_i$ form a basis they must be nonzero, so each of the $d$
- rows of $B$ is nonzero and therefore contains a single pivot, which
- means that $B$ has precisely $d$ pivot columns, say in columns
- $p_1,\dotsc,p_d$.  We list these in order so that $p_1<\dotsb<p_d$.
+ of $B^T$ and let $w_1,\dotsc,w_d$ be the columns of $C^T$.
+ Thus, $v_1^T, \dotsc, v_d^T$ are the rows of $B$,
+ and $w_1^T, \dots, w_d^T$ are the columns of $C$.
+ As the columns of $B^T$ form a basis, they must be nonzero, so each
+ of the $d$ rows of $B$ is nonzero and therefore contains a single
+ pivot, which means that $B$ has precisely $d$ pivot columns, say
+ in columns $p_1,\dotsc,p_d$.  We list these in order so that
+ $p_1<\dotsb<p_d$.
  Because $B$ is in RREF, we see that the $p_i$'th component of $v_j$
- is $1$ when $i=j$, and zero when $i\neq j$.
+ is $1$ when $i=j$, and $0$ when $i\neq j$
+ (%by property RREF3 in Definition~\ref{defn-rref},
+ since this component is the
+ $j$-th entry of the $p_i$-th column of $B$).
 
  Similarly, the matrix $C$ has precisely $d$ pivot columns, say in
  columns $q_1,\dotsc,q_d$ with $q_1<\dotsb<q_d$.  Because $C$ is in
  RREF, we see that the $q_i$'th component of $w_j$ is $1$ when $i=j$,
- and zero when $i\neq j$.
+ and $0$ when $i\neq j$.
 
  Next, using Lemma~\ref{lem-jumps-pivots} we see that the pivot
  columns for $B$ are the same as the jumps for $V$ which are the same
@@ -6895,17 +6965,27 @@ We now return to the proof of Proposition~\ref{prop-canonical-basis}.
 
  Now consider one of the vectors $v_i$.  As $v_i\in V$ and
  $V=\spn(w_1,\dotsc,w_d)$, we can write $v_i$ as a linear combination
- of the vectors $w_j$, say $v_i=\lm_1w_1+\dotsb+\lm_dw_d$.  Consider
- what this gives in the $p_i$'th column (or equivalently, the $q_i$'th
- column).  On the left hand side we have $1$, and on the right hand
- side the $\lm_iw_i$ term contributes $\lm_i$, and the other terms
- contribute nothing.  We conclude that $\lm_i=1$.  Now consider
- instead what we get in the $p_j$'th column, where $j\neq i$.  On the
- left hand side we get zero, and on the right hand side the $\lm_iw_i$
- term contributes $\lm_i$, and the other terms contribute nothing.  We
- conclude that $\lm_j=0$ for $j\neq i$.  The equation
- $v_i=\lm_1w_1+\dotsb+\lm_dw_d$ now simplifies to $v_i=w_i$.  This
- holds for all $i$, so we have $B=C$ as claimed.
+ of the vectors $w_j$, say
+ \begin{equation}
+ v_i=\lm_1w_1+\dotsb+\lm_dw_d = \sum_j \lm_j w_j .
+ \label{pf.prop-canonical-basis.vi-through-wj}
+ \end{equation}
+ Let us now compare the $p_i$'th components (or equivalently, the $q_i$'th
+ component) on both sides of this equality.
+ On the left hand side we have $1$ (since the $p_i$'th
+ component of $v_i$ is $1$), and on the right hand
+ side the $\lm_i w_i$ term of the sum $\sum_j \lm_j w_j$ contributes
+ $\lm_i$, and the other terms contribute nothing (since the $q_i$'th
+ component of $w_j$ is $1$ when $i=j$, and $0$ when $i\neq j$).
+ We conclude that $\lm_i=1$.  Now, instead, let us compare
+ the $p_k$'th components on both sides of
+ \eqref{pf.prop-canonical-basis.vi-through-wj}, where $k\neq i$.
+ On the left hand side we get $0$, and on the right hand side the
+ $\lm_k$ term of the sum $\sum_j \lm_j w_j$
+ contributes $\lm_k$, and the other terms contribute nothing.  We
+ conclude that $\lm_k = 0$ for $k\neq i$.  The equation
+ \eqref{pf.prop-canonical-basis.vi-through-wj} now simplifies to
+ $v_i = w_i$.  This holds for all $i$, so we have $B=C$ as claimed.
 \end{proof}
 
 We next discuss how to find the canonical basis for a subspace
@@ -6966,7 +7046,7 @@ vectors, then we proceed as follows.
  as in Example~\ref{eg-span-ann-ii}.  We showed there that the vectors
  \[ c = \bbm -\tfrac{2}{3} & 1 & 0 & -\tfrac{1}{3} \ebm^T
     \hspace{2em} \text{ and } \hspace{2em}
-    d = \bbm -\tfrac{1}{3} & 0 & 1 & -\tfrac{2}{3} \ebm^T.
+    d = \bbm -\tfrac{1}{3} & 0 & 1 & -\tfrac{2}{3} \ebm^T
  \]
  give a (non-canonical) basis for $V$.  To find the canonical basis,
  we perform the following row-reduction:
@@ -7233,7 +7313,7 @@ general case.
  \]
  To see why this is true, we study $V$ more directly.  By definition,
  $V$ is the set of all vectors
- $x=\bbm x_1&\cdots&x_{10}\ebm\in\R^{10}$ whose inner product with
+ $x=\bbm x_1&\cdots&x_{10}\ebm^T\in\R^{10}$ whose dot product with
  each of the columns of $B^T$ is zero, which means that
  \[ \begin{array}{cccccccccc}
   x_2 & +a_3x_3 &     & + a_5x_5 & + a_6x_6 &     & + a_8x_8 &     & + a_{10}x_{10} & = 0 \\
@@ -7376,7 +7456,7 @@ should make the pattern clear.
  \begin{align*}
   u_1 &= \bbm 1 & 2 & 3 & 4 & 5 \ebm^T \\
   u_2 &= \bbm 1 & 2 & 3 & 3 & 3 \ebm^T \\
-  u_3 &= \bbm 1 & 1 & 1 & 1 & 1 \ebm^T.
+  u_3 &= \bbm 1 & 1 & 1 & 1 & 1 \ebm^T
  \end{align*}
  and the subspace $V=\ann(u_1,u_2,u_3)$ as in
  Example~\ref{eg-ann-basis-ii}.  The relevant matrix $A$ for
@@ -7526,7 +7606,7 @@ to save time.
    \draw (5,4) node[anchor=south west] {$a$};
   \end{tikzpicture}
  \end{center}
- Then $V\cap W$ is the set of points lying on both lines, but the
+ Then $V\cap W$ is the set of points lying on both lines $V$ and $W$, but the
  lines only meet at the origin, so $V\cap W=\{0\}$.  On the other hand,
  it is clear that every point $a\in\R^2$ can be expressed as the sum
  of a point on $V$ with a point on $W$, so $V+W=\R^2$.  For an
@@ -7548,7 +7628,7 @@ to save time.
  For a vector $u=\bbm w&x&y&z\ebm^T$ to lie in $V\cap W$ we must have
  $w=y$ and $x=z$ and $w=-z$ and $x=-y$.  From this it follows easily
  that $u=\bbm w&-w&w&-w\ebm^T$, so $V\cap W$ is just the set of
- multiples of $\bbm 1&-1&1&-1\ebm$.
+ multiples of $\bbm 1&-1&1&-1\ebm^T$.
 
  Now put
  \[ U = \{\bbm w&x&y&z\ebm^T \st w-x-y+z=0\}
@@ -7558,9 +7638,9 @@ to save time.
  $u=\bbm w&x&y&z\ebm^T$.   In one direction, suppose that $u\in V+W$.
  This means that $u$ can be written as $u=v+w$ for some $v\in V$ and
  $w\in W$.  By inspecting the definition of $V$ we see that
- $v=\bbm p&q&p&q\ebm$ for some $p,q\in\R$.  Similarly, by inspecting
+ $v=\bbm p&q&p&q\ebm^T$ for some $p,q\in\R$.  Similarly, by inspecting
  the definition of $W$ we see that $w=\bbm -r&-s&s&r\ebm^T$ for some
- $r,s\in\R$.  This gives $u=\bbm p-r&q-s&p+s&q+r\ebm$, so
+ $r,s\in\R$.  This gives $u=\bbm p-r&q-s&p+s&q+r\ebm^T$, so
  \[ w-x-y+z = (p-r)-(q-s)-(p+s)+(q+r)
      =p-r-q+s-p-s+q+r = 0,
  \]
@@ -7602,8 +7682,8 @@ as follows.
    $\spn(v_1,\dotsc,v_r,w_1,\dotsc,w_s)$.
   \item[(b)] A vector $x\in\R^n$ lies in $\ann(v_1,\dotsc,v_r)$ if and
    only if $x.v_1=\dotsb=x.v_r=0$.  Similarly, $x$ lies in
-   $\ann(w_1,\dotsc,w_s)$ iff $x.w_1=\dotsb=x.w_s$.  Thus, $x$ lies in
-   $\ann(v_1,\dotsc,v_r)\cap\ann(w_1,\dotsb,w_s)$ iff both sets of
+   $\ann(w_1,\dotsc,w_s)$ iff $x.w_1=\dotsb=x.w_s=0$.  Thus, $x$ lies in
+   $\ann(v_1,\dotsc,v_r)\cap\ann(w_1,\dotsc,w_s)$ iff both sets of
    equations are satisfied, or in other words
    \[ x.v_1=\dotsb=x.v_r=x.w_1=\dotsb=x.w_s=0. \]
    This is precisely the condition for $x$ to lie in
@@ -7621,7 +7701,7 @@ This justifies the following methods:
    disguised, as in Examples~\ref{eg-span-form-i}
    and~\ref{eg-span-form-ii}, or Proposition~\ref{prop-img-span}), in
    which case there is nothing to do.  Alternatively, if $V$ is given
-   to as as the annihilator of some list, then we can use
+   to us as the annihilator of some list, then we can use
    Method~\ref{meth-ann-basis} to find a basis $\CV$ for $V$, which in
    particular will have $\spn(\CV)=V$.
   \item[(b)] Find a list $\CW$ such that $W=\spn(\CW)$ (in the same
@@ -7641,7 +7721,7 @@ This justifies the following methods:
    slightly disguised as in Examples~\ref{eg-eqs-ann-i}
    and~\ref{eg-eqs-ann-ii}, or Proposition~\ref{prop-ker-ann}), in
    which case there is nothing to do.  Alternatively, if $V$ is given
-   to as as the span of some list, then we can use
+   to us as the span of some list, then we can use
    Method~\ref{meth-span-eqs} to find a list $\CV'$ such that
    $\ann(\CV')=V$. 
   \item[(b)] Find a list $\CW'$ such that $W=\ann(\CW')$ (in the same
@@ -7943,7 +8023,7 @@ This justifies the following methods:
  substitute into the remaining equations to get $x_2=x_1/3$.  This
  leads to $x=x_1\bbm 1&1/3&-1/3&-1\ebm^T$, so the vector
  $c=\bbm 1&1/3&-1/3&-1\ebm^T$ is (by itself) the canonical basis for
- $V\cap W$.  In particular, we have $\dim(V\cap W)=1$
+ $V\cap W$.  In particular, we have $\dim(V\cap W)=1$.
 
  As a check, we note that
  \[ \dim(V+W)+\dim(V\cap W) = 3+1 = 2+2 = \dim(V)+\dim(W), \]
@@ -7973,7 +8053,7 @@ Let $A$ be an $m\tm n$ matrix.
  \index{rank!definition}\index{nullity!definition}
  For any matrix $A$, the \emph{rank} of $A$ is the dimension of
  $\img(A)$, and the \emph{nullity} of $A$ is the dimension of
- $\ker(A)$.  We write $\rnk(A)$ for the rank and $\null(A)$ for the
+ $\ker(A)$.  We write $\rnk(A)$ for the rank and $\nullity(A)$ for the
  nullity.  
 \end{definition}
 
@@ -7998,7 +8078,7 @@ terminology.
    In any nonzero column, the copivot is further down than the
    copivots in all previous columns.
   \item[\textbf{RCEF3}:]
-   If a column contains a copivot, then all other entries in that column
+   If a row contains a copivot, then all other entries in that row
    are zero.
  \end{itemize}
 \end{definition}
@@ -8256,7 +8336,7 @@ $r$, which is the number of $1$s in $A$.
 \end{remark}
 
 \begin{corollary}\label{cor-max-rank}
- If $A$ is an $n\tm m$ matrix.  Then $\rnk(A)\leq\min(n,m)$.
+ Let $A$ be an $n\tm m$ matrix.  Then $\rnk(A)\leq\min(n,m)$.
 \end{corollary}
 \begin{proof}
  \index{rank!bounded by size of matrix}
@@ -8347,7 +8427,7 @@ really two different ways of looking at the same thing:
 \end{proof}
 
 \begin{definition}\label{defn-symmetric}
- \item{matrix!symmetric}
+ \index{matrix!symmetric}
  Let $A$ be an $n\tm n$ matrix, with entries $a_{ij}$.  We say that
  $A$ is \dfn{symmetric} if $A^T=A$, or equivalently $a_{ij}=a_{ji}$
  for all $i$ and $j$.
@@ -8381,10 +8461,15 @@ really two different ways of looking at the same thing:
 
 \begin{lemma}\label{lem-transpose-adjoint}
  Let $A$ be an $n\tm n$ matrix, and let $u$ and $v$ be vectors in
- $\R^n$.  Then $u.(Av)=(A^Tu).v$.  In particular, if $A$ is symmetric
+ $\R^n$.
+ \begin{itemize}
+ \item[(a)] Then $u.(Av)=(A^Tu).v$.
+ \item[(b)] In particular, if $A$ is symmetric
  then $u.(Av)=(Au).v$.
+ \end{itemize}
 \end{lemma}
 \begin{proof}
+ We only need to prove (a), since it is obvious that (b) is a consequence.
  Put $p=A^Tu$ and $q=Av$, so the claim is that $u.q=p.v$.  By
  the definition of matrix multiplication, we have
  $q_i=\sum_jA_{ij}v_j$, so $u.q=\sum_iu_iq_i=\sum_{i,j}u_iA_{ij}v_j$.
@@ -8397,7 +8482,9 @@ really two different ways of looking at the same thing:
  $x.y$ can be interpreted as the matrix product $x^Ty$.  Thus
  $(Au).v=(Au)^Tv$, but $(Au)^T=u^TA^T$ (by
  Proposition~\ref{prop-transpose-anti}) so
- $(Au).v=u^T(A^Tv)=u.(A^Tv)$. 
+ $(Au).v=u^T(A^Tv)=u.(A^Tv)$.
+ Applying this to $A^T$ instead of $A$, we get
+ $(A^T u).v = u.(A^{TT} v) = u.(Av)$, since $A^{TT} = A$.
 \end{proof}
 
 \begin{proposition}\label{prop-symmetric-eigen}
@@ -8435,7 +8522,7 @@ really two different ways of looking at the same thing:
     v.(Aw) &= \bt v.v + \al v.w.
    \end{align*}
    However, $A$ is symmetric, so $(Av).w=v.(Aw)$ by
-   Lemma~\ref{lem-transpose-adjoint}.  After a little rearrangement
+   Lemma~\ref{lem-transpose-adjoint} (b).  After a little rearrangement
    this gives $\bt(v.v+w.w)=0$.  Now $v.v$ is the sum of the squares
    of the entries in $v$, and similarly for $w$.  By assumption
    $u\neq 0$, so at least one of $v$ and $w$ must be nonzero, so
@@ -8733,14 +8820,16 @@ really two different ways of looking at the same thing:
  $E=\diag(\sqrt{\lm_1},\dotsc,\sqrt{\lm_n})$ and $B=UEU^T$.  It is
  clear that $E^T=E$, and it follows that 
  \[ B^T = (UEU^T)^T = U^{TT}E^TU^T = UEU^T = B. \]
- Moreover, as $U^T=U^{-1}$ we have $U^TU=I_n$ and 
- \[ B^2 = UEU^TUEU^T = UEEU^T = UDU^T = A. \]
+ Moreover, as $U^T=U^{-1}$ we have $U^TU=I_n$ and
+ thus $E U^T U E = E I_n E = E^2 = D$ (since the square of a
+ diagonal matrix is obtained by squaring its diagonal entries); hence
+ \[ B^2 = UEU^TUEU^T = UDU^T = A. \]
 \end{proof}
 
 \begin{definition}\label{defn-forms}
  \begin{itemize}
   \item[(a)] A \dfn{linear form} on $\R^n$ is a function of the form
-   $L(x)=\sum_{i=1}^n a_ix_i$ (for some constants
+   $L(x)=\sum_{i=1}^n a_ix_i$ for some constants
    $a_1,\dotsc,a_n$. 
   \item[(b)] A \dfn{quadratic form} on $\R^n$ is a function of the
    form $Q(x)=\sum_{i=1}^n\sum_{j=1}^nb_{ij}x_ix_j$ for
@@ -8754,6 +8843,8 @@ really two different ways of looking at the same thing:
    $L(x)=7x_1-8x_2+9x_3$. 
   \item[(b)] We can define a quadratic form on $\R^4$ by 
    $Q(x)=10 x_1x_2 + 12 x_3x_4 - 14 x_1x_4 - 16 x_2x_3$.
+  \item[(b)] We can define a quadratic form on $\R^3$ by 
+   $Q(x)= x_1^2 - x_2^2$.
  \end{itemize}
 \end{example}
 
@@ -8816,8 +8907,6 @@ really two different ways of looking at the same thing:
  In other words, if we define linear forms $L_i$ and $M_j$ by
  $L_i(x)=x.v_i$ and $M_j(x)=x.w_j$ then 
  \[ Q = L_1^2 + \dotsb + L_r^2 - M_1^2 - \dotsb - M_s^2. \]
- The \dfn{rank} of $Q$ is defined to be $r+s$, and the
- \dfn{signature} is defined to be $r-s$.
 \end{proposition}
 \begin{proof}
  As explained in Remark~\ref{rem-quadratic-symmetrise}, there is a
@@ -8944,6 +9033,17 @@ really two different ways of looking at the same thing:
  \[ Q(x) = (x.v_1)^2 + (x.v_2)^2 - (x.w_1)^2 - (x.w_2)^2. \]
 \end{example}
 
+\begin{definition}
+ Let $Q(x)$ be a quadratic form on $\R^n$.  Let $r$ and $s$
+ be as in Proposition~\ref{prop-quadratic-diag}.
+ It can be shown that these $r$ and $s$ are uniquely
+ determined (i.e., independent on the choice of
+ $v_1,\dotsc,v_r,w_1,\dotsc,w_s$).
+ The \dfn{rank}\index{quadratic form!rank} of $Q$ is defined
+ to be $r+s$, and the \dfn{signature}\index{quadratic form!signature}
+ of $Q$ is defined to be $r-s$.
+\end{definition}
+
 \appendix
 
 \section{List of all methods}
@@ -8964,7 +9064,7 @@ implicit in the examples.
   Find the eigenvalues and eigenvectors of a square matrix.
  \item Method~\ref{meth-find-lincomb}:
   Express a vector $v$ as a linear combination of a given list of
-  vectors $u_1,\dotsc,u_r$ (or show that this is impossible).
+  vectors $v_1,\dotsc,v_k$ (or show that this is impossible).
  \item Method~\ref{meth-check-dependence}:
   Check whether a given list of vectors is linearly dependent or
   linearly independent.
@@ -9241,7 +9341,14 @@ implicit in the examples.
    \draw[blue,->,shorten >=2mm,shorten <=2mm] (5,2) -- (2,0);
   \end{tikzpicture}
  \end{center}
- There are three types of reversals:
+ This permutation $\tau$ is called a \dfn{transposition}.
+ % A \dfn{transposition} of a set $X$ means a permutation of $X$ that
+ % swaps some two elements of $X$ while leaving all other elements of
+ % $X$ unchanged. Thus, the map $\tau$ is a transposition.
+ % (And conversely, each transposition of $N = \{1, 2, ..., n\}$
+ % has the form $\tau$ for some choice of $p$ and $q$.)
+ % [Looks like we don't need this generality.]
+ It has three types of reversals:
  \begin{itemize}
   \item[(a)] For each $i$ with $p<i<q$, the pair $(p,i)$ is a
    reversal.  (These correspond to the places where the sloping red
@@ -9279,7 +9386,7 @@ $2\tm 2$ and $3\tm 3$ matrices.
  given by $\tau(1)=2$ and $\tau(2)=1$.  The identity has no reversals,
  so $l(\iota)=0$ and $\sgn(\iota)=1$.  The pair $(1,2)$ is a reversal
  for $\tau$, and it is the only one, so $l(\tau)=1$ and
- $\sg(\tau)=-1$.  Definition~\ref{defn-det} therefore gives
+ $\sgn(\tau)=-1$.  Definition~\ref{defn-det} therefore gives
  \begin{align*}
   \det(A) &= \sgn(\iota)a_{1,\iota(1)}a_{2,\iota(2)} +
              \sgn(\tau) a_{1,\tau(1)}a_{2,\tau(2)} \\
@@ -9294,7 +9401,7 @@ $2\tm 2$ and $3\tm 3$ matrices.
      \bbm
       a_{11} & a_{12} & a_{13} \\
       a_{21} & a_{22} & a_{23} \\
-      a_{31} & a_{32} & a_{13}
+      a_{31} & a_{32} & a_{33}
      \ebm
  \]
  The determinant is a sum over all the possible permutations of the
@@ -9444,8 +9551,8 @@ $2\tm 2$ and $3\tm 3$ matrices.
  \end{align*}
 \end{example}
 
-We can also calculate the determinant of a diagonal matrix the
-identity the definitions.
+We can also calculate the determinant of a diagonal matrix using
+the Leibniz identity \eqref{eq.defn-det-pre.leibniz}.
 \begin{proposition}\label{prop-det-diag}
  Let $A$ be a diagonal matrix, so the entries $a_{ij}$ are zero for
  $i\neq j$.  Then the determinant is just the product of the entries
@@ -9454,7 +9561,7 @@ identity the definitions.
  In particular, for the identity matrix $I_n$ we have $\det(I_n)=1$.
 \end{proposition}
 \begin{proof}
- The formula for $\det(A)$ has a term
+ The formula \eqref{eq.defn-det-pre.leibniz} for $\det(A)$ has a term
  $\sgn(\sg)\prod_{i=1}^na_{i,\sg(i)}$ for each permutation $\sg$.  If
  $\sg$ is not the identity permutation then for some $i$ we will have
  $i\neq\sg(i)$, so the factor $a_{i,\sg(i)}$ will be zero, so the
@@ -9467,15 +9574,15 @@ identity the definitions.
 
 In fact, this can be strengthened as follows:
 \begin{proposition}\label{prop-det-tri}
- Let $A$ be a lower triangular matrix, so the entries $a_{ij}$ are
+ Let $A$ be a lower-triangular matrix, so the entries $a_{ij}$ are
  zero for $i<j$.  Then the determinant is just the product of the entries
  on the diagonal:
  \[ \det(A) = a_{11} a_{22} \dotsb a_{nn} = \prod_{i=1}^n a_{ii}. \]
- The same also holds if $A$ is upper triangular.
+ The same also holds if $A$ is upper-triangular.
 \end{proposition}
 \begin{proof}
- We will prove the lower triangular case, and leave the upper
- triangular case to the reader.
+ We will prove the lower-triangular case, and leave the
+ upper-triangular case to the reader.
 
  The formula for $\det(A)$ has a term
  $\sgn(\sg)\prod_{i=1}^na_{i,\sg(i)}$ for each permutation $\sg$.
@@ -9495,6 +9602,8 @@ In fact, this can be strengthened as follows:
  the product of the diagonal entries.
 \end{proof}
 
+We now consider the elementary matrices introduced in
+Definition~\ref{defn-elementary}.
 
 \begin{proposition}\label{prop-det-elem}
  The determinants of elementary matrices are $\det(D_p(\lm))=\lm$ and
@@ -9504,8 +9613,8 @@ In fact, this can be strengthened as follows:
  The matrix $D_p(\lm)$ is diagonal, with one of the diagonal entries
  being $\lm$, and all the others being $1$.
  Proposition~\ref{prop-det-diag} therefore gives $\det(D_p(\lm))=\lm$.
- Next, the matrix $E_{pq}(\mu)$ is either upper triangular (if $p<q$)
- or lower triangular (if $p>q$) and all the diagonal entries are equal
+ Next, the matrix $E_{pq}(\mu)$ is either upper-triangular (if $p<q$)
+ or lower-triangular (if $p>q$) and all the diagonal entries are equal
  to $1$, so $\det(E_{pq}(\mu))=1$ by Proposition~\ref{prop-det-tri}.
  Finally, consider the matrix $F_{pq}$, where $1\leq p<q\leq n$.  Let
  $\tau$ be the transposition that exchanges $p$ and $q$ as in
@@ -9619,10 +9728,10 @@ properties of the determinant:
    every instance of case~(c) arises in this way, precisely once.
  \end{itemize}
  From this analysis, we see that $l(\sg)=b+c$.  This gives
- \[ l(\sg)+l(\tau) = (b+c)+(c+d) = l(\sg\circ\tau) + 2d \]
+ \[ l(\sg)+l(\tau) = (b+c)+(c+d) = (b+d) + 2c = l(\sg\circ\tau) + 2c \]
  and thus
  \[ \sgn(\sg)\sgn(\tau) = (-1)^{l(\sg)+l(\tau)} =
-     (-1)^{l(\sg\circ\tau)+2d} = (-1)^{l(\sg\circ\tau)} =
+     (-1)^{l(\sg\circ\tau)+2c} = (-1)^{l(\sg\circ\tau)} =
       \sgn(\sg\circ\tau).
  \]
 \end{proof}
@@ -9660,7 +9769,7 @@ properties of the determinant:
      a_{j,\sg^{-1}(j)}.
  \]
  We now write $\tau=\sg^{-1}$.  Every permutation is the inverse of
- precisely one other permutation, so taking the sum over all possible
+ precisely one permutation, so taking the sum over all possible
  $\sg$'s is the same as taking the sum over all possible $\tau$'s.
  Moreover, Corollary~\ref{cor-sgn-inverse} tells us that
  $\sgn(\sg)=\sgn(\tau)$.  We thus have
@@ -9724,7 +9833,7 @@ following fact:
 \begin{lemma}\label{lem-expand}
  For any system of numbers $m_{ij}$ (where $1\leq i,j\leq n$) we have
  \[ \prod_{i=1}^n \sum_{j=1}^n m_{ij} =
-     \sum_{\text{ functions } \tht} \prod_{i=1}^n m_{i,\tht(i)}.
+     \sum_{\text{ functions } \tht} \; \; \prod_{i=1}^n m_{i,\tht(i)}.
  \]
  (Here $\tht$ runs over all functions from the set
  $N=\{1,2,\dotsc,n\}$ to itself.)
@@ -9736,14 +9845,15 @@ that it works in general.)
  Put $C=AB$.  It is straightforward to check that the entries in $C$ are
  given by $c_{ik}=\sum_{j=1}^na_{ij}b_{jk}$.  For example, the $n=3$
  case is
- \[ \bbm
+ \begin{align*}
+    & \bbm
      a_{11}&a_{12}&a_{13} \\ a_{21}&a_{22}&a_{23} \\ a_{31}&a_{32}&a_{33}
     \ebm
     \bbm
      b_{11}&b_{12}&b_{13} \\ b_{21}&b_{22}&b_{23} \\ b_{31}&b_{32}&b_{33}
-    \ebm
+    \ebm \\
     =
-    \bbm
+    & \bbm
      a_{11}b_{11} + a_{12}b_{21} + a_{13}b_{31} &
      a_{11}b_{12} + a_{12}b_{22} + a_{13}b_{32} &
      a_{11}b_{13} + a_{12}b_{23} + a_{13}b_{33} \\
@@ -9754,17 +9864,20 @@ that it works in general.)
      a_{31}b_{12} + a_{32}b_{22} + a_{33}b_{32} &
      a_{31}b_{13} + a_{32}b_{23} + a_{33}b_{33}
     \ebm
- \]
+ \end{align*}
  We thus have
  \[ \det(C) =
      \sum_\sg \sgn(\sg)\prod_{i=1}^n c_{i,\sg(i)} =
      \sum_\sg \sgn(\sg)\prod_{i=1}^n \sum_{j=1}^n a_{ij}b_{j,\sg(i)}.
  \]
- Here we have a sum of products, so it can be expanded out as in
+ Here we have (for each $\sigma$) a product of sums,
+ which can be expanded out as in
  Lemma~\ref{lem-expand} (with $m_{ij}=a_{ij}b_{j,\sg(i)}$).  This
  gives
  \[ \det(C) =
-     \sum_\sg \sum_\tht \sgn(\sg)\prod_{i=1}^n a_{i,\tht(i)}b_{\tht(i),\sg(i)}.
+     \sum_\sg \sgn(\sg) \sum_{\text{ functions } \tht} \; \; \prod_{i=1}^n a_{i,\tht(i)}b_{\tht(i),\sg(i)}
+     =
+     \sum_{\text{ functions } \tht} \; \; \sum_\sg \sgn(\sg)\prod_{i=1}^n a_{i,\tht(i)}b_{\tht(i),\sg(i)}.
  \]
  In this sum, $\tht$ is a function $N\to N$ which might or might not
  be a permutation.  We write $\Dl$ for the sum of all the terms where
@@ -9811,10 +9924,10 @@ that it works in general.)
  \]
  We can rewrite the product in terms of the index $j=\tau(i)$,
  recalling that $\tht(j)=\tht(\tau(i))=\tht(i)$ because
- $\tht(p)=\tht(q)$.  We also note that
+ $\tht \circ \tau = \tht$.  We also note that
  $\sgn(\sg\circ\tau)=\sgn(\sg)\sgn(\tau)=-\sgn(\sg)$.  This gives
  \[ \Gm(\tht,\sg\circ\tau) =
-     -\sgn(\sg)\prod_{j=1}^n b_{\tht(j),\sg(j)} = -\Gm(\tht,\sg).
+     -\sgn(\sg)\prod_{j=1}^n b_{\tht(j),\sg(j)} = -\Gm(\tht,\sg),
  \]
  as claimed.  Now consider the sum $\Gm(\tht)=\sum_\sg\Gm(\tht,\sg)$.
  We can divide the permutations into two groups: those for which
@@ -10003,17 +10116,18 @@ this rule works in general.
  $m_{pq}=(-1)^{p+q}m^*_{pq}$ as claimed.
 \end{proof}
 
-We can now show that determinants can be ``expanded along the top
+We can now show that determinants can be ``expanded along the $p$'th
 row''.
 
 \begin{proposition}\label{prop-det-expand}
- Let $A$ be an $n\tm n$ matrix.  Then
- \[ \det(A) = \sum_{q=1}^n (-1)^{q+1}a_{1q}m_{1q} =
-     a_{11} m_{11} - a_{12}m_{12} + \dotsb \pm a_{1n}m_{1n}.
+ Let $A$ be an $n\tm n$ matrix.  Let $1 \leq p \leq n$.
+ Then
+ \[ \det(A) = \sum_{q=1}^n (-1)^{p+q}a_{pq}m_{pq} =
+     (-1)^{p+1} a_{p1} m_{p1} + (-1)^{p+2} a_{p2}m_{p2} + \dotsb + (-1)^{p+n} a_{pn}m_{pn}.
  \]
 \end{proposition}
 
-In the case $n=3$, this is just the traditional rule
+In the case $n=3$ and $p=1$, this is just the traditional rule
 \[ \det\bbm a_{11} & a_{12} & a_{13} \\
             a_{21} & a_{22} & a_{23} \\
             a_{31} & a_{32} & a_{33} \ebm =
@@ -10025,17 +10139,17 @@ In the case $n=3$, this is just the traditional rule
 \begin{proof}
  By definition we have
  \[ \det(A) = \sum_\sg \sgn(\sg)\prod_{i=1}^n a_{i,\sg(i)}. \]
- If we consider only permutations $\sg$ that satisfy $\sg(1)=q$, then
+ If we consider only permutations $\sg$ that satisfy $\sg(p)=q$, then
  the sum of the corresponding terms is
- \[ \sum_{\sg(1)=q} \sgn(\sg)\prod_{i=1}^n a_{i,\sg(i)}
-     = a_{1q} \sum_{\sg(1)=q} \sgn(\sg)\prod_{i\neq 1} a_{i,\sg(i)}
-     = a_{1q} m^*_{1q}.
+ \[ \sum_{\sg(p)=q} \sgn(\sg)\prod_{i=1}^n a_{i,\sg(i)}
+     = a_{pq} \sum_{\sg(p)=q} \sgn(\sg)\prod_{i\neq p} a_{i,\sg(i)}
+     = a_{pq} m^*_{pq}.
  \]
  Taking the sum over all $q$, we get
- $\det(A)=\sum_{q=1}^n a_{1q}m^*_{1q}$.  On the other hand,
+ $\det(A)=\sum_{q=1}^n a_{pq}m^*_{pq}$.  On the other hand,
  Proposition~\ref{prop-minors} tells us that
- $m^*_{1q}=(-1)^{1+q}m_{1q}$, so we get
- $\det(A)=\sum_{q=1}^n (-1)^{q+1}a_{1q}m_{1q}$ as claimed.
+ $m^*_{pq}=(-1)^{p+q}m_{pq}$, so we get
+ $\det(A)=\sum_{q=1}^n (-1)^{p+q}a_{pq}m_{pq}$ as claimed.
 \end{proof}
 
 \begin{definition}\label{defn-adjugate}
