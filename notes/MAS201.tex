@@ -80,6 +80,7 @@
 
 \title{MAS201 Linear Mathematics for Applications}
 \author{Neil Strickland \\ with corrections and minor changes by Darij Grinberg}
+\date{\today}
 
 \maketitle
 
@@ -9222,7 +9223,8 @@ implicit in the examples.
 \end{example}
 
 \begin{definition}\label{defn-signature}
- Let $\sg\colon N\to N$ be a permutation.  A \dfn{reversal} for $\sg$ is a
+ Let $\sg\colon N\to N$ be a permutation.  A \dfn{reversal}\footnote{%
+ Also known as an \dfn{inversion}.} for $\sg$ is a
  pair $(i,j)$ of numbers in $N$ such that $i<j$ but $\sg(i)>\sg(j)$.
  We put
  \begin{align*}
@@ -10123,7 +10125,7 @@ this rule works in general.
 \end{proof}
 
 We can now show that determinants can be ``expanded along the $p$'th
-row''.
+row''.\index{expansion of determinant}
 
 \begin{proposition}\label{prop-det-expand}
  Let $A$ be an $n\tm n$ matrix.  Let $1 \leq p \leq n$.
