@@ -1,7 +1,5 @@
 A list of errata in the notes "MAS201 Linear Mathematics" by Neil Strickland ( https://neil-strickland.staff.shef.ac.uk/courses/MAS201/MAS201.pdf ) in the version of 2013-09-28:
 
-- page 17, Examples 8.2 and 8.3: I recommend adding another example, where a list of vectors is dependent but the nontrivial relations have some zeroes (so as to stress that this is allowed). For example, the vectors $b_1 = \begin{bmatrix} 1 & 0 \end{bmatrix}$, $b_2 = \begin{bmatrix} 2 & 0 \end{bmatrix}$ and $b_3 = \begin{bmatrix} 0 & 1 \end{bmatrix}$ form a dependent list, since $2 b_1 - 1 b_2 + 0 b_3 = 0$.
-
 - page 23, proof of Lemma 9.15: In part (c) of the proof, you write "$\lambda_1, \lambda_2 - u \lambda_1, \lambda_3, ..., \lambda_n$". The "n" should be an "m" here.
 
 - page 25, proof of correctness of Method 9.7: In the last sentence of the proof, I would remove the "$m \geq n$ and" part (from "if $m \geq n$ and $D$ has a pivot"), since it is only a distraction from the argument.
