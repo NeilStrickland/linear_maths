@@ -2847,7 +2847,7 @@ B.rref()[0]
 \label{sec-elem}
 
 \begin{definition}\label{defn-elementary}
- Fix an integer $n>0$.  We define $n\tm n$ matrices as follows.
+ Fix an integer $n \geq 0$.  We define $n\tm n$ matrices as follows.
  \begin{itemize}
   \item[(a)] Suppose that $1\leq p\leq n$ and that $\lm$ is a nonzero
    real number.  We then let $D_p(\lm)$ be the matrix that is the same
@@ -2897,8 +2897,9 @@ explained in the next result.
 
 \begin{proposition}\label{prop-ro-elem}
  \index{elementary matrix}\index{row operation}
- Let $A$ be an $n\tm n$ matrix, and let $A'$ be obtained from $A$ by a
- single row operation.  Then $A'=UA$ for some elementary matrix $U$.
+ Let $A$ be an $n\tm m$ matrix, and let $A'$ be obtained from $A$ by a
+ single row operation.  Then $A'=UA$ for some elementary matrix
+ $U \in M_n(\R)$.
  In more detail:
  \begin{itemize}
   \item[(a)] Let $A'$ be obtained from $A$ by multiplying the $p$'th
@@ -2910,6 +2911,7 @@ explained in the next result.
  \end{itemize}
 \end{proposition}
 
+\begin{proof}
 We will not give a formal proof, as examples are more illuminating:
 if we take
 \[ A = \bbm
@@ -2981,17 +2983,19 @@ then
      a_{31} & a_{32} & a_{33} & a_{34} \\
      a_{21} & a_{22} & a_{23} & a_{24}
     \ebm
+    \qedhere
 \end{align*}
+\end{proof}
 
 \begin{corollary}\label{cor-ro-elem}
  \index{elementary matrix}\index{row operation}
- Let $A$ and $B$ be $n\tm n$ matrices, and suppose that $A$ can be
+ Let $A$ and $B$ be $n\tm m$ matrices, and suppose that $A$ can be
  converted to $B$ by a sequence of row operations.  Then $B=UA$ for
- some matrix $U$ that can be expressed as a product of elementary
- matrices.
+ some $n\tm n$ matrix $U$ that can be expressed as a product of
+ elementary matrices.
 \end{corollary}
 \begin{proof}
- The assumption is that there is a sequence of matrices
+ The assumption is that there is a sequence of $n\tm m$ matrices
  $A_0,A_1,\dotsc,A_r$ starting with $A_0=A$ and ending with $A_r=B$
  such that $A_i$ is obtained from $A_{i-1}$ by a single row
  operation.  By the Proposition, this means that there is an
@@ -3034,7 +3038,7 @@ then
  equivalent.  If these statements hold then in particular $A$
  row-reduces to $I_n$, so Corollary~\ref{cor-ro-elem} tells us that
  there exists a matrix $U$ with $UA=I_n$, so~(i) holds.  Similarly,
- if~(a) to~(h) hold then $A^T$ row-reduces to the identity, so
+ if~(a) to~(h) hold then $A^T$ row-reduces to $I_n$, so
  Corollary~\ref{cor-ro-elem} tells us that there exists a matrix $W$
  with $WA^T=I_n$.  Taking the transpose (and remembering
  Proposition~\ref{prop-transpose-anti}) gives $AW^T=I_n$, so we can
@@ -3151,9 +3155,9 @@ then
 
 \begin{corollary}\label{cor-ro-elem-ii}
  \index{invertible}\index{row operation}
- Let $A$ and $B$ be $n\tm n$ matrices, and suppose that $A$ can be
+ Let $A$ and $B$ be $n\tm m$ matrices, and suppose that $A$ can be
  converted to $B$ by a sequence of row operations.  Then $B=UA$ for
- some invertible matrix $U$.
+ some invertible $n\tm n$ matrix $U$.
 \end{corollary}
 \begin{proof}
  Corollary~\ref{cor-ro-elem} tells us that $B=UA$ for some matrix $U$
@@ -8007,15 +8011,16 @@ counterparts for row operations; we will not spell out the details.
 \end{proof}
 
 \begin{proposition}\label{cor-co-elem}
- Suppose that $A$ can be converted to $B$ by a sequence of elementary
- column operations.  Then $B=AV$ for some invertible matrix $V$.
+ Suppose that an $m\tm n$ matrix $A$ can be converted to $B$ by
+ a sequence of elementary column operations.  Then $B=AV$ for
+ some invertible $n\tm n$ matrix $V$.
 \end{proposition}
 \begin{proof}
  It is clear that $A^T$ can be converted to $B^T$ by a series of
  elementary row operations corresponding to the column operations that
  were used to convert $A$ to $B$.  Thus,
  Corollary~\ref{cor-ro-elem-ii} tells us that $B^T=UA^T$ for some
- invertible matrix $U$.  We thus have
+ invertible $n\tm n$ matrix $U$.  We thus have
  $B=B^{TT}=(UA^T)^T=A^{TT}U^T=AU^T$.  Here $U^T$ is invertible by
  Remark~\ref{rem-transpose-inverse}, so we can take $V=U^T$.
 \end{proof}
@@ -8123,15 +8128,16 @@ $r$, which is the number of $1$s in $A$.
  \end{itemize}
 \end{proposition}
 \begin{proof}
- We first perform row operations to get a matrix $B$ in RREF.  By
- Corollary~\ref{cor-ro-elem-ii} there is an invertible matrix $U$ such
- that $B=UA$.  (This has to be an $n\tm n$ matrix for the product $UA$
- to make sense.)  Now subtract multiples of the pivot columns from the
+ We first perform row operations on $A$ to get a matrix $B$ in RREF.  By
+ Corollary~\ref{cor-ro-elem-ii} there is an invertible $n\tm n$ matrix
+ $U$ such that $B=UA$.
+ % (This has to be an $n\tm n$ matrix for the product $UA$ to make sense.)
+ Now subtract multiples of the pivot columns from the
  columns further to the right.  As each pivot column contains nothing
  other than the pivot, the only effect of these column operations is
  to set everything to the right of a pivot equal to zero.  However,
  every nonzero entry in $B$ is either a pivot or to the right of a
- pivot, so after these operation we just have the pivots from $B$ and
+ pivot, so after these operations we just have the pivots from $B$ and
  everything else is zero.  We now just move all columns of zeros to
  the right hand end, which leaves a matrix $C$ in normal form.  As $C$
  was obtained from $B$ by a sequence of elementary column operations,

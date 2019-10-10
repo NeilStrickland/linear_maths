@@ -86,8 +86,6 @@ A list of errata in the notes "MAS201 Linear Mathematics" by Neil Strickland ( h
 
 - page 85, Definition 22.2: In RCEF3, replace "column" by "row" (twice).
 
-- page 86, proof of Proposition 22.11: "after these operation" -> "after these operations".
-
 - page 87, Corollary 22.16: "If $A$ is" -> "Let $A$ be".
 
 - page 88, Definition 23.6: Something is wrong with the index entry, since I'm seeing a "matrix!symmetric" in the compiled PDF.
