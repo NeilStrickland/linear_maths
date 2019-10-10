@@ -12,15 +12,9 @@ A list of errata in the notes "MAS201 Linear Mathematics" by Neil Strickland ( h
 
 - page 17, Examples 8.2 and 8.3: I recommend adding another example, where a list of vectors is dependent but the nontrivial relations have some zeroes (so as to stress that this is allowed). For example, the vectors $b_1 = \begin{bmatrix} 1 & 0 \end{bmatrix}$, $b_2 = \begin{bmatrix} 2 & 0 \end{bmatrix}$ and $b_3 = \begin{bmatrix} 0 & 1 \end{bmatrix}$ form a dependent list, since $2 b_1 - 1 b_2 + 0 b_3 = 0$.
 
-- page 20, proof of correctness of Method 8.8: "nonzero to solution" -> "nonzero solution".
-
-- page 23, proof of Lemma 9.15: In part (b) of the proof, replace "$\lambda_2 u_2$" by "$\lambda_2 r_2$".
-
 - page 23, proof of Lemma 9.15: In part (c) of the proof, you write "$\lambda_1, \lambda_2 - u \lambda_1, \lambda_3, ..., \lambda_n$". The "n" should be an "m" here.
 
 - page 25, proof of correctness of Method 9.7: In the last sentence of the proof, I would remove the "$m \geq n$ and" part (from "if $m \geq n$ and $D$ has a pivot"), since it is only a distraction from the argument.
-
-- page 26, proof of Proposition 10.4: In the second displayed equation of the proof, replace "$v_m$" by "$v_n$".
 
 - page 31, Example 11.8: It is perhaps useful to point out that the equalities claimed in parts (a), (b) and (c) follow from Proposition 11.13. For example, in order to see that $E_{pq}(\mu) E_{pq}(-\mu) = I_n$, we can proceed as follows: Proposition 11.3 (b) shows that the matrix $E_{pq}(-\mu) I_n$ is obtained from $I_n$ by adding $-\mu$ times the $q$'th row to the $p$'th row. In other words, the matrix $E_{pq}(-\mu)$ is obtained from $I_n$ by adding $-\mu$ times the $q$'th row to the $p$'th row. But Proposition 11.3 (b) further shows that the matrix $E_{pq}(\mu) E_{pq}(-\mu)$ is obtained from $E_{pq}(-\mu)$ by adding $\mu$ times the $q$'th row to the $p$'th row. Combining these, we see that the matrix $E_{pq}(\mu) E_{pq}(-\mu)$ is obtained from $I_n$ by first adding $-\mu$ times the $q$'th row to the $p$'th row, and then adding $\mu$ times the $q$'th row to the $p$'th row. But these two operations obviously undo each other. Hence, $E_{pq}(\mu) E_{pq}(-\mu) = I_n$.
 
@@ -122,8 +116,6 @@ A list of errata in the notes "MAS201 Linear Mathematics" by Neil Strickland ( h
 
 - page 100, proof of Corollary B.16: "precisely one other permutation" -> "precisely one permutation". The word "other" falsely suggests that $\sigma^{-1}$ is always distinct from $\sigma$. (Or is my English off-base? You're more likely to know.)
 
-- page 100, Proof of Corollary B.16: "Corollary B.16 tells" should be "Corollary B.15 tells".
-
 - page 101, Lemma B.18: On the right hand side, I'd suggest adding some \; whitespace between the \sum and \prod signs, so that their subscripts are separated by a bit of whitespace.
 
 - page 101, proof of Theorem B.17: I'd split the first displayed equation into two lines, as it goes overfull.
@@ -137,8 +129,6 @@ A list of errata in the notes "MAS201 Linear Mathematics" by Neil Strickland ( h
 - page 102, proof of Theorem B.17: Remove the period at the end of the second-to-last displayed equation of this proof.
 
 - page 104, proof of Proposition B.23: "for som permutation" -> "for some permutation".
-
-- page 104, proof of Proposition B.23: In the same sentence, "$\{1 ..., n-1\}$" needs a comma after the "1".
 
 - page 104, Proposition B.24: Why are you stating this for the first row only? The proof works similarly for each row (it will probably be clearer for the $p$-th row, since a lot of the previous formulas for the $m*$'s involve $m*_{pq}$ instead of $m*_{1q}$).
 

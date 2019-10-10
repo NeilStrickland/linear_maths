@@ -1991,7 +1991,7 @@ why the method is correct.
  Suppose instead that some column (the $k$'th one, say) does not
  contain a pivot.  Then in Method~\ref{meth-RREF-solve} the variable
  $\lm_k$ will be independent, so we can choose $\lm_k=1$.  This will
- give us a nonzero to solution to $B\lm=0$, or equivalently $A\lm=0$,
+ give us a nonzero solution to $B\lm=0$, or equivalently $A\lm=0$,
  corresponding to a nontrivial linear relation on $\CV$.  This shows
  that $\CV$ is linearly dependent.
 \end{proof}
@@ -2259,7 +2259,7 @@ We now explain why Method~\ref{meth-check-span} is valid.
    multiplying the first row by a nonzero scalar $u$, so the rows of
    $C'$ are $ur_1,r_2,\dotsc,r_m$.  The sequence of numbers
    $u^{-1}\lm_1,\lm_2,\dotsc,\lm_m$ then satisfies
-   \[ s = (u^{-1}\lm_1)(ur_1)+\lm_2u_2+\dotsb+\lm_mr_m, \]
+   \[ s = (u^{-1}\lm_1)(ur_1)+\lm_2r_2+\dotsb+\lm_mr_m, \]
    which expresses $s$ as a linear combination of the rows of $C'$.  The
    argument is essentially the same if we multiply any other row by a
    nonzero scalar.
@@ -2495,7 +2495,7 @@ things that go by the name ``duality''.
    Thus, if we form the vector $\lm=\bbm \lm_1 & \dotsb & \lm_n\ebm^T$,
    we have
    \[ A\lm = \left[\begin{array}{c|c|c}
-              && \\ v_1 & \cdots & v_m \\ &&
+              && \\ v_1 & \cdots & v_n \\ &&
              \end{array}\right]
              \bbm \lm_1 \\ \vdots \\ \lm_n \ebm
        = \lm_1v_1 + \dotsb + \lm_nv_n = x,
@@ -9620,7 +9620,7 @@ properties of the determinant:
  We now write $\tau=\sg^{-1}$.  Every permutation is the inverse of
  precisely one other permutation, so taking the sum over all possible
  $\sg$'s is the same as taking the sum over all possible $\tau$'s.
- Moreover, Corollary~\ref{cor-sgn-transpose} tells us that
+ Moreover, Corollary~\ref{cor-sgn-inverse} tells us that
  $\sgn(\sg)=\sgn(\tau)$.  We thus have
  \[ \det(A^T) =
      \sum_{\text{ permutations } \tau}
@@ -9945,7 +9945,7 @@ this rule works in general.
  $\sg(p)=q$.  Conversely, if $\sg$ is any permutation of
  $\{1,\dotsc,n\}$ with $\sg(p)=q$ then the composite
  $\rho^{-1}\circ\sg\circ\lm$ sends $n$ to $n$, so it has the form
- $\tau^+$ for some permutation $\tau$ of $\{1\dotsc,n-1\}$.  It follows
+ $\tau^+$ for some permutation $\tau$ of $\{1,\dotsc,n-1\}$.  It follows
  that summing over all $\tau$ is the same as summing over all $\sg$
  with $\sg(p)=q$.  Note also that
  $\sgn(\tau)=\sgn(\lm)\sgn(\rho)\sgn(\sg)$.  We therefore have
