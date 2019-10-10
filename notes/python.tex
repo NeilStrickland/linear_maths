@@ -1,0 +1,146 @@
+\documentclass{amsart}
+\usepackage{fullpage}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\title{Linear algebra in Python}
+
+\begin{document}
+
+\maketitle
+
+There are unfortunately a number of incompatibilities between
+different versions of Python  in how they handle linear algebra.  The
+notes below refer to version which you can run in your browser by
+visiting \url{http://live.sympy.org}.  If you install or update Python
+and sympy on your own PC now then the instructions should work there
+as well.  However, the open access PCs in university computer rooms
+currently have an older version for which different syntax is needed.
+They may or may not get updated soon.
+
+You can enter the matrices 
+\[ A = 
+   \begin{pmatrix}
+    5 & 6 & 7 \\
+    4 & 3 & 2 
+   \end{pmatrix}
+   \hspace{5em}
+   B = 
+    \begin{pmatrix}
+     9 & 5 \\ 5 & 9
+    \end{pmatrix}
+\]
+like this:
+\begin{verbatim}
+A = Matrix([[5,6,7],[4,3,2]])
+B = Matrix([[9,5],[5,9]])
+\end{verbatim}
+
+You can now do some calculations:
+\begin{itemize}
+ \item Enter \verb|B*A| to calculate $BA$
+ \item If you enter \verb|A*B| then you will get an error message,
+  because $AB$ is not defined.  The error message is long and
+  complicated, but the last line says
+  \verb|ShapeError: Matrices size mismatch|, which should not be too
+  hard to understand.
+ \item Enter \verb|B**2| to calculate $B^2$, or \verb|B**-1| to
+  calculate the inverse matrix $B^{-1}$.
+ \item Enter \verb|transpose(A)| or \verb|A.T| to find the transpose
+  $A^T$.
+ \item Enter \verb|det(B)| or \verb|B.det()| to find the determinant
+  of $B$.  The brackets are necessary here.  If you enter \verb|B.det|
+  without the brackets, you will get 
+\begin{verbatim}
+ boundmethodMutableDenseMatrix.detofMatrix([[1,1],[1,-1]])
+\end{verbatim}
+  which is not very helpful.  In general, if you get a result starting
+  with \verb|boundmethod...|, it probably indicates that you left out
+  a pair of brackets.  
+ \item Enter \verb|eye(3)| for the $3\times 3$ identity matrix.
+ \item Enter \verb|A.row(0)| to get the first row of $A$, or
+  \verb|A.row(1)| to get the second row.  Python's indexing always
+  starts with 0, so many things need to be shifted by one compared to
+  how they are in the notes or in Maple.
+ \item Similarly, you can enter \verb|A.col(0)| or \verb|A.col(1)| or
+  \verb|A.col(2)| to extract one of the columns of $A$.
+ \item To get the top right entry in $A$ (which is called $A_{13}$ in
+  the notes), enter \verb|A[0,2]|.
+ \item In many places, it is convenient to give names to the columns
+  of a matrix.  For example, we might take $u_1$, $u_2$ and $u_3$ to
+  be the columns of the matrix $A$ above.  To do this in Python you can
+  type 
+\begin{verbatim}
+u = [A.col(i) for i in range(3)]
+\end{verbatim}
+  However, this gives the usual shift in indexing, so the columns are
+  \verb|u[0]|, \verb|u[1]| and \verb|u[2]|.
+ \item To find the reduced row echelon form of $A$, enter
+  \verb|A.rref()[0]|.  If you just enter \verb|A.rref()| instead you
+  will get a list of two things, the first of which is the RREF of
+  $A$, and the second of which is the list of pivot columns.  If you
+  just enter \verb|A.rref| then you will get a result like
+  \verb|boundmethod...| which you cannot use.  You might like to
+  define a more convenient syntax by entering
+\begin{verbatim}
+def RREF(M):
+    return M.rref()[0]
+\end{verbatim}
+  You can then enter \verb|RREF(A)| rather than \verb|A.rref()[0]|.
+ \item If you are going to use the RREF of $A$ in further
+  calculations, then you probably want to give it a name, like this:
+\begin{verbatim}
+A1 = A.rref()[0]
+\end{verbatim}
+  Note, however, that when you do this Python will not immediately
+  print the result; you need to enter \verb|A1| on a separate line if
+  you want to see the RREF matrix.
+ \item To find and factor the characteristic polynomial of $B$, enter 
+\begin{verbatim}
+p = B.charpoly(t)
+p
+factor(p)
+\end{verbatim}
+  Python will print the characteristic polynomial as 
+  \[ \text{PurePoly}(t^2-4t+3,t,domain=\mathbb{Z}) \]
+  rather than just $t^2-4t+3$, but that should not cause a problem.
+  It is best to stick with $t$ as the name of the variable here.  In
+  particular, you should not try to use the symbol $\lambda$ for this
+  or anything else, because it would clash with a completely different
+  use of that symbol in Python; we will not take the space to explain
+  the background here. 
+ \item To find the eigenvalues and eigenvectors of $B$, enter 
+  \verb|B.eigenvects()|.  The result is 
+  \[
+  \left(4,1,\left[\left[\begin{array}{c}-1\\1\end{array}\right]\right]\right),\quad
+  \left(14,1,\left[\left[\begin{array}{c}1\\1\end{array}\right]\right]\right).
+  \]
+  The numbers $4$ and $14$ are the eigenvalues, and the vectors
+  $\begin{pmatrix}-1\\1\end{pmatrix}$ and 
+  $\begin{pmatrix}1\\1\end{pmatrix}$ are the corresponding
+  eigenvectors, and the ones in between the eigenvalues and the
+  eigenvectors can be ignored.  In cases where the matrix has repeated
+  eigenvalues the result will need a bit more interpretation, but that
+  will be discussed later.
+\end{itemize}
+
+\section*{Python with SymPy on your own machine}
+
+If have installed Python (from \url{http://www.python.org/download/})
+on your own PC then you can add SymPy by following the instructions at
+\url{http://sympy.org}.  I recommend that you install version 2.7.5 of
+Python and version 0.7.3 of SymPy.  After that you can start Python
+under IDLE as usual, and enter  
+\begin{verbatim}
+from __future__ import division
+from sympy import *
+t = symbol('t')
+\end{verbatim}
+The first line effectively tells Python that you want to use exact
+fractions rather than decimal approximations everywhere.  The second
+line says that you want to use SymPy.  The third line tells SymPy to
+treat $t$ as an abstract symbol, which we need when working with
+characteristic polynomials.  All of these things are done
+automatically if you use \url{http://live.sympy.org}, but on your own
+PC you need to do them yourself.
+
+\end{document}

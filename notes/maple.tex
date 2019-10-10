@@ -1,0 +1,164 @@
+\documentclass{amsart}
+\usepackage{fullpage}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\title{Introduction to Maple}
+
+\begin{document}
+
+\maketitle
+
+Maple is a powerful software system for performing many different
+symbolic and numerical calculations in mathematics.  In previous years
+students have learnt to use Maple at level one, and level two courses
+have had various exercises involving Maple.  However, most current
+level two students will have learnt Python instead of Maple. Neither
+Python nor Maple is essential for the current version of MAS201, but
+some students may find it helpful to use them.  This document will
+give a brief introduction to Maple.  Some notes about linear algebra
+in Python will be distributed separately.  Much more information about
+Maple is available at 
+\begin{center}
+ \url{http://shef.ac.uk/nps/courses/MAS100}
+\end{center}
+
+\section*{Installing Maple}
+
+Maple is available on all open access PCs on campus, but you may need
+to follow the instructions at 
+\begin{center}
+ \url{http://shef.ac.uk/cics/studentcomputing/software}
+\end{center}
+to install it.  You can also install a copy on your own PC by
+following the instructions at 
+\begin{center}
+ \url{http://shef.ac.uk/cics/software/maple}
+\end{center}
+
+\section*{Using Maple}
+
+When you first start Maple, it will offer you a choice between
+Document Mode and Worksheet Mode.  I recommend Worksheet Mode.  When
+Maple has started you can enter \texttt{2+2} and press
+\texttt{ENTER}; Maple will print $4$ as an answer.  Now enter
+\begin{verbatim}
+ A := <<5|6|7>,<4|3|2>>
+ B := <<8|9>,<9|8>>
+\end{verbatim}
+Maple will display this as 
+\[ A := 
+   \begin{pmatrix}
+    5 & 6 & 7 \\
+    4 & 3 & 2 
+   \end{pmatrix}
+\]
+\[ B := 
+    \begin{pmatrix}
+     9 & 5 \\ 5 & 9
+    \end{pmatrix}
+\]
+(The colon before the equals sign is essential.)  You can now enter
+\verb+B.A+ to calculate $BA$, or \verb+B^2+ to calculate $B^2$, or
+\verb+B^(-1)+ to calculate the inverse of $B$.  If you enter
+\verb+A.B+ then Maple will print an error message explaining that $AB$
+is undefined, because $A$ and $B$ do not have compatible shapes.
+
+The $3\times 3$ identity matrix (for example) can be entered as
+\verb|IdentityMatrix(3)|.  To save typing, it is best to enter 
+\begin{verbatim}
+I3 := IdentityMatrix(3)
+\end{verbatim}
+and then you can just type \verb|I3| after that.  You might think of
+using the symbol \verb|I| instead of \verb|I3|, but Maple will not
+allow that, because it uses \verb|I| for $\sqrt{-1}$.
+
+To do more complicated things, you need some additional packages that
+are not loaded by default.  I recommend that as soon as you start
+Maple you enter 
+\begin{verbatim}
+with(LinearAlgebra): 
+with(Student[LinearAlgebra]):
+\end{verbatim}
+This will load up everything that you need.  (Here and elsewhere in
+Maple, you need to use capital letters exactly as specified; it will
+not work to enter \verb+With(linearalgebra)+.)
+
+In particular, after you have done the above you can enter
+\begin{verbatim}
+Transpose(A)
+Determinant(B)
+\end{verbatim}
+to calculate $A^T$ and $\det(B)$.  You can extract rows and columns
+from a matrix using syntax like
+\begin{verbatim}
+Row(A,2)
+Column(B,1)
+\end{verbatim}
+You can refer to the bottom right hand entry of $A$ as \verb+A[2,3]+.
+
+In many places, it is convenient to give names to the columns of a
+matrix.  For example, we might take $u_1$, $u_2$ and $u_3$ to be the
+columns of the matrix $A$ above.  To do this in Maple you can type
+\begin{verbatim}
+u[1] := Column(A,1)
+u[2] := Column(A,1)
+u[3] := Column(A,1)
+\end{verbatim}
+or
+\begin{verbatim}
+ for i from 1 to 3 do u[i] := Column(A,i) od
+\end{verbatim}
+(Here \verb+od+ is \verb+do+ backwards, and marks the end of the
+\verb+do+ statement.  You can type \verb+end do+ instead of \verb+od+
+if you prefer.)
+
+To find the RREF of $A$, you can enter 
+\begin{verbatim}
+ ReducedRowEchelonForm(A)
+\end{verbatim}
+That is quite a lot of typing, so I suggest that after loading the
+\verb+LinearAlgebra+ and \verb+Student[LinearAlgebra]+ packages you
+immediately enter
+\begin{verbatim}
+ RREF := RowReducedEchelonForm
+ GJET := GaussJordanEliminationTutor
+\end{verbatim}
+You can then type \verb+RREF(A)+ to find the RREF of $A$ immediately,
+or \verb+GJET+to open a new window that leads you through the process
+step by step.
+
+If you are going to use the RREF of $A$ in further calculations, then
+you probably want to give it a name, like this:
+\begin{verbatim}
+ A1 := RREF(A)
+\end{verbatim}
+Again, the colon before the equals sign is necessary.
+
+To find and factor the characteristic polynomial of $B$ you can enter 
+\begin{verbatim}
+p := CharacteristicPolynomial(B,t)
+factor(p)
+\end{verbatim}
+This works as written for square matrices like $B$ that have an even
+number of rows.  However, Maple defines the characteristic polynomial
+of $M$ to be $\det(M-tI)$, whereas the notes use $\det(tI-M)$.  (Both
+of these conventions are common in the literature.)  Thus, for square
+matrices of odd size you need to multiply Maple's characteristic
+polynomial by $-1$ to get the characteristic polynomial as defined in
+the notes.  
+
+To find the eigenvalues and eigenvectors of $B$, enter
+\verb|Eigenvectors(B)|.  The result consists of a vector and a matrix,
+like this:
+\[ \begin{pmatrix} 4\\ 14\end{pmatrix}
+   \begin{pmatrix} -1&1 \\ 1&1 \end{pmatrix}
+\]
+The eigenvalues are $4$ and $14$, which appear as the entries in the
+vector above.  The corresponding eigenvectors are
+$\begin{pmatrix}-1\\1\end{pmatrix}$ and
+$\begin{pmatrix}1\\1\end{pmatrix}$, which appear as the columns of the
+matrix above.  In cases where the matrix has repeated eigenvalues the
+result will need a bit more interpretation, but that will be discussed
+later.
+
+\end{document}
