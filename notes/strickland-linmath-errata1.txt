@@ -1,0 +1,164 @@
+A list of errata in the notes "MAS201 Linear Mathematics" by Neil Strickland ( https://neil-strickland.staff.shef.ac.uk/courses/MAS201/MAS201.pdf ) in the version of 2013-09-28:
+
+- page 1, §1: When you write about "linear algebra functions in Python", it is worth mentioning that these functions are in the SymPy library rather than in Python proper (which means that one needs to install this library first).
+
+- page 2, §2: It is worth defining the $n \times n$ identity matrix.
+
+- page 2, §2: When introducing the notation $I_n$ for the $n \times n$ identity matrix, I would also point out that this matrix is often denoted by $I$ in situations where the $n$ is clear from the context. (You do this in the proof of Proposition 13.19.)
+
+- page 3, §2: The code "I3 := IdentityMatrix(3)" should be in typewriter font, not in italics.
+
+- page 7, §5: Before Definition 5.1, I recommend adding the following clarification: "A matrix is said to be \emph{zero} if all its entries are zero, and \emph{nonzero} otherwise. Thus, for example, the matrix $\begin{bmatrix} 2 & 0 \\ 0 & 0 \end{bmatrix}$ is nonzero. This applies, in particular, to row and column vectors.".
+
+- page 8, Method 5.4: "corresponding to a matrix" -> "corresponding to an augmented matrix" (just to make this more unambiguous).
+
+- page 9, Example 5.6: "in method 5.4" -> "in Method 5.4".
+
+- page 9, §6: In Definition 6.1, I suggest you explicitly say that you are going to use "row operation" as a shorthand for "elementary row operation". This is important, as otherwise it appears as if a "row operation" is something more general than an "elementary row operation".
+
+- page 12, Example 6.10: The row-reduction you are showing here is not a complete row-reduction as defined in Method 6.3, since you are neglecting to scale the first row by 2^{-1} (step (d) of Method 6.3). Correspondingly, the resulting matrix is not in RREF (it fails property RREF1). This does not get in your way of solving the system of equations, but it would nevertheless be helpful to clarify this point, in order not to cause confusion as to the exact meaning of "RREF" and "row-reduction".
+
+- page 13, Remark 6.12: "the fact the last" -> "the fact that the last".
+
+- page 17, Examples 8.2 and 8.3: I recommend adding another example, where a list of vectors is dependent but the nontrivial relations have some zeroes (so as to stress that this is allowed). For example, the vectors $b_1 = \begin{bmatrix} 1 & 0 \end{bmatrix}$, $b_2 = \begin{bmatrix} 2 & 0 \end{bmatrix}$ and $b_3 = \begin{bmatrix} 0 & 1 \end{bmatrix}$ form a dependent list, since $2 b_1 - 1 b_2 + 0 b_3 = 0$.
+
+- page 20, proof of correctness of Method 8.8: "nonzero to solution" -> "nonzero solution".
+
+- page 23, proof of Lemma 9.15: In part (b) of the proof, replace "$\lambda_2 u_2$" by "$\lambda_2 r_2$".
+
+- page 23, proof of Lemma 9.15: In part (c) of the proof, you write "$\lambda_1, \lambda_2 - u \lambda_1, \lambda_3, ..., \lambda_n$". The "n" should be an "m" here.
+
+- page 25, proof of correctness of Method 9.7: In the last sentence of the proof, I would remove the "$m \geq n$ and" part (from "if $m \geq n$ and $D$ has a pivot"), since it is only a distraction from the argument.
+
+- page 26, proof of Proposition 10.4: In the second displayed equation of the proof, replace "$v_m$" by "$v_n$".
+
+- page 29, Definition 11.1: Replace "Supose" by "Suppose" (twice).
+
+- page 31, proof of Theorem 11.15: "gives a a vector" -> "gives a vector".
+
+- page 31, proof of Theorem 11.5: "BY considering" -> "By considering".
+
+- page 31, Example 11.8: It is perhaps useful to point out that the equalities claimed in parts (a), (b) and (c) follow from Proposition 11.13. For example, in order to see that $E_{pq}(\mu) E_{pq}(-\mu) = I_n$, we can proceed as follows: Proposition 11.3 (b) shows that the matrix $E_{pq}(-\mu) I_n$ is obtained from $I_n$ by adding $-\mu$ times the $q$'th row to the $p$'th row. In other words, the matrix $E_{pq}(-\mu)$ is obtained from $I_n$ by adding $-\mu$ times the $q$'th row to the $p$'th row. But Proposition 11.3 (b) further shows that the matrix $E_{pq}(\mu) E_{pq}(-\mu)$ is obtained from $E_{pq}(-\mu)$ by adding $\mu$ times the $q$'th row to the $p$'th row. Combining these, we see that the matrix $E_{pq}(\mu) E_{pq}(-\mu)$ is obtained from $I_n$ by first adding $-\mu$ times the $q$'th row to the $p$'th row, and then adding $\mu$ times the $q$'th row to the $p$'th row. But these two operations obviously undo each other. Hence, $E_{pq}(\mu) E_{pq}(-\mu) = I_n$.
+
+- page 32, Proof of Proposition 11.9: "More the more general statement" -> "For the more general statement".
+
+- page 33, Definition 12.1: I would add the remark that the formula for $\det(A)$ given in this definition is known as the Leibniz formula for determinants.
+
+- page 33, Example 12.3: It can't hurt to also show the example of the determinant of a $1 \times 1$-matrix.
+
+- page 34, Example 12.10: Here and further down you're using the words "upper-triangular" and "lower-triangular", which you seem to have avoided defining. (Here are their definitions: A square matrix is said to be *upper-triangular* if its $(i, j)$-th entry equals $0$ whenever $i > j$. A square matrix is said to be *lower-triangular* if its $(i, j)$-th entry equals $0$ whenever $i < j$.)
+
+- page 36, proof of Theorem 12.16: Theorem B.27 only proves part of this. (In particular, Theorem B.27 says nothing about the existence or non-existence of nonzero vectors $v$ satisfying $Av = 0$. Those claims should be proven separately.)
+
+- page 37, Example 12.18: I would replace "by Example 12.4" by "by Example 12.4 (a)".
+
+- page 40, Corollary 13.12: "havs" -> "have".
+
+- page 42, Example 13.18: In the last sentence of the example, replace "the vector $\begin{bmatrix} 0 & 1 & 1 & 0 \end{bmatrix}$" by "the vector $\begin{bmatrix} 0 & 1 & 1 & 0 \end{bmatrix}^T$".
+
+- page 42, proof of Proposition 13.19: Replace "$(A - \lambda_2) v_2 = 0$" by "$(A - \lambda_2 I) v_2 = 0$".
+
+- page 43, proof of Proposition 13.19: I suggest replacing "$\prod_{i \neq k} (\lambda_i - \lambda_k)$" by "$\prod_{i \neq k} (\lambda_k - \lambda_i)$" (twice).
+
+- page 46, proof of Proposition 14.4: The last sentence of this proof starts with a lowercase letter: "from this it is" -> "From this it is".
+
+- page 49, Example 14.11: Your row-reduction of $B = A - tI_4$ involves division by $t$, which is only well-defined when $t \neq 0$. This should perhaps be said, along with a justification of why this is no big deal.
+
+- page 50, Example 14.11: Remove the "form a basis" after the definition of $u_3$ and $u_4$.
+
+- page 50, Example 14.11: The last sentence of this example ends with a comma.
+
+- page 53, §16: "so the eigenvectors are $2$ and $4$" -> "so the eigenvalues are $2$ and $4$".
+
+- page 57, proof of Lemma 17.5: "equal to one" -> "equal to $1$". (The word "one" is rather ambiguous here: If misunderstood as a pronoun, it makes you sound like you are saying that the column sums are equal to an entry in the $i$'th column of $P$.)
+
+- page 60, §18: "on page $i$" -> "on page $S_i$".
+
+- page 61: "so the sum is one" -> "so the sum is $1$" (because, again, it can be misunderstood as a pronoun).
+
+- page 67, Example 19.15: "so if $v = \begin{bmatrix} x \\ y \\ z \end{bmatrix}^T$" -> "so if $v = \begin{bmatrix} x & y & z \end{bmatrix}^T$" (or else, remove the "^T" part).
+
+- page 70, Proposition 20.4: "emphasis" -> "emphasise".
+
+- page 70, Proposition 20.4: "for all $\lambda \in R^d$" -> "for all $\lambda \in R^r$".
+
+- page 73, proof of uniqueness (part of Proposition 20.6): In "Let $v_1, ..., v_d$ be the columns of $B$ and let $w_1, ..., w_d$ be the columns of $C$", the "$B$" and "$C$" should be replaced by "$B^T$" and "$C^T$", respectively. Some followup changes need to be done further down in the proof.
+
+- page 74, Example 20.16: Remove the period at the end of the second displayed equation of this example.
+
+- page 77, Example 20.22: On the first line of this page, replace "$x = \begin{bmatrix} x_1 \cdots x_{10} \end{pmatrix}$" by "$x = \begin{bmatrix} x_1 \cdots x_{10} \end{pmatrix}^T$".
+
+- page 77: The words "inner product" are used, but have not been defined. Probably you just mean "product" here.
+
+- page 78, Example 20.25: Remove the period at the end of the definition of $u_3$.
+
+- page 80, Example 21.2: After "the set of points lying on both lines", add "$V$ and $W$".
+
+- page 80, Example 21.3: "multiples of $\begin{bmatrix} 1 & -1 & 1 & -1 \end{bmatrix}$" -> "multiples of $\begin{bmatrix} 1 & -1 & 1 & -1 \end{bmatrix}^T$".
+
+- page 80, Example 21.3: "we see that $v = \begin{bmatrix} p & q & p & q \end{bmatrix}$" -> "we see that $v = \begin{bmatrix} p & q & p & q \end{bmatrix}^T$".
+
+- page 80, Example 21.3: "we see that $w = \begin{bmatrix} -r & -s & s & r \end{bmatrix}$" -> "we see that $w = \begin{bmatrix} -r & -s & s & r \end{bmatrix}^T$".
+
+- page 81, proof of Proposition 21.4: In part (b) of the proof, after "$x.w_1 = \cdots = x.w_s$", add "$= 0$".
+
+- page 81, Method 21.5: "given to as as" -> "given to us as".
+
+- page 81, Method 21.6: "given to as as" -> "given to us as".
+
+- page 84, Example 21.10: The second-to-last sentence of this example is missing a period at its end.
+
+- page 84, Definition 22.1: Remove the "and $(A)$ for the nullity". I'm not sure if you ever need a notation for the nullity, but you surely didn't mean to call it $(A)$ :)
+
+- page 85, Definition 22.2: In RCEF3, replace "column" by "row" (twice).
+
+- page 86, proof of Proposition 22.11: "after these operation" -> "after these operations".
+
+- page 87, Corollary 22.16: "If $A$ is" -> "Let $A$ be".
+
+- page 88, Definition 23.6: Something is wrong with the index entry, since I'm seeing a "matrix!symmetric" in the compiled PDF.
+
+- page 88, proof of Lemma 23.9: At the very end of this proof, I would add the following sentence: "Applying this to $A^T$ instead of $A$, we get $(A^T u).v = u.(A^{TT} v) = u.(Av)$, since $A^{TT} = A$.".
+
+- page 92, proof of Corollary 23.18: After "we have $U^T U = I_n$ and", I would add "thus $E U^T U E = E I_n E = E^2 = D$ (since the square of a diagonal matrix is obtained by squaring its diagonal entries); hence".
+
+- page 92, Definition 23.19 (a): Remove the parenthesis before the "far".
+
+- page 92, Example 23.20: I'd add another example, namely the quadratic form $x_1 x_2$ on $\mathbb{R}^3$. (This illustrates that a quadratic form needs neither to use all variables, nor to have an actual square in it.)
+
+- page 93, Proposition 23.23: Your definition of rank and signature here tacitly presupposes that they are uniquely determined (i.e., independent of the way $v_1, v_2, ..., v_r, w_1, w_2, ..., w_s$ are chosen). This is true, but not obvious.
+
+- page 97, Example B.8: You are using the word "transposition" here (and several times further down), but have never defined it. (A *transposition* of a set $X$ means a permutation of $X$ that swaps some two elements of $X$ while leaving all other elements of $X$ unchanged. Thus, the map $\tau$ in Example B.6 is a transposition. (And conversely, each transposition of $N = \{1, 2, ..., n\}$ has the form $\tau$ for some choice of $p$ and $q$.)
+
+- page 97, Example B.8: "$\sigma(\tau) = -1$" should be "$\sgn(\tau) = -1$".
+
+- page 97, Example B.9: "$a_{13}$" should be "$a_{33}$" at the bottom right of the first display.
+
+- page 98, right before Proposition B.10: What does "the identity the definitions" mean?
+
+- page 99, Proposition B.12: A backreference to the definitions of these $D_p$, $E_{pq}(\mu)$, $F_{pq}$ would be nice here (namely, they are defined in Definition 11.1).
+
+- page 100, proof of Proposition B.13: In the second-to-last and last displayed equations, replace "$2d$" by "$2c$".
+
+- page 100, proof of Corollary B.16: "precisely one other permutation" -> "precisely one permutation". The word "other" falsely suggests that $\sigma^{-1}$ is always distinct from $\sigma$. (Or is my English off-base? You're more likely to know.)
+
+- page 100, Proof of Corollary B.16: "Corollary B.16 tells" should be "Corollary B.15 tells".
+
+- page 101, Lemma B.18: On the right hand side, I'd suggest adding some \; whitespace between the \sum and \prod signs, so that their subscripts are separated by a bit of whitespace.
+
+- page 101, proof of Theorem B.17: I'd split the first displayed equation into two lines, as it goes overfull.
+
+- page 101, proof of Theorem B.17: "Here we have a sum of products" -> "Here we have (for each $\sigma$) a product of sums". Otherwise it sounds like you're referring to the $\sum_\sigma$ and $\prod_i$ signs rather than the $\prod_i$ and $\sum_j$ signs.
+
+- page 101, proof of Theorem B.17: In the last displayed equation on this page, I would swap the \sum_\sigma and \sum_\theta summation signs. This fits the latter flow of the argument better, since you substitute \phi for \sigma \circ \theta^{-1} with fixed \theta.
+
+- page 102, proof of Theorem B.17: In "recalling that $\theta(j) = \theta(\tau(i)) = \theta(i)$ because $\theta(p) = \theta(q)$", I would replace "because $\theta(p) = \theta(q)$" by "because $\theta = \theta \circ \tau$". This is more direct.
+
+- page 102, proof of Theorem B.17: Remove the period at the end of the second-to-last displayed equation of this proof.
+
+- page 104, proof of Proposition B.23: "for som permutation" -> "for some permutation".
+
+- page 104, proof of Proposition B.23: In the same sentence, "$\{1 ..., n-1\}$" needs a comma after the "1".
+
+- page 104, Proposition B.24: Why are you stating this for the first row only? The proof works similarly for each row (it will probably be clearer for the $p$-th row, since a lot of the previous formulas for the $m*$'s involve $m*_{pq}$ instead of $m*_{1q}$).
+
