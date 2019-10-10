@@ -623,7 +623,7 @@ This applies, in particular, to row and column vectors.
    Any rows of zeros come at the bottom of the matrix, after all the
    nonzero rows.
   \item[\textbf{RREF1}:]
-   In any nonzero row, the first nonzero entry is equal to one.  These
+   In any nonzero row, the first nonzero entry is equal to $1$.  These
    entries are called \dfn{pivots}.
   \item[\textbf{RREF2}:]
    In any nonzero row, the pivot is further to the right than the
@@ -843,7 +843,7 @@ appreciate that~(b) is an important point.
    as possible, all entries in columns $1$ to $k-1$ of the matrix are
    zero.
   \item[(c)] We now exchange the first row with the $j$'th row (which
-   does nothing if $j$ happens to be equal to one).
+   does nothing if $j$ happens to be equal to $1$).
   \item[(d)] Next, we multiply the first row by $u^{-1}$.  We now have
    a $1$ in the $k$'th column of the first row.
   \item[(e)] We now subtract multiples of the first row from all the
@@ -5398,11 +5398,11 @@ The transition matrix has an important property as follows:
 \begin{proof}
  Probabilities always lie between $0$ and $1$.  If we are in state $i$
  at time $t$, then we must be in some state at time $t+1$ (and we
- cannot be in two different states) so the sum of the probabilites for
- the various different states must be equal to one.  In other words,
+ cannot be in two different states), so the sum of the probabilites for
+ the various different states must be equal to $1$.  In other words,
  we have $\sum_jp_{j\xla{}i}=1$, and the probabilities $p_{j\xla{}i}$
  are the entries in the $i$'th column of $P$, so the column sums are
- equal to one as required.
+ equal to $1$ as required.
 \end{proof}
 
 Now suppose we know that at time $t$, the probability that $X$ is in
@@ -5596,7 +5596,7 @@ diagonalising $P$.
  \[ p = 6 (0.3)^5 -7 (0.4)^5 + 1 \simeq 0.94290. \]
 \end{example}
 
-In both of the last examples, one of the eigenvalues is equal to one.
+In both of the last examples, one of the eigenvalues is equal to $1$.
 This is not a coincidence, as we now explain.
 
 \begin{proposition}\label{prop-stochastic-eigenvalue}
@@ -5609,7 +5609,7 @@ This is not a coincidence, as we now explain.
  Let $P$ be an $n\tm n$ stochastic matrix, with columns
  $v_1,\dotsc,v_n$ say.  Put $d=\bbm 1&1&\cdots&1&1\ebm^T\in\R^n$.
  Because $P$ is stochastic we know that the sum of the entries in
- $v_i$ is one, or in other words that $v_i.d=1$.  This means that
+ $v_i$ is $1$, or in other words that $v_i.d=1$.  This means that
  \[ \renewcommand{\arraystretch}{1.3}
   P^Td
   = \left[\begin{array}{ccc}
@@ -5777,7 +5777,7 @@ then the number $P_{ij}$ as above.  In other words, $P$ is the
 \idx{transition matrix}\index{matrix!transition} 
 for this Markov chain.  Note that $P$ is indeed a
 stochastic matrix, as it should be: in column $j$ we have $N_j$
-nonzero entries all equal to $1/N_j$, so the sum is one.
+nonzero entries all equal to $1/N_j$, so the sum is $1$.
 
 Now let $r_i$ denote the ranking for the page $S_i$.  It is natural to
 normalise these rankings by requiring that $r_i\geq 0$ for all $i$ and
@@ -6842,11 +6842,11 @@ We now return to the proof of Proposition~\ref{prop-canonical-basis}.
  means that $B$ has precisely $d$ pivot columns, say in columns
  $p_1,\dotsc,p_d$.  We list these in order so that $p_1<\dotsb<p_d$.
  Because $B$ is in RREF, we see that the $p_i$'th component of $v_j$
- is one when $i=j$, and zero when $i\neq j$.
+ is $1$ when $i=j$, and zero when $i\neq j$.
 
  Similarly, the matrix $C$ has precisely $d$ pivot columns, say in
  columns $q_1,\dotsc,q_d$ with $q_1<\dotsb<q_d$.  Because $C$ is in
- RREF, we see that the $q_i$'th component of $w_j$ is one when $i=j$,
+ RREF, we see that the $q_i$'th component of $w_j$ is $1$ when $i=j$,
  and zero when $i\neq j$.
 
  Next, using Lemma~\ref{lem-jumps-pivots} we see that the pivot
@@ -6854,7 +6854,7 @@ We now return to the proof of Proposition~\ref{prop-canonical-basis}.
  as the pivot columns for $C$.  This means that $p_i=q_i$ for all $i$.
 
  Now consider one of the vectors $v_i$.  As $v_i\in V$ and
- $V=\spn(w_1,\dotsc,w_d)$ we can write $v_i$ as a linear combination
+ $V=\spn(w_1,\dotsc,w_d)$, we can write $v_i$ as a linear combination
  of the vectors $w_j$, say $v_i=\lm_1w_1+\dotsb+\lm_dw_d$.  Consider
  what this gives in the $p_i$'th column (or equivalently, the $q_i$'th
  column).  On the left hand side we have $1$, and on the right hand
@@ -6896,7 +6896,7 @@ vectors, then we proceed as follows.
  of $C^T$ is the same as the span of the columns of $B^T$, and
  Corollary~\ref{cor-span-invariant} tells us that this is the same as
  the span of the columns of $A^T$, which is $V$.  Moreover, as each
- pivot column of $C$ contains a single one, it is easy to see that the
+ pivot column of $C$ contains a single $1$, it is easy to see that the
  rows of $C$ are linearly independent or equivalently the columns of
  $C^T$ are linearly independent.  As they are linearly independent and
  span $V$, they form a basis for $V$.  As $C$ is in RREF, this must be
@@ -6976,8 +6976,8 @@ when that subspace is originally given as an annihilator.
  get a basis for $V$, but it would not be the canonical basis.  The
  corresponding matrix would not be row-reduced in the usual sense, but
  in a kind of mirror-image sense: the last nonzero entry in each row
- would be equal to one (rather than the first nonzero entry), and
- these ones would move to the left (rather than to the right).
+ would be equal to $1$ (rather than the first nonzero entry), and
+ these $1$s would move to the left (rather than to the right).
 \end{remark}
 
 \begin{example}\label{eg-ann-basis-i}
@@ -7952,7 +7952,7 @@ terminology.
    Any column of zeros come at the right hand end of the matrix, after
    all the nonzero columns.
   \item[\textbf{RCEF1}:]
-   In any nonzero column, the first nonzero entry is equal to one.  These
+   In any nonzero column, the first nonzero entry is equal to $1$.  These
    entries are called \dfn{copivots}.
   \item[\textbf{RCEF2}:]
    In any nonzero column, the copivot is further down than the
@@ -8099,7 +8099,7 @@ The next result is a little more subtle:
 \end{definition}
 
 Note that if $A$ is in normal form as above, then the rank of $A$ is
-$r$, which is the number of ones in $A$.
+$r$, which is the number of $1$s in $A$.
 
 \begin{example}\label{eg-normal-form}
  There are precisely four different $3\tm 5$ matrices that are in
@@ -8119,7 +8119,7 @@ $r$, which is the number of ones in $A$.
   \item[(a)] There is an invertible $n\tm n$ matrix $U$ and an invertible
    $m\tm m$ matrix $V$ such that $C=UAV$.
   \item[(b)] The rank of $A$ is the same as the rank of $C$, which is
-   the number of ones in $C$.
+   the number of $1$s in $C$.
  \end{itemize}
 \end{proposition}
 \begin{proof}
@@ -8139,7 +8139,7 @@ $r$, which is the number of ones in $A$.
  it follows that $C=UAV$.  Propositions~\ref{prop-co-rank}
  and~\ref{prop-ro-rank} tell us that neither row nor column operations
  affect the rank, so $\rnk(A)=\rnk(C)$, and because $C$ is in normal
- form, $\rnk(C)$ is just the number of ones in $C$.
+ form, $\rnk(C)$ is just the number of $1$s in $C$.
 \end{proof}
 
 \begin{example}\label{eg-normal-form-i}
@@ -8197,11 +8197,11 @@ $r$, which is the number of ones in $A$.
 \begin{proof}
  As in Proposition~\ref{prop-normal-form}, we can convert $A$ by row
  and column operations to a matrix $C$ in normal form, and $\rnk(A)$
- is the number of ones in $C$.  If we transpose everything then the
+ is the number of $1$s in $C$.  If we transpose everything then the
  row operations become column operations and \emph{vice-versa}, so
  $A^T$ can be converted to $C^T$ by row and column operations, and
- $C^T$ is also in normal form, so $\rnk(A^T)$ is the number of ones in
- $C^T$.  This is clearly the same as the number of ones in $C$, so
+ $C^T$ is also in normal form, so $\rnk(A^T)$ is the number of $1$s in
+ $C^T$.  This is clearly the same as the number of $1$s in $C$, so
  $\rnk(A)=\rnk(A^T)$.  
 \end{proof}
 
@@ -8299,8 +8299,8 @@ really two different ways of looking at the same thing:
  \] 
  In other words, the entry in the $(i,j)$ position in $A^TA$ is just
  the dot product $v_i.v_j$.  For $A^TA$ to be the identity we need the
- diagonal entries $v_i.v_i$ to be one, and the off-diagonal entries
- $v_i.v_j$ (with $i\neq j$) to be zero.  This means precisely that the
+ diagonal entries $v_i.v_i$ to be $1$, and the off-diagonal entries
+ $v_i.v_j$ (with $i\neq j$) to be $0$.  This means precisely that the
  list $v_1,\dotsc,v_n$ is orthonormal.
 \end{proof}
 
@@ -8531,7 +8531,7 @@ really two different ways of looking at the same thing:
 \end{proof}
 
 \begin{example}\label{eg-symmetric-diag-i}
- Let $A$ be the $5\tm 5$ matrix in which every entry is one, as in
+ Let $A$ be the $5\tm 5$ matrix in which every entry is $1$, as in
  Example~\ref{eg-orth-eigen-i}.  Following the prescription in the
  above proof, we put 
  \[ U = 
@@ -9419,7 +9419,7 @@ identity the definitions.
  whole product will be zero.  Thus, we only have a (potentially)
  nonzero term when $\sg$ is the identity, in which case $\sgn(\sg)=1$
  and the term is just $\prod_{i=1}^na_{ii}$.  In the case of the
- identity matrix the diagonal elements $a_{ii}$ are all equal to one,
+ identity matrix the diagonal elements $a_{ii}$ are all equal to $1$,
  so we just get $\det(I_n)=1$.
 \end{proof}
 
@@ -9460,15 +9460,15 @@ In fact, this can be strengthened as follows:
 \end{proposition}
 \begin{proof}
  The matrix $D_p(\lm)$ is diagonal, with one of the diagonal entries
- being $\lm$, and all the others being one.
+ being $\lm$, and all the others being $1$.
  Proposition~\ref{prop-det-diag} therefore gives $\det(D_p(\lm))=\lm$.
  Next, the matrix $E_{pq}(\mu)$ is either upper triangular (if $p<q$)
  or lower triangular (if $p>q$) and all the diagonal entries are equal
- to one so $\det(E_{pq}(\mu))=1$ by Proposition~\ref{prop-det-tri}.
+ to $1$, so $\det(E_{pq}(\mu))=1$ by Proposition~\ref{prop-det-tri}.
  Finally, consider the matrix $F_{pq}$, where $1\leq p<q\leq n$.  Let
  $\tau$ be the transposition that exchanges $p$ and $q$ as in
  Example~\ref{eg-signature-transposition}.  From the definitions we
- see that $(F_{pq})_{ij}$ is zero when $j\neq\tau(i)$ and one when
+ see that $(F_{pq})_{ij}$ is $0$ when $j\neq\tau(i)$ and $1$ when
  $j=\tau(i)$.  It follows that the only nonzero term in $\det(F_{pq})$
  is the one corresponding to $\tau$, and that term is equal to
  $\sgn(\tau)=-1$.

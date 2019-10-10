@@ -60,11 +60,7 @@ A list of errata in the notes "MAS201 Linear Mathematics" by Neil Strickland ( h
 
 - page 53, §16: "so the eigenvectors are $2$ and $4$" -> "so the eigenvalues are $2$ and $4$".
 
-- page 57, proof of Lemma 17.5: "equal to one" -> "equal to $1$". (The word "one" is rather ambiguous here: If misunderstood as a pronoun, it makes you sound like you are saying that the column sums are equal to an entry in the $i$'th column of $P$.)
-
 - page 60, §18: "on page $i$" -> "on page $S_i$".
-
-- page 61: "so the sum is one" -> "so the sum is $1$" (because, again, it can be misunderstood as a pronoun).
 
 - page 67, Example 19.15: "so if $v = \begin{bmatrix} x \\ y \\ z \end{bmatrix}^T$" -> "so if $v = \begin{bmatrix} x & y & z \end{bmatrix}^T$" (or else, remove the "^T" part).
 
