@@ -2,7 +2,7 @@
 \usepackage{fullpage}
 \usepackage{hyperref}
 \usepackage{verbatim}
-\title{Linear algebra in Python}
+\title{Linear algebra in Python with the SymPy library}
 
 \begin{document}
 
@@ -10,12 +10,10 @@
 
 There are unfortunately a number of incompatibilities between
 different versions of Python  in how they handle linear algebra.  The
-notes below refer to version which you can run in your browser by
+notes below refer to the version which you can run in your browser by
 visiting \url{http://live.sympy.org}.  If you install or update Python
-and sympy on your own PC now then the instructions should work there
-as well.  However, the open access PCs in university computer rooms
-currently have an older version for which different syntax is needed.
-They may or may not get updated soon.
+and sympy on your own PC, then the instructions should work there
+as well.  However, older versions may require different syntax.
 
 You can enter the matrices 
 \[ A = 
@@ -37,7 +35,7 @@ B = Matrix([[9,5],[5,9]])
 
 You can now do some calculations:
 \begin{itemize}
- \item Enter \verb|B*A| to calculate $BA$
+ \item Enter \verb|B*A| to calculate $BA$.
  \item If you enter \verb|A*B| then you will get an error message,
   because $AB$ is not defined.  The error message is long and
   complicated, but the last line says
@@ -51,7 +49,7 @@ You can now do some calculations:
   of $B$.  The brackets are necessary here.  If you enter \verb|B.det|
   without the brackets, you will get 
 \begin{verbatim}
- boundmethodMutableDenseMatrix.detofMatrix([[1,1],[1,-1]])
+ boundmethodMutableDenseMatrix.detofMatrix([[9, 5],[5, 9]])
 \end{verbatim}
   which is not very helpful.  In general, if you get a result starting
   with \verb|boundmethod...|, it probably indicates that you left out
@@ -59,7 +57,7 @@ You can now do some calculations:
  \item Enter \verb|eye(3)| for the $3\times 3$ identity matrix.
  \item Enter \verb|A.row(0)| to get the first row of $A$, or
   \verb|A.row(1)| to get the second row.  Python's indexing always
-  starts with 0, so many things need to be shifted by one compared to
+  starts with 0, so many things need to be shifted by $1$ compared to
   how they are in the notes or in Maple.
  \item Similarly, you can enter \verb|A.col(0)| or \verb|A.col(1)| or
   \verb|A.col(2)| to extract one of the columns of $A$.
@@ -128,12 +126,12 @@ factor(p)
 If have installed Python (from \url{http://www.python.org/download/})
 on your own PC then you can add SymPy by following the instructions at
 \url{http://sympy.org}.  I recommend that you install version 2.7.5 of
-Python and version 0.7.3 of SymPy.  After that you can start Python
+Python and version 1.4 of SymPy.  After that you can start Python
 under IDLE as usual, and enter  
 \begin{verbatim}
 from __future__ import division
 from sympy import *
-t = symbol('t')
+t = Symbol('t')
 \end{verbatim}
 The first line effectively tells Python that you want to use exact
 fractions rather than decimal approximations everywhere.  The second

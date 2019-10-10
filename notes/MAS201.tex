@@ -108,7 +108,9 @@ the problems in this course can be solved by a systematic set of
 algorithms, most of which involve setting up a matrix, row-reducing
 it, and reading off some kind of information from the result.  These
 algorithms are similar to those used by programs such as Maple or the
-linear algebra functions in Python, and we will have various exercises
+linear algebra functions in Python\footnote{To be specific: in the
+\href{http://sympy.org}{SymPy library for Python}.},
+and we will have various exercises
 using Python or Maple as well as exercises where we carry out
 algorithms by hand.  Depending on your learning style you may wish to
 start by memorising the algorithms step by step.  However, you should
@@ -149,10 +151,14 @@ numbers as entries.
 \]
 As a short-hand, we write $M_n(\R)$ to stand for the set of real
 $n\times n$ (square) matrices.  We write $I_n$ for the $n\tm n$
-identity matrix, so $I_n\in M_n(\R)$.  For example
+identity matrix, so $I_n\in M_n(\R)$ is the diagonal matrix
+whose diagonal entries are $1, 1, \ldots, 1$ and all other
+entries are $0$'s.  For example
 \[ I_4 = \bbm 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\
               0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \ebm.
 \]
+The subscript $n$ is often omitted when not needed; i.e., we
+can write $I$ for $I_n$.
 
 By an \emph{$n$-vector}\index{n-vector} we mean a column vector with
 $n$ entries, which is the same as an $n\tm 1$ matrix.  We write $\R^n$
@@ -203,7 +209,7 @@ $n=4$ we have
   \verb+with(LinearAlgebra)+. 
  \item The $n\tm n$ identity matrix $I_n$ can be entered as
   \verb+IdentityMatrix(n)+.  If you are working mostly with $3\tm 3$
-  matrices (for example) you may wish to enter $I3:=IdentityMatrix(3)$
+  matrices (for example) you may wish to enter \verb+I3:=IdentityMatrix(3)+
   as an abbreviation.  
 \end{itemize}
 
