@@ -22,12 +22,6 @@ A list of errata in the notes "MAS201 Linear Mathematics" by Neil Strickland ( h
 
 - page 26, proof of Proposition 10.4: In the second displayed equation of the proof, replace "$v_m$" by "$v_n$".
 
-- page 29, Definition 11.1: Replace "Supose" by "Suppose" (twice).
-
-- page 31, proof of Theorem 11.15: "gives a a vector" -> "gives a vector".
-
-- page 31, proof of Theorem 11.5: "BY considering" -> "By considering".
-
 - page 31, Example 11.8: It is perhaps useful to point out that the equalities claimed in parts (a), (b) and (c) follow from Proposition 11.13. For example, in order to see that $E_{pq}(\mu) E_{pq}(-\mu) = I_n$, we can proceed as follows: Proposition 11.3 (b) shows that the matrix $E_{pq}(-\mu) I_n$ is obtained from $I_n$ by adding $-\mu$ times the $q$'th row to the $p$'th row. In other words, the matrix $E_{pq}(-\mu)$ is obtained from $I_n$ by adding $-\mu$ times the $q$'th row to the $p$'th row. But Proposition 11.3 (b) further shows that the matrix $E_{pq}(\mu) E_{pq}(-\mu)$ is obtained from $E_{pq}(-\mu)$ by adding $\mu$ times the $q$'th row to the $p$'th row. Combining these, we see that the matrix $E_{pq}(\mu) E_{pq}(-\mu)$ is obtained from $I_n$ by first adding $-\mu$ times the $q$'th row to the $p$'th row, and then adding $\mu$ times the $q$'th row to the $p$'th row. But these two operations obviously undo each other. Hence, $E_{pq}(\mu) E_{pq}(-\mu) = I_n$.
 
 - page 32, Proof of Proposition 11.9: "More the more general statement" -> "For the more general statement".
