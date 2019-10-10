@@ -691,8 +691,8 @@ them.  The general method is as follows (but it may be clearer to just
 look at the examples given afterwards).
 
 \begin{method}\label{meth-RREF-solve}
- Suppose we have a system of linear equations corresponding to a
- matrix that is in RREF.  We can then solve it as follows.
+ Suppose we have a system of linear equations corresponding to an
+ augmented matrix that is in RREF.  We can then solve it as follows.
  \begin{itemize}
   \item[(a)] Any row of zeros can just be discarded, as it corresponds
    to an equation $0=0$ which is always true.
@@ -764,7 +764,7 @@ $z$.
  corresponds to the system of equations $w=10$, $x=11$, $y=12$ and
  $z=13$.  In this case the equations are the solution; nothing needs
  to be done.  This is an instance of case~(c) in
- method~\ref{meth-RREF-solve}.
+ Method~\ref{meth-RREF-solve}.
 \end{example}
 
 \begin{example}\label{eg-rref-solve-iii}
@@ -810,6 +810,9 @@ $z$.
   \item[\textbf{ERO2}:] Multiply a row by a nonzero constant.
   \item[\textbf{ERO3}:] Add a multiple of one row to another row.
  \end{itemize}
+ 
+ We shall abbreviate ``elementary row operation'' as
+ ``row operation''.
 \end{definition}
 
 \begin{theorem}\label{thm-RREF}
@@ -1178,7 +1181,13 @@ the solution set.  We thus have the following method:
  also subtracted three times the first row from the third.  At
  stage~$2$ we added four times the second row to the third.  At
  stage~$3$ we multiplied the last row by $-1$, then cleared the
- entries above all the pivots.)
+ entries above all the pivots.
+ Note that this is not a complete row-reduction as defined in
+ Method~\ref{meth-RREF}, since we have neglected to scale the first
+ row by $2^{-1}$ (step (d) of Method~\ref{meth-RREF}).
+ Correspondingly, the matrix we obtained is not in RREF (it fails
+ property RREF1).
+ But it is still good enough for solving the system.)
 
  The row-reduced matrix corresponds to the system
  \begin{align*}
@@ -1298,7 +1307,7 @@ the solution set.  We thus have the following method:
 \begin{remark}
  Often we want to solve a \dfn{homogeneous} equation $Ax=0$, where
  the right hand side is zero.  This means that the relevant augmented
- matrix is $[A|0]$.  Row operations will not change the fact the last
+ matrix is $[A|0]$.  Row operations will not change the fact that the last
  column is zero, so the RREF of $[A|0]$ will just be $[A'|0]$, where
  $A'$ is the RREF of $A$.  In this context we can save writing by
  leaving out the extra column and just working with $A$.
