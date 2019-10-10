@@ -1,7 +1,5 @@
 A list of errata in the notes "MAS201 Linear Mathematics" by Neil Strickland ( https://neil-strickland.staff.shef.ac.uk/courses/MAS201/MAS201.pdf ) in the version of 2013-09-28:
 
-- page 7, §5: Before Definition 5.1, I recommend adding the following clarification: "A matrix is said to be \emph{zero} if all its entries are zero, and \emph{nonzero} otherwise. Thus, for example, the matrix $\begin{bmatrix} 2 & 0 \\ 0 & 0 \end{bmatrix}$ is nonzero. This applies, in particular, to row and column vectors.".
-
 - page 8, Method 5.4: "corresponding to a matrix" -> "corresponding to an augmented matrix" (just to make this more unambiguous).
 
 - page 9, Example 5.6: "in method 5.4" -> "in Method 5.4".
