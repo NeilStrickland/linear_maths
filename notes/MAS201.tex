@@ -6508,8 +6508,9 @@ are typical:
        \end{array}\right] 
        \bbm t_1 \\ \vdots \\ t_n \ebm
        = 
-       t_1v_1 + \dotsb + t_nv_n.
+       t_1v_1 + \dotsb + t_nv_n
  \]
+ for any vector $t = \begin{bmatrix} t_1 & \dotsb & t_n \end{bmatrix}^T$.
  Note here that each $t_i$ is a scalar (the $i$'th entry in the vector
  $t$) whereas $v_i$ is a vector (the $i$'th column in the matrix
  $A$).  Thus $At$ is the sum of the arbitrary scalars $t_i$ multiplied
@@ -6542,7 +6543,7 @@ are typical:
 \end{example}
 
 It turns out that the span of any list of vectors can also be
-described as the image of some other list of vectors.  Conversely, the
+described as the annihilator of some other list of vectors.  Conversely, the
 annihilator of any list of vectors can also be described as the span
 of a different list.  In this section we will just give some examples;
 later we will discuss a general method to perform this kind of
@@ -8258,16 +8259,22 @@ $r$, which is the number of $1$s in $A$.
  Corollary~\ref{cor-ro-elem-ii} there is an invertible $n\tm n$ matrix
  $U$ such that $B=UA$.
  % (This has to be an $n\tm n$ matrix for the product $UA$ to make sense.)
- Now subtract multiples of the pivot columns from the
- columns further to the right.  As each pivot column contains nothing
- other than the pivot, the only effect of these column operations is
- to set everything to the right of a pivot equal to zero.  However,
- every nonzero entry in $B$ is either a pivot or to the right of a
+ Now use column operations to set every entry to the right
+ of a pivot equal to zero.
+ (Namely, subtract an appropriate multiple of the pivot column
+ from the column containing this entry.
+ As each pivot column contains nothing other than the pivot,
+ this column operation has no side effects other than rendering
+ this particular entry zero.  Do this for each entry to the right of
+ a pivot.)
+ Every nonzero entry in $B$ is either a pivot or to the right of a
  pivot, so after these operations we just have the pivots from $B$ and
  everything else is zero.  We now just move all columns of zeros to
- the right hand end, which leaves a matrix $C$ in normal form.  As $C$
+ the right hand end (again, by a sequence of column operations),
+ which leaves a matrix $C$ in normal form.  As $C$
  was obtained from $B$ by a sequence of elementary column operations,
- we have $C=BV$ for some invertible $m\tm m$ matrix $V$.  As $B=UA$,
+ we have $C=BV$ for some invertible $m\tm m$ matrix $V$
+ (by Corollary~\ref{cor-co-elem}).  As $B=UA$,
  it follows that $C=UAV$.  Propositions~\ref{prop-co-rank}
  and~\ref{prop-ro-rank} tell us that neither row nor column operations
  affect the rank, so $\rnk(A)=\rnk(C)$, and because $C$ is in normal
