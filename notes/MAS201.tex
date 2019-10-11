@@ -1696,10 +1696,10 @@ method:
    \draw[->, shorten >= 1pt] (3,6) -- (15,7);
    \draw[->, shorten >= 1pt] (15,7) -- (12,4);
    \draw[->, shorten >= 1pt] (12,4) -- (0,0);
-   \draw ( 1.5,3.0) node[anchor=south east]{$\ss 3a_1$};
-   \draw ( 9.0,6.5) node[anchor=south]{$\ss a_2$};
-   \draw (13.5,5.5) node[anchor=north west]{$\ss 3a_3$};
-   \draw ( 6.0,2.0) node[anchor=north]{$\ss -4a_4$};
+   \draw ( 1.5,3.0) node[anchor=south east]{$\scriptstyle 3a_1$};
+   \draw ( 9.0,6.5) node[anchor=south]{$\scriptstyle a_2$};
+   \draw (13.5,5.5) node[anchor=north west]{$\scriptstyle 3a_3$};
+   \draw ( 6.0,2.0) node[anchor=north]{$\scriptstyle -4a_4$};
   \end{tikzpicture}
  \end{center}
  This is a nontrivial linear relation on the list $\CA$, so $\CA$ is
@@ -6217,8 +6217,8 @@ than $3$.
     }
     \fill[blue] (1,0) circle(0.06);
     \fill[red] (0.5,0) circle(0.06);
-    \draw (1,0) node[anchor=north,blue] {$\ss v\in V_1$};
-    \draw (0.5,0) node[anchor=south,red] {$\ss tv\not\in V_1$};
+    \draw (1,0) node[anchor=north,blue] {$\scriptstyle v\in V_1$};
+    \draw (0.5,0) node[anchor=south,red] {$\scriptstyle tv\not\in V_1$};
     \draw(0,-2.5) node{$V_1$};
    \end{scope}
    \begin{scope}[xshift=6cm]
@@ -6228,8 +6228,8 @@ than $3$.
     \draw[->,gray] (0,-2.2) -- (0,2.2);
     \fill[blue] (-1,1) circle(0.06);
     \fill[red]  (1,-1) circle(0.06);
-    \draw (-1,1) node[anchor=south,blue] {$\ss v\in V_2$};
-    \draw (1,-1) node[anchor=north,red] {$\ss tv\not\in V_2$};
+    \draw (-1,1) node[anchor=south,blue] {$\scriptstyle v\in V_2$};
+    \draw (1,-1) node[anchor=north,red] {$\scriptstyle tv\not\in V_2$};
     \draw(0,-2.5) node{$V_2$};
    \end{scope}
    \begin{scope}[xshift=12cm]
@@ -6240,9 +6240,9 @@ than $3$.
     \fill[blue] (1,+1) circle(0.06);
     \fill[blue] (1,-1) circle(0.06);
     \fill[red]  (2, 0) circle(0.06);
-    \draw (1,+1) node[anchor=south east,blue] {$\ss v\in V_3$};
-    \draw (1,-1) node[anchor=north east,blue] {$\ss w\in V_3$};
-    \draw (2,0) node[anchor=north,red] {$\ss v+w\not\in V_3$};
+    \draw (1,+1) node[anchor=south east,blue] {$\scriptstyle v\in V_3$};
+    \draw (1,-1) node[anchor=north east,blue] {$\scriptstyle w\in V_3$};
+    \draw (2,0) node[anchor=north,red] {$\scriptstyle v+w\not\in V_3$};
     \draw(0,-2.5) node{$V_3$};
    \end{scope}
   \end{tikzpicture}
@@ -9143,18 +9143,18 @@ implicit in the examples.
    \fill (4,0) circle(0.05);
    \fill (5,0) circle(0.05);
    \fill (6,0) circle(0.05);
-   \draw (1,2) node[anchor=south] {$\ss 1$};
-   \draw (2,2) node[anchor=south] {$\ss 2$};
-   \draw (3,2) node[anchor=south] {$\ss 3$};
-   \draw (4,2) node[anchor=south] {$\ss 4$};
-   \draw (5,2) node[anchor=south] {$\ss 5$};
-   \draw (6,2) node[anchor=south] {$\ss 6$};
-   \draw (1,0) node[anchor=north] {$\ss 1$};
-   \draw (2,0) node[anchor=north] {$\ss 2$};
-   \draw (3,0) node[anchor=north] {$\ss 3$};
-   \draw (4,0) node[anchor=north] {$\ss 4$};
-   \draw (5,0) node[anchor=north] {$\ss 5$};
-   \draw (6,0) node[anchor=north] {$\ss 6$};
+   \draw (1,2) node[anchor=south] {$\scriptstyle 1$};
+   \draw (2,2) node[anchor=south] {$\scriptstyle 2$};
+   \draw (3,2) node[anchor=south] {$\scriptstyle 3$};
+   \draw (4,2) node[anchor=south] {$\scriptstyle 4$};
+   \draw (5,2) node[anchor=south] {$\scriptstyle 5$};
+   \draw (6,2) node[anchor=south] {$\scriptstyle 6$};
+   \draw (1,0) node[anchor=north] {$\scriptstyle 1$};
+   \draw (2,0) node[anchor=north] {$\scriptstyle 2$};
+   \draw (3,0) node[anchor=north] {$\scriptstyle 3$};
+   \draw (4,0) node[anchor=north] {$\scriptstyle 4$};
+   \draw (5,0) node[anchor=north] {$\scriptstyle 5$};
+   \draw (6,0) node[anchor=north] {$\scriptstyle 6$};
    \draw[red,->,shorten >=2mm,shorten <=2mm] (1,2) -- (1,0);
    \draw[red,->,shorten >=2mm,shorten <=2mm] (2,2) -- (3,0);
    \draw[red,->,shorten >=2mm,shorten <=2mm] (3,2) -- (5,0);
@@ -9194,18 +9194,18 @@ implicit in the examples.
    \fill (4,0) circle(0.05);
    \fill (5,0) circle(0.05);
    \fill (6,0) circle(0.05);
-   \draw (1,2) node[anchor=south] {$\ss 1$};
-   \draw (2,2) node[anchor=south] {$\ss 2$};
-   \draw (3,2) node[anchor=south] {$\ss 3$};
-   \draw (4,2) node[anchor=south] {$\ss 4$};
-   \draw (5,2) node[anchor=south] {$\ss 5$};
-   \draw (6,2) node[anchor=south] {$\ss 6$};
-   \draw (1,0) node[anchor=north] {$\ss 1$};
-   \draw (2,0) node[anchor=north] {$\ss 2$};
-   \draw (3,0) node[anchor=north] {$\ss 3$};
-   \draw (4,0) node[anchor=north] {$\ss 4$};
-   \draw (5,0) node[anchor=north] {$\ss 5$};
-   \draw (6,0) node[anchor=north] {$\ss 6$};
+   \draw (1,2) node[anchor=south] {$\scriptstyle 1$};
+   \draw (2,2) node[anchor=south] {$\scriptstyle 2$};
+   \draw (3,2) node[anchor=south] {$\scriptstyle 3$};
+   \draw (4,2) node[anchor=south] {$\scriptstyle 4$};
+   \draw (5,2) node[anchor=south] {$\scriptstyle 5$};
+   \draw (6,2) node[anchor=south] {$\scriptstyle 6$};
+   \draw (1,0) node[anchor=north] {$\scriptstyle 1$};
+   \draw (2,0) node[anchor=north] {$\scriptstyle 2$};
+   \draw (3,0) node[anchor=north] {$\scriptstyle 3$};
+   \draw (4,0) node[anchor=north] {$\scriptstyle 4$};
+   \draw (5,0) node[anchor=north] {$\scriptstyle 5$};
+   \draw (6,0) node[anchor=north] {$\scriptstyle 6$};
    \draw[red,->,shorten >=2mm,shorten <=2mm] (1,2) -- (2,0);
    \draw[red,->,shorten >=2mm,shorten <=2mm] (2,2) -- (2,0);
    \draw[red,->,shorten >=2mm,shorten <=2mm] (3,2) -- (2,0);
@@ -9266,18 +9266,18 @@ implicit in the examples.
    \fill (4,0) circle(0.05);
    \fill (5,0) circle(0.05);
    \fill (6,0) circle(0.05);
-   \draw (1,2) node[anchor=south] {$\ss 1$};
-   \draw (2,2) node[anchor=south] {$\ss 2$};
-   \draw (3,2) node[anchor=south] {$\ss 3$};
-   \draw (4,2) node[anchor=south] {$\ss 4$};
-   \draw (5,2) node[anchor=south] {$\ss 5$};
-   \draw (6,2) node[anchor=south] {$\ss 6$};
-   \draw (1,0) node[anchor=north] {$\ss 1$};
-   \draw (2,0) node[anchor=north] {$\ss 2$};
-   \draw (3,0) node[anchor=north] {$\ss 3$};
-   \draw (4,0) node[anchor=north] {$\ss 4$};
-   \draw (5,0) node[anchor=north] {$\ss 5$};
-   \draw (6,0) node[anchor=north] {$\ss 6$};
+   \draw (1,2) node[anchor=south] {$\scriptstyle 1$};
+   \draw (2,2) node[anchor=south] {$\scriptstyle 2$};
+   \draw (3,2) node[anchor=south] {$\scriptstyle 3$};
+   \draw (4,2) node[anchor=south] {$\scriptstyle 4$};
+   \draw (5,2) node[anchor=south] {$\scriptstyle 5$};
+   \draw (6,2) node[anchor=south] {$\scriptstyle 6$};
+   \draw (1,0) node[anchor=north] {$\scriptstyle 1$};
+   \draw (2,0) node[anchor=north] {$\scriptstyle 2$};
+   \draw (3,0) node[anchor=north] {$\scriptstyle 3$};
+   \draw (4,0) node[anchor=north] {$\scriptstyle 4$};
+   \draw (5,0) node[anchor=north] {$\scriptstyle 5$};
+   \draw (6,0) node[anchor=north] {$\scriptstyle 6$};
    \draw[red,->,shorten >=2mm,shorten <=2mm] (1,2) -- (1,0);
    \draw[red,->,shorten >=2mm,shorten <=2mm] (2,2) -- (3,0);
    \draw[red,->,shorten >=2mm,shorten <=2mm] (3,2) -- (5,0);
@@ -9327,20 +9327,20 @@ implicit in the examples.
    \fill (5,0) circle(0.05);
    \fill (6,0) circle(0.05);
    \fill (7,0) circle(0.05);
-   \draw (1,2) node[anchor=south] {$\ss 1$};
-   \draw (2,2) node[anchor=south] {$\ss 2$};
-   \draw (3,2) node[anchor=south] {$\ss 3$};
-   \draw (4,2) node[anchor=south] {$\ss 4$};
-   \draw (5,2) node[anchor=south] {$\ss 5$};
-   \draw (6,2) node[anchor=south] {$\ss 6$};
-   \draw (7,2) node[anchor=south] {$\ss 7$};
-   \draw (1,0) node[anchor=north] {$\ss 1$};
-   \draw (2,0) node[anchor=north] {$\ss 2$};
-   \draw (3,0) node[anchor=north] {$\ss 3$};
-   \draw (4,0) node[anchor=north] {$\ss 4$};
-   \draw (5,0) node[anchor=north] {$\ss 5$};
-   \draw (6,0) node[anchor=north] {$\ss 6$};
-   \draw (7,0) node[anchor=north] {$\ss 7$};
+   \draw (1,2) node[anchor=south] {$\scriptstyle 1$};
+   \draw (2,2) node[anchor=south] {$\scriptstyle 2$};
+   \draw (3,2) node[anchor=south] {$\scriptstyle 3$};
+   \draw (4,2) node[anchor=south] {$\scriptstyle 4$};
+   \draw (5,2) node[anchor=south] {$\scriptstyle 5$};
+   \draw (6,2) node[anchor=south] {$\scriptstyle 6$};
+   \draw (7,2) node[anchor=south] {$\scriptstyle 7$};
+   \draw (1,0) node[anchor=north] {$\scriptstyle 1$};
+   \draw (2,0) node[anchor=north] {$\scriptstyle 2$};
+   \draw (3,0) node[anchor=north] {$\scriptstyle 3$};
+   \draw (4,0) node[anchor=north] {$\scriptstyle 4$};
+   \draw (5,0) node[anchor=north] {$\scriptstyle 5$};
+   \draw (6,0) node[anchor=north] {$\scriptstyle 6$};
+   \draw (7,0) node[anchor=north] {$\scriptstyle 7$};
    \draw[black,->,shorten >=2mm,shorten <=2mm] (1,2) -- (1,0);
    \draw[olivegreen,->,shorten >=2mm,shorten <=2mm] (3,2) -- (3,0);
    \draw[olivegreen,->,shorten >=2mm,shorten <=2mm] (4,2) -- (4,0);
@@ -9663,15 +9663,15 @@ properties of the determinant:
  \begin{center}
   \begin{tikzpicture}
    \begin{scope}
-    \draw(1,2) node {$\ss 1$};
-    \draw(2,2) node {$\ss 2$};
-    \draw(3,2) node {$\ss 3$};
-    \draw(1,1) node {$\ss 1$};
-    \draw(2,1) node {$\ss 2$};
-    \draw(3,1) node {$\ss 3$};
-    \draw(1,0) node {$\ss 1$};
-    \draw(2,0) node {$\ss 2$};
-    \draw(3,0) node {$\ss 3$};
+    \draw(1,2) node {$\scriptstyle 1$};
+    \draw(2,2) node {$\scriptstyle 2$};
+    \draw(3,2) node {$\scriptstyle 3$};
+    \draw(1,1) node {$\scriptstyle 1$};
+    \draw(2,1) node {$\scriptstyle 2$};
+    \draw(3,1) node {$\scriptstyle 3$};
+    \draw(1,0) node {$\scriptstyle 1$};
+    \draw(2,0) node {$\scriptstyle 2$};
+    \draw(3,0) node {$\scriptstyle 3$};
     \draw[red,->,shorten >=2mm,shorten <=2mm] (1,2) -- (2,1);
     \draw[white,line width=5pt,shorten >=2mm,shorten <=2mm] (2,2) -- (1,1);
     \draw[red,->,shorten >=2mm,shorten <=2mm] (2,2) -- (1,1);
@@ -9687,12 +9687,12 @@ properties of the determinant:
     \draw[dashed] (0,2) -- (0.8,2);
    \end{scope}
    \begin{scope}[xshift=5cm]
-    \draw(1,2) node {$\ss 1$};
-    \draw(2,2) node {$\ss 2$};
-    \draw(3,2) node {$\ss 3$};
-    \draw(1,0) node {$\ss 1$};
-    \draw(2,0) node {$\ss 2$};
-    \draw(3,0) node {$\ss 3$};
+    \draw(1,2) node {$\scriptstyle 1$};
+    \draw(2,2) node {$\scriptstyle 2$};
+    \draw(3,2) node {$\scriptstyle 3$};
+    \draw(1,0) node {$\scriptstyle 1$};
+    \draw(2,0) node {$\scriptstyle 2$};
+    \draw(3,0) node {$\scriptstyle 3$};
     \draw[red,->,shorten >=2mm,shorten <=2mm] (1,2) -- (3,0);
     \draw[white,line width=5pt,shorten >=2mm,shorten <=2mm] (2,2) -- (1,0);
     \draw[white,line width=5pt,shorten >=2mm,shorten <=2mm] (3,2) -- (2,0);
