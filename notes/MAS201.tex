@@ -1757,7 +1757,7 @@ preparatory observation.
 
 \begin{definition}\label{defn-wide}
  Let $B$ be a $p\tm q$ matrix.  We say that $B$ is \dfn{wide} if
- $p<q$, or \dfn{square} if $p=q$ or \dfn{tall} if $p>q$.
+ $p<q$, or \dfn{square} if $p=q$, or \dfn{tall} if $p>q$.
  \[ \begin{array}{ccccc}
      \bbm 1 & 2 & 3 \\ 4 & 5 & 6 \ebm & &
      \bbm 1 & 2 & 1 \\ 2 & 3 & 2 \\ 1 & 2 & 1 \ebm & &
@@ -2193,7 +2193,7 @@ works.
  \]
  The first column is zero, and will remain zero no matter what row
  operations we perform.  Thus $C$ cannot reduce to the identity
- matrix, so $\CV$ does not span (as we already saw by a different
+ matrix, so $\CV$ does not span $\R^4$ (as we already saw by a different
  method).  In fact the row-reduction is
  \[ C \to \bbm 0 & 1 & 0 & 0 \\
                0 & 0 & 1 & 0 \\
@@ -2227,7 +2227,7 @@ works.
  \]
  At the end of the process the last column does not contain a pivot
  (so the top $3\tm 3$ block is not the identity),
- so the original list does not span.  Again, we saw this earlier by a
+ so the original list does not span $\R^3$.  Again, we saw this earlier by a
  different method.
 \end{example}
 \begin{example}
@@ -2244,7 +2244,7 @@ works.
     \bbm 1 & 0 & -\tfrac{1}{3} \\ 0 & 1 & -\tfrac{2}{3} \\ 0 & 0 & 0 \ebm.
  \]
  In the last matrix the third column has no pivot, so the list does
- not span.
+ not span $\R^3$.
 \end{example}
 \begin{example}\label{eg-span-i-matrix}
  Consider the list $\CU=u_1,u_2,u_3$ from Example~\ref{eg-span-i}.
