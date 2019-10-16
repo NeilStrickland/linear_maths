@@ -3081,8 +3081,21 @@ and
  necessarily the same as the matrix $U$ in~(i)).
 \end{theorem}
 \begin{proof}
- It is clear from Propositions~\ref{prop-duality-bases}
- and~\ref{prop-basis-numerical} that statements~(a) to~(h) are all
+ It is clear from Proposition~\ref{prop-duality-bases}
+ that statements~(d) and~(h) are equivalent.
+ Furthermore, Proposition~\ref{prop-basis-numerical} shows
+ that statements~(b),~(c) and~(d) are equivalent.
+ Moreover, Method~\ref{meth-check-dependence} shows that
+ the columns of $A$ are linearly independent if and only if
+ $A$ can be row-reduced to an RREF matrix in which every
+ column contains a pivot; but such a matrix has to be $I_n$
+ because of Lemma~\ref{lem-pivots-everywhere} (b)
+ (since it is square).
+ Hence, we see that statements~(a) and~(b) are equivalent.
+ Thus, statements~(a),~(b),~(c),~(d) and~(h) are equivalent.
+ The same argument, applied to $A^T$ instead of $A$, shows
+ that statements~(e),~(f),~(g),~(h) and~(d) are equivalent.
+ Combining, we conclude that statements~(a) to~(h) are all
  equivalent.  If these statements hold then in particular $A$
  row-reduces to $I_n$, so Corollary~\ref{cor-ro-elem} tells us that
  there exists a matrix $U$ with $UA=I_n$, so~(i) holds.  Similarly,
