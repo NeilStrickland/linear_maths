@@ -2054,7 +2054,7 @@
 \end{solution}
 
 \begin{exercise}\label{ex-evectors-independent}
- A be an $n\tm n$ matrix, and let $\lm_1,\dotsc,\lm_h$ be $h$ distinct
+ Let $A$ be an $n\tm n$ matrix, and let $\lm_1,\dotsc,\lm_h$ be $h$ distinct
  eigenvalues of $A$.   For each $i=1,\dotsc,h$, let the vectors
  $v_{i,1},\dotsc,v_{i,t_i}$ be linearly independent eigenvectors of
  $A$ all corresponding to the eigenvalue $\lm_i$.  We collect these
@@ -2066,77 +2066,90 @@
  Prove (as was stated in lectures) that this list is linearly independent.
 \end{exercise}
 \begin{solution}
- For each $i = 1, \ldots, h$, the vectors $v_{i1}, \ldots,
- v_{it_i}$ are linearly independent eigenvectors of $A$ all
+ For each $i = 1, \ldots, h$, the vectors $v_{i,1}, \ldots,
+ v_{i,t_i}$ are linearly independent eigenvectors of $A$ all
  corresponding to the eigenvalue
  $\lambda_i$. We show that
  $$
- v_{11}, \ldots, v_{1t_1},v_{21}, \ldots, v_{2t_2}, \ldots, v_{h1},
- \ldots, v_{ht_h}
+ v_{1,1}, \ldots, v_{1,t_1},
+ v_{2,1}, \ldots, v_{2,t_2},
+ \ldots,
+ v_{h,1}, \ldots, v_{h,t_h}
  $$
  (taken all together) are linearly independent by induction on $h$.
 
  When $h = 1$, there is nothing to prove, because we are given that
- $v_{11}, \ldots, v_{1t_1}$ are linearly independent.
+ $v_{1,1}, \ldots, v_{1,t_1}$ are linearly independent.
 
  Assume now that $h>1$ and that the claim is true for $h-1$
  distinct eigenvalues of $A$.
 
  Let
  $$
- a_{11}, \ldots, a_{1t_1},a_{21}, \ldots, a_{2t_2}, \ldots, a_{h1},
- \ldots, a_{ht_h}
+ a_{1,1}, \ldots, a_{1,t_1},
+ a_{2,1}, \ldots, a_{2,t_2},
+ \ldots,
+ a_{h,1}, \ldots, a_{h,t_h}
  $$
  be scalars such that
  \begin{equation}
- \sum_{i=1}^h \sum_{j=1}^{t_i} a_{ij}v_{ij} = 0.
+ \sum_{i=1}^h \sum_{j=1}^{t_i} a_{i,j}v_{i,j} = 0.
+ \label{sol.lin-ind-eigenvecs.1}
  \end{equation}
  Then
  $$
- 0 = A0 = A\left[\sum_{i=1}^h \sum_{j=1}^{t_i} a_{ij}v_{ij}\right]
- = \sum_{i=1}^h \sum_{j=1}^{t_i} a_{ij}Av_{ij}$$
+ 0 = A0 = A\left[\sum_{i=1}^h \sum_{j=1}^{t_i} a_{i,j}v_{i,j}\right]
+ = \sum_{i=1}^h \sum_{j=1}^{t_i} a_{i,j}Av_{i,j}$$
  and so
  \begin{equation}
- \sum_{i=1}^h \sum_{j=1}^{t_i} a_{ij}\lambda_iv_{ij} = 0
+ \sum_{i=1}^h \sum_{j=1}^{t_i} a_{i,j}\lambda_iv_{i,j} = 0
+ \label{sol.lin-ind-eigenvecs.2}
  \end{equation}
- because $Av_{ij} = \lambda_iv_{ij}$ for all $j = 1, \ldots, t_i$ and
+ because $Av_{i,j} = \lambda_iv_{i,j}$ for all $j = 1, \ldots, t_i$ and
  $i = 1, \ldots, h$. If we
- now subtract $\lambda_h$ times (1) from (2) we get
+ now subtract $\lambda_h$ times \eqref{sol.lin-ind-eigenvecs.1} from
+ \eqref{sol.lin-ind-eigenvecs.2} we get
  $$
- \sum_{i=1}^h \sum_{j=1}^{t_i} a_{ij}(\lambda_i - \lambda_h)v_{ij} = 0,
+ \sum_{i=1}^h \sum_{j=1}^{t_i} a_{i,j}(\lambda_i - \lambda_h)v_{i,j} = 0,
  $$
  that is
  $$
- \sum_{i=1}^{h-1} \sum_{j=1}^{t_i} a_{ij}(\lambda_i - \lambda_h)v_{ij} = 0.
+ \sum_{i=1}^{h-1} \sum_{j=1}^{t_i} a_{i,j}(\lambda_i - \lambda_h)v_{i,j} = 0
  $$
+ (since the addends for $i=h$ are zero).
 
  By the induction hypothesis, $$
- v_{11}, \ldots, v_{1t_1},v_{21}, \ldots, v_{2t_2}, \ldots,
- v_{h-1,1},
- \ldots, v_{h-1,t_{h-1}}
+ v_{1,1}, \ldots, v_{1,t_1},
+ v_{2,1}, \ldots, v_{2,t_2},
+ \ldots,
+ v_{h-1,1}, \ldots, v_{h-1,t_{h-1}}
  $$
  (taken all together) are linearly independent. Therefore
  $$
- a_{ij}(\lambda_i - \lambda_h) = 0 \quad \text{~for all~} j = 1,
+ a_{i,j}(\lambda_i - \lambda_h) = 0 \quad \text{~for all~} j = 1,
  \ldots, t_i
  \text{~and~} i = 1, \ldots, h-1.
  $$
  Since $\lambda_i - \lambda_h \neq 0$ for all $i = 1, \ldots, h-1$, it follows that
  $$
- a_{ij} = 0 \quad \text{~for all~} j = 1, \ldots, t_i
+ a_{i,j} = 0 \quad \text{~for all~} j = 1, \ldots, t_i
  \text{~and~} i = 1, \ldots, h-1.
  $$
- With this information, equation (1) now simplifies to
+ With this information, equation \eqref{sol.lin-ind-eigenvecs.1} now simplifies to
  $$
- \sum_{j=1}^{t_h} a_{hj}v_{hj} = 0,
+ \sum_{j=1}^{t_h} a_{h,j}v_{h,j} = 0,
  $$
- and so it follows from the fact that $v_{h1}, \ldots, v_{ht_h}$ are
- linearly independent that $a_{h1}= \cdots = a_{ht_h} = 0$.
+ and so it follows from the fact that $v_{h,1}, \ldots, v_{h,t_h}$ are
+ linearly independent that $a_{h,1}= \cdots = a_{h,t_h} = 0$.
+ Thus, $a_{i,j} = 0$ for all $j = 1, \ldots, t_i$
+ and all $i = 1, \ldots, h$.
 
  We have now shown that
  $$
- v_{11}, \ldots, v_{1t_1},v_{21}, \ldots, v_{2t_2}, \ldots, v_{h1},
- \ldots, v_{ht_h}
+ v_{1,1}, \ldots, v_{1,t_1},
+ v_{2,1}, \ldots, v_{2,t_2},
+ \ldots,
+ v_{h,1}, \ldots, v_{h,t_h}
  $$
  are linearly independent. This completes the inductive step. By the
  Principle of

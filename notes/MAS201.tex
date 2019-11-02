@@ -2333,7 +2333,7 @@ We now explain why Method~\ref{meth-check-span} is valid.
 \begin{corollary}\label{cor-span-invariant}
  \index{span}
  Let $C$ be an $m\tm n$ matrix, and let $D$ be obtained from $C$ by a
- sequence of elementary row operation.  Let $s$ be a row vector of length
+ sequence of elementary row operations.  Let $s$ be a row vector of length
  $n$.  Then $s$ can be expressed as a linear combination of the rows
  of $C$ if and only if it can be expressed as a linear combination of
  the rows of $D$.
@@ -4205,7 +4205,7 @@ reduction, as follows.
  \]
  If we write $u=\bbm a & b & c & d\ebm^T$, then the equation $Bu=0$
  just gives $a=b-c=d=0$, so
- \[ u = \bbm 0 \\ c \\ c \\ 0 \ebm = c \bbm 0 \\ 1 \\ 1 \\ 0 \ebm. \]
+ \[ u = \bbm 0 \\ c \\ c \\ 0 \ebm = c \bbm 0 \\ 1 \\ 1 \\ 0 \ebm \]
  for some $c\in\R$.  The eigenvectors of eigenvalue $2$ are
  precisely the nonzero vectors of the above form.  In particular, the
  vector $\bbm 0 & 1 & 1 & 0\ebm^T$ is an eigenvector of eigenvalue $2$.
@@ -6930,9 +6930,9 @@ preparation) the more complicated proof that it is unique.
  Any element $x\in V$ has the form
  \begin{align*}
   x &= \lm_1v_1+\lm_2v_2+\lm_3v_3 \\
-    &= \bbm 0 & \lm_1 & \lm_1\al_1 & \lm_2 &
+    &= \bbm 0 & \lm_1 & \lm_1\al & \lm_2 &
             \lm_1\bt+\lm_2\dl & \lm_3 &
-            \lm_1\gm+\lm2\ep+\lm_3\zt \ebm^T.
+            \lm_1\gm+\lm_2\ep+\lm_3\zt \ebm^T.
  \end{align*}
  Note that $\lm_k$ occurs on its own in the $k$'th pivot column, and
  all entries to the left of that involve only
