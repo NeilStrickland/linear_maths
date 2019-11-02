@@ -837,8 +837,8 @@ or \emph{reduction to RREF}.
 In a moment we will recall the method used to reduce a matrix to RREF.
 It is not too hard to analyse the method carefully and check that it
 always works as advertised, which proves part~(a) of the theorem.  It
-is more difficult to prove~(b) directly, and we will not do so here,
-although an essentially equivalent fact will appear in
+is more difficult to prove~(b) directly, and we will only do so
+in Appendix~\ref{apx-RREF-uniq}, using
 Proposition~\ref{prop-canonical-basis}.  With a more abstract point of
 view, as in MAS277, it becomes much easier.  Nonetheless, you should
 appreciate that~(b) is an important point.
@@ -6924,6 +6924,9 @@ preparation) the more complicated proof that it is unique.
      0 & 0 &  0  & 0 &  0  & 1 & \zt
     \ebm.
  \]
+ Note that no row of $B$ is zero (since the columns of $B^T$
+ form a basis and thus are nonzero); hence, each row of $B$ has
+ a pivot.
  Put $V=\spn(v_1,v_2,v_3)\sse\R^7$, so the vectors $v_i$ (which are
  the columns of $B^T$) form a basis for $V$.  There are pivots in
  columns $2$, $4$ and $6$, so we need to show that $J(V)=\{2,4,6\}$.
@@ -6932,12 +6935,13 @@ preparation) the more complicated proof that it is unique.
   x &= \lm_1v_1+\lm_2v_2+\lm_3v_3 \\
     &= \bbm 0 & \lm_1 & \lm_1\al & \lm_2 &
             \lm_1\bt+\lm_2\dl & \lm_3 &
-            \lm_1\gm+\lm_2\ep+\lm_3\zt \ebm^T.
+            \lm_1\gm+\lm_2\ep+\lm_3\zt \ebm^T
  \end{align*}
- Note that $\lm_k$ occurs on its own in the $k$'th pivot column, and
- all entries to the left of that involve only
+ for some numbers $\lm_1, \lm_2, \lm_3$.
+ Note that $\lm_k$ occurs on its own in the $k$'th pivot column of
+ $x$, and all entries to the left of that involve only
  $\lm_1,\dotsc,\lm_{k-1}$.  Thus, if $\lm_1,\dotsc,\lm_{k-1}$ are all
- zero but $\lm_k\neq 0$ then $x$ starts in the $k$'th pivot column.
+ zero but $\lm_k\neq 0$, then $x$ starts in the $k$'th pivot column.
  In more detail:
  \begin{itemize}
   \item If $\lm_1\neq 0$ then $x$ has the form
@@ -10236,6 +10240,125 @@ In the case $n=3$ and $p=1$, this is just the traditional rule
  $B=\adj(A)/\det(A)$.  After rearranging the equations in
  Proposition~\ref{prop-adjugate} we see that $AB=BA=I_n$, so $A$ is
  invertible with inverse $B$.
+\end{proof}
+
+\section{Proof of the uniqueness of the RREF}
+\label{apx-RREF-uniq}
+
+In this short appendix, let us give a proof of
+Theorem~\ref{thm-RREF}~(b).
+This proof will rely on Corollary~\ref{cor-span-invariant}
+and Proposition~\ref{prop-canonical-basis},
+as well as on the following lemma:
+
+\begin{lemma}\label{lem-RREF-lin-ind}
+ \index{jump!in terms of pivots}
+ Let $B$ be an RREF matrix with no zero rows.
+ Then, the rows of $B$ are linearly independent.
+\end{lemma}
+\begin{proof}[Example proof]
+ Each row of $B$ has a pivot (since $B$ has no zero rows).
+ Consider the example that we used in the proof of
+ Lemma~\ref{lem-jumps-pivots}\footnote{We are not making the same assumption
+ as in Lemma~\ref{lem-jump-pivots} here (viz., that
+ the columns of $B^T$ form a basis for some subspace
+ $V \subseteq \R^n$); but we do know that $B$ is a
+ RREF matrix whose each row has a pivot, and this
+ suffices to make the reasoning from the proof of
+ Lemma~\ref{lem-jumps-pivots} work.}.
+ Let $\lm_1, \lm_2, \lm_3$ be any scalars
+ such that $\lm_1 v_1 + \lm_2 v_2 + \lm_3 v_3 = 0$.
+ Set $x = \lm_1 v_1 + \lm_2 v_2 + \lm_3 v_3$,
+ so that $x = 0$.
+ If $\lm_1, \lm_2, \lm_3$ are not all $0$,
+ then there exists some $k \in \left\{1,2,3\right\}$
+ such that $\lm_1,\dotsc,\lm_{k-1}$ are all
+ zero but $\lm_k\neq 0$;
+ therefore, as we have seen in the proof of
+ Lemma~\ref{lem-jumps-pivots}, this $k$
+ has the property that $x$ starts in the $k$'th pivot
+ column;
+ but this contradicts the fact that $x = 0$.
+ Hence, $\lm_1, \lm_2, \lm_3$ are all $0$.
+ So we have shown that if scalars $\lm_1, \lm_2, \lm_3$
+ satisfy $\lm_1 v_1 + \lm_2 v_2 + \lm_3 v_3 = 0$,
+ then $\lm_1, \lm_2, \lm_3$ are all $0$.
+ In other words, $v_1, v_2, v_3$ are linearly independent.
+ But $v_1, v_2, v_3$ are the columns of $B^T$, that is,
+ the transposes of the rows of $B$.
+ Thus, the rows of $B$ are linearly independent as well.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm-RREF}~(b).]
+Let $C$ and $D$ be two matrices in RREF that can be obtained
+from $A$ by sequences of row operations.
+We must prove that $C = D$.
+
+Let $m$ and $n$ be such that $A$ is an $m \times n$-matrix.
+Thus, $C$ and $D$ are $m \times n$-matrices, too.
+
+Let $\overline{C}$ be the matrix $C$ with its zero rows
+removed.
+Let $\overline{D}$ be the matrix $D$ with its zero rows
+removed.
+
+The matrices $C$ and $\overline{C}$ differ only in some
+zero rows, which clearly have no effect on the span of
+the rows of these matrices.
+Thus, $\spn\left(\text{rows of $C$}\right)
+= \spn\left(\text{rows of $\overline{C}$}\right)$.
+
+Let $V$ be the span of the rows of $A$.
+Let $V^T$ be the span of the columns of $A^T$.
+Clearly, the elements of $V^T$ are the transposes of
+the elements of $V$.
+
+The matrix $C$ is obtained from $A$ by a sequence of
+row operations.
+Hence, Corollary~\ref{cor-span-invariant} shows that
+a row vector $s$ of length $n$ can be expressed as a
+linear combination of the rows of $A$ if and only if
+it can be expressed as a linear combination of
+the rows of $C$.
+In other words, $\spn\left(\text{rows of $A$}\right)
+= \spn\left(\text{rows of $C$}\right)$.
+Thus, the definition of $V$ yields
+\[
+V = \spn\left(\text{rows of $A$}\right)
+= \spn\left(\text{rows of $C$}\right)
+= \spn\left(\text{rows of $\overline{C}$}\right) .
+\]
+Moreover, the matrix $\overline{C}$ is obtained from an
+RREF matrix by removing its zero rows; hence,
+$\overline{C}$ itself is an RREF matrix with no zero rows.
+Thus, Lemma~\ref{lem-RREF-lin-ind} shows that the rows
+of $\overline{C}$ are linearly independent.
+Combined with $V = \spn\left(\text{rows of $\overline{C}$}\right)$,
+this shows that the rows of $\overline{C}$ form a basis
+of $V$.
+Thus, the columns of $\overline{C}^T$ form a basis of
+$V^T$ (since the elements of $V^T$ are the transposes of
+the elements of $V$).
+
+But Proposition~\ref{prop-canonical-basis} (applied
+to $V^T$ instead of $V$) shows that
+there is a unique RREF matrix $B$ such that the columns of
+$B^T$ form a basis for $V^T$.
+We know that $\overline{C}$ is such a matrix (since
+$\overline{C}$ is an RREF matrix, and since
+the columns of $\overline{C}^T$ form a basis of
+$V^T$), and that $\overline{D}$ is such a matrix (likewise).
+Hence, the uniqueness of $B$ shows that
+$\overline{C} = \overline{D}$.
+
+But $\overline{C}$ was obtained from the RREF matrix
+$C$ by removing zero rows; hence, we can reconstruct $C$ from
+$\overline{C}$ by inserting $m-m'$ zero rows at the bottom,
+where $m'$ is the number of rows of $\overline{C}$.
+Similarly, $D$ can be reconstructed from $\overline{D}$ in
+the same way.
+Thus, from $\overline{C} = \overline{D}$, we obtain $C = D$.
+This proves Theorem~\ref{thm-RREF}~(b).
 \end{proof}
 
 \input{MAS201.ind}
