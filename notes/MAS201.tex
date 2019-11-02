@@ -8585,13 +8585,15 @@ really two different ways of looking at the same thing:
  root is real, so the two eigenvalues are both real.
 \end{remark}
 
+The following proposition is known as the \dfn{spectral theorem}:
+
 \begin{proposition}\label{prop-symmetric-diag}
  \index{basis!orthonormal}\index{basis!of eigenvectors}
  Let $A$ be an $n\tm n$ symmetric matrix.  Then there is an
  orthonormal basis for $\R^n$ consisting of eigenvectors for $A$.
 \end{proposition}
 \begin{proof}[Partial proof]
- We will show that the Theorem holds whenever $A$ has $n$ distinct
+ We will show that the Proposition holds whenever $A$ has $n$ distinct
  eigenvalues.  In fact it is true even without that assumption, but
  the proof is harder.
 
@@ -9415,7 +9417,8 @@ $2\tm 2$ and $3\tm 3$ matrices.
 
 \begin{example}\label{eg-det-two}
  Consider a $2\tm 2$ matrix
- $A=\bbm a_{11}&a_{12}\\ a_{21}&a_{22}\ebm$.  In this case there are
+ $A=\bbm a_{11}&a_{12}\\ a_{21}&a_{22}\ebm$.  In this case
+ $N = \left\{1, 2\right\}$, so there are
  only two possible permutations: the identity permutation $\iota$
  given by $\iota(1)=1$ and $\iota(2)=2$, and the transposition $\tau$
  given by $\tau(1)=2$ and $\tau(2)=1$.  The identity has no reversals,
@@ -10106,8 +10109,8 @@ this rule works in general.
  $1\leq p,q\leq n$ we have $m^*_{pq}=(-1)^{p+q}m_{pq}$.
 \end{proposition}
 \begin{proof}
- Fix $p$ and $q$, and write $B$ for $M_{pq}$.  The entries are given
- by
+ Fix $p$ and $q$, and write $B$ for $M_{pq}$.  The entries of
+ $B$ are given by
  \[ b_{ij} =
      \begin{cases}
       a_{i,j}     & \text{ if } i<p \text{ and } j < q \\
@@ -10176,6 +10179,7 @@ row''.\index{expansion of determinant}
  \]
 \end{proposition}
 
+This is called \dfn{Laplace expansion along the $p$'th row}.
 In the case $n=3$ and $p=1$, this is just the traditional rule
 \[ \det\bbm a_{11} & a_{12} & a_{13} \\
             a_{21} & a_{22} & a_{23} \\
@@ -10273,8 +10277,9 @@ as well as on the following lemma:
 \begin{proof}[Example proof]
  Each row of $B$ has a pivot (since $B$ has no zero rows).
  Consider the example that we used in the proof of
- Lemma~\ref{lem-jumps-pivots}\footnote{We are not making the same assumption
- as in Lemma~\ref{lem-jump-pivots} here (viz., that
+ Lemma~\ref{lem-jumps-pivots}\footnote{We are not
+ making the same assumption
+ as in Lemma~\ref{lem-jumps-pivots} here (viz., that
  the columns of $B^T$ form a basis for some subspace
  $V \subseteq \R^n$); but we do know that $B$ is a
  RREF matrix whose each row has a pivot, and this
