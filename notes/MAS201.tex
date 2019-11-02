@@ -9981,6 +9981,19 @@ that it works in general.)
  required.
 \end{proof}
 
+From Theorem~\ref{thm-det-prod}, we can easily conclude (by
+induction on $k$) that
+\begin{equation}
+\det\left(A_1 A_2 \cdots A_k\right)
+= \det\left(A_1\right) \det\left(A_2\right) \cdots \det\left(A_k\right)
+\label{eq.det.prodAk}
+\end{equation}
+whenever $A_1, A_2, \ldots, A_k$ is a list of
+$n\tm n$ matrices.
+(This applies to $k = 0$ as well, recalling the convention
+that an empty product of $n\tm n$ matrices is $I_n$ and
+an empty product of numbers is $1$.)
+
 \begin{corollary}\label{cor-det-row-ops}
  Suppose that $A$ and $B$ are $n\tm n$ matrices and that $A$ can be
  reduced to $B$ by a sequence of row operations.  For each step in the
@@ -9993,7 +10006,8 @@ that it works in general.)
 \begin{proof}
  We have $B=U_rU_{r-1}\dotsb U_1A$, where the $U_i$ are elementary
  matrices corresponding to the steps in the row reduction.  This
- implies that $\det(B)=\det(A)\prod_i\det(U_i)$.  If $U_i=D_p(\lm)$
+ implies (using \eqref{eq.det.prodAk})
+ that $\det(B)=\det(A)\prod_i\det(U_i)$.  If $U_i=D_p(\lm)$
  (corresponding to multiplying a row by $\lm$) then $\det(U_i)=\lm$.
  If $U_i=E_{pq}(\mu)$ then $\det(U_i)=1$, and if $U_i=F_{pq}$ then
  $\det(U_i)=-1$.  The claim follows easily from this.
@@ -10294,8 +10308,8 @@ Let $C$ and $D$ be two matrices in RREF that can be obtained
 from $A$ by sequences of row operations.
 We must prove that $C = D$.
 
-Let $m$ and $n$ be such that $A$ is an $m \times n$-matrix.
-Thus, $C$ and $D$ are $m \times n$-matrices, too.
+Let $m$ and $n$ be such that $A$ is an $m \times n$ matrix.
+Thus, $C$ and $D$ are $m \times n$ matrices, too.
 
 Let $\overline{C}$ be the matrix $C$ with its zero rows
 removed.
