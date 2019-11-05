@@ -3652,6 +3652,11 @@ more efficient to stop the row-reduction at an earlier stage.
  same result by row-reduction.
 \end{example}
 
+\begin{proof}[Proof of Proposition~\ref{prop-det-expand-pre}.]
+ See Proposition~\ref{prop-det-expand}
+ and Proposition~\ref{prop-det-expand-col}.
+\end{proof}
+
 \begin{theorem}\label{thm-inv-det-pre}
  \index{inverse}\index{determinant}\index{adjugate}
  Let $A$ be an $n\tm n$ matrix.  
@@ -4009,6 +4014,8 @@ Using this, we obtain the following result:
 \end{corollary}
 \begin{proof}
  As $I_n^T=I_n$, we have
+ $(A-tI_n)^T = A^T-tI_n$.
+ Now,
  $\chi_{A^T}(t)=\det(A^T-tI_n)=\det((A-tI_n)^T)$, which is the same as
  $\det(A-tI_n)$ by Proposition~\ref{prop-sgn-transpose-pre}.
 \end{proof}
@@ -6980,7 +6987,7 @@ We now return to the proof of Proposition~\ref{prop-canonical-basis}.
  is $1$ when $i=j$, and $0$ when $i\neq j$
  (%by property RREF3 in Definition~\ref{defn-rref},
  since this component is the
- $j$-th entry of the $p_i$-th column of $B$).
+ $j$'th entry of the $p_i$-th column of $B$).
 
  Similarly, the matrix $C$ has precisely $d$ pivot columns, say in
  columns $q_1,\dotsc,q_d$ with $q_1<\dotsb<q_d$.  Because $C$ is in
@@ -8846,7 +8853,7 @@ The following proposition is known as the \dfn{spectral theorem}:
 \begin{corollary}\label{cor-square-root}
  \index{matrix!symmetric!square root}
  Let $A$ be an $n\tm n$ symmetric matrix, and suppose that all the
- eigenvalues of $A$ are positive.  Then there is a symmetric matrix
+ eigenvalues of $A$ are nonnegative.  Then there is a symmetric matrix
  $B$ such that $A=B^2$.
 \end{corollary}
 \begin{proof}
@@ -8879,7 +8886,7 @@ The following proposition is known as the \dfn{spectral theorem}:
    $L(x)=7x_1-8x_2+9x_3$. 
   \item[(b)] We can define a quadratic form on $\R^4$ by 
    $Q(x)=10 x_1x_2 + 12 x_3x_4 - 14 x_1x_4 - 16 x_2x_3$.
-  \item[(b)] We can define a quadratic form on $\R^3$ by 
+  \item[(c)] We can define a quadratic form on $\R^3$ by 
    $Q(x)= x_1^2 - x_2^2$.
  \end{itemize}
 \end{example}
@@ -10179,7 +10186,6 @@ row''.\index{expansion of determinant}
  \]
 \end{proposition}
 
-This is called \dfn{Laplace expansion along the $p$'th row}.
 In the case $n=3$ and $p=1$, this is just the traditional rule
 \[ \det\bbm a_{11} & a_{12} & a_{13} \\
             a_{21} & a_{22} & a_{23} \\
@@ -10192,7 +10198,8 @@ In the case $n=3$ and $p=1$, this is just the traditional rule
 \begin{proof}
  By definition we have
  \[ \det(A) = \sum_\sg \sgn(\sg)\prod_{i=1}^n a_{i,\sg(i)}. \]
- If we consider only permutations $\sg$ that satisfy $\sg(p)=q$, then
+ If we consider only permutations $\sg$ that satisfy $\sg(p)=q$
+ (for a fixed $q \in \left\{1,2,\ldots,n\right\}$), then
  the sum of the corresponding terms is
  \[ \sum_{\sg(p)=q} \sgn(\sg)\prod_{i=1}^n a_{i,\sg(i)}
      = a_{pq} \sum_{\sg(p)=q} \sgn(\sg)\prod_{i\neq p} a_{i,\sg(i)}
@@ -10205,14 +10212,73 @@ In the case $n=3$ and $p=1$, this is just the traditional rule
  $\det(A)=\sum_{q=1}^n (-1)^{p+q}a_{pq}m_{pq}$ as claimed.
 \end{proof}
 
+Proposition~\ref{prop-det-expand} is called
+\dfn{Laplace expansion along the $p$'th row}.
+Applying it to compute $\det A$ is often called
+\emph{expanding the determinant of $A$ along
+the $p$'th row}.
+An analogous fact holds for columns, and is known as
+\dfn{Laplace expansion along the $q$'th column}:
+
+\begin{proposition}\label{prop-det-expand-col}
+ Let $A$ be an $n\tm n$ matrix.  Let $1 \leq q \leq n$.
+ Then
+ \[ \det(A) = \sum_{p=1}^n (-1)^{p+q}a_{pq}m_{pq} =
+     (-1)^{1+q} a_{1q} m_{1q} + (-1)^{2+q} a_{2q} m_{2q} + \dotsb + (-1)^{n+q} a_{nq} m_{nq}.
+ \]
+\end{proposition}
+
+In the case $n=3$ and $q=1$, this is saying
+\[ \det\bbm a_{11} & a_{12} & a_{13} \\
+            a_{21} & a_{22} & a_{23} \\
+            a_{31} & a_{32} & a_{33} \ebm =
+     a_{11} \det\bbm a_{22} & a_{23} \\ a_{32} & a_{33} \ebm
+    -a_{21} \det\bbm a_{12} & a_{13} \\ a_{32} & a_{33} \ebm
+    +a_{31} \det\bbm a_{12} & a_{13} \\ a_{22} & a_{23} \ebm.
+\]
+
+\begin{proof}
+ This is similar to the proof of Proposition~\ref{prop-det-expand}.
+ Again,
+ \[ \det(A) = \sum_\sg \sgn(\sg)\prod_{i=1}^n a_{i,\sg(i)}. \]
+ For any permutation $\sg$ in this sum, there is a unique $p \in
+ \left\{1,2,\ldots,n\right\}$ satisfying $\sg(p) = q$.
+ Thus, we can split this sum up into smaller sums,
+ each containing only permutations $\sg$ that satisfy $\sg(p)=q$
+ for a fixed $p \in \left\{1,2,\ldots,n\right\}$;
+ the sum of the corresponding terms is $a_{pq} m^*_{pq}$
+ (for the same reason as in the proof of Proposition~\ref{prop-det-expand}).
+ Thus, taking the sum over all $p$, we get
+ $\det(A) = \sum_{p=1}^n a_{pq} m^*_{pq}$.
+ The rest of the proof proceeds as the above proof of
+ Proposition~\ref{prop-det-expand}.
+\end{proof}
+
 \begin{definition}\label{defn-adjugate}
  Let $A$ be an $n\tm n$ matrix.  The \dfn{adjugate} of $A$ is the
  $n\tm n$ matrix $\adj(A)$ with entries
  \[ \adj(A)_{jk} = m^*_{kj} = (-1)^{k+j}m_{kj}. \]
 \end{definition}
 
+\begin{proposition}\label{prop-adjugate-transpose}
+ Let $A$ be an $n\tm n$ matrix.
+ Then, $\adj(A^T) = (\adj(A))^T$.
+\end{proposition}
+\begin{proof}
+ Let $M_{pq}$ denote the minor matrices for $A$,
+ and let $N_{pq}$ denote the minor matrices for $A^T$.
+ Then, for any $p$ and $q$,
+ we have $N_{qp} = (M_{pq})^T$
+ and thus $\det(N_{qp}) = \det((M_{pq})^T)
+ = \det(M_{pq})$ (by Corollary~\ref{cor-sgn-transpose}).
+ Hence, the $(p,q)$'th entry $(-1)^{p+q}\det(N_{qp})$ of
+ $\adj(A^T)$ equals the $(q,p)$'th entry
+ $(-1)^{q+p}\det(M_{pq})$ of $\adj(A)$.
+ Thus, $\adj(A^T) = (\adj(A))^T$.
+\end{proof}
+
 \begin{proposition}\label{prop-adjugate}
- For any $A$ we have $A\adj(A)=\adj(A)A=\det(A)\,I_n$.
+ For any $n\tm n$ matrix $A$ we have $A\adj(A)=\adj(A)A=\det(A)\,I_n$.
 \end{proposition}
 \begin{proof}
  Put $B=A\,\adj(A)$, which has entries
@@ -10228,18 +10294,35 @@ In the case $n=3$ and $p=1$, this is just the traditional rule
  \]
  As a first simplification, we can write $j$ as $\sg(k)$ and then we
  do not need to mention $j$ any more, we just have a single sum over
- all permutations $\sg$.  Next, one of the terms in the product is
+ all permutations $\sg$.  Thus,
+ \[ b_{ik} =
+     \sum_{\sg} \sgn(\sg)\,a_{i,\sg(k)}\, \prod_{l\neq k} a_{l,\sg(l)}
+ \]
+ (where the sum is now over all permutations).
+ Next, one of the terms in the product is
  $a_{i,\sg(i)}$ (corresponding to $l=i$) and it will be convenient to
  write that separately.  This leaves $b_{ik}=\sum_\sg\Gm(\sg)$, where
  \[ \Gm(\sg) =  \sgn(\sg)\,a_{i,\sg(k)}\,a_{i,\sg(i)}
       \prod_{l\neq i,k} a_{l,\sg(l)}.
  \]
  Now let $\tau$ be the transposition that exchanges $i$ and $k$.   It
- is not hard to see that $\Gm(\sg\circ\tau)=-\Gm(\sg)$.  Using this we
+ is not hard to see that $\Gm(\sg\circ\tau)=-\Gm(\sg)$
+ (because Proposition~\ref{prop-sgn-circ} yields
+ $\sgn(\sg\circ\tau) = \sgn(\sg) \cdot \sgn(\tau) = -\sgn(\sg)$,
+ whereas both $a_{i,\sg(k)}\,a_{i,\sg(i)}$ and
+ $\prod_{l\neq i,k} a_{l,\sg(l)}$ stay unchanged if $\sg$
+ is replaced by $\sg\circ\tau$).  Using this we
  see that the terms $\Gm(\sg)$ with $\sg(i)<\sg(k)$ cancel against the
  terms $\Gm(\sg)$ with $\sg(i)>\sg(k)$, leaving $b_{ik}=0$.  This
- completes the proof that $A\adj(A)=\det(A) I_n$, and a similar
- argument shows that we also have $\adj(A)A=\det(A)I_n$.
+ completes the proof that $A\adj(A)=\det(A) I_n$.
+
+ A similar argument (using Proposition~\ref{prop-det-expand-col})
+ shows that we also have $\adj(A)A=\det(A)I_n$.
+ (Alternatively, this equality can be obtained by applying the
+ previously proven equality $A\adj(A)=\det(A) I_n$ to $A^T$ instead
+ of $A$, and then rewriting the result using
+ Proposition~\ref{prop-adjugate-transpose},
+ Corollary~\ref{cor-sgn-transpose} and Proposition~\ref{prop-transpose-anti}.)
 \end{proof}
 
 \begin{theorem}\label{thm-inv-det}
