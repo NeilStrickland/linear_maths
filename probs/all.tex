@@ -8,15 +8,22 @@
 \usepackage[type={CC},modifier={by-nc-sa},version={3.0}]{doclicense}
 
 \input{../macros/macros}
-\input{soldefs}
+%\input{soldefs}
+
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}
+\newenvironment{solution}{\begin{proof}[\textbf{Solution:}] \vphantom{u}}{\end{proof}}
+% The "\vphantom{u}" part is to ensure that the first bullet point
+% of an "itemize" in the solution won't be put on the same line
+% as the word "Solution:".
 
 \title{Problems for MAS201 (Linear Mathematics for Applications)}
 
-\def\SOLS{1}
+% \def\SOLS{1}
 
-\ifx\SOLS\undefined\else
-\renewenvironment{solution}{\SolutionInline}{\endSolutionInline}
-\fi
+% \ifx\SOLS\undefined\else
+% \renewenvironment{solution}{\SolutionInline}{\endSolutionInline}
+% \fi
 
 \begin{document}
 
@@ -245,7 +252,7 @@
      a & -100b & +100c &= 11. 
     \end{array}
  \]
- Using this we can write down the augmented matrix and row reduce it
+ Using this we can write down the augmented matrix and row-reduce it
  as follows:
  \[ 
   \left[\begin{array}{ccc|c}
@@ -265,13 +272,13 @@
    0 & 9 & -9 & 9 \\
    0 & -99 & 100.1 & 11 
   \end{array}\right]
+ \] \[
   \xra{}
   \left[\begin{array}{ccc|c}
    1 & -1 & -0.1 & 0 \\
    0 & 1 & -1 & 1 \\
    0 & -99 & 100.1 & 11 
   \end{array}\right]
- \] \[
   \xra{}
   \left[\begin{array}{ccc|c}
    1 & 0 & -1.1 & 1 \\
@@ -764,7 +771,7 @@
 
 \begin{exercise}\label{ex-independent-iii}
  Find examples as follows.  All your vectors should be nonzero, and
- all your lists should have length at least two and not contain the
+ all your lists should have length at least $2$ and not contain the
  same vector twice.
  \begin{itemize}
   \item[(a)] A list of vectors in $\R^3$ that is linearly dependent
@@ -1056,9 +1063,11 @@
   \item[(a)] Is the list
    $a_1=\bbm 3\\5\ebm, a_2=\bbm 2\\7\ebm, a_3=\bbm 4\\4\ebm$
    a basis for $\R^2$?
+   \vspace{0.5pc}
   \item[(b)] Is the list
    $b_1=\bbm 9\\8\\7\ebm, b_2=\bbm 8\\7\\6\ebm, b_3=\bbm 3\\2\\1\ebm$
    a basis for $\R^3$?
+   \vspace{0.5pc}
   \item[(c)] Is the list 
    $c_1=\bbm 1\\8\\5\\4\ebm,
     c_2=\bbm 7\\3\\9\\5\ebm,
@@ -1082,7 +1091,7 @@
  and this rearranges to give a nontrivial linear relation
  $6b_1-5b_2+b_3=0$.  This proves that the list $b_1,b_2,b_3$ is
  linearly dependent, so again we do not have a basis.  This can also
- be seen by row reducing the matrix $[b_1|b_2|b_3]$:
+ be seen by row-reducing the matrix $[b_1|b_2|b_3]$:
  \[ 
   \bbm 9 & 8 & 3 \\
        8 & 7 & 2 \\
@@ -1397,7 +1406,7 @@
        \bbm 1&1&1&1 \\ 1&2&2&2 \\ 1&1&2&2 \\ 1&1&1&2 \ebm \to
        \bbm 1&1&1&1 \\ 0&1&1&1 \\ 0&0&1&1 \\ 0&0&0&1 \ebm = B'.
    \]
-   As $B'$ is upper-triangular with ones on the diagonal we have
+   As $B'$ is upper-triangular with $1$s on the diagonal we have
    $\det(B')=1$, and it follows that $\det(B)\neq 0$, so $B$ is
    invertible.  More specifically, only the first of our row
    operations (where we multiplied row $1$ by $1/2$) affects the
@@ -1498,7 +1507,7 @@
 \end{exercise}
 \begin{solution}
  The most obvious approach is to expand along the top row.  This gives 
- \[ \det(A) = a\det(B_1) - 0\det(B_2) + b\det(B_3) + c\det(B_4), \]
+ \[ \det(A) = a\det(B_1) - 0\det(B_2) + b\det(B_3) - c\det(B_4), \]
  where 
  \[ 
   B_1 = \bbm 0&0&0 \\ f&g&h \\ 0&0&j \ebm \qquad
@@ -1715,7 +1724,7 @@
                 0 &  0 &  1 \ebm. 
  \]
  The second matrix above is upper triangular and so the determinant is
- easily seen to be one.  For the first matrix we have
+ easily seen to be $1$.  For the first matrix we have
  \[ \det\bbm -t &  0 & -c \\
               1 & -t & -b \\
               0 &  1 & -a-t \ebm = 
@@ -2241,8 +2250,8 @@
   \chi_A(t)
    &= \det\bbm 100-t & 10 & 1 \\ 
                100 & 10-t & 1 \\
-               100 & 10 & 1-t \ebm 
-    = (100-t)\det\bbm 10-t & 1 \\
+               100 & 10 & 1-t \ebm \\
+   &= (100-t)\det\bbm 10-t & 1 \\
                       10   & 1-t \ebm 
       -10    \det\bbm 100  & 1 \\
                       100 & 1-t \ebm 
@@ -2524,7 +2533,7 @@
 \section{Lecture 10}
 
 \begin{exercise}\label{ex-powers-i}
- Let $A$ be the $5\tm 5$ matrix in which every entry is one.
+ Let $A$ be the $5\tm 5$ matrix in which every entry is $1$.
 % (We will stick with the $5\tm 5$ version for definiteness, but you
 % should be able to see that the $d\tm d$ version works in more or less
 % the same way for all $d$.)
@@ -3176,7 +3185,7 @@
  For each $k = 0, \ldots, 10$, let $a_k$ and $b_k$ be the
  proportions of students who are awake and who are asleep after
  $5k$ minutes of the lecture, respectively, and set $v_k
- =(\begin{array}{cc} a_k & b_k \end{array})^T$. We have
+ = \bbm a_k & b_k \ebm^T$. We have
      $$
      \left[\begin{array}{cc} a_0\\ b_0 \end{array}\right]
      =\left[\begin{array}{cc} 1\\ 0 \end{array}\right]
@@ -3207,9 +3216,9 @@
 
  To find an eigenvector of $A$ corresponding to the eigenvalue $\lambda_1 :=1$,
  we need to solve the system of linear equations
- $(A - I_2)(\begin{array}{cc} x & y \end{array})^T = 0$. This has augmented matrix
+ $(A - I_2)\bbm x & y \ebm^T = 0$. This has augmented matrix
  $$
- \big(A - I_2|0\big) = \left[\begin{array}{cc|c}
+ \bbm A - I_2|0 \ebm = \left[\begin{array}{cc|c}
  - \frac{1}{10} & \frac{1}{10} & 0\\[3pt]
  \frac{1}{10}
  &- \frac{1}{10} & 0\end{array} \right] \to
@@ -3226,7 +3235,7 @@
  $\left[A -{\textstyle \frac{8}{10}} I_2\right]\bbm x & y \ebm^T = 0$. This has
  augmented matrix
  $$
- \big(A -{\textstyle \frac{8}{10}} I_2|0\big) =
+ \bbm A -{\textstyle \frac{8}{10}} I_2|0 \ebm =
  \left[\begin{array}{cc|c} \frac{1}{10} & \frac{1}{10} & 0\\[3pt]
  \frac{1}{10}
  & \frac{1}{10} & 0\end{array} \right] \to
@@ -3285,7 +3294,7 @@
  \begin{itemize}
   \item[(a)] Let the columns of $P$ be $v_1,\dotsc,v_n$.  As $P$ is
    stochastic, we know that the sum of the entries in $v_i$  is equal
-   to one, so $d.v_i=1$.  This means that
+   to $1$, so $d.v_i=1$.  This means that
    \[ d^TP =
       \bbm 1 &\cdots& 1\ebm 
        \left[\begin{array}{c|c|c} 
@@ -3299,7 +3308,7 @@
    entries in $P$ multiplied by entries in $q$, so they are again
    nonnegative.  Moreover, the sum of the entries in $Pq$ is
    $d.Pq=d^TPq$, but $d^TP=d$, so this is the same as $d^Tq=d.q$,
-   which is one by assumption.  This proves that $Pq$ is a probability
+   which is $1$ by assumption.  This proves that $Pq$ is a probability
    vector.
   \item[(c)] Now let $Q$ be another $n\tm n$ stochastic matrix.  Let
    $w_1,\dotsc,w_n$ be the columns of $Q$, which are probability
@@ -3318,7 +3327,7 @@
 \end{solution}
 
 \begin{exercise}\label{ex-stochastic-ii}
- Suppose that $0<p,q<1$, and put $P=\bbm p& 1-q \\ 1-p & q\ebm$ (so
+ Suppose that $0<p<1$ and $0<q<1$, and put $P=\bbm p& 1-q \\ 1-p & q\ebm$ (so
  $P$ is a stochastic matrix).  Find the eigenvalues and eigenvectors
  of $P$ in terms of $p$ and $q$.  
 
@@ -3331,7 +3340,7 @@
      (p-t)(q-t)-(1-p)(1-q) = t^2-(p+q)t + (p+q-1).
  \]
  Every stochastic matrix has $1$ as an eigenvalue, so one of the roots
- of $\chi_P(t)$ is at $t=1$.  We can divide $t^2-(p+q)t - (1-p-q)$ by
+ of $\chi_P(t)$ is at $t=1$.  We can divide $t^2-(p+q)t + (p+q-1)$ by
  $t-1$ to obtain the factorisation $\chi_P(t)=(t-1)(t-(p+q-1))$, so
  the other eigenvalue is $r=p+q-1$.  To find an eigenvector
  $u_1=\bbm x\\ y\ebm$ of eigenvalue $1$, we must solve 
@@ -3553,7 +3562,7 @@
  By looking at the third entry, we see that the probability of being
  in state $3$ at $t=1111$ is zero.  In fact, this can be seen even
  more directly.  From the diagram we see that every second we switch
- from an odd-numbered state to an even numbered state or
+ from an odd-numbered state to an even-numbered state or
  \emph{vice-versa}.  We start in state $1$ at $t=0$, and at $t=1111$ we
  have switched over an odd number of times, so we must be in an
  even-numbered state, and in particular we cannot be in state $3$.
@@ -3682,8 +3691,11 @@
  \begin{itemize}
   \item[(a)] The set $V_1$ is a subspace of $\R^4$.  Indeed, if $v,v'\in V_1$
    then we have $v=\bbm s&t+s&t-s&t\ebm^T$ and $v'=\bbm
-   s'&t'+s'&t'-s'&t'\ebm^T$ for some $s,t,s',t'in\R$.  This means that
-   $v+v'=\bbm s''&t''+s''&t''-s''&t''\ebm^T$, where $s''=s+s'$ and
+   s'&t'+s'&t'-s'&t'\ebm^T$ for some $s,t,s',t'\in\R$.  This means that
+   \[
+   v+v'=\bbm s''&t''+s''&t''-s''&t''\ebm^T ,
+   \]
+   where $s''=s+s'$ and
    $t''=t+t'$.  It follows that $v+v'\in V_1$, so $V_1$ is closed under
    addition.  Similarly, if $a$ is any scalar, we have
    $av=\bbm s^*&t^*+s^*&t^*-s^*&t^*\ebm^T$, where $s^*=as$ and
@@ -3999,7 +4011,7 @@
  $\spn(v_1,v_2,v_3)=\spn(v_1,v_2)=\spn(w_1,w_2)$.  From this it
  follows as before that $\spn(v_1,v_2,v_3,w_1,w_2)$ is yet another
  description of the same space, and the canonical basis has two
- vectors so the dimension is two.
+ vectors so the dimension is $2$.
 \end{solution}
 
 \section{Lecture 16}
@@ -4156,7 +4168,7 @@
  for $V$ is the set of pivot columns for $B$, namely $\{1,2,3,4\}$.
 
  The same pattern works for general $n$.  In more detail, we can
- define vectors $w_1,\dotsc,w_{n-1}$ by $w_i=e_i-e_n$ and
+ define vectors $w_1,\dotsc,w_{n-1}$ by $w_i=e_i-e_n$, and we set
  $W=\spn(w_1,\dotsc,w_{n-1})$.  For $i<n-1$ we have 
  \[ v_i = e_i-e_{i+1} = (e_i-e_n) - (e_{i+1}-e_n) = w_i-w_{i+1}, \]
  whereas $v_{n-1}$ is just equal to $w_{n-1}$.  This shows that
@@ -4169,7 +4181,8 @@
  which shows that $w_i\in V$ for all $i$, and thus that $W\sse V$.  It
  follows that $W=V$, so the list $\CW=w_1,\dotsc,w_{n-1}$ spans $V$.
  The corresponding matrix $B=[w_1|\dotsb|w_{n-1}]^T$ is clearly in
- RREF, so $\CW$ is in fact the canonical basis for $V$.  It follows
+ RREF (and has no zero rows),
+ so $\CW$ is in fact the canonical basis for $V$.  It follows
  that $\dim(V)=n-1$ and $J(V)=\{1,2,\dotsc,n-1\}$.
 \end{solution}
 
@@ -4539,9 +4552,9 @@
  The dimension formula now gives
  \[ \dim(U\cap V) = \dim(U)+\dim(V)-\dim(U+V) = 2+2-3 = 1. \]
  It follows that any nonzero vector in $U\cap V$ (considered as a list
- of length one) forms a basis for $U\cap V$.  We have seen that the
+ of length $1$) forms a basis for $U\cap V$.  We have seen that the
  vector $w=\bbm 0&1&-1\ebm^T=u_2=v_2$ lies in both $U$ and $V$, so it
- forms a basis for $U\cap V$.  The first nonzero entry in $w$ is one,
+ forms a basis for $U\cap V$.  The first nonzero entry in $w$ is $1$,
  so this is the canonical basis.
 
  For a more direct approach, we can use the fact that 
@@ -4718,6 +4731,7 @@
    0&0&0\\
    \ebm
  \]
+ and
  \[ B = 
   \bbm
   1&2&3&4&5&6\\
@@ -4744,6 +4758,7 @@
   0&0&0&0&0&0\\
   \ebm
  \]
+ and
  \[ C = 
   \bbm
    1   &   10 &   100 \\
@@ -4763,6 +4778,7 @@
    0 &  0 & 0
   \ebm
  \]
+ and
  \[ D = 
   \bbm
   1&0&1&1&1\\
@@ -4796,6 +4812,8 @@
   0&0&0&0&0\\
   \ebm
   \to
+ \]
+ \[
   \bbm
   1&0&0&0&1\\
   0&1&0&0&0\\
@@ -4851,9 +4869,9 @@
              1 & 2 & t   & 3 & t \\
              1 & 4 & t^2 & 7 & 3 \ebm
  \]
- It should be clear that $A$ usually has rank two, except that when
+ It should be clear that $A$ usually has rank $2$, except that when
  $t=3$ or $t=4$ the second row becomes zero and so the rank is only
- one.  In the same way, for each of the other matrices, there is a
+ $1$.  In the same way, for each of the other matrices, there is a
  usual value for the rank, but the rank drops for some exceptional
  values of $t$.
  \begin{itemize}
