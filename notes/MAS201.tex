@@ -6972,15 +6972,41 @@ We now return to the proof of Proposition~\ref{prop-canonical-basis}.
  Suppose we have a subspace $V\sse\R^n$ and two RREF matrices $B$ and
  $C$ such that the columns of $B^T$ form a basis for $V$, and the
  columns of $C^T$ also form a basis for $V$.  We must show that $B=C$.
- First put $d=\dim(V)$.  Using Corollary~\ref{cor-basis-numerical}(c)
- we see that both $B^T$ and $C^T$ must have $d$ columns, so both $B$
- and $C$ are $d\tm n$ matrices.  Let $v_1,\dotsc,v_d$ be the columns
+ 
+ Lemma~\ref{lem-jumps-pivots} shows that the pivot
+ columns for $B$ are the same as the jumps for $V$, which, in turn,
+ are the same as the pivot columns for $C$.
+ Thus, in particular, the number of pivots of $B$ equals the number
+ of pivots of $C$.
+
+ As the columns of $B^T$ form a basis, they must be nonzero. Thus,
+ each of the rows of $B$ is nonzero and therefore contains a single
+ pivot.
+ Hence,
+ \[
+ \left(\text{number of pivots of $B$}\right)
+ = \left(\text{number of rows of $B$}\right).
+ \]
+ Likewise,
+ \[
+ \left(\text{number of pivots of $C$}\right)
+ = \left(\text{number of rows of $C$}\right).
+ \]
+ The left hand sides of these two equalities are equal (since the
+ number of pivots of $B$ equals the number of pivots of $C$).
+ Thus, so are the right hand sides.
+ In other words, the matrices $B$ and $C$ have the same number of rows.
+ Let $d$ be this number.
+ Thus, both $B$ and $C$ are $d\tm n$-matrices.
+ In other words, both $B^T$ and $C^T$ are $n\tm d$-matrices.
+ Let $v_1,\dotsc,v_d$ be the columns
  of $B^T$ and let $w_1,\dotsc,w_d$ be the columns of $C^T$.
  Thus, $v_1^T, \dotsc, v_d^T$ are the rows of $B$,
  and $w_1^T, \dots, w_d^T$ are the columns of $C$.
- As the columns of $B^T$ form a basis, they must be nonzero, so each
- of the $d$ rows of $B$ is nonzero and therefore contains a single
- pivot, which means that $B$ has precisely $d$ pivot columns, say
+
+ Recall that each of the $d$ rows of $B$ contains a single
+ pivot.
+ Hence, $B$ has precisely $d$ pivots, say
  in columns $p_1,\dotsc,p_d$.  We list these in order so that
  $p_1<\dotsb<p_d$.
  Because $B$ is in RREF, we see that the $p_i$'th component of $v_j$
@@ -6989,14 +7015,13 @@ We now return to the proof of Proposition~\ref{prop-canonical-basis}.
  since this component is the
  $j$'th entry of the $p_i$-th column of $B$).
 
- Similarly, the matrix $C$ has precisely $d$ pivot columns, say in
+ Similarly, the matrix $C$ has precisely $d$ pivots, say in
  columns $q_1,\dotsc,q_d$ with $q_1<\dotsb<q_d$.  Because $C$ is in
  RREF, we see that the $q_i$'th component of $w_j$ is $1$ when $i=j$,
  and $0$ when $i\neq j$.
 
- Next, using Lemma~\ref{lem-jumps-pivots} we see that the pivot
- columns for $B$ are the same as the jumps for $V$ which are the same
- as the pivot columns for $C$.  This means that $p_i=q_i$ for all $i$.
+ Recall that the pivot columns for $B$ are the same as
+ the pivot columns for $C$.  This means that $p_i=q_i$ for all $i$.
 
  Now consider one of the vectors $v_i$.  As $v_i\in V$ and
  $V=\spn(w_1,\dotsc,w_d)$, we can write $v_i$ as a linear combination
@@ -7006,7 +7031,7 @@ We now return to the proof of Proposition~\ref{prop-canonical-basis}.
  \label{pf.prop-canonical-basis.vi-through-wj}
  \end{equation}
  Let us now compare the $p_i$'th components (or equivalently, the $q_i$'th
- component) on both sides of this equality.
+ components) on both sides of this equality.
  On the left hand side we have $1$ (since the $p_i$'th
  component of $v_i$ is $1$), and on the right hand
  side the $\lm_i w_i$ term of the sum $\sum_j \lm_j w_j$ contributes
