@@ -1,0 +1,272 @@
+\indexentry{matrix|hyperpage}{2}
+\indexentry{scalar|hyperpage}{2}
+\indexentry{n-vector|hyperpage}{2}
+\indexentry{transpose|hyperpage}{2}
+\indexentry{standard basis vector|hyperpage}{3}
+\indexentry{Maple|hyperpage}{3}
+\indexentry{dot product|hyperpage}{3}
+\indexentry{transpose|hyperpage}{5}
+\indexentry{linear equation|hyperpage}{6}
+\indexentry{augmented matrix|hyperpage}{7}
+\indexentry{zero|hyperpage}{7}
+\indexentry{nonzero|hyperpage}{7}
+\indexentry{reduced row-echelon form|hyperpage}{7}
+\indexentry{RREF|hyperpage}{7}
+\indexentry{pivots|hyperpage}{7}
+\indexentry{augmented matrix|hyperpage}{8}
+\indexentry{dependent variables|hyperpage}{8}
+\indexentry{independent variables|hyperpage}{8}
+\indexentry{row operation|hyperpage}{10}
+\indexentry{row reduction|hyperpage}{10}
+\indexentry{Maple|hyperpage}{11}
+\indexentry{augmented matrix|hyperpage}{12}
+\indexentry{linear equation|hyperpage}{12}
+\indexentry{augmented matrix|hyperpage}{12}
+\indexentry{linear equation|hyperpage}{12}
+\indexentry{homogeneous|hyperpage}{14}
+\indexentry{linear combination|hyperpage}{14}
+\indexentry{linear combination|hyperpage}{16}
+\indexentry{linear relation|hyperpage}{18}
+\indexentry{linearly dependent|hyperpage}{18}
+\indexentry{linearly independent|hyperpage}{18}
+\indexentry{wide|hyperpage}{19}
+\indexentry{square|hyperpage}{19}
+\indexentry{tall|hyperpage}{19}
+\indexentry{pivot|hyperpage}{19}
+\indexentry{linearly dependent|hyperpage}{19}
+\indexentry{linearly independent|hyperpage}{19}
+\indexentry{pivot|hyperpage}{19}
+\indexentry{wide|hyperpage}{20}
+\indexentry{numerical criteria|hyperpage}{20}
+\indexentry{span|hyperpage}{21}
+\indexentry{span|hyperpage}{22}
+\indexentry{pivot|hyperpage}{22}
+\indexentry{wide|hyperpage}{23}
+\indexentry{numerical criteria|hyperpage}{23}
+\indexentry{span|hyperpage}{24}
+\indexentry{span|hyperpage}{25}
+\indexentry{span|hyperpage}{25}
+\indexentry{pivot|hyperpage}{25}
+\indexentry{duality|hyperpage}{26}
+\indexentry{span|hyperpage}{26}
+\indexentry{linearly independent|hyperpage}{26}
+\indexentry{basis|hyperpage}{26}
+\indexentry{basis|hyperpage}{27}
+\indexentry{basis|hyperpage}{27}
+\indexentry{Hilbert matrix|hyperpage}{29}
+\indexentry{duality|hyperpage}{30}
+\indexentry{basis|hyperpage}{30}
+\indexentry{basis|hyperpage}{30}
+\indexentry{numerical criteria|hyperpage}{30}
+\indexentry{elementary matrix|hyperpage}{30}
+\indexentry{elementary matrix|hyperpage}{30}
+\indexentry{row operation|hyperpage}{30}
+\indexentry{elementary matrix|hyperpage}{31}
+\indexentry{row operation|hyperpage}{31}
+\indexentry{invertible|hyperpage}{31}
+\indexentry{basis|hyperpage}{31}
+\indexentry{linearly independent|hyperpage}{31}
+\indexentry{span|hyperpage}{31}
+\indexentry{transpose|hyperpage}{31}
+\indexentry{duality|hyperpage}{31}
+\indexentry{invertible|hyperpage}{32}
+\indexentry{invertible|hyperpage}{32}
+\indexentry{transpose|hyperpage}{32}
+\indexentry{elementary matrix|hyperpage}{32}
+\indexentry{invertible|hyperpage}{32}
+\indexentry{invertible|hyperpage}{33}
+\indexentry{invertible|hyperpage}{33}
+\indexentry{row operation|hyperpage}{33}
+\indexentry{inverse|hyperpage}{33}
+\indexentry{augmented matrix|hyperpage}{33}
+\indexentry{determinant|hyperpage}{34}
+\indexentry{Leibniz formula for determinants|hyperpage}{34}
+\indexentry{determinant|hyperpage}{34}
+\indexentry{Maple|hyperpage}{34}
+\indexentry{determinant|hyperpage}{34}
+\indexentry{determinant|hyperpage}{34}
+\indexentry{triangular matrix|hyperpage}{34}
+\indexentry{upper-triangular|hyperpage}{34}
+\indexentry{lower-triangular|hyperpage}{34}
+\indexentry{determinant|hyperpage}{35}
+\indexentry{determinant|hyperpage}{35}
+\indexentry{elementary matrix|hyperpage}{35}
+\indexentry{determinant|hyperpage}{35}
+\indexentry{transpose|hyperpage}{35}
+\indexentry{determinant|hyperpage}{35}
+\indexentry{determinant|hyperpage}{35}
+\indexentry{row operation|hyperpage}{35}
+\indexentry{minor|hyperpage}{36}
+\indexentry{adjugate|hyperpage}{36}
+\indexentry{classical adjoint|hyperpage}{36}
+\indexentry{determinant|hyperpage}{36}
+\indexentry{expansion of determinant|hyperpage}{36}
+\indexentry{inverse|hyperpage}{37}
+\indexentry{determinant|hyperpage}{37}
+\indexentry{adjugate|hyperpage}{37}
+\indexentry{eigenvector|hyperpage}{39}
+\indexentry{eigenvalue|hyperpage}{39}
+\indexentry{eigenvalue|hyperpage}{39}
+\indexentry{eigenvector|hyperpage}{39}
+\indexentry{eigenvalue|hyperpage}{39}
+\indexentry{eigenvector|hyperpage}{39}
+\indexentry{eigenvalue|hyperpage}{40}
+\indexentry{eigenvector|hyperpage}{40}
+\indexentry{Maple|hyperpage}{40}
+\indexentry{determinant|hyperpage}{40}
+\indexentry{characteristic polynomial|hyperpage}{40}
+\indexentry{characteristic polynomial|hyperpage}{41}
+\indexentry{transpose|hyperpage}{41}
+\indexentry{eigenvalue|hyperpage}{42}
+\indexentry{eigenvector|hyperpage}{42}
+\indexentry{characteristic polynomial|hyperpage}{42}
+\indexentry{eigenvector!linear independence|hyperpage}{43}
+\indexentry{linearly independent!eigenvectors|hyperpage}{43}
+\indexentry{eigenvector!linear independence|hyperpage}{44}
+\indexentry{linearly independent!eigenvectors|hyperpage}{44}
+\indexentry{eigenvector!linear independence|hyperpage}{44}
+\indexentry{linearly independent!eigenvectors|hyperpage}{44}
+\indexentry{eigenvector!basis of|hyperpage}{45}
+\indexentry{basis!of eigenvectors|hyperpage}{45}
+\indexentry{eigenvector!basis of|hyperpage}{45}
+\indexentry{basis!of eigenvectors|hyperpage}{45}
+\indexentry{matrix!diagonal|hyperpage}{46}
+\indexentry{diagonalise|hyperpage}{46}
+\indexentry{diagonalisable|hyperpage}{46}
+\indexentry{eigenvector!basis of|hyperpage}{46}
+\indexentry{basis!of eigenvectors|hyperpage}{46}
+\indexentry{matrix!powers|hyperpage}{49}
+\indexentry{powers of a matrix|hyperpage}{49}
+\indexentry{diagonalisation|hyperpage}{49}
+\indexentry{differential equation|hyperpage}{52}
+\indexentry{equation!differential|hyperpage}{52}
+\indexentry{difference equation|hyperpage}{54}
+\indexentry{equation!difference|hyperpage}{54}
+\indexentry{matrix!powers|hyperpage}{54}
+\indexentry{powers of a matrix|hyperpage}{54}
+\indexentry{diagonalisation|hyperpage}{54}
+\indexentry{Markov chain|hyperpage}{57}
+\indexentry{matrix!transition|hyperpage}{57}
+\indexentry{transition matrix|hyperpage}{58}
+\indexentry{stochastic matrix|hyperpage}{58}
+\indexentry{matrix!stochastic|hyperpage}{58}
+\indexentry{probability vector|hyperpage}{58}
+\indexentry{stochastic matrix|hyperpage}{58}
+\indexentry{matrix!stochastic|hyperpage}{58}
+\indexentry{transition matrix|hyperpage}{58}
+\indexentry{matrix!transition|hyperpage}{58}
+\indexentry{distribution|hyperpage}{59}
+\indexentry{matrix!powers|hyperpage}{59}
+\indexentry{powers of a matrix|hyperpage}{59}
+\indexentry{diagonalisation|hyperpage}{59}
+\indexentry{stochastic matrix|hyperpage}{60}
+\indexentry{matrix!stochastic|hyperpage}{60}
+\indexentry{eigenvalue!of a stochastic matrix|hyperpage}{60}
+\indexentry{probability vector|hyperpage}{60}
+\indexentry{stationary distribution|hyperpage}{60}
+\indexentry{PageRank|hyperpage}{61}
+\indexentry{Markov chain|hyperpage}{62}
+\indexentry{transition matrix|hyperpage}{62}
+\indexentry{matrix!transition|hyperpage}{62}
+\indexentry{damping factor|hyperpage}{62}
+\indexentry{Maple|hyperpage}{63}
+\indexentry{subspace|hyperpage}{64}
+\indexentry{linear combination!in a subspace|hyperpage}{66}
+\indexentry{subspace|hyperpage}{66}
+\indexentry{subspace!of the plane|hyperpage}{66}
+\indexentry{span!definition|hyperpage}{66}
+\indexentry{annihilator!definition|hyperpage}{66}
+\indexentry{linear equation|hyperpage}{67}
+\indexentry{equation!linear|hyperpage}{67}
+\indexentry{kernel!definition|hyperpage}{67}
+\indexentry{kernel!as an annihilator|hyperpage}{67}
+\indexentry{image!definition|hyperpage}{69}
+\indexentry{image!as a span|hyperpage}{69}
+\indexentry{annihilator!is a subspace|hyperpage}{70}
+\indexentry{subspace|hyperpage}{70}
+\indexentry{span!is a subspace|hyperpage}{70}
+\indexentry{subspace|hyperpage}{70}
+\indexentry{basis!of a subspace|hyperpage}{71}
+\indexentry{subspace|hyperpage}{71}
+\indexentry{dimension!definition|hyperpage}{71}
+\indexentry{dimension|hyperpage}{71}
+\indexentry{basis!of a subspace|hyperpage}{71}
+\indexentry{subspace|hyperpage}{71}
+\indexentry{basis!of a subspace|hyperpage}{71}
+\indexentry{subspace|hyperpage}{71}
+\indexentry{basis!of a subspace|hyperpage}{71}
+\indexentry{subspace|hyperpage}{71}
+\indexentry{numerical criteria|hyperpage}{71}
+\indexentry{basis!canonical!definition|hyperpage}{72}
+\indexentry{canonical basis|hyperpage}{72}
+\indexentry{basis!of a subspace|hyperpage}{72}
+\indexentry{jump!definition|hyperpage}{73}
+\indexentry{jump!in terms of pivots|hyperpage}{73}
+\indexentry{basis!canonical!for a span|hyperpage}{74}
+\indexentry{span!canonical basis|hyperpage}{74}
+\indexentry{basis!canonical!for an annihilator|hyperpage}{77}
+\indexentry{annihilator!canonical basis|hyperpage}{77}
+\indexentry{basis!canonical!for an annihilator|hyperpage}{79}
+\indexentry{annihilator!canonical basis|hyperpage}{79}
+\indexentry{span!describing as annihilator|hyperpage}{81}
+\indexentry{span!describing as annihilator|hyperpage}{81}
+\indexentry{subspace!sum of|hyperpage}{81}
+\indexentry{subspace!intersection of|hyperpage}{81}
+\indexentry{span!sum of|hyperpage}{82}
+\indexentry{annihilator!intersection of|hyperpage}{82}
+\indexentry{subspace!sum of|hyperpage}{82}
+\indexentry{basis!canonical!for sum|hyperpage}{82}
+\indexentry{subspace!intersection of|hyperpage}{83}
+\indexentry{basis!canonical!for intersection|hyperpage}{83}
+\indexentry{dimension formula|hyperpage}{83}
+\indexentry{dimension!of sum and intersection|hyperpage}{83}
+\indexentry{subspace!sum of!dimension|hyperpage}{83}
+\indexentry{subspace!intersection of of!dimension|hyperpage}{83}
+\indexentry{rank!definition|hyperpage}{86}
+\indexentry{nullity!definition|hyperpage}{86}
+\indexentry{RCEF|hyperpage}{86}
+\indexentry{reduced column echelon form|hyperpage}{86}
+\indexentry{copivots|hyperpage}{86}
+\indexentry{column operation|hyperpage}{86}
+\indexentry{rank!of an RCEF matrix|hyperpage}{86}
+\indexentry{rank!invariance under column operations|hyperpage}{87}
+\indexentry{rank!invariance under row operations|hyperpage}{87}
+\indexentry{normal form|hyperpage}{87}
+\indexentry{row rank|hyperpage}{89}
+\indexentry{column rank|hyperpage}{89}
+\indexentry{rank!bounded by size of matrix|hyperpage}{89}
+\indexentry{matrix!orthogonal|hyperpage}{89}
+\indexentry{orthogonal matrix|hyperpage}{89}
+\indexentry{orthonormal|hyperpage}{89}
+\indexentry{matrix!symmetric|hyperpage}{90}
+\indexentry{symmetric|hyperpage}{90}
+\indexentry{eigenvalue!of symmetric matrix|hyperpage}{90}
+\indexentry{eigenvector!of symmetric matrix|hyperpage}{90}
+\indexentry{spectral theorem|hyperpage}{91}
+\indexentry{basis!orthonormal|hyperpage}{91}
+\indexentry{basis!of eigenvectors|hyperpage}{91}
+\indexentry{diagonalisation!orthogonal|hyperpage}{92}
+\indexentry{matrix!symmetric!square root|hyperpage}{93}
+\indexentry{linear form|hyperpage}{94}
+\indexentry{quadratic form|hyperpage}{94}
+\indexentry{quadratic form!diagonalisation|hyperpage}{94}
+\indexentry{diagonalisation!of quadratic form|hyperpage}{94}
+\indexentry{rank|hyperpage}{96}
+\indexentry{quadratic form!rank|hyperpage}{96}
+\indexentry{signature|hyperpage}{96}
+\indexentry{quadratic form!signature|hyperpage}{96}
+\indexentry{permutation|hyperpage}{97}
+\indexentry{reversal|hyperpage}{97}
+\indexentry{inversion|hyperpage}{97}
+\indexentry{signature|hyperpage}{98}
+\indexentry{even permutation|hyperpage}{98}
+\indexentry{odd permutation|hyperpage}{98}
+\indexentry{transposition|hyperpage}{98}
+\indexentry{minor matrices|hyperpage}{104}
+\indexentry{minor determinants|hyperpage}{104}
+\indexentry{cofactor|hyperpage}{104}
+\indexentry{expansion of determinant|hyperpage}{106}
+\indexentry{Laplace expansion along the $p$'th row|hyperpage}{106}
+\indexentry{Laplace expansion along the $q$'th column|hyperpage}{106}
+\indexentry{adjugate|hyperpage}{107}
+\indexentry{jump!in terms of pivots|hyperpage}{107}

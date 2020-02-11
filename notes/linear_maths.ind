@@ -1,0 +1,228 @@
+\begin{theindex}
+
+  \item adjugate, \hyperpage{36, 37}, \hyperpage{107}
+  \item annihilator
+    \subitem canonical basis, \hyperpage{77}, \hyperpage{79}
+    \subitem definition, \hyperpage{66}
+    \subitem intersection of, \hyperpage{82}
+    \subitem is a subspace, \hyperpage{70}
+  \item augmented matrix, \hyperpage{7, 8}, \hyperpage{12}, 
+		\hyperpage{33}
+
+  \indexspace
+
+  \item basis, \hyperpage{26, 27}, \hyperpage{30, 31}
+    \subitem canonical
+      \subsubitem definition, \hyperpage{72}
+      \subsubitem for a span, \hyperpage{74}
+      \subsubitem for an annihilator, \hyperpage{77}, \hyperpage{79}
+      \subsubitem for intersection, \hyperpage{83}
+      \subsubitem for sum, \hyperpage{82}
+    \subitem of a subspace, \hyperpage{71, 72}
+    \subitem of eigenvectors, \hyperpage{45, 46}, \hyperpage{91}
+    \subitem orthonormal, \hyperpage{91}
+
+  \indexspace
+
+  \item canonical basis, \hyperpage{72}
+  \item characteristic polynomial, \hyperpage{40--42}
+  \item classical adjoint, \hyperpage{36}
+  \item cofactor, \hyperpage{104}
+  \item column operation, \hyperpage{86}
+  \item column rank, \hyperpage{89}
+  \item copivots, \hyperpage{86}
+
+  \indexspace
+
+  \item damping factor, \hyperpage{62}
+  \item dependent variables, \hyperpage{8}
+  \item determinant, \hyperpage{34--37}, \hyperpage{40}
+  \item diagonalisable, \hyperpage{46}
+  \item diagonalisation, \hyperpage{49}, \hyperpage{54}, \hyperpage{59}
+    \subitem of quadratic form, \hyperpage{94}
+    \subitem orthogonal, \hyperpage{92}
+  \item diagonalise, \hyperpage{46}
+  \item difference equation, \hyperpage{54}
+  \item differential equation, \hyperpage{52}
+  \item dimension, \hyperpage{71}
+    \subitem definition, \hyperpage{71}
+    \subitem of sum and intersection, \hyperpage{83}
+  \item dimension formula, \hyperpage{83}
+  \item distribution, \hyperpage{59}
+  \item dot product, \hyperpage{3}
+  \item duality, \hyperpage{26}, \hyperpage{30, 31}
+
+  \indexspace
+
+  \item eigenvalue, \hyperpage{39, 40}, \hyperpage{42}
+    \subitem of a stochastic matrix, \hyperpage{60}
+    \subitem of symmetric matrix, \hyperpage{90}
+  \item eigenvector, \hyperpage{39, 40}, \hyperpage{42}
+    \subitem basis of, \hyperpage{45, 46}
+    \subitem linear independence, \hyperpage{43, 44}
+    \subitem of symmetric matrix, \hyperpage{90}
+  \item elementary matrix, \hyperpage{30--32}, \hyperpage{35}
+  \item equation
+    \subitem difference, \hyperpage{54}
+    \subitem differential, \hyperpage{52}
+    \subitem linear, \hyperpage{67}
+  \item even permutation, \hyperpage{98}
+  \item expansion of determinant, \hyperpage{36}, \hyperpage{106}
+
+  \indexspace
+
+  \item Hilbert matrix, \hyperpage{29}
+  \item homogeneous, \hyperpage{14}
+
+  \indexspace
+
+  \item image
+    \subitem as a span, \hyperpage{69}
+    \subitem definition, \hyperpage{69}
+  \item independent variables, \hyperpage{8}
+  \item inverse, \hyperpage{33}, \hyperpage{37}
+  \item inversion, \hyperpage{97}
+  \item invertible, \hyperpage{31--33}
+
+  \indexspace
+
+  \item jump
+    \subitem definition, \hyperpage{73}
+    \subitem in terms of pivots, \hyperpage{73}, \hyperpage{107}
+
+  \indexspace
+
+  \item kernel
+    \subitem as an annihilator, \hyperpage{67}
+    \subitem definition, \hyperpage{67}
+
+  \indexspace
+
+  \item Laplace expansion along the $p$'th row, \hyperpage{106}
+  \item Laplace expansion along the $q$'th column, \hyperpage{106}
+  \item Leibniz formula for determinants, \hyperpage{34}
+  \item linear combination, \hyperpage{14}, \hyperpage{16}
+    \subitem in a subspace, \hyperpage{66}
+  \item linear equation, \hyperpage{6}, \hyperpage{12}, \hyperpage{67}
+  \item linear form, \hyperpage{94}
+  \item linear relation, \hyperpage{18}
+  \item linearly dependent, \hyperpage{18, 19}
+  \item linearly independent, \hyperpage{18, 19}, \hyperpage{26}, 
+		\hyperpage{31}
+    \subitem eigenvectors, \hyperpage{43, 44}
+  \item lower-triangular, \hyperpage{34}
+
+  \indexspace
+
+  \item Maple, \hyperpage{3}, \hyperpage{11}, \hyperpage{34}, 
+		\hyperpage{40}, \hyperpage{63}
+  \item Markov chain, \hyperpage{57}, \hyperpage{62}
+  \item matrix, \hyperpage{2}
+    \subitem diagonal, \hyperpage{46}
+    \subitem orthogonal, \hyperpage{89}
+    \subitem powers, \hyperpage{49}, \hyperpage{54}, \hyperpage{59}
+    \subitem stochastic, \hyperpage{58}, \hyperpage{60}
+    \subitem symmetric, \hyperpage{90}
+      \subsubitem square root, \hyperpage{93}
+    \subitem transition, \hyperpage{57, 58}, \hyperpage{62}
+  \item minor, \hyperpage{36}
+  \item minor determinants, \hyperpage{104}
+  \item minor matrices, \hyperpage{104}
+
+  \indexspace
+
+  \item n-vector, \hyperpage{2}
+  \item nonzero, \hyperpage{7}
+  \item normal form, \hyperpage{87}
+  \item nullity
+    \subitem definition, \hyperpage{86}
+  \item numerical criteria, \hyperpage{20}, \hyperpage{23}, 
+		\hyperpage{30}, \hyperpage{71}
+
+  \indexspace
+
+  \item odd permutation, \hyperpage{98}
+  \item orthogonal matrix, \hyperpage{89}
+  \item orthonormal, \hyperpage{89}
+
+  \indexspace
+
+  \item PageRank, \hyperpage{61}
+  \item permutation, \hyperpage{97}
+  \item pivot, \hyperpage{19}, \hyperpage{22}, \hyperpage{25}
+  \item pivots, \hyperpage{7}
+  \item powers of a matrix, \hyperpage{49}, \hyperpage{54}, 
+		\hyperpage{59}
+  \item probability vector, \hyperpage{58}, \hyperpage{60}
+
+  \indexspace
+
+  \item quadratic form, \hyperpage{94}
+    \subitem diagonalisation, \hyperpage{94}
+    \subitem rank, \hyperpage{96}
+    \subitem signature, \hyperpage{96}
+
+  \indexspace
+
+  \item rank, \hyperpage{96}
+    \subitem bounded by size of matrix, \hyperpage{89}
+    \subitem definition, \hyperpage{86}
+    \subitem invariance under column operations, \hyperpage{87}
+    \subitem invariance under row operations, \hyperpage{87}
+    \subitem of an RCEF matrix, \hyperpage{86}
+  \item RCEF, \hyperpage{86}
+  \item reduced column echelon form, \hyperpage{86}
+  \item reduced row-echelon form, \hyperpage{7}
+  \item reversal, \hyperpage{97}
+  \item row operation, \hyperpage{10}, \hyperpage{30, 31}, 
+		\hyperpage{33}, \hyperpage{35}
+  \item row rank, \hyperpage{89}
+  \item row reduction, \hyperpage{10}
+  \item RREF, \hyperpage{7}
+
+  \indexspace
+
+  \item scalar, \hyperpage{2}
+  \item signature, \hyperpage{96}, \hyperpage{98}
+  \item span, \hyperpage{21, 22}, \hyperpage{24--26}, \hyperpage{31}
+    \subitem canonical basis, \hyperpage{74}
+    \subitem definition, \hyperpage{66}
+    \subitem describing as annihilator, \hyperpage{81}
+    \subitem is a subspace, \hyperpage{70}
+    \subitem sum of, \hyperpage{82}
+  \item spectral theorem, \hyperpage{91}
+  \item square, \hyperpage{19}
+  \item standard basis vector, \hyperpage{3}
+  \item stationary distribution, \hyperpage{60}
+  \item stochastic matrix, \hyperpage{58}, \hyperpage{60}
+  \item subspace, \hyperpage{64}, \hyperpage{66}, \hyperpage{70, 71}
+    \subitem intersection of, \hyperpage{81}, \hyperpage{83}
+    \subitem intersection of of
+      \subsubitem dimension, \hyperpage{83}
+    \subitem of the plane, \hyperpage{66}
+    \subitem sum of, \hyperpage{81, 82}
+      \subsubitem dimension, \hyperpage{83}
+  \item symmetric, \hyperpage{90}
+
+  \indexspace
+
+  \item tall, \hyperpage{19}
+  \item transition matrix, \hyperpage{58}, \hyperpage{62}
+  \item transpose, \hyperpage{2}, \hyperpage{5}, \hyperpage{31, 32}, 
+		\hyperpage{35}, \hyperpage{41}
+  \item transposition, \hyperpage{98}
+  \item triangular matrix, \hyperpage{34}
+
+  \indexspace
+
+  \item upper-triangular, \hyperpage{34}
+
+  \indexspace
+
+  \item wide, \hyperpage{19, 20}, \hyperpage{23}
+
+  \indexspace
+
+  \item zero, \hyperpage{7}
+
+\end{theindex}

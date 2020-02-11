@@ -1,0 +1,38 @@
+\frametitle{Calculating PageRank as a limit}
+
+  \uc<1->{\texttt{with(LinearAlgebra):}}\\
+  \uc<1->{\texttt{n := 5;}}\\
+  \uc<1->{\texttt{P := <<  0 |   0 | 0   |   0 |   0 >,}}\\
+  \uc<1->{\texttt{      <1/3 |   0 | 0   | 1/2 | 1/2 >,}}\\
+  \uc<1->{\texttt{      <1/3 |   0 | 0   | 1/2 |   0 >,}}\\
+  \uc<1->{\texttt{      <1/3 | 1/2 | 1/2 |   0 | 1/2 >,}}\\
+  \uc<1->{\texttt{      <  0 | 1/2 | 1/2 |   0 |   0 >>;}}\\
+  \uc<2->{\texttt{q := Vector(\RED{n},[\BLUE{1/n} \OLG{\$ n}]);}}\\
+  \uc<3->{\texttt{r := evalf(P{\textasciicircum}10 . q);}}\\
+
+  \medskip
+
+  \uc<4->{Result: $
+   r = \bbm
+    0.0 \\
+    0.2783203125 \\
+    0.1667317708 \\
+    0.3332682292 \\
+    0.2216796875
+   \ebm
+  $, close to the exact value of
+  $ \bbm  0.0 \\
+             0.2777777778 \\
+             0.1666666667 \\
+             0.3333333333 \\
+             0.2222222222
+       \ebm
+  $}
+
+  \reminderbar
+
+  \uc<2->{$q$ is a vector of length $\RED{n}$, whose entries are
+   $\BLUE{1/n}$, \OLG{repeated $n$ times}.}
+
+  \uc<3->{We have seen that $r=\lim_{k\to\infty}P^kq$, so $r=P^{10}q$
+   should be approximately right.}

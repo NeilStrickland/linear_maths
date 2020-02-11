@@ -1,0 +1,5507 @@
+\documentclass[a4paper]{article}
+\usepackage[pdftex]{graphicx}
+\usepackage{color}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{verbatim}
+
+\setlength{\topmargin}{-1cm}
+\setlength{\oddsidemargin}{-1cm}
+\setlength{\evensidemargin}{-1cm}
+\setlength{\textwidth}{18cm}
+\setlength{\textheight}{24.5cm}
+
+\input{../macros/macros}
+%\input{solmac}
+\input{nosolmac}
+
+\begin{document}
+
+\begin{center}
+ {\Huge Linear Mathematics for Applications \\ All exam questions}
+\end{center}
+\vspace{4ex}
+
+\section{Question 1}
+\setcounter{probcounter}{0}
+
+\begin{problem}[2013-14]
+ You may assume the following row reductions.  Some of them are
+ relevant, and some of them are not.  Some questions can be done more 
+ easily without row-reduction.
+ \[ \bbm
+     0&2&0&-1&10\\
+     0&-1&1&1&5\\
+     -1&-3&2&2&-7\\
+     -1&3&3&0&36\\
+     \ebm
+      \to \bbm
+     1&0&0&0&9\\
+     0&1&0&0&8\\
+     0&0&1&0&7\\
+     0&0&0&1&6\\
+     \ebm
+    \hspace{4em}
+     \bbm
+     0&0&-1&-1\\
+     2&-1&-3&3\\
+     0&1&2&3\\
+     -1&1&2&0\\
+     10&5&-7&36\\
+     \ebm
+      \to \bbm
+     1&0&0&0\\
+     0&1&0&0\\
+     0&0&1&0\\
+     0&0&0&1\\
+     0&0&0&0\\
+     \ebm
+  \]
+  \[ \bbm
+     0&0&1&0\\
+     1&0&0&1\\
+     0&1&0&0\\
+     0&0&1&0\\
+     \ebm
+      \to \bbm
+     1&0&0&1\\
+     0&1&0&0\\
+     0&0&1&0\\
+     0&0&0&0\\
+     \ebm
+     \hspace{4em}
+     \bbm
+     0&1&0&0\\
+     0&0&1&0\\
+     1&0&0&1\\
+     0&1&0&0\\
+     \ebm
+      \to \bbm
+     1&0&0&1\\
+     0&1&0&0\\
+     0&0&1&0\\
+     0&0&0&0\\
+     \ebm
+   \]
+ \begin{itemize}
+  \item[(a)] Give examples of the following: \mrks{6}
+   \begin{itemize}
+    \item[(i)] A $3\tm 3$ RREF matrix $A$ such that $A^T$ is also in RREF.
+    \item[(ii)] A $2\tm 4$ RREF matrix $B$ that is no longer in RREF
+     if you delete the second column.
+    \item[(iii)] A $3\tm 3$ RREF matrix $C$ in which four of the
+     entries are not zero.
+   \end{itemize}
+  \item[(b)] Find the general solution for the following system of
+   linear equations, or prove that there is no solution. \mrks{4}
+   \begin{align*}
+    2b &= 10+d \\
+    c+d &= b+5 \\
+    2c+2d &= a+3b-7 \\
+    3b+3c &= a+36.
+   \end{align*}
+  \item[(c)] Consider the vectors
+   \[
+    v   = \bbm 4\\5\\6\\7 \ebm \qquad
+    u_1 = \bbm 1\\2\\3\\4 \ebm \qquad
+    u_2 = \bbm 5\\6\\7\\8 \ebm \qquad
+    u_3 = \bbm 8\\7\\6\\5 \ebm \qquad
+    u_4 = \bbm 4\\3\\2\\1 \ebm \qquad
+   \]
+   Either express $v$ as a linear combination of $u_1$, $u_2$, $u_3$ and
+   $u_4$, or prove that that is impossible. \mrks{4}
+  \item[(d)] Do the vectors $u_i$ in part~(c) form a basis for $\R^4$?
+   Justify your answer. \mrks{2}
+  \item[(e)] By performing row operations on $C-tI$ or otherwise, evaluate
+   the characteristic polynomial of the following matrix: \mrks{4}
+   \[ C = \bbm
+           0&0&1&0\\
+           1&0&0&1\\
+           0&1&0&0\\
+           0&0&1&0\\
+          \ebm.
+   \]
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)]
+   \begin{itemize}
+    \item[(i)] The only possibilities are as follows:
+     \[ \bbm 0&0&0 \\ 0&0&0 \\ 0&0&0 \ebm \qquad
+        \bbm 1&0&0 \\ 0&0&0 \\ 0&0&0 \ebm \qquad
+        \bbm 1&0&0 \\ 0&1&0 \\ 0&0&0 \ebm \qquad
+        \bbm 1&0&0 \\ 0&1&0 \\ 0&0&1 \ebm.
+     \]
+     Any one is worth two marks. \mks{2}
+    \item[(ii)] The simplest example is
+     \[ B = \bbm 0&1&0&0 \\ 0&0&1&0 \ebm. \]
+     If we delete the second column, then we get a matrix with a zero
+     row above a nonzero row, which is therefore not in RREF. \mks{2}
+    \item[(iii)] All possible answers have the form
+     \[ C = \bbm 1 & 0 & a \\ 0 & 1 & b \\ 0 & 0 & 0 \ebm \]
+     with $a,b\neq 0$. \mks{2}
+   \end{itemize}
+  \item[(b)] We write the equations more tidily, convert to an
+   augmented matrix, row reduce (using one of the given
+   row-reductions), and convert back to a system of equations \mks{3}.
+   \[
+    \begin{array}{rl}
+     0a +2b + 0c -  d &= 10 \\
+     0a - b +  c +  d &=  5 \\
+     -a -3b + 2c + 2d &= -7 \\
+     -a +3b + 3c + 0d &= 36 
+    \end{array}
+    \to 
+    \left[\begin{array}{cccc|c}
+      0 &  2 &  0 & -1 & 10 \\
+      0 & -1 &  1 &  1 &  5 \\
+     -1 & -3 &  2 &  2 & -7 \\
+     -1 &  3 &  3 &  0 & 36
+    \end{array}\right]
+    \to 
+    \left[\begin{array}{cccc|c}
+      1 & 0 & 0 & 0 & 9 \\
+      0 & 1 & 0 & 0 & 8 \\
+      0 & 0 & 1 & 0 & 7 \\
+      0 & 0 & 0 & 1 & 6
+    \end{array}\right]
+    \to
+    \begin{array}{rl}
+     a &= 9 \\
+     b &= 8 \\
+     c &= 7 \\
+     d &= 6.
+    \end{array}
+   \]
+   This gives the unique solution of the original system. \mk
+  \item[(c)] It is easiest to do this by inspection.  We have
+   \[ u_2 - u_1 = \bbm 4\\4\\4\\4 \ebm \qquad \text{ and } \qquad
+      v - u_1 = \bbm 3\\3\\3\\3 \ebm = 
+      \frac{3}{4}(u_2-u_1),
+   \]
+   which gives
+   \[ v = u_1 + \frac{3}{4}(u_2-u_1) = \frac{1}{4}u_1 + \frac{3}{4}u_2.
+     \mks{4}
+   \]
+   Alternatively, we can row-reduce the matrix
+   $[u_1|u_2|u_3|u_4|v]$:
+   \[ \hspace{-8em}
+    \bbm
+    1&5&8&4&4\\
+    2&6&7&3&5\\
+    3&7&6&2&6\\
+    4&8&5&1&7\\
+    \ebm
+    \to
+    \bbm
+    1&5&8&4&4\\
+    0&-4&-9&-5&-3\\
+    0&-8&-18&-10&-6\\
+    0&-12&-27&-15&-9\\
+    \ebm
+    \to
+    \bbm
+    1&5&8&4&4\\
+    0&1&9/4&5/4&3/4\\
+    0&-8&-18&-10&-6\\
+    0&-12&-27&-15&-9\\
+    \ebm
+    \to
+    \bbm
+    1&0&-13/4&-9/4&1/4\\
+    0&1&9/4&5/4&3/4\\
+    0&0&0&0&0\\
+    0&0&0&0&0\\
+    \ebm
+   \]
+   This shows that $v=\lm_1u_1+\dotsb+\lm_4u_4$ whenever 
+   \begin{align*}
+    \lm_1 - \tfrac{13}{4}\lm_3-\tfrac{9}{4}\lm_4 &= \tfrac{1}{4} \\
+    \lm_2 + \tfrac{9}{4}\lm_3+\tfrac{5}{4}\lm_4 &= \tfrac{3}{4}.
+   \end{align*}
+   Here $\lm_3$ and $\lm_4$ are independent variables, which can take
+   any value.  In particular, we can take $\lm_3=\lm_4=0$, giving
+   $\lm_1=1/4$ and $\lm_2=3/4$.  This gives
+   $v=\tfrac{1}{4}u_1+\tfrac{3}{4}u_2$, just as before. 
+  \item[(d)] It is easy to see that $u_1+u_3=u_2+u_4$, or equivalently
+   $u_1-u_2+u_3-u_4=0$.  This nontrivial relation shows that the list
+   $u_1,u_2,u_3,u_4$ is linearly dependent and therefore not a basis. \mks{2}
+   Alternatively, we can delete the last column from the row-reduction
+   in~(d) to see that the matrix $[u_1|u_2|u_3|u_4]$ does not reduce to
+   $I_4$, which again proves that the list is not a basis.
+  \item[(e)] We write down $C-tI$ and perform some row operations as
+   follows.
+   \[  \hspace{-8em}
+    \bbm
+    -t&0&1&0\\
+    1&-t&0&1\\
+    0&1&-t&0\\
+    0&0&1&-t\\
+    \ebm
+    \to
+    \bbm
+    0&-t^2&1&t\\
+    1&-t&0&1\\
+    0&1&-t&0\\
+    0&0&1&-t\\
+    \ebm
+    \to
+    \bbm
+    0&0&-t^3+1&t\\
+    1&-t&0&1\\
+    0&1&-t&0\\
+    0&0&1&-t\\
+    \ebm
+    \to
+    \bbm
+    0&0&0&-t^4+2t\\
+    1&-t&0&1\\
+    0&1&-t&0\\
+    0&0&1&-t\\
+    \ebm = D \mks{2}
+   \]
+   We add $t$ times row $2$ to row $1$, then add $t^2$ times row $3$ to
+   row $1$, then add $t^3-1$ times row $4$ to row $1$, giving the
+   matrix $D$ shown above.  None of these operations change the
+   determinant, so $\det(C-tI)=\det(D)$.  We can expand $D$ along the
+   top row to get 
+   \[ \det(C-tI) = (-1)^{1+4}(-t^4+2t)
+       \det\bbm 1 & -t & 0 \\ 0 & 1 & -t \\ 0 & 0 & 1 \ebm.
+   \]
+   The $3\tm 3$ matrix here is upper triangular, so the determinant is
+   the product of the diagonal entries, which is one.  It follows that
+   $\det(C-tI)=t^4-2t$. \mks{2} 
+ \end{itemize}
+\end{solution}
+
+\begin{problem}[2012-13 resit]
+ You may assume the following row reductions.  Some of them are
+ relevant, and some of them are not.  
+ \[ \bbm 0&0&0&1\\ 0&0&1&10\\ 0&1&0&12\\ 1&11&-11&11\\ \ebm \to 
+    \bbm 1&0&0&0\\ 0&1&0&0\\ 0&0&1&0 \\ 0&0&0&1 \ebm \hspace{4em}
+    \bbm 0&0&0&1\\ 0&0&1&11\\ 0&1&0&-11\\ 1&10&12&11 \ebm \to
+    \bbm 1&0&0&0\\ 0&1&0&0\\ 0&0&1&0 \\ 0&0&0&1 \ebm
+ \]
+ \[
+ \bbm 2&3&1\\ 0&3&-3\\ 1&2&0\\ 3&2&4\\ \ebm \to
+ \bbm 1&0&2\\ 0&1&-1\\ 0&0&0\\ 0&0&0\\ \ebm \hspace{3em}
+ \bbm 2&0&1&3\\ 3&3&2&2\\ 1&-3&0&4\\ \ebm \to
+ \bbm 1&0&1/2&3/2\\ 0&1&1/6&-5/6\\ 0&0&0&0\\ \ebm
+ \]
+ \[
+ \bbm -1&-2&1&1&2\\ 0&0&2&1&1\\ 1&2&2&0&1\\ \ebm \to
+ \bbm 1&2&0&0&-3\\ 0&0&1&0&2\\ 0&0&0&1&-3\\ \ebm \hspace{3em}
+ \bbm -1&0&1\\ -2&0&2\\ 1&2&2\\ 1&1&0\\ 2&1&1\\ \ebm \to
+ \bbm 1&0&0\\ 0&1&0\\ 0&0&1\\ 0&0&0\\ 0&0&0\\ \ebm
+ \]
+ \begin{itemize}
+  \item[(a)] Explain what it means for a matrix to be in reduced row
+   echelon form (RREF). \mrks{4}
+  \item[(b)] List all the $2\tm 2$ matrices in RREF for which every
+   entry is $0$ or $1$.  \mrks{4}
+  \item[(c)] Find the general solution for the following system of
+   linear equations, or prove that there is no solution. \mrks{3}
+   \begin{align*}
+    r + s &= 2q+p+2 \\
+    2r+s &= 1 \\
+    2r+p+2q &= 1.
+   \end{align*}
+  \item[(d)] Consider the vectors
+   \[
+    u_1 = \bbm 2\\0\\1\\3\ebm \qquad
+    u_2 = \bbm 3\\3\\2\\2 \ebm \qquad
+    u_3 = \bbm 1\\ -3\\ 0\\ 4\ebm.
+   \]
+   Are they linearly independent?  Justify your answer. \mrks{3}
+  \item[(e)] Either find the inverse of the following matrix, or show
+   that it has no inverse: \mrks{4}
+   \[ A = \bbm
+           0&0&0&1\\
+           0&0&1&10\\
+           0&1&0&12\\
+           1&11&-11&11\\
+          \ebm
+   \]
+  \item[(f)] Is zero an eigenvalue of $A$?  Justify your answer. \mrks{2} 
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] A matrix $A$ is in RREF if 
+   \begin{itemize}
+    \item Any rows of zeros are at the bottom, after all the nonzero
+     rows. \mk
+    \item In every nonzero row, the first nonzero entry (called the
+     \emph{pivot}) is equal to one. \mk
+    \item Each pivot is further to the right than the pivot in the
+     previous row. \mk
+    \item All entries above or below a pivot are zero. \mk
+   \end{itemize}
+  \item[(b)] The possibilities are as follows:
+   \[ \bbm 0&0\\0&0 \ebm \hspace{3em}
+      \bbm 0&1\\0&0 \ebm \hspace{3em}
+      \bbm 1&0\\0&0 \ebm \hspace{3em}
+      \bbm 1&1\\0&0 \ebm \hspace{3em}
+      \bbm 1&0\\0&1 \ebm. \mks{4}
+   \]
+  \item[(c)] We write the equations more tidily, convert to an
+   augmented matrix, row reduce (using one of the given
+   row-reductions), and convert back to a system of equations \mks{2}.
+   \[ \hspace{-4em}
+    \begin{array}{rl}
+     -p-2q+r+s &= 2 \\
+     2r+s &= 1 \\
+     p+2q+2r &= 1
+    \end{array}
+    \to 
+    \left[\begin{array}{cccc|c}
+      -1 & -2 &  1 &  1 &  2 \\
+       0 &  0 &  2 &  1 &  1 \\
+       1 &  2 &  1 &  0 &  1
+    \end{array}\right]
+    \to 
+    \left[\begin{array}{cccc|c}
+       1&2&0&0&-3\\
+       0&0&1&0&2\\
+       0&0&0&1&-3\\
+    \end{array}\right]
+    \to
+    \begin{array}{rl}
+     p+2q &= -3 \\
+     r &= 2 \\
+     s &= -3.
+    \end{array}
+   \]
+   The variable $q$ is independent so we move it to the right hand
+   side.  The general solution is $p=-3-2q$ with $r=2$ and $s=-3$ and $q$
+   arbitrary. \mk
+  \item[(d)] Put 
+   \[ A = [u_1|u_2|u_3] =
+       \bbm
+       2&3&1\\
+       0&3&-3\\
+       1&2&0\\
+       3&2&4\\
+       \ebm
+   \]
+   From the given row-reductions, we see that 
+   \[ A \to 
+       \bbm
+       1&0&2\\
+       0&1&-1\\
+       0&0&0\\
+       0&0&0\\
+       \ebm
+     %   \hspace{4em}
+     % A^T \to 
+     %   \bbm
+     %   1&0&1/2&3/2\\
+     %   0&1&1/6&-5/6\\
+     %   0&0&0&0\\
+     %   \ebm.
+   \]
+   The row-reduction of $A$ does not have a pivot in every column, so
+   the vectors $u_i$ are linearly dependent.  \mks{3} (In fact we have a
+   linear relation $-2u_1+u_2+u_3=0$, but students are not required to
+   find that.)
+%   Also, the row-reduction of $A^T$ does not have a
+%   pivot in every column, so the vectors $u_i$ do not span $\R^4$.
+%   Alternatively, we can recall that no list of $3$ vectors can ever
+%   span $\R^4$, because $3<4$.
+  \item[(e)] We row-reduce $[A|I_4]$ \mks{2} as follows:
+   \[
+    \left[\begin{array}{cccc|cccc}
+     0&0&0&1&1&0&0&0\\
+     0&0&1&10&0&1&0&0\\
+     0&1&0&12&0&0&1&0\\
+     1&11&-11&11&0&0&0&1\\
+    \end{array}\right]
+   \to
+    \left[\begin{array}{cccc|cccc}
+   0& 0&  0&1&  1&0&0&0\\
+   0& 0&  1&0&-10&1&0&0\\
+   0& 1&  0&0&-12&0&1&0\\
+   1&11&-11&0&-11&0&0&1\\
+   \end{array}\right]
+   \to
+   \] 
+   \[
+    \left[\begin{array}{cccc|cccc}
+   0& 0&0&1&   1& 0&0&0\\
+   0& 0&1&0& -10& 1&0&0\\
+   0& 1&0&0& -12& 0&1&0\\
+   1&11&0&0&-121&11&0&1\\
+   \end{array}\right]
+   \to
+    \left[\begin{array}{cccc|cccc}
+   0&0&0&1&  1& 0&  0&0\\
+   0&0&1&0&-10& 1&  0&0\\
+   0&1&0&0&-12& 0&  1&0\\
+   1&0&0&0& 11&11&-11&1\\
+   \end{array}\right]
+   \to
+   \] 
+   \[
+    \left[\begin{array}{cccc|cccc}
+   1&0&0&0&11&11&-11&1\\
+   0&1&0&0&-12&0&1&0\\
+   0&0&1&0&-10&1&0&0\\
+   0&0&0&1&1&0&0&0\\
+   \end{array}\right] \mk
+   \]
+   In step $1$ we subtract multiples of the first row from the other
+   three rows.  In step 2 we add $11$ times row $2$ to row $4$, and in
+   step 3 we subtract $11$ times row $3$ from row $4$.  In step $4$ we
+   swap the top and bottom rows, and we also swap the middle two
+   rows.  The left hand block is now $I_4$, so $A$ is invertible, with
+   inverse given by the right hand block:
+   \[ A^{-1} = 
+       \bbm
+       11&11&-11&1\\
+       -12&0&1&0\\
+       -10&1&0&0\\
+       1&0&0&0\\
+       \ebm. \mk
+   \]
+  \item[(f)] For any square matrix, zero is an eigenvalue if and only
+   if the matrix is not invertible.  We have just seen that $A$ is
+   invertible, so zero is not an eigenvalue of $A$ \mks{2}.  
+ \end{itemize}
+\end{solution}
+
+
+\begin{problem}[2012-13]
+ You may assume the following row reductions.  Some of them are
+ relevant, and some of them are not.  
+ \begin{align*}
+    \bbm
+   2&-1&-1&3\\
+   -2&2&3&7\\
+   -2&12&23&107\\
+   3&-2&-3&-2\\
+   \ebm
+   &\to
+    \bbm
+   1&0&0&5\\
+   0&1&0&4\\
+   0&0&1&3\\
+   0&0&0&0\\
+   \ebm
+    &
+    \bbm
+   2&-2&-2&3\\
+   -1&2&12&-2\\
+   -1&3&23&-3\\
+   3&7&107&-2\\
+   \ebm
+    &\to
+    \bbm
+   1&0&10&0\\
+   0&1&11&0\\
+   0&0&0&1\\
+   0&0&0&0\\
+   \ebm
+    \\
+   \bbm
+   1&-1&0&1&3\\
+   3&-3&1&0&11\\
+   -2&2&0&-3&-7
+   \ebm
+    &\to
+    \bbm
+   1&-1&0&0&2\\
+   0&0&1&0&5\\
+   0&0&0&1&1
+   \ebm
+    & 
+    \bbm
+   1&3&-2\\
+   -1&-3&2\\
+   0&1&0\\
+   1&0&-3\\
+   3&11&-7
+   \ebm
+   &\to
+    \bbm
+   1&0&0\\
+   0&1&0\\
+   0&0&1\\
+   0&0&0\\
+   0&0&0
+   \ebm
+    \\
+ \end{align*}
+
+ \begin{itemize}
+  \item[(a)] Explain what it means for a matrix to be in reduced row
+   echelon form (RREF). \mrks{4}
+  \item[(b)] Give an example of a $4\tm 4$ RREF matrix with pivots in
+   columns $1$ and $3$, and precisely five nonzero entries. \mrks{2}
+  \item[(c)] Find the general solution for the following system of
+   linear equations, or prove that there is no solution. \mrks{4}
+   \begin{align*}
+    a+d &= b+3 \\
+    3a+c &= 3b+11 \\
+    -2a+2b &= 3d-7.
+   \end{align*}
+  \item[(d)] Consider the vectors
+   \[
+    v = \bbm 3\\ -2\\-3\\-2 \ebm \qquad
+    u_1 = \bbm 2\\-1\\-1\\3\ebm \qquad
+    u_2 = \bbm -2\\2\\3\\7 \ebm \qquad
+    u_3 = \bbm -2\\ 12\\ 23\\ 107\ebm
+   \]
+   Either express $v$ as a linear combination of $u_1$, $u_2$ and
+   $u_3$, or prove that that is impossible. \mrks{3}
+  \item[(e)] By performing row operations or otherwise, evaluate the
+   determinant of the following matrix: \mrks{4}
+   \[ A = \bbm
+       2 & 2 & 0 & 0 \\
+       2 & 4 & 3 & 0 \\
+       2 & 4 & 6 & 4 \\
+       1 & 2 & 3 & 4 
+      \ebm
+   \]
+  \item[(f)] Do the columns of $A$ span $\R^4$?  Justify your
+   answer. \mrks{3} 
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] A matrix $A$ is in RREF if 
+   \begin{itemize}
+    \item Any rows of zeros are at the bottom, after all the nonzero
+     rows. \mk
+    \item In every nonzero row, the first nonzero entry (called the
+     \emph{pivot}) is equal to one. \mk
+    \item Each pivot is further to the right than the pivot in the
+     previous row. \mk
+    \item All entries above or below a pivot are zero. \mk
+   \end{itemize}
+  \item[(b)] There are many possible answers: the simplest one is the
+   matrix 
+   \[ \bbm 1&1&0&1 \\ 0&0&1&1 \\ 0&0&0&0 \\ 0&0&0&0 \ebm. \mks{2} \]
+  \item[(c)] We write the equations more tidily, convert to an
+   augmented matrix, row reduce (using one of the given
+   row-reductions), and convert back to a system of equations \mks{3}.
+   \[
+    \begin{array}{rl}
+     a-b+d &= 3 \\
+     3a-3b+c &= 11 \\
+     -2a+2b-3d &= -7 
+    \end{array}
+    \to 
+    \left[\begin{array}{cccc|c}
+     1&-1&0&1&3\\
+     3&-3&1&0&11\\
+     -2&2&0&-3&-7
+    \end{array}\right]
+    \to 
+    \left[\begin{array}{cccc|c}
+     1&-1&0&0&2\\
+     0&0&1&0&5\\
+     0&0&0&1&1
+    \end{array}\right]
+    \to
+    \begin{array}{rl}
+     a-b &= 2 \\
+     c &= 5 \\
+     d &= 1.
+    \end{array}
+   \]
+   The variable $b$ is independent so we move it to the right hand
+   side.  The general solution is $a=b+2$ with $c=5$ and $d=1$ and $b$
+   arbitrary. \mk
+  \item[(d)] We construct the matrix $[u_1|u_2|u_3|v]$, and observe
+   that it can be reduced by one of the given row-reductions:
+   \[
+     [u_1|u_2|u_3|v] = 
+    \left[\begin{array}{ccc|c}
+   2&-2&-2&3\\
+   -1&2&12&-2\\
+   -1&3&23&-3\\
+   3&7&107&-2\\
+    \end{array}\right]
+    \to
+    \left[\begin{array}{ccc|c}
+   1&0&10&0\\
+   0&1&11&0\\
+   0&0&0&1\\
+   0&0&0&0\\
+    \end{array}\right]. \mks{2}
+   \] 
+   The resulting matrix has a pivot in the last column, which
+   indicates that $v$ cannot be expressed as a linear combination of
+   $u_1$, $u_2$ and $u_3$. \mk
+  \item[(e)] We row-reduce $A$ as follows:
+   \[
+   \bbm
+   2&2&0&0\\
+   2&4&3&0\\
+   2&4&6&4\\
+   1&2&3&4\\
+   \ebm
+   \xra{1}
+   \bbm
+   1&1&0&0\\
+   2&4&3&0\\
+   2&4&6&4\\
+   1&2&3&4\\
+   \ebm
+   \xra{2}
+   \bbm
+   1&1&0&0\\
+   0&2&3&0\\
+   0&2&6&4\\
+   0&1&3&4\\
+   \ebm
+   \xra{3}
+   \bbm
+   1&1&0&0\\
+   0&0&-3&-8\\
+   0&0&0&-4\\
+   0&1&3&4\\
+   \ebm
+   \xra{4}
+   \bbm
+   1&1&0&0\\
+   0&1&3&4\\
+   0&0&-3&-8\\
+   0&0&0&-4\\
+   \ebm \mks{2}
+   \]
+   In step $1$ we multiply the first row by $1/2$, so we remember a
+   factor of $1/2$.  In step $2$ we add multiples of row $1$ to rows
+   $2$, $3$ and $4$; this does not contribute any factors to the
+   determinant.  In step $3$ we add multiples of row $4$ to rows $2$
+   and $3$; again, this does not contribute any factors.  In step $4$
+   we swap the last two rows, then swap the middle two rows.  This
+   gives two factors of $-1$, which cancel each other out.  The final
+   matrix is upper triangular, so the determinant is the product of
+   the diagonal entries, which is $12$.  After dividing by the factor
+   of $1/2$ from the first step, we see that $\det(A)=24$. \mks{2}
+
+   An alternative method is to expand along the top row:
+   \begin{align*}
+    \det(A) &= 2\det\bbm 4&3&0 \\ 4&6&4 \\ 2&3&4 \ebm 
+              -2\det\bbm 2&3&0 \\ 2&6&4 \\ 1&3&4 \ebm \\
+    \det\bbm 4&3&0 \\ 4&6&4 \\ 2&3&4 \ebm 
+     &= 4(6\tm 4 - 3\tm 4) 
+       -3(4\tm 4 - 2\tm 4) = 24 \\
+    \det\bbm 2&3&0 \\ 2&6&4 \\ 1&3&4 \ebm
+     &= 2(6\tm 4 - 3\tm 4)
+       -3(2\tm 4 - 1\tm 4) = 12 \\
+    \det(A) &= 2\tm 24 - 2\tm 12 = 24.
+   \end{align*}
+  \item[(f)] As $\det(A)\neq 0$, we see that $A$ is invertible
+   \mks{2}.  By a standard theorem, this means that the columns of $A$
+   form a basis for $\R^4$, so they certainly span $\R^4$.\mk
+ \end{itemize}
+\end{solution}
+
+
+\begin{problem}[2011-12 resit]
+ \begin{itemize}
+  \item[(a)] Which of the following matrices are in reduced row echelon form (RREF)? 
+   Explain your answers. \mrks{3}
+   \[ 
+    A = \bbm 2&0&0&1 \\ 0&1&1&1 \\ 0&0&0&0 \ebm \qquad
+    B = \bbm 0&0&1&0&0 \\ 0&0&0&1&0 \\ 0&0&0&0&1 \ebm \qquad
+    C = \bbm 1&0&1&0&1 \\ 0&0&1&0&1 \\ 0&0&0&0&1 \ebm   
+   \]
+  \item[(b)] Row-reduce the following matrix. \mrks{6}
+   \[ D = \bbm 7 & 14 &  3 & 15 & -12 \\ 
+               5 & 10 &  5 & 25 &  0 \\
+               3 &  6 &  7 & 35 & 12 \ebm 
+   \]
+  \item[(c)]
+   You may assume the row-reduction 
+   \[ 
+    \bbm
+      1 &  2 & -3 & 7  & 7 \\ 
+     -3 &  1 &  2 & 14 & -14 \\
+      2 & -3 &  1 & 7  & 7
+    \ebm
+    \to
+    \bbm
+     1 & 0 & -1 & 0 & 5 \\
+     0 & 1 & -1 & 0 & 1 \\
+     0 & 0 &  0 & 1 & 0
+    \ebm 
+   \]
+   Solve the following two systems of equations (the first
+   system on the left, and the second system on the right) : 
+   \begin{align*}
+    x+2y-3z  &= 7  &    x+2y-3z  &= 7  \\
+    -3x+y+2z &= 14 &    -3x+y+2z &= -14 \\
+    2x-3y+z  &= 7  &    2x-3y+z  &= 7
+   \end{align*}
+   In each case say whether the system has a unique solution, an
+   infinite family of solutions, or no solution.  \mrks{6}
+  \item[(d)] Find the determinant of the following matrix: \mrks{3}
+   \[ E = \bbm 
+       0 & a & 0 & b \\
+       c & d & 0 & e \\ 
+       f & 0 & 0 & g \\
+       h & 0 & i & j 
+      \ebm
+   \]
+  \item[(e)] State, with justification, which of the following
+   matrices are invertible. \mrks{7}
+   \[ \hspace{-4em}
+    F = \bbm 1&2&3&4 \\ 11&21&31&41 \\ 101&201&301&401 \\ 1001&2001&3001&4001 \ebm 
+    \hspace{2em}
+    G = \bbm 6&2&1&5 \\ 7&3&1&4 \\ 9&4&4&3 \ebm 
+    \hspace{2em}
+    H = \bbm 2&1&-2\\ 3&1&-3 \\ -2&-1&1 \ebm
+    \hspace{2em}
+    J = \bbm 1&1&1&1 \\ 1&1&1&0 \\ 1&1&0&0 \\ 1&0&0&0 \ebm
+   \]
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] The matrix $A$ is not in RREF because the first nonzero
+   entry in the first row is not equal to one \mk.  The matrix $B$ is
+   in RREF \mk.  The matrix $C$ is not in RREF because there is a
+   nonzero entry in the first row lying above the pivot in the second
+   row. \mk
+  \item[(b)] If we start by subtracting twice row $3$ from row $1$, we
+   avoid all denominators:
+   \[
+    \bbm
+    7&14&3&15&-12\\
+    5&10&5&25&0\\
+    3&6&7&35&12\\
+    \ebm
+    \to
+    \bbm
+    1&2&-11&-55&-36\\
+    5&10&5&25&0\\
+    3&6&7&35&12\\
+    \ebm
+    \to
+    \bbm
+    1&2&-11&-55&-36\\
+    0&0&60&300&180\\
+    0&0&40&200&120\\
+    \ebm
+    \to
+   \] \[
+    \bbm
+    1&2&-11&-55&-36\\
+    0&0&1&5&3\\
+    0&0&40&200&120\\
+    \ebm
+    \to
+    \bbm
+    1&2&0&0&-3\\
+    0&0&1&5&3\\
+    0&0&0&0&0\\
+    \ebm
+   \]
+   Alternatively, we can proceed as follows:
+   \[
+    \bbm
+    7&14&3&15&-12\\
+    5&10&5&25&0\\
+    3&6&7&35&12\\
+    \ebm
+    \to
+    \bbm
+    1&2&\tfrac{3}{7}&\tfrac{15}{7}&\tfrac{-12}{7}\\
+    5&10&5&25&0\\
+    3&6&7&35&12\\
+    \ebm
+    \to
+    \bbm
+    1&2&\tfrac{3}{7}&\tfrac{15}{7}&\tfrac{-12}{7}\\
+    0&0&\tfrac{20}{7}&\tfrac{100}{7}&\tfrac{60}{7}\\
+    0&0&\tfrac{40}{7}&\tfrac{200}{7}&\tfrac{120}{7}\\
+    \ebm
+    \to
+   \] \[
+    \bbm
+    1&2&\tfrac{3}{7}&\tfrac{15}{7}&\tfrac{-12}{7}\\
+    0&0&1&5&3\\
+    0&0&\tfrac{40}{7}&\tfrac{200}{7}&\tfrac{120}{7}\\
+    \ebm
+    \to
+    \bbm
+    1&2&0&0&-3\\
+    0&0&1&5&3\\
+    0&0&0&0&0\\
+    \ebm
+   \]
+   Either way: \mks{6}.
+  \item[(c)] 
+   The left hand system corresponds to the first augmented matrix
+   shown below:
+   \[ 
+    \left[\begin{array}{ccc|c}
+     1 & 2 & -3 & 7  \\
+     -3 & 1 & 2 & 14  \\
+     2 & -3 & 1 & 7 
+    \end{array}\right]
+    \to
+    \left[\begin{array}{ccc|c}
+     1 & 0 & -1 & 0 \\
+     0 & 1 & -1 & 0 \\
+     0 & 0 &  0 & 1 
+    \end{array}\right]
+   \]
+   By deleting the last column from the row-reduction given in the
+   question, we see that our matrix row-reduces as indicated, so the
+   left hand system is equivalent to the system
+   \[ x-z = 0 \hspace{4em} y-z = 0 \hspace{4em} 0=1, \mks{2}\]
+   so there are no solutions \mk.
+
+   Similarly, we can delete the fourth column from the given
+   row-reduction to get 
+   \[ 
+    \left[\begin{array}{ccc|c}
+     1 & 2 & -3 & 7  \\
+     -3 & 1 & 2 & -14  \\
+     2 & -3 & 1 & 7 
+    \end{array}\right]
+    \to
+    \left[\begin{array}{ccc|c}
+     1 & 0 & -1 & 5 \\
+     0 & 1 & -1 & 1 \\
+     0 & 0 &  0 & 0 
+    \end{array}\right]
+   \]
+   This shows that the right-hand system is equivalent to the system
+   \[ x-z = 5 \hspace{4em} y-z = 1 \hspace{4em} 0=0. \mk \]
+   The solutions have the form
+   $\bbm x\\y\\z\ebm=\bbm 5+z\\1+z\\ z\ebm$ with $z$ arbitrary \mk.  In
+   particular, there are infinitely many solutions, one for each
+   possible value of $z$ \mk.
+  \item[(d)] We expand down the third column, then along the top row:
+   \begin{align*}
+    \det(E) &= -i \det\bbm 0&a&b \\ c&d&e \\ f&0&g \ebm \\
+     &= -i\left(-a\det\bbm c&e \\ f&g \ebm 
+                +b\det\bbm c&d \\ f&0 \ebm\right) \\
+     &= ai(cg-ef) - ib(-df)
+      = acgi - aefi + bdfi. \mks{3}
+   \end{align*}
+  \item[(e)]
+   The matrix $F$ can be partially row-reduced as follows:
+   \[
+   \bbm
+   1&2&3&4\\
+   11&21&31&41\\
+   101&201&301&401\\
+   1001&2001&3001&4001
+   \ebm
+   \to
+   \bbm
+   1&2&3&4\\
+   1&1&1&1\\
+   1&1&1&1\\
+   1&1&1&1
+   \ebm
+   \to
+   \bbm
+   0&1&2&3\\
+   1&1&1&1\\
+   0&0&0&0\\
+   0&0&0&0
+   \ebm
+   \]
+   The resulting matrix has a row of zeros so it is not invertible,
+   and it follows that the original matrix $F$ is not invertible
+   either \mks{2}.  The matrix $G$ is not square and so cannot be
+   invertible \mk.  Next, the matrix $H$ can be row-reduced to the
+   identity as follows: 
+   \[
+     \bbm
+     2&1&-2\\
+     3&1&-3\\
+     -2&-1&1\\
+     \ebm
+     \to
+     \bbm
+     1&1/2&-1\\
+     3&1&-3\\
+     -2&-1&1\\
+     \ebm
+     \to
+     \bbm
+     1&1/2&-1\\
+     0&-1/2&0\\
+     0&0&-1\\
+     \ebm
+     \to
+     \bbm
+     1&1/2&-1\\
+     0&1&0\\
+     0&0&1\\
+     \ebm
+     \to
+     \bbm
+     1&0&0\\
+     0&1&0\\
+     0&0&1\\
+     \ebm.
+   \]
+   This shows that $H$ is invertible.  Alternatively, we can calculate
+   that $\det(H)=1\neq 0$, which also implies that $H$ is
+   invertible \mks{2}.  Finally, the matrix is $J$ is also invertible.
+   Indeed, it can easily be row-reduced to the identity, or we can
+   calculate that $\det(J)=1$, or we can note that
+   \[ \bbm 1&1&1&1 \\ 1&1&1&0 \\ 1&1&0&0 \\ 1&0&0&0 \ebm
+      \bbm 0&0&0&1 \\ 0&0&1&-1 \\ 0&1&-1&0 \\ 1&-1&0&0 \ebm 
+      = 
+      \bbm 1&0&0&0 \\ 0&1&0&0 \\ 0&0&1&0 \\ 0&0&0&1 \ebm.\mks{2}
+   \]
+ \end{itemize}
+\end{solution}
+
+
+\begin{problem}[2011-12]
+ \begin{itemize}
+  \item[(a)] Which of the following matrices are in reduced row echelon form (RREF)? 
+   Explain your answers. \mrks{3}
+   \[ 
+    A = \bbm 1&2&0&3 \\ 0&0&0&0 \\ 0&0&1&4 \ebm \qquad
+    B = \bbm 0&0&0&0&1 \\ 0&0&1&0&0 \\ 1&0&0&0&0 \ebm \qquad
+    C = \bbm 1&1&1 \\ 0&1&1 \\ 0&0&1 \ebm   
+   \]
+  \item[(b)] Row-reduce the following matrix. \mrks{6}
+   \[ D = \bbm 11 & 10 &  1 &  1 & 11 \\ 
+               11 &  1 & 10 & 10 &  1 \\
+                1 &  1 &  0 &  0 & 10 \ebm 
+   \]
+  \item[(c)]
+   You may assume the row-reduction 
+   \[ 
+    \bbm
+     7 & -3 & 1 & -1 & 1 \\ 
+     3 &  2 & 7 & 16 & 16 \\
+     4 & -1 & 2 &  3 & -3
+    \ebm
+    \to
+    \bbm
+     1 & 0 & 1 & 2 & 0 \\
+     0 & 1 & 2 & 5 & 0 \\
+     0 & 0 & 0 & 0 & 1
+    \ebm 
+   \]
+   Solve the following two systems of equations (the first
+   system on the left, and the second system on the right) : 
+   \begin{align*}
+    7x-3y+z  &= -1 &
+    7x-3y+z  &=  1 \\
+    3x+2y+7z &= 16 &
+    3x+2y+7z &= 16 \\
+    4x-y+2z  &=  3 &
+    4x-y+2z  &= -3 
+   \end{align*}
+   In each case say whether the system has a unique solution, an
+   infinite family of solutions, or no solution.  \mrks{6}
+  \item[(d)] Find the determinant of the following matrix: \mrks{3}
+   \[ E = \bbm 
+       1 & 0 & 2 & 0 \\
+       0 & 0 & 3 & 0 \\ 
+       0 & 4 & 0 & 4 \\
+       0 & 4 & 0 & 5 
+      \ebm
+   \]
+  \item[(e)] State, with justification, which of the following
+   matrices are invertible. \mrks{7}
+   \[ 
+    F = \bbm 1&1&1&1 \\ 2&3&4&5 \\ 6&7&8&9 \\ 9&9&9&9 \ebm 
+    \hspace{2em}
+    G = \bbm 1&2&5 \\ 6&4&3 \\ 5&1&2 \\ 7&9&1 \ebm 
+    \hspace{2em}
+    H = \bbm -2&-2&-1\\ -1&0&1 \\ 2&-2&1 \ebm
+    \hspace{2em}
+    J = \bbm 0&1&0&0 \\ 1&0&0&0 \\ 0&0&0&1 \\ 0&0&1&0 \ebm
+   \]
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] None of the matrices are in RREF.  The matrix $A$ is not
+   in RREF because it has a row of zeros that does not occur after all
+   the nonzero rows.\mk  The matrix $B$ is not in RREF because the pivot
+   in the second row is to the left of the pivot in the first row.\mk
+   The matrix $C$ is not in RREF because there are nonzero entries
+   above the pivot in the third row.\mk
+  \item[(b)] 
+   \[
+      \bbm 11 & 10 &  1 &  1 & 11 \\ 
+           11 &  1 & 10 & 10 &  1 \\
+            1 &  1 &  0 &  0 & 10 \ebm 
+      \!\to\! 
+      \bbm  0 & -1 &  1 &  1 &-99 \\ 
+            0 &-10 & 10 & 10 &-109 \\
+            1 &  1 &  0 &  0 & 10 \ebm 
+      \!\to\! 
+      \bbm  0 &  1 & -1 & -1 & 99 \\ 
+            0 &  0 &  0 &  0 & 881 \\
+            1 &  0 &  1 &  1 &-89 \ebm 
+      \!\to\! 
+      \bbm  1 &  0 &  1 &  1 & 0 \\
+            0 &  1 & -1 & -1 & 0 \\ 
+            0 &  0 &  0 &  0 & 1 \ebm. \mks{6}
+   \]
+  \item[(c)] 
+   The left hand system corresponds to the first augmented matrix
+   shown below:
+   \[ 
+    \left[\begin{array}{ccc|c}
+     7 & -3 & 1 & -1 \\ 
+     3 &  2 & 7 & 16 \\
+     4 & -1 & 2 &  3
+    \end{array}\right]
+    \to
+    \left[\begin{array}{ccc|c}
+     1 & 0 & 1 & 2 \\
+     0 & 1 & 2 & 5 \\
+     0 & 0 & 0 & 0 
+    \end{array}\right]
+   \]
+   By deleting the last column from the row-reduction given in the
+   question, we see that our matrix row-reduces as indicated, so the
+   left hand system is equivalent to the system
+   \[ x+z = 2 \hspace{4em} y+2z = 5 \hspace{4em} 0 = 0. \mk \]
+   The solutions have the form
+   $\bbm x\\y\\z\ebm=\bbm 2-z\\5-2z\\ z\ebm$ with $z$ arbitrary \mk.  In
+   particular, there are infinitely many solutions, one for each
+   possible value of $z$ \mk.
+
+   Similarly, we can delete the fourth column from the given
+   row-reduction to get 
+   \[ 
+    \left[\begin{array}{ccc|c}
+     7 & -3 & 1 & 1 \\ 
+     3 &  2 & 7 & 16 \\
+     4 & -1 & 2 & -3
+    \end{array}\right]
+    \to
+    \left[\begin{array}{ccc|c}
+     1 & 0 & 1 & 0 \\
+     0 & 1 & 2 & 0 \\
+     0 & 0 & 0 & 1
+    \end{array}\right]
+   \]
+   This shows that the right-hand system is equivalent to the system
+   \[ x+z = 0 \hspace{4em} y+2z = 0 \hspace{4em} 0=1, \mks{2}\]
+   so there are no solutions \mk.
+  \item[(d)] There are enough zeros in $E$ that a direct expansion is
+   painless: 
+   \begin{align*}
+    \det(E) &= \det\bbm 0&3&0 \\ 4&0&4 \\ 4&0&5 \ebm 
+               +2 \det\bbm 0&0&0 \\ 0&4&4 \\ 0&4&5 \ebm \mk \\
+            &= -3\det\bbm 4&4\\ 4&5\ebm + 2\tm 0 \mk \\
+            &= -3\tm(20-16) = -12. \mk
+   \end{align*}
+  \item[(e)]
+   In matrix $F$ the last row is $9$ times the first row, so the rows
+   are linearly dependent, so $F$ is not invertible \mks{2}.  The matrix $G$
+   is not square and so cannot be invertible \mk.  Next, the matrix $H$
+   can be row-reduced to the identity as follows:
+   \[ \bbm -2 & -2 & -1 \\
+           -1 &  0 &  1 \\
+            2 & -2 &  1 \ebm
+      \to
+      \bbm  0 & -2 & -3 \\
+            1 &  0 & -1 \\
+            0 & -2 &  3 \ebm
+      \to
+      \bbm  0 & -2 & -3 \\
+            1 &  0 & -1 \\
+            0 &  0 &  6 \ebm
+      \to
+      \bbm  1 &  0 & -1 \\
+            0 &  1 & 3/2 \\
+            0 &  0 &  1 \ebm
+      \to
+      \bbm  1 &  0 &  0 \\
+            0 &  1 &  0 \\
+            0 &  0 &  1 \ebm
+   \]
+   This shows that $H$ is invertible.  Alternatively, we can calculate
+   that $\det(H)=-12\neq 0$, which also implies that $H$ is
+   invertible \mks{2}.  Finally, the matrix is $J$ is also invertible.  One of
+   many ways to see this is to note that $J^2=I$, so $J$ is its own
+   inverse. \mks{2}
+ \end{itemize}
+\end{solution}
+
+\begin{problem}[Mock 1]
+ \begin{itemize}
+  \item[(a)] Which of the following matrices are in reduced row echelon form (RREF)? 
+   Explain your answers. \mrks{3}
+   \[ 
+    A = \bbm 1&0&0&1&0&0 \\
+             0&1&0&0&1&0 \\
+             0&0&1&0&0&1 \ebm \qquad
+    B = \bbm 1&0&0&1 \\
+             0&1&1&0 \\
+             0&0&0&1 \ebm \qquad
+    C = \bbm 0&0&1 \\ 
+             0&1&0 \\
+             1&0&0 \ebm   
+   \]
+  \item[(b)] Row-reduce the following matrix. \mrks{6}
+   \[ D = \bbm  2 &  2 &  2 &  4 &  6 \\ 
+                3 &  3 &  3 &  5 &  7 \\
+                5 &  5 &  5 &  8 &  9 \ebm 
+   \]
+  \item[(c)]
+   You may assume the row-reduction 
+   \[ \bbm
+        1 & -2 &  0 &  1 & -3 &  2\\
+       -2 &  4 &  0 & -2 &  6 & -4\\
+        1 & -2 & -1 &  5 & -4 &  0
+      \ebm \to
+      \bbm
+        1 & -2 &  0 &  1 & -3 &  2\\
+        0 &  0 &  1 & -4 &  1 &  2\\
+        0 &  0 &  0 &  0 &  0 &  0
+      \ebm.
+   \]
+   Find the general solution of the system of equations 
+   \begin{align*}
+      v -2w     +y - 3z &= 2\\
+    -2v +4w    -2y + 6z &= -4\\
+      v -2w -x +5y - 4z &= 0
+   \end{align*}
+   Then find a specific solution (with no free variables) where
+   $x=0$. \mrks{6}
+  \item[(d)] Find the determinant of the following matrix: \mrks{3}
+   \[ E = \bbm
+           0&a&0&0\\
+           b&c&d&e\\
+           f&g&0&h\\
+           i&j&0&k\\
+          \ebm
+   \]
+  \item[(e)] State, with justification, which of the following
+   matrices are invertible. \mrks{7}
+   \[ 
+    F = \bbm
+    1&1&1&1\\
+    1&1&1&2\\
+    1&1&2&2\\
+    1&2&2&2
+    \ebm \qquad
+    G = \bbm
+    1&2&4&8\\
+    1&1&1&1\\
+    8&4&2&1
+    \ebm \qquad
+    H = \bbm
+    -3& 1&-2\\
+     1& 2& 2\\
+     0&-1&-1
+    \ebm \qquad
+    J = \bbm
+     100&20&3&123\\
+     300&10&7&317\\
+     500&70&1&571\\
+     200&60&9&269\\
+    \ebm
+   \]
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] The matrix $A$ is in RREF \mk.  The matrix $B$ is not
+   in RREF, because it has a nonzero entry above the pivot in the
+   last column \mk.  The matrix $C$ is not in RREF because the pivot
+   in the second row is to the left of the pivot in the first row \mk.
+  \item[(b)] 
+  \[
+   \bbm
+   2&2&2&4&6\\
+   3&3&3&5&7\\
+   5&5&5&8&9\\
+   \ebm
+   \to
+   \bbm
+   1&1&1&2&3\\
+   3&3&3&5&7\\
+   5&5&5&8&9\\
+   \ebm
+   \to
+   \bbm
+   1&1&1&2&3\\
+   0&0&0&-1&-2\\
+   0&0&0&-2&-6\\
+   \ebm
+   \to
+   \bbm
+   1&1&1&2&3\\
+   0&0&0&1&2\\
+   0&0&0&-2&-6\\
+   \ebm
+  \] \[
+   \to
+   \bbm
+   1&1&1&0&-1\\
+   0&0&0&1&2\\
+   0&0&0&0&-2\\
+   \ebm
+   \to
+   \bbm
+   1&1&1&0&-1\\
+   0&0&0&1&2\\
+   0&0&0&0&1\\
+   \ebm
+   \to
+   \bbm
+   1&1&1&0&0\\
+   0&0&0&1&0\\
+   0&0&0&0&1\\
+   \ebm \mks{6}
+  \]
+  \item[(c)] 
+   The given system of equations corresponds to the augmented matrix
+   \[ A = \left[\begin{array}{ccccc|c}
+        1 & -2 &  0 &  1 & -3 &  2\\
+       -2 &  4 &  0 & -2 &  6 & -4\\
+        1 & -2 & -1 &  5 & -4 &  0
+      \end{array}\right]. \mk
+   \]
+   We are told that this row-reduces to the matrix 
+   \[ A' = \left[\begin{array}{ccccc|c}
+        1 & -2 &  0 &  1 & -3 &  2\\
+        0 &  0 &  1 & -4 &  1 &  2\\
+        0 &  0 &  0 &  0 &  0 &  0
+      \end{array}\right],
+   \]
+   so our original system is equivalent to the system
+   \begin{align*}
+    v-2w+y-3z &= 2 \\
+    x-4y+z &= 2. \mks{2}
+   \end{align*}
+   The general solution is $v=2+2w-y+3z$ and $x=2+4y-z$ with $w$, $y$
+   and $z$ arbitrary \mk.  To find a specific solution with $x=0$ we can
+   take $w=y=0$ and $z=2$; this gives $v=2+2w-y+3z=8$ and $x=2+4y-z=0$
+   so $\bbm v&w&x&y&z\ebm=\bbm 8&0&0&0&2\ebm$ \mks{2}.
+  \item[(d)] Expand along the first row, then down the middle column:
+   \[ \det(E) = -a\det\bbm b&d&e\\ f&0&h\\ i&0&k\ebm 
+              = (-a)(-d)\det\bbm f&h\\i&k\ebm 
+              = ad(fk-hi) = adfk-adhi. \mks{3}
+   \]
+  \item[(e)]
+   The matrix $F$ can be row-reduced to the identity:
+   \[ \bbm 1&1&1&1 \\ 1&1&1&2 \\ 1&1&2&2 \\ 1&2&2&2 \ebm \to 
+      \bbm 1&1&1&1 \\ 0&0&0&1 \\ 0&0&1&1 \\ 0&1&1&1 \ebm \to 
+      \bbm 1&1&1&0 \\ 0&0&0&1 \\ 0&0&1&0 \\ 0&1&1&0 \ebm \to 
+      \bbm 1&1&0&0 \\ 0&0&0&1 \\ 0&0&1&0 \\ 0&1&0&0 \ebm \to 
+      \bbm 1&0&0&0 \\ 0&0&0&1 \\ 0&0&1&0 \\ 0&1&0&0 \ebm \to 
+      \bbm 1&0&0&0 \\ 0&1&0&0 \\ 0&0&1&0 \\ 0&0&0&1 \ebm.
+   \]
+   It follows that $F$ is invertible \mks{2}. The matrix $G$
+   is not square and so cannot be invertible \mk.  Next, we can
+   evaluate $\det(H)$ by expanding down the first column:
+   \[ \det(H) = 
+       -3\det\bbm 2&2\\-1&-1\ebm - \det\bbm 1&-2\\-1&-1\ebm 
+       = -3\tm 0 - (-1-2) = 3.
+   \]
+   As $\det(H)\neq 0$, we see that $H$ is invertible.\mks{2}
+   In the matrix $J$ the last column is the sum of the first three
+   columns, so the columns are linearly dependent, so $J$ is not
+   invertible. \mks{2}
+ \end{itemize}
+\end{solution}
+
+\begin{problem}[Mock 2]
+ \begin{itemize}
+  \item[(a)] Which of the following matrices are in reduced row echelon form (RREF)? 
+   Explain your answers. \mrks{4}
+   \[ 
+     A = \bbm
+      1&0&0&2\\
+      0&2&1&0\\
+      0&0&0&0\\
+     \ebm \qquad 
+     B = \bbm
+      1&2&0\\
+      0&0&1\\
+      0&0&0\\
+      0&0&0\\
+     \ebm \qquad
+     C = \bbm
+      1&1&0&0\\
+      0&1&1&0\\
+      0&0&1&1\\
+     \ebm \qquad
+     D = \bbm
+      0&1&2\\
+      1&0&0\\
+      0&0&0\\
+     \ebm
+   \]
+  \item[(b)] Row-reduce the following matrix. \mrks{6}
+   \[ E = \bbm  2 &  2 &  2 &  4 &  6 \\ 
+                3 &  3 &  3 &  5 &  7 \\
+                5 &  5 &  5 &  8 &  9 \ebm 
+   \]
+  \item[(c)]
+   Consider the vectors
+   \[ 
+     v_1 = \bbm 1\\ 3\\ 7\\ 2 \ebm \quad
+     v_2 = \bbm 4\\ 1\\ 0\\ 2 \ebm \quad
+     v_3 = \bbm 2\\ 1\\ 1\\ 1 \ebm \quad
+     v_4 = \bbm 1\\ 2\\ 5\\ 2 \ebm \quad
+     v_5 = \bbm 7\\ 6\\ 4\\ 5 \ebm \quad
+     v_6 = \bbm 7\\ 4\\ 6\\ 5 \ebm \quad
+   \]
+   You may assume the row-reduction 
+   \[ 
+     \bbm
+     1&4&2&1&7&7\\
+     3&1&1&2&6&4\\
+     7&0&1&5&4&6\\
+     2&2&1&2&5&5\\
+     \ebm 
+     \to
+     \bbm
+     1&0&0&1&0&1\\
+     0&1&0&1&0&2\\
+     0&0&1&-2&0&-1\\
+     0&0&0&0&1&0\\
+     \ebm
+   \]
+   \begin{itemize}
+    \item[(i)] Either express $v_5$ as a linear combination of
+     $v_1,v_2,v_3,v_4$, or explain why that is not possible. \mrks{3}
+    \item[(ii)] Either express $v_6$ as a linear combination of
+     $v_1,v_2,v_3,v_4$, or explain why that is not possible. \mrks{3}
+   \end{itemize}
+  \item[(d)] Find inverses for the matrices $F$, $G$ and $H$ below,
+   and explain why $J$ does not have an inverse. \mrks{9}
+   \[
+    F = \bbm
+    1&2\\
+    3&4\\
+    \ebm \qquad
+    G = \bbm
+    0&0&1\\
+    0&1&2\\
+    1&2&3\\
+    \ebm \qquad
+    H = \bbm
+    0&0&4&0\\
+    3&0&0&0\\
+    0&0&0&2\\
+    0&1&0&0\\
+    \ebm \qquad
+    J = \bbm
+    1&100&10&111\\
+    10&1&100&111\\
+    10&100&1&111\\
+    100&1&10&111\\
+    \ebm
+   \]
+   \textbf{Hint:} for $H$, trial and error may be easier than a
+   systematic method.  
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] The matrix $A$ is not in RREF because the first nonzero
+   entry in the second row is equal to $2$ \mk.  The matrix $B$ is 
+   in RREF \mk.  The matrix $C$ is not in RREF because there are
+   nonzero entries above the second and third pivots \mk.  The matrix
+   $D$ is not in RREF because the pivot in the second row is to the
+   left of the pivot in the first row \mk.
+  \item[(b)] 
+   \[
+   \bbm
+    2&0&4&-1& 0\\
+   -2&1&0& 0&-1\\
+   -1&1&2& 0& 2\\
+   \ebm
+   \to
+   \bbm
+    2&0&4&-1&0\\
+   -2&1&0&0&-1\\
+    1&-1&-2&0&-2\\
+   \ebm
+   \to
+   \bbm
+   0&2&8&-1&4\\
+   0&-1&-4&0&-5\\
+   1&-1&-2&0&-2\\
+   \ebm
+   \to
+   \bbm
+   0&2&8&-1&4\\
+   0&1&4&0&5\\
+   1&-1&-2&0&-2\\
+   \ebm
+  \] \[
+   \to
+   \bbm
+   0&0&0&-1&-6\\
+   0&1&4&0&5\\
+   1&0&2&0&3\\
+   \ebm
+   \to
+   \bbm
+   0&0&0&1&6\\
+   0&1&4&0&5\\
+   1&0&2&0&3\\
+   \ebm
+   \to
+   \bbm
+   1&0&2&0&3\\
+   0&1&4&0&5\\
+   0&0&0&1&6\\
+   \ebm \mks{6}
+   \]
+  \item[(c)] By deleting the last column in the given row-reduction we
+   get 
+   \[ [v_1\:v_2\:v_3\:v_4|v_5] = 
+     \left[\begin{array}{cccc|c}
+     1&4&2&1&7\\
+     3&1&1&2&6\\
+     7&0&1&5&4\\
+     2&2&1&2&5\\
+     \end{array}\right]
+     \to
+     \left[\begin{array}{cccc|c}
+     1&0&0&1&0\\
+     0&1&0&1&0\\
+     0&0&1&-2&0\\
+     0&0&0&0&1\\
+     \end{array}\right] \mk
+   \]
+   As there is a pivot in the last column, we see that $v_5$ is not a
+   linear combination of $v_1,v_2,v_3,v_4$.  \mks{2}
+
+   Now instead delete the fifth column, to get 
+   \[ [v_1\:v_2\:v_3\:v_4|v_6] = 
+     \left[\begin{array}{cccc|c}
+     1&4&2&1&7\\
+     3&1&1&2&4\\
+     7&0&1&5&6\\
+     2&2&1&2&5\\
+     \end{array}\right]
+     \to
+     \left[\begin{array}{cccc|c}
+     1&0&0& 1& 1\\
+     0&1&0& 1& 2\\
+     0&0&1&-2&-1\\
+     0&0&0& 0& 0\\
+     \end{array}\right] \mk
+   \]
+   As there is no pivot in the last column we see that $v_6$ can be
+   written as $\al_1v_1+\al_2v_2+\al_3v_3+\al_4v_4$, where the
+   coefficients $\al_i$ must satisfy
+   \begin{align*}
+    \al_1+ \al_4 &= 1 \\
+    \al_2+ \al_4 &= 2 \\
+    \al_3-2\al_4 &= -1.
+   \end{align*}
+   We can take $\al_4=0$ and then we get $\al_1=1$ and $\al_2=2$ and
+   $\al_3=-1$, which gives
+   \[ v_6 = v_1+2v_2-v_3. \mks{2} \]
+  \item[(d)]
+   \[
+    F = \bbm
+    1&2\\
+    3&4\\
+    \ebm \qquad
+    G = \bbm
+    0&0&1\\
+    0&1&2\\
+    1&2&3\\
+    \ebm \qquad
+    H = \bbm
+    0&0&4&0\\
+    3&0&0&0\\
+    0&0&0&2\\
+    0&1&0&0\\
+    \ebm \qquad
+    J = \bbm
+    1&100&10&111\\
+    10&1&100&111\\
+    10&100&1&111\\
+    100&1&10&111\\
+    \ebm
+   \]
+
+   \begin{itemize}
+    \item For $F$ we just use the standard formula for $2\tm 2$
+     matrices:
+     \[ \bbm a&b\\ c&d\ebm^{-1} = \frac{1}{ad-bc}\bbm d&-b\\-c&a\ebm 
+        \hspace{5em}
+        F^{-1} = \frac{1}{-2} \bbm 4&-2\\-3&1\ebm 
+           = \bbm -2 & 1 \\ 3/2 & -1/2 \ebm. \mks{2}
+     \]
+    \item For $G$ we row-reduce the matrix $[G|I_3]$ \mk:
+     \[
+      \left[\begin{array}{ccc|ccc}
+       0&0&1&1&0&0\\
+       0&1&2&0&1&0\\
+       1&2&3&0&0&1\\
+      \end{array}\right]
+      \to
+      \left[\begin{array}{ccc|ccc}
+       1&2&3&0&0&1\\
+       0&1&2&0&1&0\\
+       0&0&1&1&0&0\\
+      \end{array}\right]
+      \to
+      \left[\begin{array}{ccc|ccc}
+       1&0&-1&0&-2&1\\
+       0&1&2&0&1&0\\
+       0&0&1&1&0&0\\
+      \end{array}\right]
+      \to
+      \left[\begin{array}{ccc|ccc}
+       1&0&0&1&-2&1\\
+       0&1&0&-2&1&0\\
+       0&0&1&1&0&0\\
+      \end{array}\right]
+     \]
+     The final matrix is $[I_3|G^{-1}]$, so 
+     $G^{-1}=\bbm 1&-2&1\\ -2&1&0 \\ 1&0&0\ebm$ \mks{2}.
+    \item For $H$ we simply observe that 
+     \[ \bbm
+         0&0&4&0\\
+         3&0&0&0\\
+         0&0&0&2\\
+         0&1&0&0\\
+        \ebm
+        \bbm 
+         0&1/3&0&0 \\
+         0&0&0&1 \\
+         1/4&0&0&0 \\
+         0&0&1/2&0
+        \ebm
+        = 
+        \bbm
+         1&0&0&0 \\
+         0&1&0&0 \\
+         0&0&1&0 \\
+         0&0&0&1
+        \ebm
+     \]
+     which shows that 
+     \[ H^{-1} = 
+        \bbm 
+         0&1/3&0&0 \\
+         0&0&0&1 \\
+         1/4&0&0&0 \\
+         0&0&1/2&0
+        \ebm \mks{2}
+     \]
+    \item In $J$, the last column is the sum of the first three
+     columns, so the columns are linearly dependent.  It follows that
+     $J$ is not invertible \mks{2}.
+   \end{itemize}
+ \end{itemize}
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Question 2}
+\setcounter{probcounter}{0}
+
+
+\begin{problem}[2013-14]
+ Consider the following Markov chain:
+ \begin{center}
+  \begin{tikzpicture}[scale=4,auto,shorten >= 4pt,shorten <= 4pt]
+   \node (state1) at (  0:1) [circle,draw] {\Large 1}; 
+   \node (state2) at ( 72:1) [circle,draw] {\Large 2}; 
+   \node (state3) at (144:1) [circle,draw] {\Large 3}; 
+   \node (state4) at (216:1) [circle,draw] {\Large 4}; 
+   \node (state5) at (288:1) [circle,draw] {\Large 5}; 
+   \draw[-angle 90,bend right] (state1) to (state2);
+   \draw[-angle 90,bend right] (state2) to (state3);
+   \draw[-angle 90,bend right] (state3) to (state4);
+   \draw[-angle 90,bend right] (state4) to (state5);
+   \draw[-angle 90,bend right] (state5) to (state1);
+   \draw[-angle 90,bend right] (state1) to  (state3);
+   \draw[-angle 90,bend right] (state2) to  (state4);
+   \draw[-angle 90,bend right] (state3) to  (state5);
+   \draw[-angle 90,bend right] (state4) to  (state1);
+   \draw[-angle 90,bend right] (state5) to  (state2);
+   \draw[-angle 90] (state1) to  (state4);
+   \draw[-angle 90] (state2) to  (state5);
+   \draw[-angle 90] (state3) to  (state1);
+   \draw[-angle 90] (state4) to  (state2);
+   \draw[-angle 90] (state5) to  (state3);
+   \draw[-angle 90,bend left=10] (state1) to  (state5);
+   \draw[-angle 90,bend left=10] (state2) to  (state1);
+   \draw[-angle 90,bend left=10] (state3) to  (state2);
+   \draw[-angle 90,bend left=10] (state4) to  (state3);
+   \draw[-angle 90,bend left=10] (state5) to  (state4);
+  \end{tikzpicture}
+ \end{center}
+ There is an arrow from every state to every other state, but no
+ arrows from any state to itself.  All the arrows have the same
+ probability $p$. 
+
+ \begin{itemize}
+  \item[(a)] What must $p$ be? \mrks{2}
+  \item[(b)] Write down the transition matrix $P$. \mrks{2}
+  \item[(c)] Calculate $P^2$, and thus find constants $\al$ and $\bt$
+   such that $P^2=\al P+\bt I_5$. \mrks{4}
+  \item[(d)] Show that if $v$ is an eigenvector for $P$ with
+   eigenvalue $\lm$, then $\lm^2=\al\lm+\bt$. \mrks{2}
+  \item[(e)] Use~(d) to find the eigenvalues of $P$. \mrks{3}
+  \item[(f)] You may assume that $P$ has a unique stationary
+   distribution.  What is it? \mrks{3} \\
+   \textbf{Hint:} you could use row-reduction, but other methods
+    are much easier.
+  \item[(g)] Find a basis for $\R^5$ consisting of eigenvectors for
+   $P$.  \mrks{4}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] Each vertex has four outgoing arrows, each with the same
+   probability $p$.  The sum of the outgoing probabilities must be
+   one, so $p=1/4$. \mks{2}
+  \item[(b)] There are no loops from a vertex back to itself, so the
+   diagonal entries in $P$ are zero.  For any two states that are not
+   the same, we have an arrow labelled with $p=1/4$.  Thus, all the
+   off-diagonal entries in $P$ are $1/4$, so 
+   \[ P = \frac{1}{4} \bbm
+       0&1&1&1&1 \\
+       1&0&1&1&1 \\
+       1&1&0&1&1 \\
+       1&1&1&0&1 \\
+       1&1&1&1&0
+      \ebm. \mks{2}
+   \]
+  \item[(c)] We have 
+   \[ P^2 = \frac{1}{16}
+      \bbm
+       0&1&1&1&1 \\
+       1&0&1&1&1 \\
+       1&1&0&1&1 \\
+       1&1&1&0&1 \\
+       1&1&1&1&0
+      \ebm 
+      \bbm
+       0&1&1&1&1 \\
+       1&0&1&1&1 \\
+       1&1&0&1&1 \\
+       1&1&1&0&1 \\
+       1&1&1&1&0
+      \ebm = 
+     \frac{1}{16}
+      \bbm
+       4&3&3&3&3 \\
+       3&4&3&3&3 \\
+       3&3&4&3&3 \\
+       3&3&3&4&3 \\
+       3&3&3&3&4
+      \ebm. \mks{2}
+   \]
+   We want this to be the same as $\al P + \bt I$.  Looking at the
+   diagonal entries, we see that $4/16=\bt$, or in other words
+   $\bt=1/4$ \mk.  Looking at the off-diagonal entries, we see that
+   $3/16=\al\tm(1/4)$, so $\al=3/4$ \mk.
+  \item[(d)] If $v$ is an eigenvector for $P$ with eigenvalue $\lm$,
+   we have 
+   \begin{align*}
+    Pv &= \lm v \\
+    P^2v &= \lm^2 v \\
+    (\al P + \bt I)v &= \al\lm v + \bt v = (\al\lm+\bt)v.
+   \end{align*}
+   As $P^2=\al P+\bt I$, it follows that $\lm^2v=(\al\lm+\bt)v$, or
+   equivalently $(\lm^2-\al\lm-\bt)v=0$.  As $v$ is an eigenvector it
+   is nonzero, so $\lm^2-\al\lm-\bt=0$. \mks{2}
+  \item[(e)] We know that $\al=3/4$ and $\bt=1/4$, so the equation
+   in~(d) becomes $\lm^2-3\lm/4-1/4=0$, which factors as
+   $(\lm-1)(\lm+1/4)$.  We see from this that the eigenvalues are $1$
+   and $-1/4$. \mks{3}
+  \item[(f)] It is clear by symmetry that all entries in the
+   stationary distribution must be the same.  There are five entries
+   and they must add up to one, so the stationary distribution is 
+   \[ u_1 = \bbm 1/5 & 1/5 & 1/5 & 1/5 & 1/5 \ebm. \mks{3} \]
+   One could also obtain this by row-reducing the matrix $P-I$:
+   {\tiny \[
+   \bbm
+   -1&1/4&1/4&1/4&1/4\\
+   1/4&-1&1/4&1/4&1/4\\
+   1/4&1/4&-1&1/4&1/4\\
+   1/4&1/4&1/4&-1&1/4\\
+   1/4&1/4&1/4&1/4&-1\\
+   \ebm
+   \to
+   \bbm
+   1&-1/4&-1/4&-1/4&-1/4\\
+   0&-15/16&5/16&5/16&5/16\\
+   0&5/16&-15/16&5/16&5/16\\
+   0&5/16&5/16&-15/16&5/16\\
+   0&5/16&5/16&5/16&-15/16\\
+   \ebm
+   \to
+   \bbm
+   1&-1/4&-1/4&-1/4&-1/4\\
+   0&1&-1/3&-1/3&-1/3\\
+   0&5/16&-15/16&5/16&5/16\\
+   0&5/16&5/16&-15/16&5/16\\
+   0&5/16&5/16&5/16&-15/16\\
+   \ebm
+   \to
+  \] \[
+   \bbm
+   1&0&-1/3&-1/3&-1/3\\
+   0&1&-1/3&-1/3&-1/3\\
+   0&0&-5/6&5/12&5/12\\
+   0&0&5/12&-5/6&5/12\\
+   0&0&5/12&5/12&-5/6\\
+   \ebm
+   \to
+   \bbm
+   1&0&-1/3&-1/3&-1/3\\
+   0&1&-1/3&-1/3&-1/3\\
+   0&0&1&-1/2&-1/2\\
+   0&0&5/12&-5/6&5/12\\
+   0&0&5/12&5/12&-5/6\\
+   \ebm
+   \to
+   \bbm
+   1&0&0&-1/2&-1/2\\
+   0&1&0&-1/2&-1/2\\
+   0&0&1&-1/2&-1/2\\
+   0&0&0&-5/8&5/8\\
+   0&0&0&5/8&-5/8\\
+   \ebm
+   \to
+  \] \[
+   \bbm
+   1&0&0&-1/2&-1/2\\
+   0&1&0&-1/2&-1/2\\
+   0&0&1&-1/2&-1/2\\
+   0&0&0&1&-1\\
+   0&0&0&5/8&-5/8\\
+   \ebm
+   \to
+   \bbm
+   1&0&0&0&-1\\
+   0&1&0&0&-1\\
+   0&0&1&0&-1\\
+   0&0&0&1&-1\\
+   0&0&0&0&0\\
+   \ebm
+   \]}
+   From this last matrix we see again that all entries in the
+   stationary distribution must be the same.
+  \item[(g)] The stationary distribution $u_1$ is an eigenvector, of
+   eigenvalue $1$ \mk.  The eigenvectors of eigenvalue $-1/4$ must satisfy
+   $(P+\frac{1}{4}I)u=0$.  However, every entry in $P+\frac{1}{4}I$ is
+   $1/4$, so a vector $u=\bbm v&w&x&y&z\ebm^T$ satisfies
+   $(P+\frac{1}{4}I)u=0$ if and only if $(v+w+x+y+z)/4=0$ \mk.  We therefore
+   have linearly independent eigenvectors as follows:
+   \[ u_2 = \bbm 1 \\ 0 \\ 0 \\ 0 \\ -1 \ebm
+      u_3 = \bbm 0 \\ 1 \\ 0 \\ 0 \\ -1 \ebm
+      u_4 = \bbm 0 \\ 0 \\ 1 \\ 0 \\ -1 \ebm
+      u_5 = \bbm 0 \\ 0 \\ 0 \\ 1 \\ -1 \ebm.
+   \]
+   The full list $u_1,\dotsc,u_5$ is now a basis for $\R^5$ consisting
+   of eigenvectors for $P$. \mks{2}
+ \end{itemize}
+\end{solution}
+
+\begin{problem}[2012-13 resit]
+ Consider the following Markov chain:
+ \begin{center}
+  \begin{tikzpicture}[scale=3,auto,shorten >= 1pt]
+   \node (state1) at ( 0.0,1.0) [circle,draw] {$1$}; 
+   \node (state2) at ( 1.0,1.0) [circle,draw] {$2$}; 
+   \node (state3) at ( 0.0,0.0) [circle,draw] {$3$}; 
+   \node (state4) at ( 1.0,0.0) [circle,draw] {$4$}; 
+   \draw[-triangle 90,loop left ] (state1) to node {$\tfrac{1}{3}$} (state1);
+   \draw[-triangle 90,loop right] (state2) to node {$\tfrac{3}{4}$} (state2);
+   \draw[-triangle 90,loop left ] (state3) to node {$\tfrac{3}{4}$} (state3);
+   \draw[-triangle 90,loop right] (state4) to node {$\tfrac{11}{12}$} (state4);
+   \draw[-triangle 90] (state1) to node        {$\tfrac{1}{3}$ } (state2);
+   \draw[-triangle 90] (state1) to node [swap] {$\tfrac{1}{3}$ } (state3);
+   \draw[-triangle 90] (state2) to node        {$\tfrac{1}{4}$ } (state4);
+   \draw[-triangle 90] (state3) to node [swap] {$\tfrac{1}{4}$ } (state4);
+   \draw[-triangle 90] (state4) to node        {$\tfrac{1}{12}$} (state1);
+  \end{tikzpicture}
+ \end{center}
+ \begin{itemize}
+  \item[(a)] Write down the transition matrix $P$. \mrks{2}
+  \item[(b)] Consider the following vectors:
+   \[ u_1 = \bbm 1 \\ -1 \\ -1 \\ 1 \ebm \qquad
+      u_2 = \bbm 1 \\ -2 \\ -2 \\ 3 \ebm
+   \]
+   Show that these are eigenvectors for $P$, and find the
+   corresponding eigenvalues.\\  \mrks{4}
+
+   \textbf{Note:} it is not necessary to calculate the characteristic
+   polynomial.
+  \item[(c)] Find another eigenvector of the form
+   \[ u_3 = \bbm 0 \\ x \\ y \\ 0 \ebm, \]
+   and state the corresponding eigenvalue. \mrks{4}
+  \item[(c)] Using the general theory of Markov chains, write down one
+   more eigenvalue; then find a corresponding eigenvector.  \mrks{5}
+  \item[(d)] Write down an eigenvector of $P^T$.  \mrks{2}
+  \item[(e)] What is the long-run average probability of being in
+   state 3? \mrks{3}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] $\displaystyle P=
+    \bbm 1/3 & 0   & 0   & 1/12  \\
+         1/3 & 3/4 & 0   & 0     \\
+         1/3 & 0   & 3/4 & 0     \\
+         0   & 1/4 & 1/4 & 11/12 
+    \ebm = \frac{1}{12} 
+    \bbm 4 & 0 & 0 & 1 \\
+         4 & 9 & 0 & 0 \\
+         4 & 0 & 9 & 0 \\
+         0 & 3 & 3 & 11 
+    \ebm 
+    $. \mks{2}
+  \item[(b)] We have 
+   \begin{align*}
+    Pu_1 &= \frac{1}{12} 
+    \bbm 4 & 0 & 0 & 1 \\
+         4 & 9 & 0 & 0 \\
+         4 & 0 & 9 & 0 \\
+         0 & 3 & 3 & 11 
+    \ebm \bbm 1 \\ -1 \\ -1 \\ 1 \ebm =
+    \frac{1}{12} \bbm 5 \\ -5 \\ -5 \\ 5 \ebm = 
+    \frac{5}{12} u_1 \mk \\
+    Pu_2 &= \frac{1}{12} 
+    \bbm 4 & 0 & 0 & 1 \\
+         4 & 9 & 0 & 0 \\
+         4 & 0 & 9 & 0 \\
+         0 & 3 & 3 & 11 
+    \ebm \bbm 1 \\ -2 \\ -2 \\ 3 \ebm =
+    \frac{1}{12} \bbm 7 \\ -14 \\ -14 \\ 21 \ebm = 
+    \frac{7}{12} u_2 \mk
+   \end{align*}
+   This shows that $u_1$ and $u_2$ are eigenvectors for $P$,
+   with eigenvalues $\lm_1=5/12$ and $\lm_2=7/12$. \mks{2}
+  \item[(c)] If $u_3=\bbm 0 & x & y & 0\ebm^T$ then
+   \[ Au_3 = \frac{1}{12} 
+    \bbm 4 & 0 & 0 & 1 \\
+         4 & 9 & 0 & 0 \\
+         4 & 0 & 9 & 0 \\
+         0 & 3 & 3 & 11 
+    \ebm \bbm 0 \\ x \\ y \\ 0 \ebm =
+    \frac{1}{12} \bbm 0 \\ 9x \\ 9y \\ 3(x+y) \ebm.  \mk
+   \]
+   For $u_3$ to be an eigenvector, $Au_3$ must be a scalar multiple of
+   $u_3$, so the last entry must be zero, so $y=-x$. \mk Taking $x=1$ and
+   $y=-1$ we get 
+   \[ u_3 = \bbm 0 \\ 1 \\ -1 \\ 0 \ebm \hspace{4em}
+      Au_3 = \frac{1}{12} \bbm 0 \\ 9 \\ 9 \\ 0 \ebm = 
+      \frac{9}{12} u_3 = \frac{3}{4} u_3,
+   \]
+   so $u_3$ is an eigenvector of eigenvalue $\lm_3=3/4$. \mks{2}
+  \item[(c)] By the general theory of Markov chains, the matrix $P$ is
+   stochastic, so $\lm_4=1$ is another eigenvalue of $P$ \mks{2}.  To find a
+   corresponding eigenvector, we row-reduce the matrix $P-I$:
+   \[
+   \bbm
+   -2/3&0&0&1/12\\
+   1/3&-1/4&0&0\\
+   1/3&0&-1/4&0\\
+   0&1/4&1/4&-1/12\\
+   \ebm
+   \to
+   \bbm
+   1&0&0&-1/8\\
+   1/3&-1/4&0&0\\
+   1/3&0&-1/4&0\\
+   0&1/4&1/4&-1/12\\
+   \ebm
+   \to
+   \bbm
+   1&0&0&-1/8\\
+   0&-1/4&0&1/24\\
+   0&0&-1/4&1/24\\
+   0&1/4&1/4&-1/12\\
+   \ebm
+   \to 
+  \] \[
+   \bbm
+   1&0&0&-1/8\\
+   0&1&0&-1/6\\
+   0&0&-1/4&1/24\\
+   0&1/4&1/4&-1/12\\
+   \ebm
+   \to
+   \bbm
+   1&0&0&-1/8\\
+   0&1&0&-1/6\\
+   0&0&1&-1/6\\
+   0&1/4&1/4&-1/12\\
+   \ebm
+   \to
+   \bbm
+   1&0&0&-1/8\\
+   0&1&0&-1/6\\
+   0&0&1&-1/6\\
+   0&0&0&0\\
+   \ebm \mks{2}
+   \]
+   We deduce that the desired eigenvector has the form
+   $u_4=\bbm a&b&c&d\ebm^T$ with $a-d/8=b-d/6=c-d/6=0$, so
+   $u_4=\bbm d/8&d/6&d/6&d\ebm^T$ with $d$ arbitrary.  We choose $d=24$,
+   giving $u_4=\bbm 3&4&4&24\ebm^T$. \mk
+  \item[(d)] As $P$ is stochastic, the row vector
+   $e=\bbm 1 & \dotsb & 1\ebm$ satisfies $eP=e$ and so $P^Te^T=e^T$.
+   In other words, $e^T$ is an eigenvector of $P^T$, with eigenvalue
+   $1$. \mks{2}
+  \item[(e)] The stationary distribution \mk is the eigenvector of
+   eigenvalue $1$ where the sum of the entries is $1$.  As the sum of
+   the entries in $u_4$ is $35$, the stationary distribution is
+   $u_4/35=\bbm 3/35 & 4/35 & 4/35 & 24/35\ebm^T$ \mk.  The long run
+   average probability of being in state $3$ is the third entry in the
+   stationary distribution, which is $4/35$ \mk.
+ \end{itemize}
+\end{solution}
+
+\begin{problem}[2012-13]
+ Consider the following Markov chain:
+ \begin{center}
+  \begin{tikzpicture}[scale=3,auto,shorten >= 1pt]
+   \node (state1) at ( 0.0,1.0) [circle,draw] {$1$}; 
+   \node (state2) at ( 1.0,1.0) [circle,draw] {$2$}; 
+   \node (state3) at ( 1.0,0.0) [circle,draw] {$3$}; 
+   \node (state4) at ( 0.0,0.0) [circle,draw] {$4$}; 
+   \draw[->,loop left]  (state1) to node {$\tfrac{1}{4}$} (state1);
+   \draw[->,loop right] (state2) to node {$\tfrac{1}{4}$} (state2);
+   \draw[->,loop right] (state3) to node {$\tfrac{7}{8}$} (state3);
+   \draw[->,loop left]  (state4) to node {$\tfrac{7}{8}$} (state4);
+   \draw[->] (state1) to node {$\tfrac{3}{4}$} (state2);
+   \draw[->] (state2) to node {$\tfrac{3}{4}$} (state3);
+   \draw[->] (state3) to node {$\tfrac{1}{8}$} (state4);
+   \draw[->] (state4) to node {$\tfrac{1}{8}$} (state1);
+  \end{tikzpicture}
+ \end{center}
+ \begin{itemize}
+  \item[(a)] Write down the transition matrix $P$. \mrks{2}
+  \item[(b)] Consider the following vectors:
+   \[ u_1 = \bbm 1 \\ -6 \\ 6 \\ -1 \ebm \qquad
+      u_2 = \bbm 1 \\ 3 \\ -6 \\ 2 \ebm \qquad
+      u_3 = \bbm 1 \\ 2 \\ -6 \\ 3 \ebm
+   \]
+   Show that these are all eigenvectors for $P$, and find the
+   corresponding eigenvalues.\\  \mrks{6}
+
+   \textbf{Note:} it is not necessary to calculate the characteristic
+   polynomial.
+  \item[(c)] Using the general theory of Markov chains, write down one
+   more eigenvalue; then find a corresponding eigenvector.  \mrks{6}
+  \item[(d)] Give an invertible matrix $U$ and a diagonal matrix $D$
+   such that $P=UDU^{-1}$.  Explain how this can be used to calculate
+   $P^n$. \mrks{3}
+  \item[(e)] What is the long run average probability of being in
+   state 1? \mrks{3}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] $\displaystyle P=
+    \bbm 1/4 & 0   & 0   & 1/8 \\
+         3/4 & 1/4 & 0   & 0   \\
+         0   & 3/4 & 7/8 & 0   \\
+         0   & 0   & 1/8 & 7/8 
+    \ebm = \frac{1}{8} 
+    \bbm 2 & 0 & 0 & 1 \\
+         6 & 2 & 0 & 0 \\
+         0 & 6 & 7 & 0 \\
+         0 & 0 & 1 & 7 
+    \ebm 
+    $. \mks{2}
+  \item[(b)] We have 
+   \begin{align*}
+    Pu_1 &= \frac{1}{8}
+     \bbm 2 & 0 & 0 & 1 \\
+          6 & 2 & 0 & 0 \\
+          0 & 6 & 7 & 0 \\
+          0 & 0 & 1 & 7 
+     \ebm 
+     \bbm 1 \\ -6 \\ 6 \\ -1 \ebm 
+     = \frac{1}{8} \bbm 1 \\ -6 \\ 6 \\ -1 \ebm 
+     = \frac{1}{8} u_1 \mk \\
+    Pu_2 &= \frac{1}{8}
+     \bbm 2 & 0 & 0 & 1 \\
+          6 & 2 & 0 & 0 \\
+          0 & 6 & 7 & 0 \\
+          0 & 0 & 1 & 7 
+     \ebm 
+     \bbm 1 \\ 3 \\ -6 \\ 2 \ebm 
+     = \frac{1}{8} \bbm 4 \\ 12 \\ -24 \\ 8 \ebm 
+     = \frac{1}{2} u_2 \mk \\
+    Pu_3 &= \frac{1}{8}
+     \bbm 2 & 0 & 0 & 1 \\
+          6 & 2 & 0 & 0 \\
+          0 & 6 & 7 & 0 \\
+          0 & 0 & 1 & 7 
+     \ebm 
+     \bbm 1 \\ 2 \\ -6 \\ 3 \ebm 
+     = \frac{1}{8} \bbm 5 \\ 10 \\ -30 \\ 15 \ebm 
+     = \frac{5}{8} u_3. \mk
+   \end{align*}
+   This shows that $u_1$, $u_2$ and $u_3$ are eigenvectors for $P$,
+   with eigenvalues $\lm_1=1/8$ and $\lm_2=1/2$ and $\lm_3=5/8$. \mks{3}
+  \item[(c)] By the general theory of Markov chains, the matrix $P$ is
+   stochastic, so $\lm_4=1$ is another eigenvalue of $P$ \mks{2}.  To find a
+   corresponding eigenvector, we row-reduce the matrix $P-I$:
+   \[
+   \bbm
+   -3/4&0&0&1/8\\
+   3/4&-3/4&0&0\\
+   0&3/4&-1/8&0\\
+   0&0&1/8&-1/8\\
+   \ebm
+   \to
+   \bbm
+   -3/4&0&0&1/8\\
+   1&-1&0&0\\
+   0&3/4&-1/8&0\\
+   0&0&1/8&-1/8\\
+   \ebm
+   \to
+   \bbm
+   0&-3/4&0&1/8\\
+   1&-1&0&0\\
+   0&3/4&-1/8&0\\
+   0&0&1/8&-1/8\\
+   \ebm
+   \to
+   \] \[
+   \bbm
+   0&1&0&-1/6\\
+   1&-1&0&0\\
+   0&3/4&-1/8&0\\
+   0&0&1/8&-1/8\\
+   \ebm
+   \to
+   \bbm
+   0&1&0&-1/6\\
+   1&0&0&-1/6\\
+   0&0&-1/8&1/8\\
+   0&0&1/8&-1/8\\
+   \ebm
+   \to
+   \bbm
+   0&1&0&-1/6\\
+   1&0&0&-1/6\\
+   0&0&-1/8&1/8\\
+   0&0&0&0\\
+   \ebm
+   \to
+  \] \[
+   \bbm
+   0&1&0&-1/6\\
+   1&0&0&-1/6\\
+   0&0&1&-1\\
+   0&0&0&0\\
+   \ebm
+   \to
+   \bbm
+   1&0&0&-1/6\\
+   0&1&0&-1/6\\
+   0&0&1&-1\\
+   0&0&0&0\\
+   \ebm \mks{3}
+   \]
+   We deduce that the desired eigenvector has the form
+   $u_4=\bbm a&b&c&d\ebm^T$ with $a-d/6=b-d/6=c-d=0$, so
+   $u_4=\bbm d/6&d/6&d&d\ebm^T$ with $d$ arbitrary.  We choose $d=6$,
+   giving $u_4=\bbm 1&1&6&6\ebm^T$. \mk
+  \item[(d)] We now take
+   \begin{align*}
+    U &= [u_1|u_2|u_3|u_4] 
+       = \bbm 
+           1 &  1 &  1 &  1 \\ 
+          -6 &  3 &  2 &  1 \\
+           6 & -6 & -6 &  6 \\
+          -1 &  2 &  3 &  6
+         \ebm \mk \\
+    D &= \bbm 
+          \lm_1 & 0 & 0 & 0 \\
+          0 & \lm_2 & 0 & 0 \\
+          0 & 0 & \lm_3 & 0 \\
+          0 & 0 & 0 & \lm_4 
+         \ebm = 
+         \bbm
+          1/8 & 0 & 0 & 0 \\
+          0 & 1/2 & 0 & 0 \\
+          0 & 0 & 5/8 & 0 \\
+          0 & 0 & 0 & 1 
+         \ebm. \mk
+   \end{align*}
+   The general theory tells us that $P=UDU^{-1}$.  It follows that 
+   $P^n=UD^nU^{-1}$, where 
+   \[ D^n = 
+         \bbm
+          (1/8)^n & 0 & 0 & 0 \\
+          0 & (1/2)^n & 0 & 0 \\
+          0 & 0 & (5/8)^n & 0 \\
+          0 & 0 & 0 & 1 
+         \ebm. \mk
+   \]   
+  \item[(e)] The stationary distribution \mk is the eigenvector of
+   eigenvalue $1$ where the sum of the entries is $1$.  As the sum of
+   the entries in $u_4$ is $14$, the stationary distribution is
+   $u_4/14=\bbm 1/14 & 1/14 & 3/7 & 3/7\ebm^T$ \mk.  The long run average
+   probability of being in state $1$ is the first entry in the
+   stationary distribution, which is $1/14$ \mk.
+ \end{itemize}
+\end{solution}
+
+
+\begin{problem}[2011-12 resit]
+ Consider the following Markov chain:
+ \begin{center}
+  \begin{tikzpicture}[scale=2,auto,shorten >= 1pt]
+   \node (state1) at ( 0.0,0.0) [circle,draw] {$1$}; 
+   \node (state2) at ( 1.0,0.0) [circle,draw] {$2$}; 
+   \node (state3) at ( 2.0,0.0) [circle,draw] {$3$}; 
+   \node (state4) at ( 3.0,0.0) [circle,draw] {$4$}; 
+   \draw[->,loop above] (state1) to node {$\tfrac{1}{5}$} (state1);
+   \draw[->,loop above] (state2) to node {$\tfrac{2}{5}$} (state2);
+   \draw[->,loop above] (state3) to node {$\tfrac{3}{5}$} (state3);
+   \draw[->,loop above] (state4) to node {$1$}            (state4);
+   \draw[->]            (state1) to node {$\tfrac{4}{5}$} (state2);
+   \draw[->]            (state2) to node {$\tfrac{3}{5}$} (state3);
+   \draw[->]            (state3) to node {$\tfrac{2}{5}$} (state4);
+  \end{tikzpicture}
+ \end{center}
+ \begin{itemize}
+  \item[(a)] Write down the associated transition matrix $P$. \mrks{2}
+  \item[(b)] Show that the following vectors are eigenvectors for $P$,
+   and find the corresponding eigenvalues. \mrks{4}
+   \[ u_3 = \bbm 0 \\ 0 \\ 1 \\ -1 \ebm \hspace{5em}
+      u_4 = \bbm 0 \\ 0 \\ 0 \\ 1 \ebm
+   \]
+  \item[(c)] Find all the other eigenvalues and eigenvectors. \mrks{9}
+  \item[(d)] At time $t=0$ the system is in state $2$.  What is the
+   probability that it is in state $3$ at $t=8$? \mrks{10}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)]
+   $P = \bbm
+         1/5 &   0 &   0 & 0 \\
+         4/5 & 2/5 &   0 & 0 \\
+           0 & 3/5 & 3/5 & 0 \\
+           0 &   0 & 2/5 & 1 
+        \ebm$
+   \mks{2}
+  \item[(b)] We have
+   \begin{align*}
+    Pu_3 &= 
+        \bbm
+         1/5 &   0 &   0 & 0 \\
+         4/5 & 2/5 &   0 & 0 \\
+           0 & 3/5 & 3/5 & 0 \\
+           0 &   0 & 2/5 & 1 
+        \ebm
+        \bbm 0 \\ 0 \\ 1 \\ -1 \ebm
+        = 
+        \bbm 0 \\ 0 \\ 3/5 \\ -3/5 \ebm = \tfrac{3}{5} u_3 \mk \\
+    Pu_4 &= 
+        \bbm
+         1/5 &   0 &   0 & 0 \\
+         4/5 & 2/5 &   0 & 0 \\
+           0 & 3/5 & 3/5 & 0 \\
+           0 &   0 & 2/5 & 1 
+        \ebm
+        \bbm 0 \\ 0 \\ 0 \\ 1 \ebm
+        = 
+        \bbm 0 \\ 0 \\ 0 \\ 1 \ebm = u_4 \mk.
+   \end{align*}
+   This shows that $u_3$ and $u_4$ are eigenvectors, with eigenvalues
+   $\lm_3=3/5$ and $\lm_4=1$ \mks{2}.
+  \item[(c)] The characteristic polynomial is
+   \[ \chi_P(t) =
+        \det\bbm
+         1/5-t &   0 &   0 & 0 \\
+         4/5 & 2/5-t &   0 & 0 \\
+           0 & 3/5 & 3/5-t & 0 \\
+           0 &   0 & 2/5 & 1-t 
+        \ebm
+        = 
+        (1/5-t)(2/5-t)(3/5-t)(1-t)
+   \]
+   (because the determinant of a lower-triangular matrix is just the
+   product of the diagonal entries) \mks{2}.  It follows that the eigenvalues
+   are $\lm_1=1/5$ and $\lm_2=2/5$ and $\lm_3=3/5$ and $\lm_4=1$ \mk.  We
+   already have eigenvectors $u_3$ and $u_4$ of eigenvalues $\lm_3$
+   and $\lm_4$.  To find an eigenvector $u_1$ of eigenvalue $1/5$, we
+   must solve the matrix equation shown on the left below, or the
+   equivalent system of equations shown on the right.
+   \[ 
+        \bbm
+         1/5 &   0 &   0 & 0 \\
+         4/5 & 2/5 &   0 & 0 \\
+           0 & 3/5 & 3/5 & 0 \\
+           0 &   0 & 2/5 & 1 
+        \ebm
+        \bbm w \\ x \\ y \\ z \ebm
+        = 
+        \bbm w/5 \\ x/5 \\ y/5 \\ z/5 \ebm 
+        \hspace{5em}
+        \begin{array}{rl}
+         w &= w \\
+         4w+2x &= x \\
+         3x+3y &= y \\
+         2y+5z &= z.
+        \end{array}
+   \]
+   It is clear that the vector $u_1=\bbm 1&-4&6&-3\ebm^T$ is a
+   solution. \mks{3}
+
+   Similarly, to find an eigenvector $u_1$ of eigenvalue $2/5$, we
+   must solve the matrix equation shown on the left below, or the
+   equivalent system of equations shown on the right.
+   \[ 
+        \bbm
+         1/5 &   0 &   0 & 0 \\
+         4/5 & 2/5 &   0 & 0 \\
+           0 & 3/5 & 3/5 & 0 \\
+           0 &   0 & 2/5 & 1 
+        \ebm
+        \bbm w \\ x \\ y \\ z \ebm
+        = 
+        \bbm 2w/5 \\ 2x/5 \\ 2y/5 \\ 2z/5 \ebm 
+        \hspace{5em}
+        \begin{array}{rl}
+         w &= 2w \\
+         4w+2x &= 2x \\
+         3x+3y &= 2y \\
+         2y+5z &= 2z.
+        \end{array}
+   \]
+   The first equation gives $w=0$, we can take $x$ to be $1$, and then
+   the remaining equations give $y=-3$ and $z=2$.  Thus, the vector
+   $u_2=\bbm 0&1&-3&2\ebm^T$ is a solution.  \mks{3}
+  \item[(d)] We are told that the initial distribution is 
+   $r_0=\bbm 0&1&0&0\ebm^T$.  We need to express this as a linear
+   combination of the vectors $u_i$, say
+   $\al_1u_1+\al_2u_2+\al_3u_3+\al_4u_4=r_0$ \mk.  This reduces to 
+   \begin{align*}
+      \al_1 &= 0 \\
+    -4\al_1 +  \al_2 &= 1 \\
+     6\al_1 - 3\al_2 + \al_3 &= 0 \\
+    -3\al_1 + 2\al_2 - \al_3 + \al_4 &= 0 \mk.
+   \end{align*}
+   These equations can be solved in an obvious way to give $\al_1=0$
+   and $\al_2=1$ and $\al_3=3$ and $\al_4=1$, so 
+   \[ r_0 = u_2 + 3u_3 + u_4 \mks{2}. \]
+   It follows that 
+   \begin{align*}
+    r_n &= P^n r_0 \mk
+         = P^nu_2 + 3 P^nu_3 + P^nu_4 \\
+        &= (2/5)^nu_2 + 3(3/5)^nu_3 + u_4 \mk
+         = \bbm 
+            0 \\
+            (2/5)^n \\
+            -3(2/5)^n + 3(3/5)^n  \\
+            2(2/5)^n - 3(3/5)^n + 1
+           \ebm \mks{2}
+   \end{align*}
+   The probability of being in state $3$ at time $n$ is the third
+   entry in this vector \mk.  Taking $n=8$ we get 
+   \[ 3((3/5)^8 -(2/5)^8) = \frac{3783}{78125} = 0.0484 \mk. \]
+ \end{itemize}
+\end{solution}
+
+
+\begin{problem}[2011-12]
+ Consider the following Markov chain:
+ \begin{center}
+  \begin{tikzpicture}[scale=2,auto,shorten >= 1pt]
+   \node (state1) at ( 0.0,1.5) [circle,draw] {$1$}; 
+   \node (state2) at (-1.0,0.0) [circle,draw] {$2$}; 
+   \node (state3) at ( 1.0,0.0) [circle,draw] {$3$}; 
+   \draw[->,bend right] (state1) to node [swap] {$0.6$} (state2);
+   \draw[->,bend left]  (state1) to node {$0.2$} (state3);
+   \draw[->,loop above] (state1) to node {$0.2$} (state1);
+   \draw[->,bend left]  (state2) to node {$1.0$} (state3);
+   \draw[->,bend left]  (state3) to node {$1.0$} (state2);
+  \end{tikzpicture}
+ \end{center}
+ \begin{itemize}
+  \item[(a)] Write down the associated transition matrix. \mrks{2}
+  \item[(b)] Find a stationary distribution for the system. \mrks{6}
+  \item[(c)] If the system is in state $1$ at $t=0$, what is the
+   probability that it is in state $2$ at $t=4$? \mrks{17}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] $P = \bbm 0.2 & 0 & 0 \\ 0.6 & 0 & 1 \\ 0.2 & 1 & 0 \ebm$. 
+   \mks{2}
+  \item[(b)] A stationary distribution $p$ is in particular an
+   eigenvector of eigenvalue $1$.  Such eigenvectors can be found by
+   row-reducing $P-I$ \mk:
+   \[ \bbm -0.8 & 0 & 0 \\ 0.6 & -1 & 1 \\ 0.2 & 1 & -1 \ebm
+      \to 
+      \bbm 1 & 0 & 0 \\ 0 & -1 & 1 \\ 0 & 1 & -1 \ebm
+      \to 
+      \bbm 1 & 0 & 0 \\ 0 & 1 & -1 \\ 0 & 0 & 0 \ebm \mks{2}
+   \]
+   We conclude that if $p=\bbm p_1&p_2&p_3\ebm^T$ then we must have 
+   \[ \bbm 1 & 0 & 0 \\ 0 & 1 & -1 \\ 0 & 0 & 0 \ebm
+       \bbm p_1\\ p_2\\ p_3\ebm = \bbm 0\\0\\0 \ebm,
+   \]
+   or equivalently $p_1=0$ and $p_2=p_3$ \mk.  For a stationary
+   distribution we also need $p_1,p_2,p_3\geq 0$ and $p_1+p_2+p_3=1$,
+   so we must take $p_2=p_3=0.5$ \mk.  It follows that the stationary
+   distribution is $\bbm 0&0.5&0.5\ebm^T$ \mk.
+  \item[(c)] We are given that the initial distribution is
+   $r_0=\bbm 1\\0\\0\ebm^T$, and we need to calculate $r_4=P^4r_0$.
+   As $4$ is not very large, it is easy enough to do this directly:
+   \begin{align*}
+    P^2 &= \bbm -0.8 & 0 & 0 \\ 0.6 & -1 & 1 \\ 0.2 & 1 & -1 \ebm
+           \bbm -0.8 & 0 & 0 \\ 0.6 & -1 & 1 \\ 0.2 & 1 & -1 \ebm
+         = \bbm 0.04 & 0 & 0 \\ 0.32 & 1 & 0 \\ 0.64 & 0 & 1 \ebm \\
+    P^4 &= (P^2)^2 
+         = \bbm 0.04 & 0 & 0 \\ 0.32 & 1 & 0 \\ 0.64 & 0 & 1 \ebm
+           \bbm 0.04 & 0 & 0 \\ 0.32 & 1 & 0 \\ 0.64 & 0 & 1 \ebm 
+         = \bbm 0.0016 & 0 & 0 \\ 0.3328 & 1 & 0 \\ 0.6656 & 0 & 1 \ebm \\
+    r_4 &= P^4r_0 
+         = \bbm 0.0016 & 0 & 0 \\ 0.3328 & 1 & 0 \\ 0.6656 & 0 & 1 \ebm 
+           \bbm 1 \\ 0 \\ 0 \ebm 
+         = \bbm 0.0016 \\ 0.3328 \\ 0.6656 \ebm 
+   \end{align*}
+   The probability of being in state $2$ at $t=4$ is the second
+   component of $r_4$, which is $0.3328$.  Full credit will be given
+   for this approach.
+
+   However, most students will probably use the following method.  We
+   first find the remaining eigenvalues and eigenvectors for $P$ \mk.  The
+   characteristic polynomial is
+   \[ \chi_P(t) = 
+      \det\bbm 0.2-t & 0 & 0 \\ 0.6 & -t & 1 \\ 0.2 & 1 & -t \ebm
+      = (0.2-t)(t^2-1) \mk = (t-1)(t+1)(0.2-t),
+   \]
+   so the eigenvalues are $1$ and $-1$ and $0.2$ \mk.  We have already
+   found an eigenvector $u_1=\bbm 0&0.5&0.5\ebm^T$ of eigenvalue $1$.
+   To find an eigenvector of eigenvalue $-1$, we row-reduce $P+I$:
+   \[ 
+    \bbm 1.2 & 0 & 0 \\ 0.6 & 1 & 1 \\ 0.2 & 1 & 1 \ebm
+    \to 
+    \bbm 1 & 0 & 0 \\ 0 & 1 & 1 \\ 0 & 1 & 1 \ebm
+    \to 
+    \bbm 1 & 0 & 0 \\ 0 & 1 & 1 \\ 0 & 0 & 0 \ebm \mk
+   \]
+   This shows that the eigenvectors of eigenvalue $-1$ are the vectors
+   of the form $\bbm x&y&z\ebm$ with $x=y+z=0$, or in other words the
+   vectors of the form $\bbm 0&y&-y\ebm$ \mk.  For compatibility with
+   $u_1$ it will be convenient to take $y=0.5$ giving
+   $u_2=\bbm 0&0.5&-0.5\ebm$ \mk.  Next, to find an eigenvector of
+   eigenvalue $0.2$ we row-reduce $P-0.2I$:
+   \[
+    \bbm 0 & 0 & 0 \\ 0.6 & -0.2 & 1 \\ 0.2 & 1 & -0.2 \ebm
+    \to
+    \bbm 1 & 5 & -1 \\ 0.6 & -0.2 & 1 \\ 0 & 0 & 0 \ebm
+    \to
+    \bbm 1 & 5 & -1 \\ 0 & -3.2 & 1.6 \\ 0 & 0 & 0 \ebm
+    \to
+    \bbm 1 & 5 & -1 \\ 0 & 1 & -0.5 \\ 0 & 0 & 0 \ebm
+    \to
+    \bbm 1 & 0 & 1.5 \\ 0 & 1 & -0.5 \\ 0 & 0 & 0 \ebm \mks{2}
+   \]
+   From this we see that a suitable eigenvector is
+   $u_3=\bbm -1.5&0.5&1\ebm$ \mk.  We next need to write the vector
+   $r_0=\bbm 1&0&0\ebm^T$ as a linear combination of the eigenvectors
+   $u_i$.  We can do this by row-reducing the matrix
+   $[u_1|u_2|u_3|r_0]$: \mk 
+   \[ 
+    \bbm
+     0   &  0   & -1.5 & 1 \\ 
+     0.5 &  0.5 &  0.5 & 0 \\
+     0.5 & -0.5 &  1   & 0 
+    \ebm
+    \to
+    \bbm
+     0   &  0   & -1.5 & 1 \\ 
+     0.5 &  0.5 &  0.5 & 0 \\
+     0   & -1   &  0.5 & 0 
+    \ebm
+    \to
+    \bbm
+     1   &  1   &  1   & 0 \\
+     0   &  1   & -0.5 & 0 \\
+     0   &  0   &  1   & -2/3  
+    \ebm
+   \] \[
+    \to
+    \bbm
+     1   &  1   &  0   & 2/3 \\
+     0   &  1   &  0   & -1/3 \\
+     0   &  0   &  1   & -2/3  
+    \ebm
+    \to
+    \bbm
+     1   &  0   &  0   & 1 \\
+     0   &  1   &  0   & -1/3 \\
+     0   &  0   &  1   & -2/3  
+    \ebm \mks{2}
+   \]
+   The required coefficients appear in the last column, so
+   $r_0=u_1-\tfrac{1}{3}u_2-\tfrac{2}{3}u_3$ \mk.  This gives
+   \begin{align*}
+     r_4 &= P^4r_0
+          = P^4u_1-\tfrac{1}{3}P^4u_2-\tfrac{2}{3}P^4u_3 \mk
+          = 1^4u_1-\tfrac{1}{3}(-1)^4u_2-\tfrac{2}{3}(0.2)^4u_3 \mk \\
+         &= u_1 - \tfrac{1}{3}u_2 -\tfrac{2}{3}(0.2)^4u_3 
+          = \bbm 0\\ 1/2 \\ 1/2 \ebm +
+            \bbm 0\\-1/6\\ 1/6 \ebm +
+            (0.2)^4 \bbm 1\\-1/3\\-2/3 \ebm
+          = \bbm 0.0016 \\ 0.3328 \\ 0.6656 \ebm \mk
+   \end{align*}
+   Again, the probability of being in state $2$ at $t=4$ is the second
+   component of $r_4$, which is $0.3328$. \mk
+ \end{itemize}
+\end{solution}
+
+\begin{problem}[Mock 1]
+ Consider the following Markov chain:
+ \begin{center}
+  \begin{tikzpicture}[scale=2,auto,shorten >= 1pt]
+   \node (state1) at ( 0.0,1.5) [circle,draw] {$1$}; 
+   \node (state2) at (-1.0,0.0) [circle,draw] {$2$}; 
+   \node (state3) at ( 1.0,0.0) [circle,draw] {$3$}; 
+   \draw[->,loop above] (state1) to node {$\tfrac{1}{2}$} (state1);
+   \draw[->,bend left]  (state1) to node {$\tfrac{1}{2}$} (state3);
+   \draw[->,bend left]  (state2) to node {$\tfrac{1}{4}$} (state1);
+   \draw[->]            (state2) to node {$\tfrac{3}{4}$} (state3);
+   \draw[->]            (state3) to node {$\tfrac{1}{4}$} (state1);
+   \draw[->,bend left]  (state3) to node {$\tfrac{3}{4}$} (state2);
+  \end{tikzpicture}
+ \end{center}
+ \begin{itemize}
+  \item[(a)] Write down the associated transition matrix $P$. \mrks{2}
+  \item[(b)] You may assume that the eigenvalues of $P$ are $\lm_1=1$
+   and $\lm_2=-3/4$ and $\lm_3=1/4$.  Find corresponding eigenvectors
+   $u_1$, $u_2$ and $u_3$.  \mrks{9}
+  \item[(c)] Find a stationary distribution for the system. \mrks{2}
+  \item[(d)] Show that the vector $v=\bbm 1&1&1\ebm^T$ can be
+   expressed as a linear combination of $u_1$ and $u_2$. \mrks{4}
+  \item[(e)] At time $t=0$ the system has an equal probability of
+   being in any of the three states.  What is the probability of 
+   being in state $1$ at time $t=10$? \mrks{8}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)]
+   $P = \bbm 1/2 & 1/4 & 1/4 \\ 0 & 0 & 3/4 \\ 1/2 & 3/4 & 0 \ebm
+      = \frac{1}{4} \bbm 2&1&1\\0&0&3\\2&3&0\ebm$. 
+   \mks{2}
+  \item[(b)] To find an eigenvector of eigenvalue $1$ we row-reduce $P-I$:
+   \[
+    \bbm
+    -1/2&1/4&1/4\\
+    0&-1&3/4\\
+    1/2&3/4&-1\\
+    \ebm
+    \to
+    \bbm
+    1&-1/2&-1/2\\
+    0&1&-3/4\\
+    1/2&3/4&-1\\
+    \ebm
+    \to
+    \bbm
+    1&-1/2&-1/2\\
+    0&1&-3/4\\
+    0&1&-3/4\\
+    \ebm
+    \to
+    \bbm
+    1&0&-7/8\\
+    0&1&-3/4\\
+    0&0&0\\
+    \ebm \mks{2}
+   \]
+   Any eigenvector $u_1=\bbm x&y&z\ebm^T$ of eigenvalue $1$ must
+   therefore satisfy $x-(7/8)z=y-(3/4)z=0$, so
+   $u_1=\bbm (7/8)z & (3/4)z & z \ebm^T$ with $z$ arbitrary \mk.  It
+   will be convenient to take $z=8$ giving $u_1=\bbm 7&6&8\ebm^T$.
+
+   To find an eigenvector $u_2$ of eigenvalue $-3/4$ we row-reduce
+   $P+\frac{3}{4}I$: 
+   \[
+    \bbm
+    5/4&1/4&1/4\\
+    0&3/4&3/4\\
+    1/2&3/4&3/4\\
+    \ebm
+    \to
+    \bbm
+    1&1/5&1/5\\
+    0&1&1\\
+    1/2&3/4&3/4\\
+    \ebm
+    \to
+    \bbm
+    1&1/5&1/5\\
+    0&1&1\\
+    0&13/20&13/20\\
+    \ebm
+    \to
+    \bbm
+    1&0&0\\
+    0&1&1\\
+    0&0&0\\
+    \ebm \mks{2}
+   \]
+   From this we see that we can take $u_2=\bbm 0&1&-1\ebm^T$ \mk.
+   Similarly, to find an eigenvector $u_2$ of eigenvalue $-3/4$ we
+   row-reduce $P-\frac{1}{4}I$:
+   \[
+    \bbm
+    1/4&1/4&1/4\\
+    0&-1/4&3/4\\
+    1/2&3/4&-1/4\\
+    \ebm
+    \to
+    \bbm
+    1&1&1\\
+    0&1&-3\\
+    1/2&3/4&-1/4\\
+    \ebm
+    \to
+    \bbm
+    1&1&1\\
+    0&1&-3\\
+    0&1/4&-3/4\\
+    \ebm
+    \to
+    \bbm
+    1&0&4\\
+    0&1&-3\\
+    0&0&0\\
+    \ebm \mks{2}
+   \]
+   From this we see that we can take $u_3=\bbm -4&3&1\ebm^T$ \mk.
+  \item[(c)] A stationary distribution $q$ must be an eigenvector of
+   eigenvalue $1$, so it must be a multiple of $u_1$ \mk, say
+   $q=\bbm 7t&6t&8t\ebm^T$.  For a probability vector the sum of the
+   entries must be equal to one, which means that $21t=1$ so $t=1/21$
+   and $q=\bbm 1/3&2/7&8/21\ebm^T$ \mk.
+  \item[(d)] By inspection we have $u_1+u_2=\bbm 7&7&7\ebm^T$ so
+   $v=(u_1+u_2)/7$.  For a more systematic approach, we need to find
+   $\al_1,\al_2$ and $\al_3$ such that $\al_1u_1+\al_2u_2+\al_3u_3=v$, or
+   equivalently
+   \[ \al_1 \bbm 7\\6\\8\ebm +
+      \al_2 \bbm 0\\1\\-1\ebm +
+      \al_3 \bbm -4\\3\\1\ebm
+       = \bbm 1\\1\\1\ebm \hspace{5em}
+      \begin{array}{rl}
+       7\al_1-4\al_3 &= 1 \\
+       6\al_1+\al_2+3\al_3 &= 1 \\
+       8\al_1-\al_2+\al_3 &= 1
+      \end{array}
+      \qquad \mks{2}
+   \]
+   These equations are easily solved to give $\al_1=\al_2=1/7$ and $\al_3=0$ so 
+   $v=(u_1+u_2)/7$ as before \mks{2}.
+  \item[(e)] We are told that at $t=0$ the three states all have equal
+   probability, which must be $1/3$, so the initial distribution is 
+   \[ r_0 = \bbm 1/3 \\ 1/3 \\ 1/3 \ebm
+          = \frac{v}{3} = \frac{u_1+u_2}{21}. \mks{2}
+   \]
+   It follows that 
+   \[ r_{10} = P^{10}r_0 \mk =
+         \tfrac{1}{21}(P^{10}u_1+P^{10}u_2) = 
+         \tfrac{1}{21}\left(u_1+(-\tfrac{3}{4})^{10}u_2\right) \mks{2} = 
+         \bbm 7/21 \\ 6/21 + (-3/4)^{10}/21 \\ 8/21 - (-3/4)^{10}/21 \ebm
+         \mk.
+   \]
+   The probability of being in state $1$ at $t=10$ is the first entry
+   in $r_{10}$, which is just $7/21=1/3$ \mks{2}.
+ \end{itemize}
+\end{solution}
+
+\begin{problem}[Mock 2]
+ Consider the following Markov chain:
+ \begin{center}
+  \begin{tikzpicture}[scale=2,auto,shorten >= 1pt]
+   \node (state1) at ( 0.0,0.0) [circle,draw] {$1$}; 
+   \node (state2) at ( 1.0,0.0) [circle,draw] {$2$}; 
+   \node (state3) at ( 2.0,0.0) [circle,draw] {$3$}; 
+   \node (state4) at ( 3.0,0.0) [circle,draw] {$4$}; 
+   \draw[->,loop above] (state1) to node {$\tfrac{1}{4}$} (state1);
+   \draw[->,loop above] (state2) to node {$\tfrac{1}{3}$} (state2);
+   \draw[->,loop above] (state3) to node {$\tfrac{1}{2}$} (state3);
+   \draw[->,loop above] (state4) to node {$1$}            (state4);
+   \draw[->]            (state1) to node {$\tfrac{3}{4}$} (state2);
+   \draw[->]            (state2) to node {$\tfrac{2}{3}$} (state3);
+   \draw[->]            (state3) to node {$\tfrac{1}{2}$} (state4);
+  \end{tikzpicture}
+ \end{center}
+ \begin{itemize}
+  \item[(a)] Write down the associated transition matrix $P$. \mrks{2}
+  \item[(b)] Show that the following vectors are eigenvectors for $P$,
+   and find the corresponding eigenvalues. \mrks{4}
+   \[ u_1 = \bbm 1 \\ -9 \\ 24 \\ -16 \ebm \hspace{5em}
+      u_2 = \bbm 0 \\ 1 \\ -4 \\ 3 \ebm
+   \]
+  \item[(c)] Find all the other eigenvalues and eigenvectors. \mrks{9}
+  \item[(e)] At time $t=0$ the system is in state $1$.  What is the
+   probability that it is in state $4$ at $t=5$? \mrks{10}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)]
+   $P = \bbm
+         1/4 &   0 &   0 & 0 \\
+         3/4 & 1/3 &   0 & 0 \\
+           0 & 2/3 & 1/2 & 0 \\
+           0 &   0 & 1/2 & 1 
+        \ebm$
+   \mks{2}
+  \item[(b)] We have
+   \begin{align*}
+    Pu_1 &= 
+        \bbm
+         1/4 &   0 &   0 & 0 \\
+         3/4 & 1/3 &   0 & 0 \\
+           0 & 2/3 & 1/2 & 0 \\
+           0 &   0 & 1/2 & 1 
+        \ebm
+        \bbm 1 \\ -9 \\ 24 \\ -16 \ebm
+        = 
+        \bbm 1/4 \\ -9/4 \\ 6 \\ -4 \ebm = \tfrac{1}{4} u_1 \\
+    Pu_2 &= 
+        \bbm
+         1/4 &   0 &   0 & 0 \\
+         3/4 & 1/3 &   0 & 0 \\
+           0 & 2/3 & 1/2 & 0 \\
+           0 &   0 & 1/2 & 1 
+        \ebm
+        \bbm 0 \\ 1 \\ -4 \\ 3 \ebm
+        =
+        \bbm 0 \\ 1/3 \\ -4/3 \\ 1 \ebm = \tfrac{1}{3} u_2 \mks{2}.
+   \end{align*}
+   This shows that $u_1$ and $u_2$ are eigenvectors, with eigenvalues
+   $\lm_1=1/4$ and $\lm_2=1/3$ \mks{2}.
+  \item[(c)] The characteristic polynomial is
+   \[ \chi_P(t) =
+        \det\bbm
+         1/4-t &   0 &   0 & 0 \\
+         3/4 & 1/3-t &   0 & 0 \\
+           0 & 2/3 & 1/2-t & 0 \\
+           0 &   0 & 1/2 & 1-t 
+        \ebm
+        = 
+        (1/4-t)(1/3-t)(1/2-t)(1-t)
+   \]
+   (because the determinant of a lower-triangular matrix is just the
+   product of the diagonal entries) \mks{2}.  It follows that the eigenvalues
+   are $\lm_1=1/4$ and $\lm_2=1/3$ and $\lm_3=1/2$ and $\lm_4=1$ \mk.  We
+   already have eigenvectors $u_1$ and $u_2$ of eigenvalues $\lm_1$
+   and $\lm_2$.  To find an eigenvector $u_3$ of eigenvalue $1/2$, we
+   row-reduce $P-\tfrac{1}{2}I$:
+   \[
+    \bbm
+    -1/4&0&0&0\\
+    3/4&-1/6&0&0\\
+    0&2/3&0&0\\
+    0&0&1/2&1/2\\
+    \ebm
+    \to
+    \bbm
+    1&0&0&0\\
+    0&-1/6&0&0\\
+    0&2/3&0&0\\
+    0&0&1/2&1/2\\
+    \ebm
+    \to
+    \bbm
+    1&0&0&0\\
+    0&1&0&0\\
+    0&0&0&0\\
+    0&0&1/2&1/2\\
+    \ebm
+    \to
+    \bbm
+    1&0&0&0\\
+    0&1&0&0\\
+    0&0&1&1\\
+    0&0&0&0\\
+    \ebm \mks{2}
+   \]
+   We conclude that if $u_3=\bbm x&x&y&z\ebm^T$ then we must have
+   $w=x=y+z=0$.  We can take $y=1$ and so $u_3=\bbm 0&0&1&-1\ebm$ \mks{2}.
+   
+   One can also see by inspection that the vector
+   $u_4=\bbm 0&0&0&1\ebm^T$ is an eigenvector of eigenvalue $1$ \mks{2}.
+   (This is essentially the observation that the system will almost
+   surely reach state $4$, and then it will stay there.) This could
+   also be obtained by row-reducing $P-I$, but that would be more work
+   than necessary.  The steps are as follows:
+   \[
+    \bbm
+    -3/4&0&0&0\\
+    3/4&-2/3&0&0\\
+    0&2/3&-1/2&0\\
+    0&0&1/2&0\\
+    \ebm
+    \to
+    \bbm
+    -3/4&0&0&0\\
+    0&-2/3&0&0\\
+    0&2/3&-1/2&0\\
+    0&0&1/2&0\\
+    \ebm
+    \to
+    \bbm
+    -3/4&0&0&0\\
+    0&-2/3&0&0\\
+    0&0&-1/2&0\\
+    0&0&1/2&0\\
+    \ebm
+   \] \[
+    \to
+    \bbm
+    -3/4&0&0&0\\
+    0&-2/3&0&0\\
+    0&0&-1/2&0\\
+    0&0&0&0\\
+    \ebm
+    \to
+    \bbm
+    1&0&0&0\\
+    0&1&0&0\\
+    0&0&1&0\\
+    0&0&0&0\\
+    \ebm
+   \]
+  \item[(e)] We are told that the initial distribution is 
+   $r_0=\bbm 1&0&0&0\ebm^T$.  We need to express this as a linear
+   combination of the vectors $u_i$, say
+   $\al_1u_1+\al_2u_2+\al_3u_3+\al_4u_4=r_0$ \mk.  This reduces to 
+   \begin{align*}
+    \al_1 &= 1 \\
+    -9\al_1 + \al_2 &= 0 \\
+    24\al_1 - 4\al_2 + \al_3 &= 0 \\
+    -16\al_1 + 3\al_2 - \al_3 + \al_4 &= 0 \mk.
+   \end{align*}
+   These equations can be solved in an obvious way to give $\al_1=1$
+   and $\al_2=9$ and $\al_3=12$ and $\al_4=1$, so 
+   \[ r_0 = u_1 + 9u_2 + 12 u_3 + u_4 \mks{2}. \]
+   It follows that 
+   \begin{align*}
+    r_n &= P^n r_0 \mk
+         = P^nu_1 + 9P^nu_2 + 12 P^nu_3 + P^nu_4 \\
+        &= (1/4)^nu_1 + 9(1/3)^nu_2 + 12(1/2)^nu_3 + u_4 \mk
+         = \bbm 
+            (1/4)^n \\
+            -9\tm (1/4)^n + 9\tm (1/3)^n \\
+            24\tm (1/4)^n - 36\tm(1/3)^n + 12\tm (1/2)^n \\
+            -16\tm(1/4)^n + 27\tm(1/3)^n - 12\tm (1/2)^n + 1.
+           \ebm \mks{2}
+   \end{align*}
+   The probability of being in state $4$ at time $n$ is the bottom
+   entry in this vector.  taking $n=5$ we get 
+   \[ -16/4^5 +27/3^5 - 12/2^5 + 1 = 415/576 \simeq 0.7205 \mks{2}. \]
+ \end{itemize}
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Question 3}
+\setcounter{probcounter}{0}
+
+\begin{problem}[2013-14]
+ \begin{itemize}
+  \item[(a)] Are the following statements true or false?  Justify your
+   answers. \mrks{10}
+   \begin{itemize}
+    \item[(i)] There are subspaces $V,W\leq\R^6$ with
+     $\dim(V)=\dim(W)=4$ and $\dim(V\cap W)=1$.
+    \item[(ii)] There are subspaces $V,W\leq\R^6$ with
+     $\dim(V)=\dim(W)=4$ and $\dim(V\cap W)=2$.
+    \item[(iii)] The following list is linearly independent:
+     \[ \bbm 1\\1\\ 1\\  1 \ebm,\quad
+        \bbm 1\\2\\ 4\\  8 \ebm,\quad
+        \bbm 1\\3\\ 9\\ 27 \ebm,\quad
+        \bbm 1\\4\\16\\ 81 \ebm,\quad
+        \bbm 1\\5\\25\\125 \ebm.
+     \]
+    \item[(iv)] If $A$ is a $3\tm 3$ matrix with only $2$ distinct
+     eigenvalues, then it cannot be diagonalised.
+    \item[(v)] There is a $4\tm 4$ symmetric matrix with
+     characteristic polynomial $t^4+1$.
+   \end{itemize}
+  \item[(b)] Give examples of the following: \mrks{10}
+   \begin{itemize}
+    \item[(i)] A list $u_1,\dotsc,u_4$ of vectors in $\R^2$ such that
+     $u_1,u_2$ is a basis and $u_2,u_3$ is a basis and $u_3,u_4$ is a
+     basis but $u_4,u_1$ is not a basis.
+    \item[(ii)] A pair of subspaces $V,W\leq\R^4$ such that
+     $\dim(V)=\dim(W)=2$ and 
+     \[ V\cap W = \{\bbm w&x&y&z\ebm^T \st w+x=x+y=y+z=0\}. \]
+    \item[(iii)] A non-diagonalisable $3\tm 3$ matrix whose only
+     eigenvalue is $111$.
+    \item[(iv)] A stochastic matrix with eigenvalues $1$, $1/2$ and
+     $1/3$. 
+    \item[(v)] A $3\tm 2$ matrix of rank $1$ that is not in RREF.
+   \end{itemize}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)]
+   \begin{itemize}
+    \item[(i)] This is false \mk.  The dimension formula says that
+     $\dim(V+W)=\dim(V)+\dim(W)-\dim(V\cap W)$, which would give
+     $\dim(V+W)=4+4-1=7$, but it is impossible for a subspace of
+     $\R^6$ to have dimension $7$. \mk
+    \item[(ii)] This is true. \mk As an example, we could have
+     $V=\spn(e_1,e_2,e_3,e_4)$ and $W=\spn(e_1,e_2,e_5,e_6)$ so
+     $V\cap W=\spn(e_1,e_2)$. \mk
+    \item[(iii)] This is false. \mk No list of $5$ vectors in $\R^4$
+     can be linearly independent. \mk
+    \item[(iv)] This is false. \mk The matrix 
+     \[ A = \bbm 0&0&0 \\ 0&0&0 \\ 0&0&1 \ebm \]
+     has only two eigenvalues (namely $0$ and $1$), but it is diagonal
+     and so is certainly diagonalisable. \mk
+    \item[(v)] This is false. \mk Any symmetric matrix has real
+     eigenvalues, but the roots of $t^4+1$ are not real. \mk
+   \end{itemize}
+  \item[(b)] In each case, there are many possible correct answers.
+   \begin{itemize}
+    \item[(i)] Note that a list $v,w$ in $\R^2$ is a basis iff $v$ and
+     $w$ are nonzero, and not multiples of each other.  Given this, we
+     see that the list $e_1,e_2,e_1+e_2,e_1$ is as required. \mks{2}
+    \item[(ii)] Put $u_1=\bbm 1&-1&1&-1\ebm$, so 
+     \[ \{\bbm w&x&y&z\ebm^T \st w+x=x+y=y+z=0\} = \spn(u_1). \]
+     Then the spaces $V=\spn(u_1,e_1)$ and $W=\spn(u_1,e_2)$ have
+     dimension two with $V\cap W=\spn(u_1)$ as required. \mks{2}
+    \item[(iii)] The standard example is the Jordan block
+     $\displaystyle 
+       \bbm 111 & 1 & 0 \\ 0 & 111 & 1 \\ 0 & 0 & 111 \ebm.
+     $   \mks{2}
+    \item[(iv)] The obvious example is
+     $\displaystyle
+        \bbm 1 & 1/2 & 1/3 \\ 0 & 1/2 & 1/3 \\ 0 & 0 & 1/3 \ebm.
+     $ \mks{2}
+    \item[(v)] One example is 
+     $\displaystyle \bbm 0 & 0 \\ 0 & 0 \\ 1 & 0 \ebm $
+     \mks{2}
+   \end{itemize}
+ \end{itemize}
+\end{solution}
+
+\begin{problem}[2012-13 resit]
+ \begin{itemize}
+  \item[(a)] Are the following statements true or false?  Justify your
+   answers. \mrks{10}
+   \begin{itemize}
+    \item[(i)] If $V$ and $W$ are subspaces of $\R^n$, then
+     $\dim(V+W)\geq\dim(V)+\dim(W)$.
+    \item[(ii)] If the list $v_1,\dotsc,v_5$ spans $\R^4$, then it is
+     also linearly independent.
+    \item[(iii)] If $w_1$ cannot be expressed as a linear combination of
+     $w_2$, $w_3$ and $w_4$, then the list $w_1,w_2,w_3,w_4$ is
+     linearly independent.
+    \item[(iv)] If $a_1,a_2,a_3,b\in\R^4$ and the matrix
+     $[a_1|a_2|a_3|b]$ row-reduces to the identity matrix, then $b$ is
+     a linear combination of $a_1$, $a_2$ and $a_3$.
+    \item[(v)] If $M$ is a $3\tm 3$ symmetric matrix and $u$ and $v$
+     are vectors in $\R^3$ with $Mu=2u$ and $Mv=3v$, then $u.v=0$.
+   \end{itemize}
+  \item[(b)] Give examples of the following: \mrks{10}
+   \begin{itemize}
+    \item[(i)] A linearly independent list of $3$ vectors in $\R^4$.
+    \item[(ii)] A pair of subspaces $V,W\leq\R^4$ such that
+     $\dim(V)=\dim(W)=2$ and $V\cap W=\spn(e_1+e_2+e_3+e_4)$.
+    \item[(iii)] A two-dimensional subspace $U\leq\R^4$ that contains
+     the vector $\bbm 1&2&3&4\ebm^T$ but not the vector 
+     $\bbm 4&3&2&1\ebm^T$.
+    \item[(iv)] A matrix whose characteristic polynomial
+     is $t^2+2$.
+    \item[(v)] A $3\tm 3$ matrix of rank $2$ that is not in RREF.
+   \end{itemize}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)]
+   \begin{itemize}
+    \item[(i)] This is false. \mk For example, if
+     $V=W=\spn(e_1)\leq\R^2$ then $V+W$ is also $\spn(e_1)$, so
+     $\dim(V+W)=1$ but $\dim(V)+\dim(W)=2$. \mk (However, the reversed
+     inequality $\dim(V+W)\leq\dim(V)+\dim(W)$ is always valid.)
+    \item[(ii)] This is false.  \mk In fact, no list of five vectors
+     in $\R^4$ can ever be linearly independent.  For a specific
+     example, the list $e_1,e_2,e_3,e_4,0$ spans $\R^4$ and is not
+     linearly independent. \mk
+    \item[(iii)] This is false. \mk For example, if $w_1=e_1$ and
+     $w_2=w_3=w_4=0$ then $w_1$ is not a linear combination of $w_2$,
+     $w_3$ and $w_4$, but nonetheless the list $w_1,w_2,w_3,w_4$ is
+     linearly dependent. \mk
+    \item[(iv)] This is false. \mk The general method for such problems
+     is as follows: we row-reduce the matrix $[a_1|a_2|a_3|b]$ to get
+     a matrix $M$; then $b$ is a linear combination of $a_1$, $a_2$
+     and $a_3$ if and only if $M$ has no pivot in the last column.  As
+     the identity matrix has a pivot in the last column, we see that
+     $b$ is \emph{not} a linear combination of $a_1$, $a_2$ and
+     $a_3$. \mk
+    \item[(v)] This is true. \mk The equations $Mu=2u$ and $Mv=3v$
+     mean that $u$ and $v$ are eigenvectors of the symmetric matrix
+     $M$ with distinct eigenvalues, namely $2$ and $3$.  A general
+     theorem says that such eigenvectors are orthogonal. \mk
+   \end{itemize}
+  \item[(b)] In each case, there are many possible correct answers.
+   \begin{itemize}
+    \item[(i)] The simplest example is the list $e_1,e_2,e_3$. \mks{2}
+    \item[(ii)] One example is to take
+     \begin{align*}
+      V &= \spn(e_1,e_2+e_3+e_4) 
+         = \{\bbm x&y&y&y\ebm^T\st x,y\in\R\} \\
+      W &= \spn(e_1+e_2+e_3,e_4) 
+         = \{\bbm x&x&x&y\ebm^T\st x,y\in\R\}. \mks{2}
+     \end{align*}
+    \item[(iii)] The simplest example is to take
+     $U=\spn(e_1,2e_2+3e_3+4e_4)$. \mks{2}
+    \item[(iv)] One example is $\bbm 0&1\\-2&0\ebm$. \mks{2}
+    \item[(v)] Examples include $\bbm 2&0&0\\0&2&0\\0&0&0\ebm$ and
+     $\bbm 1&1&1\\0&1&1\\0&1&1\ebm$. \mks{2}
+   \end{itemize}
+ \end{itemize}
+\end{solution}
+
+\begin{problem}[2012-13]
+ \begin{itemize}
+  \item[(a)] Are the following statements true or false?  Justify your
+   answers. \mrks{10}
+   \begin{itemize}
+    \item[(i)] If $V$ and $W$ are subspaces of $\R^n$, then
+     $\dim(V+W)\leq\dim(V)+\dim(W)$.
+    \item[(ii)] If the list $v_1,\dotsc,v_4$ spans $\R^4$, then it is
+     also linearly independent.
+    \item[(iii)] If $w_1$ can be expressed as a linear combination of
+     $w_2$, $w_3$ and $w_4$, then the list $w_1,w_2,w_3,w_4$ is
+     linearly independent.
+    \item[(iv)] If $a_1,a_2,a_3,b\in\R^4$ and the matrix
+     $[a_1|a_2|a_3|b]$ row-reduces to the identity matrix, then $b$ is
+     a linear combination of $a_1$, $a_2$ and $a_3$.
+    \item[(v)] If $M$ is a square matrix with $M^T=M$, and $u$ and $v$
+     are vectors with $u+Mu=v-Mv=0$, then $u.v=0$.
+   \end{itemize}
+  \item[(b)] Give examples of the following: \mrks{10}
+   \begin{itemize}
+    \item[(i)] A spanning set for $\R^3$ that is not a basis.
+    \item[(ii)] A pair of subspaces $V,W\leq\R^4$ such that
+     $\dim(V)=\dim(W)=2$ and $\dim(V+W)=3$.
+    \item[(iii)] A two-dimensional subspace $U\leq\R^4$ such that
+     $w+x+y+z=0$ for all vectors $\bbm w&x&y&z\ebm^T\in U$.
+    \item[(iv)] A non-diagonal matrix whose characteristic polynomial
+     is $t^2-1$.
+    \item[(v)] A $2\tm 3$ matrix of rank $1$ that is not in RREF.
+   \end{itemize}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)]
+   \begin{itemize}
+    \item[(i)] This is true. \mk The dimension formula says that
+     $\dim(V+W)=\dim(V)+\dim(W)-\dim(V\cap W)$, and this is clearly
+     less than or equal to $\dim(V)+\dim(W)$. \mk
+    \item[(ii)] This is true.  \mk In general, if we have a list of $n$
+     vectors in $\R^n$ (so the number of vectors is the same as the
+     size of each vector) then the list is linearly independent iff it
+     spans iff it is a basis. \mk
+    \item[(iii)] This is false. \mk If $w_1$ is a linear combination of
+     $w_2$, $w_3$ and $w_4$, then $w_1=\al w_2+\bt w_3+\gm w_4$ for
+     some scalars $\al$, $\bt$ and $\gm$.  This means that we have a
+     nontrivial linear relation $(-1)w_1+\al w_2+\bt w_3+\gm w_4$ on
+     the list $w_1,w_2,w_3,w_4$, so that list is linearly dependent
+     (not independent). \mk
+    \item[(iv)] This is false. \mk The general method for such problems
+     is as follows: we row-reduce the matrix $[a_1|a_2|a_3|b]$ to get
+     a matrix $M$; then $b$ is a linear combination of $a_1$, $a_2$
+     and $a_3$ if and only if $M$ has no pivot in the last column.  As
+     the identity matrix has a pivot in the last column, we see that
+     $b$ is \emph{not} a linear combination of $a_1$, $a_2$ and
+     $a_3$. \mk
+    \item[(v)] This is true. \mk The equations $u+Mu=v-Mv=0$ mean that
+     $u$ and $v$ are eigenvectors of the symmetric matrix $M$ with
+     distinct eigenvalues, namely $-1$ and $+1$.  A general theorem
+     says that such eigenvectors are orthogonal. \mk
+   \end{itemize}
+  \item[(b)] In each case, there are many possible correct answers.
+   \begin{itemize}
+    \item[(i)] The simplest example is the list $e_1,e_2,e_3,0$. \mks{2}
+    \item[(ii)] The simplest example is to take $V=\spn(e_1,e_2)$ and
+     $W=\spn(e_1,e_3)$ (so that $V+W=\spn(e_1,e_2,e_3)$). \mks{2}
+    \item[(iii)] The simplest example is to take
+     $U=\spn(e_1-e_2,e_3-e_4)$. \mks{2}
+    \item[(iv)] Possible examples include $\bbm 0&1\\1&0\ebm$ and
+     $\bbm 1&1\\0&-1\ebm$. \mks{2}
+    \item[(v)] Examples include $\bbm 2&0&0\\0&0&0\ebm$ and
+     $\bbm 1&1&1\\1&1&1\ebm$. \mks{2}
+   \end{itemize}
+ \end{itemize}
+\end{solution}
+
+
+\begin{problem}[2011-12 resit]
+ \begin{itemize}
+  \item[(1)]
+   Are the following statements true or false?  Justify your answers
+   carefully. \mrks{10}
+   \begin{itemize}
+    \item[(a)] Let $A$ be a $4\tm 4$ matrix with exactly two nonzero
+     rows.  Then the rank of $A$ is $2$.
+    \item[(b)] No list of five vectors in $\R^6$ can span $\R^6$.
+    \item[(c)] The following vectors are linearly independent:
+     \[ \bbm 1\\ 7\\ 9\\ 1 \ebm \hspace{3em}
+        \bbm 4\\ 8\\ 1\\ 4 \ebm \hspace{3em}
+        \bbm 7\\ 0\\ 3\\ 6 \ebm \hspace{3em}
+        \bbm 4\\ 1\\ 5\\ 4 \ebm \hspace{3em}
+        \bbm 0\\-2\\ 6\\-1 \ebm
+     \]
+    \item[(d)] Let $V$ and $W$ be subspaces of $\R^n$; then
+     $\dim(V+W)=\dim(V)+\dim(W)$. 
+    \item[(e)] Every subspace of $\R^3$ is either a line or a plane.
+   \end{itemize}
+  \item[(2)]
+   Which of the following sets is a subspace of $\R^4$?  Justify your
+   answers. \mrks{8}
+   \begin{align*}
+    V_1 &= \{\bbm w&x&y&z\ebm^T \in\R^4 \st wxyz=0\} \\
+    V_2 &= \{\bbm w&x&y&z\ebm^T \in\R^4 \st w^4+z^4=0\} \\
+    V_3 &= \{\bbm w&x&y&z\ebm^T \in\R^4 \st w+x+y+z\geq 0\} \\
+    V_4 &= \{\bbm w&x&y&z\ebm^T \in\R^4 \st w=x=y=z\}.
+   \end{align*}
+  \item[(3)] Give examples of the following. \mrks{7}
+   \begin{itemize}
+    \item[(a)] A list of four vectors in $\R^3$ such that any two of
+     them are linearly independent, but any three of them are linearly
+     dependent. 
+    \item[(b)] A linearly dependent list that spans $\R^2$.
+    \item[(c)] A $3\tm 3$ matrix that has only two distinct
+     eigenvalues. 
+    \item[(d)] A $2\tm 2$ matrix that is invertible but not orthogonal.
+   \end{itemize}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(1)]
+   \begin{itemize}
+    \item[(a)] This is false \mk; for example, the matrix
+     $A=\bbm 1&0&0&0\\ 1&0&0&0 \\ 0&0&0&0 \\ 0&0&0&0\ebm$ only has
+     rank one. \mk
+    \item[(b)] This is true \mk.  Every spanning list in $\R^n$ has
+     length at least $n$. \mk.
+    \item[(c)] This is false \mk: any list of five vectors in $\R^4$ is
+     automatically linearly dependent \mk.  (In fact, we have
+     $v_1-v_2+v_3-v_4-v_5=0$, but it is not necessary to work this out.) 
+    \item[(d)] This is false \mk.  We have
+     $\dim(V+W)=\dim(V)+\dim(W)-\dim(V\cap W)$, which is usually less
+     than $\dim(V)+\dim(W)$. \mk
+    \item[(e)] This is false \mk: there are two more possibilities,
+     namely the zero subspace and $\R^3$ itself. \mk
+   \end{itemize}
+  \item[(2)]
+   \begin{itemize}
+    \item[(a)] The set $V_1$ is not a subspace \mk.  Indeed, the vectors
+     $a=\bbm 1&1&0&0\ebm^T$ and $b=\bbm 0&0&1&1\ebm^T$ both lie in
+     $V_1$, but the vector $a+b=\bbm 1&1&1&1\ebm^T$ does not lie in
+     $V_1$, so $V_1$ is not closed under addition. \mk
+    \item[(b)] The set $V_2$ is a subspace \mk.  Indeed, as all fourth
+     powers are nonnegative, the only way we can have $w^4+z^4=0$ is if
+     $w=z=0$.  Thus $V_2=\{(0,x,y,0)\st x,y\in\R\}$, which is clearly
+     a subspace \mk. 
+    \item[(c)] The set $V_3$ is not a subspace \mk.  Indeed, the vector
+     $a=\bbm 1&0&0&0\ebm^T$ lies in $V_3$, but the vector
+     $(-1).a=\bbm -1&0&0&0\ebm$ does not lie in $V_3$, so $V_3$ is not
+     closed under scalar multiplication. \mk.
+    \item[(d)] The set $V_4$ is a subspace \mk, because it can be
+     described as $\spn(\bbm 1&1&1&1\ebm^T)$ \mk. (A mark will be
+     given for any reasonable argument.)
+   \end{itemize}
+  \item[(3)] 
+   \begin{itemize}
+    \item[(a)] The simplest example is the list
+     \[ \bbm 1\\ 0\\ 0\ebm,\quad 
+        \bbm 1\\ 1\\ 0\ebm,\quad
+        \bbm 1\\ 2\\ 0\ebm,\quad
+        \bbm 1\\ 3\\ 0\ebm.  \mks{2}
+     \]
+    \item[(b)] The simplest example is the list $e_1,e_2,0$.  For a
+     slightly less degenerate example, we could use
+     $e_1,e_2,e_1+e_2$.  \mks{2}
+    \item[(c)] The simplest example is the matrix
+     $\bbm 0&0&0 \\ 0&0&0\\ 0&0&1\ebm$.  \mk
+    \item[(d)] The simplest example is the matrix 
+     $\bbm 1&1\\0&1\ebm$.  \mks{2}
+   \end{itemize}
+ \end{itemize}
+\end{solution}
+
+
+\begin{problem}[2011-12]
+ \begin{itemize}
+  \item[(1)]
+   Are the following statements true or false?  Justify your answers
+   carefully. \mrks{9}
+   \begin{itemize}
+    \item[(a)] Any list of four vectors in $\R^3$ spans $\R^3$.
+    \item[(b)] There exists a linearly dependent list of vectors that
+     spans $\R^3$.
+    \item[(c)] The following vectors are linearly independent:
+     \[ \bbm 1\\ 2\\ 3\\ 4 \ebm \hspace{3em}
+        \bbm 2\\ 2\\ 3\\ 4 \ebm \hspace{3em}
+        \bbm 3\\ 3\\ 3\\ 4 \ebm \hspace{3em}
+        \bbm 4\\ 4\\ 4\\ 4 \ebm \hspace{3em}
+        \bbm 4\\ 3\\ 2\\ 1 \ebm
+     \]
+    \item[(d)] The following vectors form a basis of $\R^3$:
+     \[ \bbm 1 \\ 1 \\ 1 \ebm \hspace{4em}
+        \bbm 1 \\ 10 \\ 100 \ebm \hspace{4em}
+        \bbm 1 \\ 11 \\ 101 \ebm
+     \]
+   \end{itemize}
+  \item[(2)]
+   Which of the following sets is a subspace of $\R^4$?  Justify your
+   answers. \mrks{9}
+   \begin{align*}
+    V_1 &= \{\bbm w&x&y&z\ebm^T \in\R^4 \st w+x+y+z=0\} \\
+    V_2 &= \{\bbm w&x&y&z\ebm^T \in\R^4 \st w^2+x^2+y^2+z^2=0\} \\
+    V_3 &= \{\bbm w&x&y&z\ebm^T \in\R^4 \st w^3+x^3+y^3+z^3=0\} \\
+    V_4 &= \{\bbm w&x&y&z\ebm^T \in\R^4 \st w+x+y+z=1\}.
+   \end{align*}
+  \item[(3)] Give examples of the following. \mrks{7}
+   \begin{itemize}
+    \item[(a)] A list of $4$ vectors in $\R^3$ such that any three of
+     them form a basis.
+    \item[(b)] A pair of subspaces $V,W\leq\R^6$ with
+     $\dim(V)=\dim(W)=3$ and $\dim(V+W)=4$.
+    \item[(c)] A list of three subspaces $P,Q,R\leq\R^3$ such that
+     $\dim(P)=\dim(Q)=\dim(R)=2$ and $\dim(P\cap Q\cap R)=1$.
+   \end{itemize}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(1)]
+   \begin{itemize}
+    \item[(a)] This is false \mk.  For the most extreme example, the list
+     $0,0,0,0$ clearly does not span $\R^3$.  For a less degenerate
+     example in which the four vectors are all different, we can take
+     $\bbm 1\\0\\0\ebm,\bbm 2\\0\\0\ebm,\bbm 3\\0\\0\ebm,\bbm 4\\0\\0\ebm$
+     \mk.
+    \item[(b)] This is true \mk.  The simplest example is the list $e_1$,
+     $e_2$, $e_3$, $0$ \mk.
+    \item[(c)] This is false \mk: any list of five vectors in $\R^4$ is
+     automatically linearly dependent \mk.  If we call the vectors $v_1$ to
+     $v_5$, then we have
+     \[ 4v_1-5v_4+4v_5 = 
+         \bbm 4\\8\\12\\16\ebm  -
+         \bbm 20\\ 20\\ 20\\ 20\ebm +
+         \bbm 16\\ 12 \\ 8 \\ 4 \ebm = 
+         \bbm 0\\ 0\\ 0\ebm,
+     \]
+     which is a specific example of a nontrivial linear relation.
+    \item[(d)] This is true \mk.  One way to prove it is to take the vectors
+     as the columns of a matrix, and start row-reducing it:
+     \[ 
+      \bbm 1 & 1 & 1 \\ 1 & 10 & 11 \\ 1 & 100 & 101 \ebm
+      \to
+      \bbm 1 & 1 & 1 \\ 0 & 9 & 10 \\ 0 & 99 & 100 \ebm
+      \to
+      \bbm 1 & 1 & 1 \\ 0 & 9 & 10 \\ 0 & 0 & -10 \ebm
+     \]
+     We now have an upper triangular matrix with nonzero entries on
+     the diagonal, and any such matrix can be row-reduced to the
+     identity.  It follows that the given list is a basis \mks{2}.
+   \end{itemize}
+  \item[(2)] 
+   \begin{itemize}
+    \item[(a)] The set $V_1$ is a subspace \mk.  Indeed, it is clear that
+     the zero vector lies in $V_1$.  Next, suppose we have two elements
+     $a=\bbm w&x&y&z\ebm^T$ and $a'=\bbm w'&x'&y'&z'\ebm^T$ in $V_1$, so
+     $w+x+y+z=0$ and $w'+x'+y'+z'=0$.  By adding these equations, we see
+     that $(w+w')+(x+x')+(y+y')+(z+z')=0$, so the vector
+     $a+a'=\bbm w+w'&x+x'&y+y'&z+z'\ebm$ also lies in $V_1$.  This shows
+     that $V_1$ is closed under addition.  Similarly, for any $t\in\R$
+     we have $tw+tx+ty+tz=0$, showing that $ta\in V_1$.  This means that
+     $V_1$ is closed under scalar multiplication and so is a subspace \mks{2}.
+    \item[(b)] The set $V_2$ is a subspace \mk.  Indeed, as all squares are
+     nonnegative, the only way we can have $w^2+x^2+y^2+z^2=0$ is if
+     $w=x=y=z=0$.  Thus $V_2=\{0\}$, which is clearly a subspace \mk.
+    \item[(c)] The set $V_3$ is not a subspace \mk.  Indeed, the vectors
+     $a=\bbm 1&-1&0&0\ebm^T$ and $a'=\bbm 1&0&-1&0\ebm$ lie in $V_3$,
+     but the sum $a+a'=\bbm 2&-1&-1&0\ebm^T$ does not (because
+     $2^3+(-1)^3+(-1)^3+0^3=6\neq 0$) so $V_3$ is not closed under
+     addition \mk.
+    \item[(d)] The set $V_4$ is not a subspace \mk, because it does not
+     contain the zero vector \mk.
+   \end{itemize}
+  \item[(3)] 
+   \begin{itemize}
+    \item[(a)] The simplest example is the list
+     $e_1,e_2,e_3,e_1+e_2+e_3$.  \mks{2}
+    \item[(b)] The simplest example is to take $V=\spn(e_1,e_2,e_3)$
+     and $W=\spn(e_1,e_2,e_4)$ so $V+W=\spn(e_1,e_2,e_3,e_4)$. \mks{2}
+    \item[(c)] We need three planes that meet along a common line.
+     One example is to take
+     \[ P = \left\{\bbm x\\y\\z\ebm\in\R^3\st y=z\right\} \hspace{3em}
+        Q = \left\{\bbm x\\y\\z\ebm\in\R^3\st y=0\right\} \hspace{3em}
+        R = \left\{\bbm x\\y\\z\ebm\in\R^3\st y=-z\right\},
+     \]
+     so 
+     \[ P\cap Q\cap R = 
+         \left\{\bbm x\\y\\z\ebm\in\R^3\st y=z=0\right\} =
+          \text{ the $x$-axis }.  \mks{3}
+     \]
+   \end{itemize}
+ \end{itemize}
+\end{solution}
+
+\begin{problem}[Mock 1]
+ \begin{itemize}
+  \item[(a)]
+   Are the following statements true or false?  Justify your answers.
+   \mrks{9}
+   \begin{itemize}
+    \item[(i)] No list of four vectors in $\R^5$ can span $\R^5$.
+    \item[(ii)] Every linearly independent list is a basis.
+    \item[(iii)] Let $u$ and $v$ be eigenvectors for a square matrix
+     $A$, with different eigenvalues; then $u$ and $v$ are orthogonal.
+    \item[(iv)] Let $V$ and $W$ be subspaces of $\R^n$ with
+     $V\cap W=\{0\}$; then $\dim(V+W)=\dim(V)+\dim(W)$.
+   \end{itemize}
+  \item[(b)]
+   Which of the following sets is a subspace of $\R^4$?  Justify your
+   answers. \mrks{9}
+   \begin{align*}
+    V_1 &= \{\bbm w&x&y&z\ebm^T \in\R^4 \st w^2-x^2+y^2-z^2=0\} \\
+    V_2 &= \{\bbm w&x&y&z\ebm^T \in\R^4 \st 2w-3x+4y-5z=0\} \\
+    V_3 &= \{\bbm w&x&y&z\ebm^T \in\R^4 \st 2w-3x+4y-5z=1\} \\
+    V_4 &= \{\bbm w&x&y&z\ebm^T \in\R^4 \st w+x^2+y^3+z^4=0\}.
+   \end{align*}
+  \item[(c)] Give examples of the following. \mrks{7}
+   \begin{itemize}
+    \item[(i)] A list of four vectors in $\R^2$ such that any two of
+     them form a basis.
+    \item[(ii)] A list of four vectors in $\R^4$ such that any two of
+     them are linearly independent, but any three of them are linearly
+     dependent. 
+    \item[(iii)] A $3\tm 3$ matrix that has only two distinct
+     eigenvalues. 
+   \end{itemize}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)]
+   \begin{itemize}
+    \item[(i)] This is true \mk.  A general theorem in the notes says
+     that any list that spans $\R^n$ must have at least $n$ elements \mk.
+    \item[(ii)] This is not true \mk.  For example, the vectors
+     $u_1=\bbm 1&0&0\ebm^T$ and $u_2=\bbm 0&1&0\ebm^T$ give a linearly
+     independent list $u_1,u_2$ in $\R^3$, but this list does not span
+     $\R^3$ and so is not a basis. \mk
+    \item[(iii)] This is false \mk.  For a concrete counterexample,
+     consider the matrix $A=\bbm 0&1\\0&1\ebm$ and the vectors
+     $u=\bbm 1\\0\ebm$ and $v=\bbm 1\\1\ebm$.  These are eigenvectors
+     of eigenvalue $0$ and $1$ respectively, but they are not
+     orthogonal.  The statement is true for symmetric matrices, but
+     not more generally \mks{2}.
+    \item[(iv)] This is true \mk.  It is a general theorem that for any
+     subspaces $V,W\leq\R^n$ we have
+     $\dim(V+W)+\dim(V\cap W)=\dim(V)+\dim(W)$.  In the case where
+     $V\cap W=\{0\}$ we have $\dim(V\cap W)=0$ and so
+     $\dim(V+W)=\dim(V)+\dim(W)$ \mk.  
+   \end{itemize}
+  \item[(b)] 
+   \begin{itemize}
+    \item The set $V_1$ is not a subspace \mk.  Indeed, the
+     vectors $a=\bbm 1&1&0&0\ebm^T$ and $a'=\bbm 1&-1&0&0\ebm^T$ are
+     elements of $V_1$ but the vector $a+a'=\bbm 2&0&0&0\ebm$ is not;
+     so $V_1$ is not closed under addition and cannot be a subspace. \mk
+    \item The set $V_2$ is a subspace \mk.  Indeed, it is clear that
+     the zero vector lies in $V_2$.  Next, suppose we have two elements
+     $a=\bbm w&x&y&z\ebm^T$ and $a'=\bbm w'&x'&y'&z'\ebm^T$ in $V_2$, so
+     $2w-3x+4y-5z=0$ and $2w'-3x'+4y'-5z'=0$.  By adding these
+     equations, we see that $2(w+w')-3(x+x')+4(y+y')-5(z+z')=0$, so
+     the vector $a+a'=\bbm w+w'&x+x'&y+y'&z+z'\ebm$ also lies in
+     $V_2$.  This shows that $V_2$ is closed under addition.
+     Similarly, for any $t\in\R$ we have $2tw-3tx+4ty-5tz=0$, showing
+     that $ta\in V_2$.  This means that $V_2$ is closed under scalar
+     multiplication and so is a subspace \mks{2}. 
+    \item The set $V_3$ is not a subspace \mk, because it does
+     not contain the zero vector \mk.
+    \item The set $V_4$ is not a subspace \mk.  Indeed, the vector
+     $a=\bbm -1&1&0&0\ebm^T$ is an element of $V_4$, but the vector
+     $-a=\bbm 1&-1&0&0\ebm^T$ is not, which shows that $V_4$ is not
+     closed under scalar multiplication. \mk.
+   \end{itemize}
+  \item[(c)] 
+   \begin{itemize}
+    \item[(i)] The simplest example is the list
+     $\bbm 1\\0\ebm,\bbm 1\\1\ebm,\bbm 1\\2\ebm,\bbm 1\\3\ebm$ \mks{2}.
+    \item[(ii)] The simplest example is the list
+     $\bbm 1\\0\\0\ebm,
+      \bbm 1\\1\\0\ebm,
+      \bbm 1\\2\\0\ebm,
+      \bbm 1\\3\\0\ebm$ \mks{3}.
+    \item[(iii)] The simplest example is the matrix 
+     $A=\bbm 0&0&0\\0&0&0\\0&0&1\ebm$ \mks{2}.
+   \end{itemize}
+ \end{itemize}
+\end{solution}
+
+\begin{problem}[Mock 2]
+ \begin{itemize}
+  \item[(a)]
+   Are the following statements true or false?  You do not need to justify your answers.
+   \mrks{9}
+   \begin{itemize}
+    \item[(i)] Let $A$ be a $3\tm 5$ matrix with linearly independent
+     rows.  Then the rank of $A$ is $5$.
+    \item[(ii)] Let $A$ be a $5\tm 5$ matrix with $A^T=A$, and let $u$
+     and $v$ be vectors with $Au=2u$ and $Av=3v$.  Then $u.v=0$.
+    \item[(iii)] Let $U$ be a $4\tm 4$ matrix whose columns are all
+     orthogonal to each other.  Then $U^TU=I$.
+    \item[(iv)] The list $\bbm 1\\3\ebm,\bbm 7\\1\ebm,\bbm 4\\4\ebm$
+     is linearly independent.
+    \item[(v)] The list
+     $\bbm 1\\1\\0\\0\ebm,\bbm 0\\1\\1\\0\ebm,\bbm 0\\0\\1\\1\ebm$
+     spans $\R^4$.
+    \item[(vi)] Let $A$ be a $5\tm 5$ matrix with $\rnk(A)=5$.  Then
+     $A$ is invertible.
+    \item[(vii)] Let $u_1,u_2,u_3,u_4,u_5,u_6$ be a linearly
+     independent list of vectors in $\R^6$.  Then the list
+     $u_1,u_3,u_5$ is also linearly independent.
+    \item[(viii)] Let $u_1,u_2,u_3,u_4,u_5,u_6$ be a list of vectors
+     that spans $\R^6$.  Then the list $u_1,u_3,u_5$ also spans
+     $\R^6$.
+    \item[(ix)] Every subspace of $\R^3$ is either a line or a plane.
+   \end{itemize}
+  \item[(b)]
+   Which of the following sets is a subspace of $\R^4$?  Here you do
+   need to justify your answers. \mrks{8}
+   \begin{align*}
+    V_1 &= \{\bbm w&x&y&z\ebm^T \in\R^4 \st w\geq x\} \\
+    V_2 &= \{\bbm w&x&y&z\ebm^T \in\R^4 \st w=x=y=z\} \\
+    V_3 &= \{\bbm w&x&y&z\ebm^T \in\R^4 \st w+x+y+z \text{ is an integer }\} \\
+    V_4 &= \{\bbm w&x&y&z\ebm^T \in\R^4 \st wxyz=0\}.
+   \end{align*}
+  \item[(c)] Give examples of the following. \mrks{8}
+   \begin{itemize}
+    \item[(i)] A linearly dependent list that spans $\R^2$.
+    \item[(ii)] A $2\tm 2$ matrix that is invertible but not orthogonal.
+    \item[(iii)] A subspace of $\R^3$ that contains the vector
+     $\bbm 1&2&3\ebm^T$ and has dimension $2$.
+    \item[(iv)] A $4\tm 4$ matrix $A$ such that $A\neq I_4$ and
+     $\chi_A(t)=(t-1)^4$. 
+   \end{itemize}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)]
+   \begin{itemize}
+    \item[(i)] This is false \mk.  (The rank will be $3$ rather than
+     $5$.) 
+    \item[(ii)] This is true \mk.   (Any two eigenvectors of a
+     symmetric matrix with distinct eigenvalues are orthogonal.)
+    \item[(iii)] This is false \mk.  (The matrix $2I_4$ is a
+     counterexample.  It would be true if we said that the columns are
+     orthonormal rather than just orthogonal.)
+    \item[(iv)] This is false \mk.  (No list of $3$ vectors in $\R^2$
+     can be linearly independent.)
+    \item[(v)] This is false \mk.  (No list of $3$ vectors can span
+     $\R^4$.)
+    \item[(vi)] This is true \mk. (Rank $5$ means that the $5$ columns
+     are linearly independent vectors in $\R^5$, so they form a basis
+     of $\R^5$, which implies that the matrix is invertible.)
+    \item[(vii)] This is true \mk.  (Any linear relation
+     $\lm_1u_1+\lm_2u_3+\lm_3u_5=0$ gives a linear relation 
+     \[ \lm_1u_1+0u_2+\lm_2u_3+0u_4+\lm_3u_5+0u_6=0, \]
+     which must be the trivial relation because $u_1,\dotsc,u_6$ is an
+     independent list.  This implies that $\lm_1=\lm_2=\lm_3=0$, so
+     the original relation is also trivial.)
+    \item[(viii)] This is false \mk. (No list of length $3$ can ever
+     span $\R^6$.)
+    \item[(ix)] This is false \mk. (There are also the subspaces
+     $\{0\}$ and $\R^3$ itself.)
+   \end{itemize}
+  \item[(b)] 
+   \begin{itemize}
+    \item The set $V_1$ is not a subspace \mk.  Indeed, the
+     vector $a=\bbm 1&0&0&0\ebm^T$ is an element of $V_1$ but the
+     vector $-a=\bbm -1&0&0&0\ebm$ is not; so $V_1$ is not closed
+     under scalar multiplication and cannot be a subspace. \mk 
+    \item The set $V_2$ is a subspace \mk.  Indeed, $V_2$ is just the
+     set of multiples of the vector $b=\bbm 1&1&1&1\ebm^T$ or in other
+     words $V_2=\spn(b)$, and the span of any list is a subspace. \mk
+    \item The set $V_3$ is not a subspace \mk.  Indeed, the
+     vector $a=\bbm 1&0&0&0\ebm^T$ is an element of $V_3$ but the
+     vector $\half a=\bbm \half&0&0&0\ebm^T$ is not; so $V_3$ is not
+     closed under scalar multiplication and cannot be a subspace. \mk
+    \item The set $V_4$ is not a subspace \mk.  Indeed, the vectors
+     $c=\bbm 1&1&0&0\ebm^T$ and $d=\bbm 0&0&1&1\ebm^T$ are elements of
+     $V_4$ but the vector $c+d=\bbm 1&1&1&1\ebm^T$ is not, so $V_4$ is
+     not closed under addition and cannot be a subspace. \mk
+   \end{itemize}
+  \item[(c)] 
+   \begin{itemize}
+    \item[(i)] One example is the list
+     $\bbm 1\\0\ebm,\bbm 0\\1\ebm,\bbm 1\\1\ebm$ \mks{2}.
+    \item[(ii)] One example is the matrix
+     $2I_2=\bbm 2&0\\0&2\ebm$ \mks{2}.
+    \item[(iii)] One example is the space
+     $V=\spn(\bbm 1&0&0\ebm^T,\;\bbm 0&2&3\ebm^T)$ \mks{2}.
+    \item[(iv)] One example is the matrix
+     \[ A = \bbm 1&1&1&1 \\ 0&1&1&1 \\ 0&0&1&1 \\ 0&0&0&1 \ebm
+          \mks{2}.
+     \]
+   \end{itemize}
+ \end{itemize}
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Question 4}
+\setcounter{probcounter}{0}
+
+\begin{problem}[2013-14]
+ Consider the vectors
+ \[ 
+  a_1 = \bbm  1\\ 1\\ 0\\  0 \ebm \quad
+  a_2 = \bbm  0\\ 0\\ 1\\ -1 \ebm \quad
+  v_1 = \bbm  1\\-1\\-1\\ -1 \ebm \quad
+  v_2 = \bbm  1\\ 0\\ 0\\ -1 \ebm \quad
+  c_1 = \bbm  1\\-1\\ 1\\  1 \ebm \quad
+  c_2 = \bbm  1\\ 1\\ 1\\ -1 \ebm
+ \]
+ and the subspaces
+ \[ U = \ann(a_1,a_2) \qquad
+    V = \spn(v_1,v_2) \qquad
+    W = \ann(c_1,c_2)
+ \]
+ in $\R^4$.
+ \begin{itemize}
+  \item[(a)] Find the canonical basis for $U$. \mrks{4}
+  \item[(b)] Find the canonical basis for $V$. \mrks{3}
+  \item[(c)] Find the canonical basis for $W$. \mrks{4}
+  \item[(d)] Find the canonical basis for $U\cap V\cap W$. \mrks{5}
+  \item[(e)] Find the canonical basis for $U+V+W$. \mrks{4}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] For a vector $u=\bbm p&q&r&s\ebm^T$ to lie in $U$, it
+   must satisfy $u.a_1=u.a_2=0$, or equivalently $p+q=r-s=0$ \mk.  This
+   means that $u$ must have the form 
+   \[ u = \bbm p \\ -p \\ r \\ r \ebm 
+        = p \bbm 1 \\ -1 \\ 0 \\ 0 \ebm + 
+          q \bbm 0 \\ 0 \\ 1 \\ 1 \ebm. \mks{2}
+   \]
+   From this it follows that the vectors 
+   \[ u_1 = \bbm 1 & -1 & 0 & 0 \ebm^T \qquad \text{ and } \qquad
+      u_2 = \bbm 0 & 0 & 1 & 1 \ebm^T 
+   \]
+   form the canonical basis for $U$. \mk
+  \item[(b)] We use the following row-reduction:
+   \[ \left[\begin{array}{ccc}
+        & v_1^T & \\ \hline
+        & v_2^T &
+       \end{array}\right] \mk =
+      \bbm 1 & -1 & -1 & -1 \\ 1 & 0 & 0 & -1 \ebm 
+      \to 
+      \bbm 1 & -1 & -1 & -1 \\ 0 & 1 & 1 &  0 \ebm 
+      \to 
+      \bbm 1 &  0 &  0 & -1 \\ 0 & 1 & 1 &  0 \ebm \mk
+   \]
+   It follows that the vectors $v'_1=\bbm 1&0&0&-1\ebm^T$ and 
+   $v'_2=\bbm 0&1&1&0\ebm^T$ form the canonical basis for $V$. \mk
+  \item[(c)] For a vector $w=\bbm p&q&r&s\ebm^T$ to lie in $U$, it
+   must satisfy $w.c_1=w.c_2=0$, or equivalently $p-q+r+s=0$ and
+   $p+q+r-s=0$. \mk  By adding and subtracting these equations, we obtain
+   $p+r=0$ and $q-s=0$, so 
+   \[ w= \bbm p\\q\\-p\\q\ebm =
+       p \bbm 1\\0\\-1\\0\ebm +
+       q \bbm 0\\1\\0\\1\ebm. \mks{2}
+   \]
+   It follows that the vectors 
+   \[ w_1 = \bbm 1 \\ 0 \\ -1 \\ 0\ebm \qquad \text{ and } 
+      w_2 = \bbm 0 \\ 1 \\  0 \\ 1 \ebm
+   \]
+   form the canonical basis for $W$. \mk
+  \item[(d)] From~(b) it is clear that $V$ is the set of vectors of
+   the form $v=\bbm w&x&x&-w\ebm^T$.\mks{2}  For $v$ to lie
+   in $U\cap V\cap W$ it must also satisfy
+   $v.a_1=v.a_2=v.c_1=v.c_2=0$, or in other words 
+   \[ w+x = x-(-w) = w-x+x+(-w) = w+x+x-(-w) = 0. \mk \]
+   This just reduces to $x=-w$ \mk, so 
+   \[ v=\bbm w&-w&-w&-w\ebm^T = 
+       w \;\bbm 1&-1&-1&-1\ebm^T = w\,v_1.
+   \]
+   We conclude that the vector $v_1=\bbm 1&-1&-1&-1\ebm^T$ (on its own) is
+   the canonical basis for $U\cap V\cap W$. \mk
+  \item[(e)] The space $U+V+W$ is spanned by $u_1,u_2,v'_1,v'_2,w_1$
+   and $w_2$. \mks{2}  We form a matrix with these vectors as rows, and
+   row-reduce it:
+   {\[
+     \bbm
+     1&-1&0&0\\
+     0&0&1&1\\
+     1&0&0&-1\\
+     0&1&1&0\\
+     1&0&-1&0\\
+     0&1&0&1\\
+     \ebm
+     \to
+     \bbm
+     1&-1&0&0\\
+     0&0&1&1\\
+     0&1&0&-1\\
+     0&1&1&0\\
+     0&1&-1&0\\
+     0&1&0&1\\
+     \ebm
+     \to
+     \bbm
+     1&0&0&-1\\
+     0&0&1&1\\
+     0&1&0&-1\\
+     0&0&1&1\\
+     0&0&-1&1\\
+     0&0&0&2\\
+     \ebm
+     \to
+    \] \[
+     \bbm
+     1&0&0&-1\\
+     0&0&1&1\\
+     0&1&0&-1\\
+     0&0&0&0\\
+     0&0&0&2\\
+     0&0&0&2\\
+     \ebm
+     \to
+     \bbm
+     1&0&0&0\\
+     0&0&1&0\\
+     0&1&0&0\\
+     0&0&0&0\\
+     0&0&0&1\\
+     0&0&0&0\\
+     \ebm
+     \to
+     \bbm
+     1&0&0&0\\
+     0&1&0&0\\
+     0&0&1&0\\
+     0&0&0&1\\
+     0&0&0&0\\
+     0&0&0&0\\
+     \ebm \mk
+   \]}
+  From this we conclude that $U+V+W$ is all of $\R^4$, so the
+  canonical basis is $e_1,e_2,e_3,e_4$. \mk Alternatively, we can observe
+  that the vector $e_3$ is $u_2+v'_2-w_2$, so it lies in $U+V+W$.  It
+  follows in turn that the vectors $e_1=w_1+e_3$ and $e_2=v'_2-e_3$
+  and $e_4=u_2-e_3$ also lie in $U+V+W$, so again we see that $U+V+W$
+  is all of $\R^4$.
+ \end{itemize}
+\end{solution}
+
+\begin{problem}[2012-13 resit]
+ Consider the vectors
+ \[
+   a_1 = \bbm 2  \\ -1 \\ -1 \\ -1 \ebm \hspace{4em}
+   a_2 = \bbm 0  \\  1 \\ -1 \\ -3 \ebm \hspace{4em}
+   b_1 = \bbm -1 \\  1 \\  2 \\  1 \ebm \hspace{4em}
+   b_2 = \bbm -8 \\  5 \\  4 \\  2 \ebm,
+ \]
+ and put $V=\ann(a_1,a_2)$, and $W=\ann(b_1,b_2)$.
+ \begin{itemize}
+  \item[(a)] Find the canonical basis for $V$. \mrks{4}
+  \item[(b)] Find the canonical basis for $W$. \mrks{4}
+  \item[(c)] Find the canonical basis for $V\cap W$. \mrks{5}
+  \item[(d)] Find the canonical basis for $V+W$. \mrks{5}
+  \item[(e)] State the standard equation relating the dimensions
+   of the above four spaces, and verify that it holds in this case.
+   \mrks{2}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] Consider a vector $x=\bbm x_1&x_2&x_3&x_4\ebm^T$.  This
+   lies in $V$ iff $a_1.x=a_2.x=0$, or equivalently
+   $2x_1-x_2-x_3-x_4=x_2-x_3-3x_4=0$.  Subtracting these gives 
+   $2x_1-2x_2+2x_4=0$, so $x_4=x_2-x_1$.  Substituting this into the
+   first equation gives $x_3=3x_1-2x_2$.  Note that we have
+   written higher-numbered variables in terms of lower-numbered ones,
+   as required when finding the canonical basis \mks{2}.  This gives
+   \[ x = \bbm x_1 \\ x_2 \\ 3x_1-2x_2 \\ -x_1+x_2\ebm =
+        x_1 \bbm 1\\0\\3\\-1\ebm + x_2 \bbm 0\\1\\-2\\1 \ebm,
+   \]
+   which shows that the vectors $v_1=\bbm 1&0&3&-1\ebm^T$ and
+   $v_2=\bbm 0&1&-2&1 \ebm^T$ form the canonical basis for $V$ \mks{2}.
+  \item[(b)] Similarly, we can write the equations $b_1.x=b_2.x=0$
+   with the variables in reverse order as follows:
+   \begin{align*}
+     x_4 + 2x_3 +  x_2 -  x_1 &= 0 \\
+    2x_4 + 4x_3 + 5x_2 - 8x_1 &= 0.
+   \end{align*}
+   These equations can be solved in the standard way to give
+   \begin{align*}
+    x_4 &= -2x_3-x_1 \\
+    x_2 &= 2x_1 \mks{2}
+   \end{align*}
+   so 
+   \[ x = \bbm x_1 \\ 2x_1 \\ x_3 \\ -2x_3-x_1 \ebm 
+        = x_1 \bbm 1 \\ 2 \\ 0 \\ -1 \ebm +
+          x_3 \bbm 0 \\ 0 \\ 1 \\ -2 \ebm,
+   \]
+   so the vectors $w_1=\bbm 1&-2&0&-1\ebm^T$ and
+   $w_2=\bbm 0&0&1&-2\ebm^T$ form the canonical basis for $W$. \mks{2}
+  \item[(c)] $V\cap W$ is the set of vectors $x$ satisfying
+   $a_1.x=a_2.x=b_1.x=b_2.x=0$ \mk.  Part~(a) tells us that the equations
+   $a_1.x=a_2.x=0$ are equivalent to $x_4=x_2-x_1$ and $x_3=3x_1-2x_2$.
+   Part~(b) tells us that the equations $b_1.x=b_2.x=0$ are equivalent
+   $x_4=-2x_3-x_1$ and $x_2=2x_1$.  Putting these together, we get
+   $x_2=2x_1$ and and $x_3=-x_1$ and $x_4=x_1$ \mks{2}, so
+   \[ x = \bbm x_1 \\ 2x_1 \\ -x_1 \\ x_1 \ebm = 
+        x_1 \bbm 1 \\ 2 \\ -1 \\ 1 \ebm.
+   \] 
+   It follows that the vector $u=\bbm 1&2&-1&1\ebm^T$ is (on its own)
+   the canonical basis for $V\cap W$ \mks{2}.
+  \item[(d)] We have 
+   \[ V+W = \spn(v_1,v_2) + \spn(w_1,w_2) = \spn(v_1,v_2,w_1,w_2) \mks{2}. \]
+   To find the canonical basis for this space, we row-reduce the
+   matrix $[v_1|v_2|w_1|w_2]^T$ \mk:
+   \[
+    \bbm
+    1&0&3&-1\\
+    0&1&-2&1\\
+    1&2&0&-1\\
+    0&0&1&-2\\
+    \ebm
+    \to
+    \bbm
+    1&0&3&-1\\
+    0&1&-2&1\\
+    0&2&-3&0\\
+    0&0&1&-2\\
+    \ebm
+    \to
+   \] \[
+    \bbm
+    1&0&3&-1\\
+    0&1&-2&1\\
+    0&0&1&-2\\
+    0&0&1&-2\\
+    \ebm
+    \to
+    \bbm
+    1&0&0&5\\
+    0&1&0&-3\\
+    0&0&1&-2\\
+    0&0&0&0\\
+    \ebm
+   \]
+   The transposes of the nonzero rows of the last matrix are:
+   \[ t_1 = \bbm 1 \\ 0 \\ 0 \\  5 \ebm \hspace{4em}
+      t_2 = \bbm 0 \\ 1 \\ 0 \\ -3 \ebm \hspace{4em}
+      t_3 = \bbm 0 \\ 0 \\ 1 \\ -2 \ebm.
+   \]
+   These form the canonical basis for $V+W$. \mks{2}
+  \item[(e)] The standard relation says that
+   $\dim(V)+\dim(W)=\dim(V+W)+\dim(V\cap W)$. \mk
+   The above bases show that 
+   \[ \dim(V) = 2 \hspace{4em}
+      \dim(W) = 2 \hspace{4em}
+      \dim(V\cap W) = 1 \hspace{4em}
+      \dim(V+W) = 3,
+   \]
+   so the left hand side and the right hand side are both equal to
+   $4$. \mk
+ \end{itemize}
+\end{solution}
+
+\begin{problem}[2012-13]
+ Consider the vectors
+ \[ a_1 = \bbm  2 \\  0 \\  0 \\ -2 \ebm \hspace{4em}
+    a_2 = \bbm  1 \\  2 \\ -2 \\ -1 \ebm \hspace{4em}
+    b_1 = \bbm  2 \\ -1 \\ -1 \\  2 \ebm \hspace{4em}
+    b_2 = \bbm -4 \\  2 \\ -4 \\  8 \ebm,
+ \]
+ and put $V=\ann(a_1,a_2)$, and $W=\ann(b_1,b_2)$.
+ \begin{itemize}
+  \item[(a)] Find the canonical basis for $V$. \mrks{4}
+  \item[(b)] Find the canonical basis for $W$. \mrks{4}
+  \item[(c)] Find the canonical basis for $V\cap W$. \mrks{5}
+  \item[(d)] Find the canonical basis for $V+W$. \mrks{5}
+  \item[(e)] Find a vector that lies in $V+W$ but does not lie in $V$
+   or in $W$. \mrks{2}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] Consider a vector $x=\bbm x_1&x_2&x_3&x_4\ebm^T$.  This
+   lies in $V$ iff $a_1.x=a_2.x=0$, or equivalently
+   $2x_1-2x_4=x_1+2x_2-2x_3-x_4=0$.  The solution is clearly $x_4=x_1$
+   and $x_3=x_2$ (with $x_1$ and $x_2$ arbitrary).  Note that we have
+   written higher-numbered variables in terms of lower-numbered ones,
+   as required when finding the canonical basis \mks{2}.  This gives
+   \[ x = \bbm x_1 \\ x_2 \\ x_2 \\ x_1\ebm =
+        x_1 \bbm 1\\0\\0\\1\ebm + x_2 \bbm 0\\1\\1\\0 \ebm,
+   \]
+   which shows that the vectors $v_1=\bbm 1&0&0&1\ebm^T$ and
+   $v_2=\bbm 0&1&1&0 \ebm^T$ form the canonical basis for $V$ \mks{2}.
+  \item[(b)] Similarly, we can write the equations $b_1.x=b_2.x=0$
+   with the variables in reverse order as follows:
+   \begin{align*}
+    2x_4 - x_3 - x_2 + 2x_1 &= 0 \\
+    8x_4 - 4x_3 + 2x_2 - 4x_1 &= 0.
+   \end{align*}
+   From these equations we deduce
+   \begin{align*}
+    6x_2 - 12 x_1 &= 0 \\
+    x_2 &= 2 x_1 \\
+    x_4 &= \half x_3 \mks{2},
+   \end{align*}
+   so 
+   \[ x = \bbm x_1 \\ 2x_1 \\ x_3 \\ \half x_3 \ebm 
+        = x_1 \bbm 1 \\ 2 \\ 0 \\ 0 \ebm +
+          x_2 \bbm 0 \\ 0 \\ 1 \\ 1/2 \ebm,
+   \]
+   so the vectors $w_1=\bbm 1&2&0&0\ebm^T$ and
+   $w_2=\bbm 0&0&1&1/2\ebm^T$ form the canonical basis for $W$. \mks{2}
+  \item[(c)] $V\cap W$ is the set of vectors $x$ satisfying
+   $a_1.x=a_2.x=b_1.x=b_2.x=0$ \mk.  Part~(a) tells us that the equations
+   $a_1.x=a_2.x=0$ are equivalent to $x_4=x_1$ and $x_3=x_2$.
+   Part~(b) tells us that the equations $b_1.x=b_2.x=0$ are equivalent
+   to $x_2=2x_1$ and $x_4=\half x_3$.  Putting these together, we get
+   $x_2=x_3=2x_1$ and $x_4=x_1$ \mks{2}, so
+   \[ x = \bbm x_1 \\ 2x_1 \\ 2x_1 \\ x_1 \ebm = 
+        x_1 \bbm 1 \\ 2 \\ 2 \\ 1 \ebm.
+   \] 
+   It follows that the vector $u=\bbm 1&2&2&1\ebm^T$ is (on its own)
+   the canonical basis for $V\cap W$ \mks{2}.
+  \item[(d)] We have 
+   \[ V+W = \spn(v_1,v_2) + \spn(w_1,w_2) = \spn(v_1,v_2,w_1,w_2) \mk. \]
+   To find the canonical basis for this space, we row-reduce the
+   matrix $[v_1|v_2|w_1|w_2]^T$ \mk:
+   \[
+    \bbm
+    1&0&0&1\\
+    0&1&1&0\\
+    1&2&0&0\\
+    0&0&1&1/2\\
+    \ebm
+    \to
+    \bbm
+    1&0&0&1\\
+    0&1&1&0\\
+    0&2&0&-1\\
+    0&0&1&1/2\\
+    \ebm
+    \to
+    \bbm
+    1&0&0&1\\
+    0&1&1&0\\
+    0&0&-2&-1\\
+    0&0&1&1/2\\
+    \ebm
+    \to 
+   \] \[
+    \bbm
+    1&0&0&1\\
+    0&1&1&0\\
+    0&0&1&1/2\\
+    0&0&1&1/2\\
+    \ebm
+    \to
+    \bbm
+    1&0&0&1\\
+    0&1&1&0\\
+    0&0&1&1/2\\
+    0&0&0&0\\
+    \ebm
+    \to
+    \bbm
+    1&0&0&1\\
+    0&1&0&-1/2\\
+    0&0&1&1/2\\
+    0&0&0&0\\
+    \ebm \mks{2}.
+   \]
+   The transposes of the nonzero rows of the last matrix are:
+   \[ t_1 = \bbm 1 \\ 0 \\ 0 \\ 1 \ebm \hspace{4em}
+      t_2 = \bbm 0 \\ 1 \\ 0 \\ -1/2 \ebm \hspace{4em}
+      t_3 = \bbm 0 \\ 0 \\ 1 \\ 1/2 \ebm.
+   \]
+   These form the canonical basis for $V+W$. \mk
+  \item[(e)] The vector $t_2$ lies in $V+W$, but it does not lie in
+   $V$ (because $a_2.t_2=1$) and it does not lie in $W$ (because
+   $b_1.t_2=-2$) \mks{2}.  (Note that $t_1$ is not an example because
+   it lies in $V$, and $t_3$ is not an example because it lies in
+   $W$.)    
+ \end{itemize}
+\end{solution}
+
+
+\begin{problem}[2011-12 resit]
+ Put 
+ \[ v_1 = \bbm  1\\  2\\  1\\ 1 \ebm \hspace{2em}
+    v_2 = \bbm  2\\  4\\  1\\ 0 \ebm \hspace{2em}
+    u_1 = \bbm  2\\ -1\\  0\\ 0 \ebm \hspace{2em}
+    u_2 = \bbm  1\\  2\\ 10\\ 5 \ebm
+ \]
+ and $V=\spn(v_1,v_2)$ and $W=\ann(u_1,u_2)$.  
+ \begin{itemize}
+  \item[(a)] Find the canonical basis for $V$. \mrks{4}
+  \item[(b)] Find the canonical basis for $W$. \mrks{6}
+  \item[(c)] Find the canonical basis for $V+W$. \mrks{5}
+  \item[(d)] Find vectors $c_1$ and $c_2$ such that
+   $V=\ann(c_1,c_2)$. \mrks{5}
+  \item[(e)] Find the canonical basis for $V\cap W$. \mrks{5}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] 
+   To find the canonical basis for $V$ we perform the following
+   row-reduction:
+   \[ \left[\begin{array}{ccc}
+       & v_1^T & \\\hline 
+       & v_2^T & 
+      \end{array}\right] \mk
+      =
+      \bbm 1&2&1&1 \\ 2&4&1&0 \ebm
+      \to 
+      \bbm 1&2&1&1 \\ 0&0&-1&-2 \ebm
+      \to 
+      \bbm 1&2&0&-1 \\ 0&0&1&2 \ebm \mk
+   \]
+   From this we see that the canonical basis is $(a_1,a_2)$ where $a_1$
+   and $a_2$ are the transposes of the rows of the above matrix, namely
+   \[ a_1 = \bbm 1\\2\\0\\-1\ebm \hspace{4em} 
+      a_2 = \bbm 0\\0\\1\\2\ebm. \mks{2}
+   \]
+  \item[(b)]
+   Next, $W$ is the set of vectors $x$ satisfying $x.u_2=0$ and
+   $x.u_1=0$, or equivalently 
+   \begin{align*}
+    5x_4 + 10x_3 + 2x_2 + x_1 &= 0 \\
+     -x_2 +  2x_1 &= 0 \mks{2}
+   \end{align*}
+   Solving these in the standard way gives $x_2=2x_1$ and
+   $x_4=-2x_3-x_1$ with $x_3$ and $x_1$ arbitrary \mk, so 
+   \[ x = \bbm x_1 \\ 2x_1 \\ x_3 \\ -x_1-2x_3 \ebm 
+        = x_1 \bbm 1\\2\\0\\-1\ebm +
+          x_3 \bbm 0\\0\\1\\-2\ebm. \mk
+   \]
+   From this we see that the following matrices form the canonical basis
+   for $W$:
+   \[ b_1 = \bbm 1\\2\\0\\-1\ebm \hspace{4em}
+      b_2 = \bbm 0\\0\\1\\-2\ebm. \mks{2}
+   \]
+ 
+  \item[(c)]
+   It follows that $V+W=\spn(a_1,a_2,b_1,b_2)$ \mk, but we can omit $b_1$
+   because it is the same as $a_1$.  To make this canonical we perform
+   the following row-reduction:
+   \[ \left[\begin{array}{ccc}
+       & a_1^T & \\\hline 
+       & a_2^T & \\\hline
+       & b_2^T &
+      \end{array}\right] \mks{2}
+      =
+      \bbm 1&2&0&-1 \\ 0&0&1&2 \\ 0&0&1&-2 \ebm
+      \to 
+      \bbm 1&2&0&-1 \\ 0&0&1&2 \\ 0&0&0&-4 \ebm
+      \to 
+      \bbm 1&2&0&0 \\ 0&0&1&0 \\ 0&0&0&1 \ebm. \mk
+   \]
+   This shows that the canonical basis for $V+W$ consists of the vectors
+   \[
+      \bbm 1&2&0&0\ebm^T \hspace{4em}
+      \bbm 0&0&1&0\ebm^T \hspace{4em}
+      \bbm 0&0&0&1\ebm^T. \mk
+   \]
+  \item[(d)] 
+   If $x$ is a vector that annihilates the space $V=\spn(v_1,v_2)$, we
+   must have $x.v_1=x.v_2=0$, or equivalently
+   \begin{align*}
+    x_4 + x_3 + 2x_2 + x_1 &= 0 \\
+          x_3 + 4x_2 + 2x_1 &= 0.\mk
+   \end{align*}
+   Subtracting the second of these from the first gives
+   $x_4-2x_2-x_1=0$.  We thus have $x_4=2x_2+x_1$ and $x_3=-4x_2-2x_1$
+   with $x_1$ and $x_2$ arbitrary, so 
+   \[ x = \bbm x_1 \\ x_2 \\ -2x_1-4x_2 \\ x_1+2x_2 \ebm 
+        = x_1\bbm 1\\0\\-2\\1\ebm + x_2\bbm 0\\ 1\\-4\\2\ebm. \mks{2}
+   \]
+   The standard methods now tell us that $V=\ann(c_1,c_2)$, where 
+   \[ c_1 = \bbm 1\\0\\-2\\1 \ebm \hspace{4em}
+      c_2 = \bbm 0\\1\\-4\\2 \ebm. \mks{2}
+   \]
+
+  \item[(e)] We now have 
+   $V\cap W=\ann(c_1,c_2)\cap\ann(u_1,u_2)=\ann(c_1,c_2,u_1,u_2)$ \mk.
+   In other words, $V\cap W$ is the set of solutions to the equations
+   $x.c_1=0$ and $x.c_2=0$ and $x.u_1=0$ and $x.u_2=0$, or
+   equivalently 
+   \begin{align*}
+    x_4 - 2x_3 + x_1 &= 0 \\
+    2x_4 -4x_3 + x_2 &= 0 \\
+    -x_2 + 2x_1 &= 0 \\
+    5x_4 + 10x_3 + 2x_2 + x_1 &= 0. \mk
+   \end{align*}
+   The third equation gives $x_2=2x_1$.  After substituting this in
+   the remaining equations we get
+   \begin{align*}
+    x_4 - 2x_3 + x_1 &= 0 \\
+    2x_4 -4x_3 + 2x_1 &= 0 \\
+    5x_4 + 10x_3 + 5x_1 &= 0. \mk
+   \end{align*}
+   Here the second equation is twice the first equation so it can be
+   ignored.  If we subtract five times the first equation from the
+   third equation we find that $x_3=0$.   Given this, the first
+   equation becomes $x_4=-x_1$.  We now have
+   \[ x = \bbm x_1\\ x_2\\ x_3 \\ x_4 \ebm
+        = \bbm x_1\\ 2x_1\\ 0 \\ -x_1 \ebm
+        = x_1 \bbm 1 \\ 2 \\ 0 \\ -1 \ebm 
+        = x_1 \; a_1.
+   \]
+   It follows that the vector $a_1$ on its own is the canonical basis
+   for $V\cap W$. \mks{2} 
+
+   (Note: this could have been obtained more directly.  From parts~(a)
+   and~(b) it is clear that the vector $a_1$ (which is the same as
+   $b_1$) lies in $V\cap W$, so the subspace $\R a_1$ is contained in
+   $V\cap W$.  If $V\cap W$ were any bigger than this, it would have
+   dimension $2$ and so would be the same as $V$ and $W$, so we would
+   have $V=W$, which is false because the canonical bases of $V$ and
+   $W$ are different.  We must therefore have $V\cap W=\R a_1$.)
+ \end{itemize}
+\end{solution}
+
+
+
+\begin{problem}[2011-12]
+ Put 
+ \[ v_1 = \bbm  1\\ 1\\ 0\\ 1 \ebm \hspace{2em}
+    v_2 = \bbm  2\\ 2\\-1\\ 0 \ebm \hspace{2em}
+    u_1 = \bbm  1\\ 2\\ 2\\-1 \ebm \hspace{2em}
+    u_2 = \bbm  2\\ 2\\ 2\\-1 \ebm
+ \]
+ and $V=\spn(v_1,v_2)$ and $W=\ann(u_1,u_2)$.  
+ \begin{itemize}
+  \item[(a)] Find the canonical basis for $V$. \mrks{4}
+  \item[(b)] Find the canonical basis for $W$. \mrks{6}
+  \item[(c)] Find the canonical basis for $V+W$. \mrks{5}
+  \item[(d)] Find vectors $c_1$ and $c_2$ such that
+   $V=\ann(c_1,c_2)$. \mrks{5}
+  \item[(e)] Find the canonical basis for $V\cap W$. \mrks{5}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] 
+   To find the canonical basis for $V$ we perform the following
+   row-reduction:
+   \[ \left[\begin{array}{ccc}
+       & v_1^T & \\\hline 
+       & v_2^T & 
+      \end{array}\right] \mk
+      =
+      \bbm 1&1&0&1 \\ 2&2&-1&0 \ebm
+      \to 
+      \bbm 1&1&0&1 \\ 0&0&-1&-2 \ebm
+      \to 
+      \bbm 1&1&0&1 \\ 0&0&1&2 \ebm \mk
+   \]
+   From this we see that the canonical basis is $(a_1,a_2)$ where $a_1$
+   and $a_2$ are the transposes of the rows of the above matrix, namely
+   \[ a_1 = \bbm 1\\1\\0\\1\ebm \hspace{4em} 
+      a_2 = \bbm 0\\0\\1\\2\ebm. \mks{2}
+   \]
+  \item[(b)]
+   Next, $W$ is the set of vectors $x$ satisfying $x.u_1=0$ and
+   $x.u_2=0$, or equivalently 
+   \begin{align*}
+    -x_4 + 2x_3 + 2x_2 + 2x_1 &= 0 \\
+    -x_4 + 2x_3 + 2x_2 +  x_1 &= 0 \mks{2}
+   \end{align*}
+   Solving these in the standard way gives $x_1=0$ and $x_4=2x_3+2x_2$
+   with $x_3$ and $x_2$ arbitrary \mk, so 
+   \[ x = \bbm 0 \\ x_2 \\ x_3 \\ 2x_3+2x_2 \ebm 
+        = x_2 \bbm 0\\1\\0\\2\ebm +
+          x_3 \bbm 0\\0\\1\\2\ebm. \mk
+   \]
+   From this we see that the following matrices form the canonical basis
+   for $W$:
+   \[ b_1 = \bbm 0\\1\\0\\2\ebm \hspace{4em}
+      b_2 = \bbm 0\\0\\1\\2\ebm. \mks{2}
+   \]
+ 
+  \item[(c)]
+   It follows that $V+W=\spn(a_1,a_2,b_1,b_2)$ \mk, but we can omit $b_2$
+   because it is the same as $a_2$.  To make this canonical we perform
+   the following row-reduction:
+   \[ \left[\begin{array}{ccc}
+       & a_1^T & \\\hline 
+       & a_2^T & \\\hline
+       & b_1^T &
+      \end{array}\right] \mks{2}
+      =
+      \bbm 1&1&0&1 \\ 0&0&1&2 \\ 0&1&0&2 \ebm
+      \to 
+      \bbm 1&0&0&-1 \\ 0&0&1&2 \\ 0&1&0&2 \ebm
+      \to 
+      \bbm 1&0&0&-1 \\ 0&1&0&2 \\ 0&0&1&2 \ebm. \mk
+   \]
+   This shows that the canonical basis for $V+W$ consists of the vectors
+   \[
+      \bbm 1&0&0&-1\ebm^T \hspace{4em}
+      \bbm 0&1&0&2\ebm^T \hspace{4em}
+      \bbm 0&0&1&2\ebm^T. \mk
+   \]
+  \item[(d)] 
+   If $x$ is a vector that annihilates the space $V=\spn(v_1,v_2)$, we
+   must have $x.v_1=x.v_2=0$, or equivalently
+   \begin{align*}
+    x_4 + x_2 + x_1 &= 0 \\
+    -x_3 + 2x_2 + 2x_1 &= 0.\mk
+   \end{align*}
+   This gives $x_4=-x_2-x_1$ and $x_3=2x_2+2x_1$ with $x_1$ and $x_2$
+   arbitrary, so 
+   \[ x = \bbm x_1 \\ x_2 \\ 2x_1+2x_2 \\ -x_1-x_2 \ebm 
+        = x_1\bbm 1\\0\\2\\-1\ebm + x_2\bbm 0\\ 1\\ 2\\-1\ebm. \mks{2}
+   \]
+   The standard methods now tell us that $V=\ann(c_1,c_2)$, 
+   where 
+   \[ c_1 = \bbm 1\\0\\2\\-1 \ebm \hspace{4em}
+      c_2 = \bbm 0\\1\\2\\-1 \ebm. \mks{2}
+   \]
+
+  \item[(e)] We now have 
+   $V\cap W=\ann(c_1,c_2)\cap\ann(u_1,u_2)=\ann(c_1,c_2,u_1,u_2)$ \mk.
+   In other words, $V\cap W$ is the set of solutions to the equations
+   $x.c_1=0$ and $x.c_2=0$ and $x.u_1=0$ and $x.u_2=0$, or
+   equivalently 
+   \begin{align*}
+    -x_4+2x_3+x_1 &= 0 \\
+    -x_4+2x_3+x_2 &= 0 \\
+    -x_4 + 2x_3 + 2x_2 + 2x_1 &= 0 \\
+    -x_4 + 2x_3 + 2x_2 +  x_1 &= 0. \mk
+   \end{align*}
+   Subtracting the first two equations gives $x_1=x_2$, and
+   subtracting the last two gives $x_1=0$, so we also have $x_2=0$.
+   Given this, everything else reduces easily to the equation
+   $x_4=2x_3$ \mk.  We thus have 
+   \[ x = \bbm 0\\0\\x_3\\2x_3\ebm = x_3 \bbm 0\\0\\1\\2\ebm =
+       x_3a_2. \mk
+   \]
+   It follows that the vector $a_2$ on its own is the canonical basis
+   for $V\cap W$. \mk 
+
+   (Note: this could have been obtained more directly.  From parts~(a)
+   and~(b) it is clear that the vector $a_2$ (which is the same as
+   $b_2$) lies in $V\cap W$, so the subspace $\R a_2$ is contained in
+   $V\cap W$.  If $V\cap W$ were any bigger than this, it would have
+   dimension $2$ and so would be the same as $V$ and $W$, so we would
+   have $V=W$, which is false because the canonical bases of $V$ and
+   $W$ are different.  We must therefore have $V\cap W=\R a_2$.)
+ \end{itemize}
+\end{solution}
+
+\begin{problem}[Mock 1]
+ Let $V$ be the set of all vectors in $\R^5$ of the form 
+ \[ x = \bbm p & p+q & 0 & -p-q & -p \ebm^T \]
+ (where $p,q\in\R$ are arbitrary).  Also, put 
+ \[ W = \{x\in\R^5\st x_1+x_2+x_3+3x_4=x_1+x_2+x_3-x_4+2x_5=0\}. \]
+ \begin{itemize}
+  \item[(a)] Find the canonical basis for $V$. \mrks{5}
+  \item[(b)] Find the canonical basis for $W$. \mrks{6}
+  \item[(c)] Find the canonical basis for $V+W$. \mrks{5}
+  \item[(d)] Write down a formula relating the dimensions of
+   $V$, $W$, $V+W$ and $V\cap W$, and use it to determine
+   $\dim(V\cap W)$. \mrks{3}
+  \item[(e)] Find a basis for $V\cap W$ \mrks{6}.
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] The general element of $V$ can be written as
+   $x=pu_1+qu_2$, where 
+   \[ u_1 = \bbm 1&1&0&-1&-1\ebm^T \hspace{5em}
+      u_2 = \bbm 0&1&0&-1&0\ebm^T,
+   \] 
+   so $V=\spn(u_1,u_2)$ \mks{2}.  Using the row-reduction
+   \[ \left[\begin{array}{ccc}
+       & u_1^T & \\ \hline
+       & u_2^T & \end{array}\right] = 
+       \bbm 1&1&0&-1&-1 \\ 0&1&0&-1&0 \ebm \to
+       \bbm 1&0&0&0&-1 \\ 0&1&0&-1&0 \ebm \mks{2}
+   \]
+   we see that the vectors 
+   \[ v_1 = \bbm 1&0&0& 0&-1\ebm^T \qquad\text{ and } \qquad
+      v_2 = \bbm 0&1&0&-1&0\ebm^T
+   \] 
+   form the canonical basis for $V$ \mk.
+  \item[(b)] To find the canonical basis for $W$ we write the defining
+   equations with the variables in descending order, and find the
+   solution in a form that expresses higher-numbered variables in
+   terms of lower-numbered ones.  The equations are 
+   \begin{align*}
+    3x_4+x_3+x_2+x_1 &= 0 \\
+    2x_5-x_4+x_3+x_2+x_1 &= 0. \mk
+   \end{align*}
+   The first equation gives
+   $x_4=-\tfrac{1}{3}x_3-\tfrac{1}{3}x_2-\tfrac{1}{3}x_1$.  On the
+   other hand, we can subtract the two equation to get $2x_5-4x_4=0$
+   or in other words
+   $x_5=2x_4=-\tfrac{2}{3}x_3-\tfrac{2}{3}x_2-\tfrac{2}{3}x_1$ \mks{2}.  We
+   now have
+   \[ x = \bbm x_1\\ x_2\\ x_3\\ x_4\\ x_5 \ebm =
+       \bbm x_1\\x_2\\x_3\\
+            -\tfrac{1}{3}x_3-\tfrac{1}{3}x_2-\tfrac{1}{3}x_1 \\
+            -\tfrac{2}{3}x_3-\tfrac{2}{3}x_2-\tfrac{2}{3}x_1 \ebm =
+       x_1 \bbm 1\\0\\0\\-1/3\\-2/3\ebm + 
+       x_2 \bbm 0\\1\\0\\-1/3\\-2/3\ebm + 
+       x_3 \bbm 0\\0\\1\\-1/3\\-2/3\ebm \mks{2}.
+   \]
+   It follows that the vectors
+   \[ w_1 = \bbm 1\\0\\0\\-1/3\\-2/3\ebm \quad\text{ and }\quad
+      w_2 = \bbm 0\\1\\0\\-1/3\\-2/3\ebm \quad\text{ and }\quad
+      w_3 = \bbm 0\\0\\1\\-1/3\\-2/3\ebm 
+   \]
+   form the canonical basis for $W$ \mk.
+  \item[(c)]
+   It now follows that $V+W=\spn(v_1,v_2,w_1,w_2,w_3)$ \mk. 
+   To make this canonical we perform the following row-reduction:
+   \[ \left[\begin{array}{ccc}
+       & v_1^T & \\\hline 
+       & v_2^T & \\\hline
+       & w_1^T & \\\hline
+       & w_2^T & \\\hline
+       & w_3^T & 
+      \end{array}\right] \mk
+      =
+      \bbm
+       1 & 0 & 0 &    0 &   -1 \\
+       0 & 1 & 0 &   -1 &    0 \\
+       1 & 0 & 0 & -1/3 & -2/3 \\
+       0 & 1 & 0 & -1/3 & -2/3 \\
+       0 & 0 & 1 & -1/3 & -2/3
+      \ebm
+      \to
+      \bbm
+       1 & 0 & 0 &    0 &   -1 \\
+       0 & 1 & 0 &   -1 &    0 \\
+       0 & 0 & 0 & -1/3 &  1/3 \\
+       0 & 1 & 0 & -1/3 & -2/3 \\
+       0 & 0 & 1 & -1/3 & -2/3
+      \ebm
+      \to
+      \bbm
+       1 & 0 & 0 &    0 &   -1 \\
+       0 & 1 & 0 &   -1 &    0 \\
+       0 & 0 & 0 & -1/3 &  1/3 \\
+       0 & 0 & 0 &  1/3 & -1/3 \\
+       0 & 0 & 1 & -1/3 & -2/3
+      \ebm
+    \] \[
+      \to
+      \bbm
+       1 & 0 & 0 &    0 &   -1 \\
+       0 & 1 & 0 &   -1 &    0 \\
+       0 & 0 & 0 &    1 &   -1 \\
+       0 & 0 & 0 & -1/3 &  1/3 \\
+       0 & 0 & 1 & -1/3 & -2/3
+      \ebm
+      \to
+      \bbm
+       1 & 0 & 0 &    0 &   -1 \\
+       0 & 1 & 0 &    0 &   -1 \\
+       0 & 0 & 0 &    1 &   -1 \\
+       0 & 0 & 0 &    0 &    0 \\
+       0 & 0 & 1 &    0 &   -1
+      \ebm
+      \to
+      \bbm
+       1 & 0 & 0 &    0 &   -1 \\
+       0 & 1 & 0 &    0 &   -1 \\
+       0 & 0 & 1 &    0 &   -1 \\
+       0 & 0 & 0 &    1 &   -1 \\
+       0 & 0 & 0 &    0 &    0
+      \ebm \mks{2}
+   \]
+   This shows that the canonical basis for $V+W$ consists of the vectors
+   \[
+      \bbm 1\\0\\0\\0\\-1\ebm \hspace{4em}
+      \bbm 0\\1\\0\\0\\-1\ebm \hspace{4em}
+      \bbm 0\\0\\1\\0\\-1\ebm \hspace{4em}
+      \bbm 0\\0\\0\\1\\-1\ebm \mk.
+   \]
+  \item[(d)] The general dimension formula says that
+   $\dim(V+W)+\dim(V\cap W)=\dim(V)+\dim(W)$ \mk, so
+   $\dim(V\cap W)=\dim(V)+\dim(W)-\dim(V+W)$.  The dimension of a
+   subspace is just the number of vectors in the canonical basis, so
+   $\dim(V)=2$ and $\dim(W)=3$ and $\dim(V+W)=4$ \mk.  This gives
+   $\dim(V\cap W)=2+3-4=1$ \mk. 
+  \item[(e)] This problem can be done in several different ways, but
+   the following is probably the easiest.  Any element $x\in V\cap W$
+   must have the form  
+   \[ x = \bbm x_1&x_2&x_3&x_4&x_5\ebm^T
+        = \bbm p & p+q & 0 & -p-q & -p \ebm^T
+   \]
+   and must satisfy 
+   \[ x_1+x_2+x_3+3x_4=x_1+x_2+x_3-x_4+2x_5=0. \mks{2} \]
+   This reduces to 
+   \[ p+(p+q)+0+3(-p-q) = p+(p+q)+0-(-p-q)+2(-p)=0 \]
+   or in other words $-p-2q=p+2q=0$, so $p=-2q$ \mks{2}.  This in turn gives 
+   \[ x = \bbm p \\ p+q \\ 0 \\ -p-q \\ -p \ebm
+        = \bbm -2q \\ -q \\ 0 \\ q \\ 2q \ebm 
+        = q \bbm -2 \\ -1 \\ 0 \\ 1 \\ 2\ebm \mk.
+   \]
+   This shows that the vector $\bbm -2&-1&0&1&2\ebm$ is (on its own) a
+   basis for $V\cap W$ \mk.  (To get the canonical basis, we would divide
+   this vector by $-2$.) 
+ \end{itemize}
+\end{solution}
+
+\begin{problem}[Mock 2]
+ Consider the vectors
+ \[ a_1 = \bbm 1\\2\\3\\1\ebm \hspace{3em}
+    a_2 = \bbm 2\\4\\-2\\-6 \ebm \hspace{3em}
+    a_3 = \bbm 3\\6\\0\\-6 \ebm \hspace{3em}
+    p = \bbm 11\\22\\22\\0\ebm \hspace{3em}
+    q = \bbm 222\\-111\\0\\0\ebm
+ \]
+ Put $V=\spn(a_1,a_2,a_3)$ and $W=\ann(a_1,a_2,a_3)$.
+ \begin{itemize}
+  \item[(a)] Find the canonical basis for $V$. \mrks{4}
+  \item[(b)] Find the canonical basis for $W$. \mrks{8}
+  \item[(c)] Find the canonical basis for $V+W$. \mrks{5}
+  \item[(d)] Use the dimension formula to determine $V\cap W$. \mrks{4}
+  \item[(e)] Prove that $p\in V$ and $q\in W$. \mrks{4}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] Using the row-reduction
+   \[ \left[\begin{array}{ccc}
+       & a_1^T & \\ \hline
+       & a_2^T & \\ \hline
+       & a_3^T & \end{array}\right] = 
+       \bbm 1&2&3&1 \\
+            2&4&-2&-6 \\
+            3&6&0&-6 \ebm \to
+       \bbm 1&2&3&1 \\
+            0&0&-8&-8 \\
+            0&0&-9&-9 \ebm \to
+       \bbm 1&2&0&-2 \\
+            0&0&1&1 \\
+            0&0&0&0 \ebm \mks{2}
+   \]
+   we see that the vectors 
+   \[ v_1 = \bbm 1&2&0&-2\ebm^T \qquad\text{ and } \qquad
+      v_2 = \bbm 0&0&1&1\ebm^T
+   \] 
+   form the canonical basis for $V$ \mks{2}.
+  \item[(b)] To find the canonical basis for $W$ we write the 
+   equations $a_3.x=0$, $a_2.x=0$ and $a_1.x=0$ with the variables in
+   descending order, and find the solution in a form that expresses
+   higher-numbered variables in terms of lower-numbered ones.  The
+   equations are  
+   \begin{align*}
+    -6x_4+6x_2+3x_1 &= 0 \\
+    -6x_4-2x_3+4x_2+2x_1 &= 0 \\
+    x_4+3x_3+2x_2+x_1 &= 0 \mks{2}.
+   \end{align*}
+   We can write down the matrix of coefficients and row-reduce it as
+   follows:
+   \[ \bbm -6 &  0 &  6 &  3 \\
+           -6 & -2 &  4 &  2 \\
+            1 &  3 &  2 &  1 \ebm \to
+      \bbm  0 & 18 & 18 &  9 \\
+            0 & 16 & 16 &  8 \\
+            1 &  3 &  2 &  1 \ebm \to
+      \bbm  1 &  3 &  2 &  1 \\
+            0 &  1 &  1 & 1/2 \\
+            0 &  0 &  0 &  0 \ebm \to
+      \bbm  1 &  0 & -1 &-1/2 \\
+            0 &  1 &  1 & 1/2 \\
+            0 &  0 &  0 &  0 \ebm \mks{2}
+   \]
+   It follows that our original equations are equivalent to the
+   equations $x_4-x_2-x_1/2=0$ and $x_3+x_2+x_1/2=0$.  Using this we
+   get 
+   \[ x = 
+      \bbm x_1\\ x_2\\ x_3\\ x_4 \ebm = 
+      \bbm x_1\\ x_2\\-x_1/2-x_2\\x_1/2+x_2 \ebm = 
+      x_1 \bbm 1\\ 0 \\ -1/2 \\ 1/2 \ebm + 
+      x_2 \bbm 0\\ 1 \\ -1 \\ 1\ebm \mks{2}. 
+   \]
+   It follows that the vectors
+   \[ w_1 = \bbm 1\\ 0 \\ -1/2 \\ 1/2 \ebm \qquad \text{ and } \qquad
+      w_2 = \bbm 0\\ 1 \\ -1 \\ 1\ebm
+   \]
+   form the canonical basis for $W$ \mks{2}.
+  \item[(c)] We now have $V+W=\spn(v_1,v_2,w_1,w_2)$.  To find the
+   canonical basis for this, we perform the row-reduction
+   \[ \left[\begin{array}{ccc}
+       & v_1^T & \\\hline 
+       & v_2^T & \\\hline
+       & w_1^T & \\\hline
+       & w_2^T & 
+      \end{array}\right] \mk
+      =
+      \bbm
+        1 &  2 &    0 &  -2 \\
+        0 &  0 &    1 &   1 \\
+        1 &  0 & -1/2 & 1/2 \\
+        0 &  1 &   -1 &   1
+      \ebm 
+      \to 
+      \bbm
+        1 &  2 &    0 &  -2 \\
+        0 &  0 &    1 &   1 \\
+        0 & -2 & -1/2 & 3/2 \\
+        0 &  1 &   -1 &   1
+      \ebm 
+      \to 
+    \] \[
+      \bbm
+        1 &  0 &   -2 &  -4 \\
+        0 &  0 &    1 &   1 \\
+        0 &  0 & -5/2 & 5/2 \\
+        0 &  1 &   -1 &   1
+      \ebm 
+      \to 
+      \bbm
+        1 &  0 &    0 &  -2 \\
+        0 &  1 &    0 &   2 \\
+        0 &  0 &    1 &   1 \\
+        0 &  0 &    0 &   5 
+      \ebm 
+      \to 
+      \bbm
+        1 &  0 &    0 &   0 \\
+        0 &  1 &    0 &   0 \\
+        0 &  0 &    1 &   0 \\
+        0 &  0 &    0 &   1
+      \ebm \mks{2}
+   \]
+   This shows that the canonical basis for $V+W$ consists of the
+   standard basis vectors $e_1,e_2,e_3,e_4$ and so $V+W$ is all of
+   $\R^4$ \mks{2}. 
+  \item[(d)] The general dimension formula says that
+   $\dim(V+W)+\dim(V\cap W)=\dim(V)+\dim(W)$ \mk, so
+   $\dim(V\cap W)=\dim(V)+\dim(W)-\dim(V+W)$.  The dimension of a
+   subspace is just the number of vectors in the canonical basis, so
+   $\dim(V)=\dim(W)=2$ and $\dim(V+W)=4$ \mks{2}.  This gives
+   $\dim(V\cap W)=0$ and so $V\cap W=\{0\}$ \mk. 
+  \item[(e)] By inspection we have $p=11v_1+22v_2$.  As $v_1$ and
+   $v_2$ span $V$ it follows that $p\in V$ \mks{2}.  Similarly, we have  
+   $q=222w_1-111w_2$ and it follows that $q\in W$ \mks{2}.
+ \end{itemize}
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Question 5}
+\setcounter{probcounter}{0}
+
+\begin{problem}[2013-14]
+ Consider the matrix
+ $\displaystyle 
+     A= \frac{1}{27}\bbm
+     9&8&-8\\
+     8&23&0\\
+     -8&0&-5
+     \ebm
+ $.
+ \begin{itemize}
+  \item[(a)] State the main results about eigenvalues and eigenvectors
+   of symmetric matrices. \mrks{4}
+  \item[(b)] Show that the following are eigenvectors of $A$: \mrks{2}
+   \[ u_1 = \bbm 7 \\ -4 \\ -4 \ebm 
+      \qquad
+      u_2 = \bbm 4 \\ -1 \\ 8 \ebm.
+   \]
+  \item[(c)] Find an orthogonal matrix $U$ and a diagonal matrix $D$
+   such that $A=UDU^T$. \mrks{9} \\
+   \textbf{Hint:} For any square matrix, the sum of the eigenvalues is 
+   the same as the sum of the diagonal entries.  Because of this, you
+   do not need to calculate the characteristic polynomial.
+  \item[(d)] Find $\lim_{n\to \infty}A^n$. \mrks{5}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] For any real symmetric matrix, all eigenvalues are real \mks{2},
+   and eigenvectors corresponding to different eigenvectors are
+   orthogonal \mks{2}.  (For the second part, two marks will also be
+   given for saying that there is an orthonormal basis of
+   eigenvectors.)
+  \item[(b)] We have 
+   \begin{align*}
+    Au_1 &= \frac{1}{27} \bbm 9&8&-8\\ 8&23&0\\ -8&0&-5 \ebm
+                         \bbm 7 \\ -4 \\ -4 \ebm 
+          = \frac{1}{27} \bbm 63 \\ -36 \\ 36 \ebm 
+          = \frac{1}{3} \bbm 7 \\ -4 \\ 4 \ebm 
+          = \frac{1}{3} u_1 \\
+    Au_2 &= \frac{1}{27} \bbm 9&8&-8\\ 8&23&0\\ -8&0&-5 \ebm
+                         \bbm 4 \\ -1 \\ 8 \ebm 
+          = \frac{1}{27} \bbm -36 \\ 9 \\ -72 \ebm 
+          = \frac{1}{3} \bbm -4 \\ 1 \\ -8 \ebm 
+          = -\frac{1}{3} u_2.
+   \end{align*}
+   This shows that $u_1$ is an eigenvector of eigenvalue $\lm_1=1/3$,
+   and $u_2$ is an eigenvector of eigenalue $\lm_2=-1/3$. \mks{2}
+  \item[(c)] If we let $\lm_3$ denote the third eigenvalue, then the
+   hint tells us that 
+   \[ \lm_1+\lm_2+\lm_3=\frac{1}{27}(9+23-5)=1. \]
+   As $\lm_1=1/3$ and $\lm_2=-1/3$, this just gives $\lm_3=1$ \mks{2}.  To
+   find the corresponding eigenvector $u_3$, we row-reduce the matrix $A-I$: 
+   \[
+    \bbm
+    -2/3&8/27&-8/27\\
+    8/27&-4/27&0\\
+    -8/27&0&-32/27\\
+    \ebm
+    \to
+    \bbm
+    1&-4/9&4/9\\
+    8/27&-4/27&0\\
+    -8/27&0&-32/27\\
+    \ebm
+    \to
+   \] \[
+    \bbm
+    1&-4/9&4/9\\
+    0&-4/243&-32/243\\
+    0&-32/243&-256/243\\
+    \ebm
+    \to
+    \bbm
+    1&-4/9&4/9\\
+    0&1&8\\
+    0&-32/243&-256/243\\
+    \ebm
+    \to
+    \bbm
+    1&0&4\\
+    0&1&8\\
+    0&0&0\\
+    \ebm \mks{2}
+   \]
+   This tells us that $u_3$ must have the form $\bbm x&y&z\ebm^T$ with
+   $x+4z=y+8z=0$, so $u_3=z\bbm -4&-8&1\ebm^T$ for some arbitrary
+   nonzero scalar $z$.  We choose $z=-1$ giving
+   $u_3=\bbm 4&8&-1\ebm^T$. \mk
+
+   Next, as $A$ is symmmetric and the eigenvectors $u_k$ have
+   different eigenvalues, they are automatically orthogonal.  (It is
+   also not hard to check that directly, by calculating that
+   $u_1.u_2=u_1.u_3=u_2.u_3=0$.)  However, they are not orthonormal,
+   because 
+   \begin{align*}
+    \|u_1\|^2 &= 7^2 + (-4)^2 + (-4)^2 = 81 \\
+    \|u_2\|^2 &= 4^2 + (-1)^2 + 8^2 = 81 \\
+    \|u_3\|^2 &= 4^2 + 8^2 + (-1)^2 = 81,
+   \end{align*}
+   so $\|u_1\|=\|u_2\|=\|u_3\|=\sqrt{81}=9$ \mks{2}.  It follows that the
+   vectors $u_k/9$ form an orthonormal basis.  We therefore obtain
+   an orthogonal diagonalisation $A=UDU^T$ with 
+   \begin{align*}
+    U &= \left[ \begin{array}{c|c|c}
+          \frac{u_1}{9} & \frac{u_2}{9} & \frac{u_3}{9}
+         \end{array}\right] 
+       = \frac{1}{9} \bbm 
+          7&4&4\\
+          -4&-1&8\\
+          -4&8&-1\\
+         \ebm \\
+    D &= \bbm \lm_1 & 0 & 0 \\ 0 & \lm_2 & 0 \\ 0 & 0 & \lm_3 \ebm
+       = \bbm 1/3 & 0 & 0 \\ 0 & -1/3 & 0 \\ 0 & 0 & 1 \ebm. \mks{2}
+   \end{align*}
+   Recall also that $U$ is an orthogonal matrix, so $U^{-1}=U^T$.
+  \item[(d)] We now have $A^n=UD^nU^T$ for all $n\geq 0$ \mk.  Now put 
+   \[ D^\infty = \lim_{n\to\infty} D^n = \lim_{n\to\infty}
+      \bbm (1/3)^n & 0 & 0 \\ 0 & (-1/3)^n & 0 \\ 0 & 0 & 1 \ebm
+      =
+      \bbm 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 1 \ebm. \mks{2}
+   \]
+   It follows that 
+   \begin{align*}
+    \lim_{n\to\infty} A^n 
+     &= U D^\infty U^T \mk \\
+     &= \frac{1}{81} 
+        \bbm 7&4&4\\ -4&-1&8\\ -4&8&-1 \ebm
+        \bbm 0&0&0 \\ 0&0&0 \\ 0&0&1 \ebm 
+        \bbm 7&-4&-4 \\ 4&-1&8 \\ 4&8&-1 \ebm \\
+     &= \frac{1}{81} 
+        \bbm 0&0&4\\ 0&0&8\\ 0&0&-1 \ebm
+        \bbm 7&-4&-4 \\ 4&-1&8 \\ 4&8&-1 \ebm 
+      = \frac{1}{81}
+        \bbm 16 & 32 & -4 \\ 32 & 64 & -8 \\ -4 & -8 & 1 \ebm \mk
+   \end{align*}
+ \end{itemize}
+\end{solution}
+
+\begin{problem}[2012-13 resit]
+ Consider the matrix
+ $\displaystyle M=\bbm 0&2&0&0 \\ 2&0&3&0 \\ 0&3&0&2 \\ 0&0&2&0 \ebm$
+ \begin{itemize}
+  \item[(a)] Find the eigenvalues and eigenvectors of $M$.  To
+   simplify the calculations you may use the following fact: for this
+   particular matrix, if $\bbm w&x&y&z\ebm^T$ is an eigenvector of
+   eigenvalue $\lm$, then $\bbm w&-x&y&-z\ebm^T$ is an eigenvector of
+   eigenvalue $-\lm$.
+   \mrks{14}
+  \item[(b)] Find an orthogonal matrix $P$ and a diagonal matrix $D$
+   such that $M=PDP^T$. \mrks{6}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] We first find the characteristic polynomial:
+   \begin{align*}
+    \chi_M(t) &= \det\bbm -t&2&0&0 \\ 2&-t&3&0 \\ 0&3&-t&2 \\ 0&0&2&-t \ebm\\
+    &= -t\det\bbm -t&3&0 \\ 3&-t&2 \\ 0&2&-t \ebm 
+       -2 \det\bbm 2&3&0 \\ 0&-t&2 \\ 0&2&-t \ebm \mks{2} \\
+    \det\bbm -t&3&0 \\ 3&-t&2 \\ 0&2&-t \ebm &= 
+       -t(t^2-4) -3 (-3t-0) = -t^3+13t \\
+    \det\bbm 2&3&0 \\ 0&-t&2 \\ 0&2&-t \ebm &=
+       2(t^2-4) - 3(0) = 2t^2 - 8 \\
+    \chi_M(t) &= -t(-t^3+13t) - 2(2t^2-8) = t^4 - 17t^2 + 16 \mks{2} \\
+      &= (t^2-1)(t^2-16) = (t-1)(t+1)(t-4)(t+4). \mk
+   \end{align*}
+   Thus, the eigenvalues are 
+   \[ \lm_1 =  1 \hspace{3em}
+      \lm_2 = -1 \hspace{3em}
+      \lm_3 =  4 \hspace{3em}
+      \lm_4 = -4. \mk
+   \]
+
+   To find an eigenvector $u_1$ of eigenvalue $1$, we row-reduce $M-I$:
+   \[
+    \bbm
+    -1&2&0&0\\
+    2&-1&3&0\\
+    0&3&-1&2\\
+    0&0&2&-1\\
+    \ebm
+    \to
+    \bbm
+    1&-2&0&0\\
+    0&3&3&0\\
+    0&3&-1&2\\
+    0&0&2&-1\\
+    \ebm
+    \to
+    \bbm
+    1&0&2&0\\
+    0&1&1&0\\
+    0&0&-4&2\\
+    0&0&2&-1\\
+    \ebm
+    \to
+    \bbm
+    1&0&0&1\\
+    0&1&0&1/2\\
+    0&0&1&-1/2\\
+    0&0&0&0\\
+    \ebm.
+   \]
+   We conclude that $u_1=\bbm w&x&y&z\ebm^T$ with $w+z=x+z/2=y-z/2=0$.
+   We can take $z=-2$ giving $u_1=\bbm 2&1&-1&-2 \ebm^T$ \mks{3}.  The
+   hint now tells us that the vector $u_2=\bbm 2&-1&-1&2\ebm$ is an
+   eigenvector of eigenvalue $-1$. \mk
+
+   To find an eigenvector $u_3$ of eigenvalue $4$, we row-reduce $M-4I$:
+   \[
+    \bbm
+    -4&2&0&0\\
+    2&-4&3&0\\
+    0&3&-4&2\\
+    0&0&2&-4\\
+    \ebm
+    \to
+    \bbm
+    1&-1/2&0&0\\
+    0&-3&3&0\\
+    0&3&-4&2\\
+    0&0&2&-4\\
+    \ebm
+    \to
+    \bbm
+    1&0&-1/2&0\\
+    0&1&-1&0\\
+    0&0&-1&2\\
+    0&0&2&-4\\
+    \ebm
+    \to
+    \bbm
+    1&0&0&-1\\
+    0&1&0&-2\\
+    0&0&1&-2\\
+    0&0&0&0\\
+    \ebm
+   \]
+   We conclude that $u_3=\bbm w&x&y&z\ebm^T$ with $w-z=x-2z=y-2z=0$.  We can
+   take $z=1$ giving $u_3=\bbm 1&2&2&1 \ebm^T$ \mks{3}.  The
+   hint now tells us that the vector $u_4=\bbm 1&-2&2&-1\ebm$ is an
+   eigenvector of eigenvalue $-4$. \mk
+  \item[(b)] We now need to find an orthonormal basis for $\R^4$
+   consisting of eigenvectors for $M$.  As $M$ is symmetric and the
+   eigenvalues $\lm_i$ are distinct, the eigenvectors $u_i$ are
+   automatically orthogonal.  Alternatively, it is easy to check
+   directly that 
+   \[ u_1.u_2=u_1.u_3=u_1.u_4=u_2.u_3=u_2.u_4=u_3.u_4=0. \mk \]
+   However, they are not unit vectors, so they do not form an
+   orthonormal basis.  Indeed, we have 
+   \[ \|u_1\| = \sqrt{4+1+1+4} = \sqrt{10}, \]
+   and similarly $\|u_2\|=\|u_3\|=\|u_4\|=\sqrt{10}$ \mk.  Thus, the
+   vectors $v_i=u_i/\sqrt{10}$ form an orthonormal basis for 
+   $\R^4$ consisting of eigenvectors for $M$. \mk  We now put
+   \begin{align*}
+    P &= [v_1|v_2|v_3|v_4] 
+       = \frac{1}{\sqrt{10}}
+          \bbm
+          2&2&1&1\\
+          1&-1&2&-2\\
+          -1&-1&2&2\\
+          -2&2&1&-1\\
+          \ebm \mk \\ 
+    D &= \bbm \lm_1 & 0 & 0 & 0 \\
+              0 & \lm_2 & 0 & 0 \\
+              0 & 0 & \lm_3 & 0 \\
+              0 & 0 & 0 & \lm_4 \ebm
+       = \bbm 1 &  0 & 0 &  0 \\
+              0 & -1 & 0 &  0 \\
+              0 &  0 & 4 &  0 \\
+              0 &  0 & 0 & -4 \ebm. \mk
+   \end{align*}
+   The general theory tells us that $P$ is an orthogonal matrix (so
+   $P^{-1}=P^T$) and that $M=PDP^{-1}=PDP^T$. \mk
+ \end{itemize}
+\end{solution}
+
+\begin{problem}[2012-13]
+ Consider the matrix
+ $\displaystyle M=\bbm 8&2&2 \\ 2&-4&5 \\ 2&5&-4 \ebm$.
+ \begin{itemize}
+  \item[(a)] Find the eigenvalues and eigenvectors of $M$. \mrks{14}
+  \item[(b)] Find an orthogonal matrix $P$ and a diagonal matrix $D$
+   such that $M=PDP^T$. \mrks{6}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] We first find the characteristic polynomial:
+   \begin{align*}
+    \chi_M(t) &= \det\bbm 8-t&2&2 \\ 2&-4-t&5 \\ 2&5&-4-t \ebm \\
+    &= (8-t)\det\bbm -4-t&4 \\ 5&-4-t\ebm 
+       -2 \det\bbm 2&5 \\ 2&-4-t \ebm 
+       +2 \det\bbm 2&-4-t \\ 2&5 \ebm \mks{2} \\
+    \det\bbm -4-t&5 \\ 5&-4-t\ebm &= (-4-t)^2 - 25 = t^2+8t-9 \\ 
+    \det\bbm 2&5 \\ 2&-4-t \ebm &= -8-2t-10 = -2t-18 \\
+    \det\bbm 2&-4-t \\ 2&5 \ebm &= 10-(-8-2t) = 2t+18 \\
+    \chi_M(t) &= (8-t)(t^2+8t-9)+4t+36+4t+36 
+               = -t^3+81t \mks{2} = -t(t-9)(t+9).
+   \end{align*}
+   Thus, the eigenvalues are $\lm_1=0$, $\lm_2=9$ and $\lm_3=-9$.\mk
+
+   To find an eigenvector $u_1$ of eigenvalue $0$, we row-reduce $A$:
+   \[
+    \bbm
+    8&2&2\\
+    2&-4&5\\
+    2&5&-4\\
+    \ebm
+    \to
+    \bbm
+    1&1/4&1/4\\
+    2&-4&5\\
+    2&5&-4\\
+    \ebm
+    \to
+    \bbm
+    1&1/4&1/4\\
+    0&-9/2&9/2\\
+    0&9/2&-9/2\\
+    \ebm
+    \to
+    \bbm
+    1&1/4&1/4\\
+    0&1&-1\\
+    0&9/2&-9/2\\
+    \ebm
+    \to
+    \bbm
+    1&0&1/2\\
+    0&1&-1\\
+    0&0&0\\
+    \ebm.
+   \]
+   We conclude that $u_1=\bbm x&y&z\ebm^T$ with $x+z/2=y-z=0$.  We can
+   take $z=2$ giving $u_1=\bbm -1&2&2 \ebm^T$ \mks{3}.
+
+   To find an eigenvector $u_2$ of eigenvalue $9$, we row-reduce $A-9I$:
+   \[
+    \bbm
+    -1&2&2\\
+    2&-13&5\\
+    2&5&-13\\
+    \ebm
+    \to
+    \bbm
+    1&-2&-2\\
+    0&-9&9\\
+    0&9&-9\\
+    \ebm
+    \to
+    \bbm
+    1&-2&-2\\
+    0&1&-1\\
+    0&9&-9\\
+    \ebm
+    \to
+    \bbm
+    1&0&-4\\
+    0&1&-1\\
+    0&0&0\\
+    \ebm
+   \]
+   We conclude that $u_2=\bbm x&y&z\ebm^T$ with $x-4z=y-z=0$.  We can
+   take $z=1$ giving $u_2=\bbm 4&1&1 \ebm^T$ \mks{3}.
+   
+   To find an eigenvector $u_3$ of eigenvalue $-9$, we row-reduce
+   $A+9I$:
+   \[
+    \bbm
+    17&2&2\\
+    2&5&5\\
+    2&5&5\\
+    \ebm
+    \to
+    \bbm
+    17&2&2\\
+    1&5/2&5/2\\
+    2&5&5\\
+    \ebm
+    \to
+    \bbm
+    0&-81/2&-81/2\\
+    1&5/2&5/2\\
+    0&0&0\\
+    \ebm
+    \to
+    \bbm
+    0&1&1\\
+    1&5/2&5/2\\
+    0&0&0\\
+    \ebm
+    \to
+    \bbm
+    1&0&0\\
+    0&1&1\\
+    0&0&0\\
+    \ebm
+   \]
+   We conclude that $u_3=\bbm x&y&z\ebm^T$ with $x=y+z=0$.  We can
+   take $z=-1$ giving $u_3=\bbm 0&1&-1 \ebm^T$ \mks{3}.
+  \item[(b)] We now need to find an orthonormal basis for $\R^3$
+   consisting of eigenvectors for $M$.  As $M$ is symmetric and the
+   eigenvalues $\lm_i$ are distinct, the eigenvectors $u_i$ are
+   automatically orthogonal.  (Alternatively, it is easy to check
+   directly that $u_1.u_2=u_1.u_3=u_2.u_3=0$.)  However, they are not
+   unit vectors, so they do not form an orthonormal basis.  Indeed, we
+   have 
+   \begin{align*}
+    \|u_1\| &= \sqrt{1+4+4} = 3 \\
+    \|u_2\| &= \sqrt{16+1+1} = 3\sqrt{2} \\
+    \|u_3\| &= \sqrt{0+1+1} = \sqrt{2} \mks{2}.
+   \end{align*}
+   The vectors $v_i=u_i/\|u_i\|$ form an orthonormal basis for
+   $\R^3$ consisting of eigenvectors for $M$.  We now put
+   \begin{align*}
+    P &= [v_1|v_2|v_3] 
+       = \bbm
+          -1/3 & 2\sqrt{2}/3 &  0          \\
+           2/3 &  \sqrt{2}/6 &  \sqrt{2}/2 \\
+           2/3 &  \sqrt{2}/6 & -\sqrt{2}/2
+         \ebm \mks{2} \\
+    D &= \bbm \lm_1 & 0 & 0 \\ 0 & \lm_2 & 0 \\ 0 & 0 & \lm_3 \ebm
+       = \bbm 0 & 0 & 0 \\ 0 & 9 & 0 \\ 0 & 0 & -9 \ebm. \mks{2}
+   \end{align*}
+   The general theory tells us that $P$ is an orthogonal matrix (so
+   $P^{-1}=P^T$) and that $M=PDP^{-1}=PDP^T$.
+ \end{itemize}
+\end{solution}
+
+
+\begin{problem}[2011-12 resit]
+ Consider the matrix
+ \[ A = \bbm 1&1&1&4 \\ 1&1&1&4 \\ 1&1&1&4 \\ 4&4&4&1 \ebm. \]
+ You may assume that $\det(tI-A)=t^4-4t^3-45t^2$.
+ \begin{itemize}
+  \item[(a)] Find the eigenvalues of $A$. \mrks{2}
+  \item[(b)] Find an eigenvector $u_1$ of eigenvalue $0$ with
+   $\|u_1\|=1$.  \mrks{3}
+  \item[(c)] Find another eigenvector $u_2$ of eigenvalue $0$ with
+   $u_1.u_2=0$ and $\|u_2\|=1$. \mrks{4} 
+  \item[(d)] Find an orthonormal basis of $\R^4$ consisting of
+   eigenvectors of $A$. \mrks{10}
+  \item[(e)] Find an orthogonal matrix $P$ and a diagonal matrix $D$
+   such that $A=PDP^T$. \mrks{3}
+  \item[(f)] Express the quadratic form
+   \[ Q = w^2+x^2+y^2+z^2 + 2(wx+wy+xy) + 8(wz+xz+yz) \] 
+   as $Q=F^2-G^2$, where $F$ and $G$ are linear forms.  \mrks{3}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] The characteristic polynomial factorises as
+   $\chi_A(t)=t^2(t^2-4t-45)=t^2(t-9)(t+5)$, so the eigenvalues are
+   $0$, $9$ and $-5$. \mks{2}
+  \item[(b)] It is easy to see that a vector $\bbm w&x&y&z\ebm^T$ is
+   an eigenvector of eigenvalue $0$ if and only if
+   $w+x+y+4z=4w+4x+4y+z=0$ \mk, which reduces to $w+x+y=0$ and
+   $z=0$ \mk.  One solution is $\bbm 1&-1&0&0\ebm^T$.  To make this a
+   unit vector, we need to divide by $\sqrt{2}$, giving 
+   \[ u_1 = \bbm \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} & 0 & 0 \ebm^T.
+      \mk
+   \]
+  \item[(c)] We again need $u_2=\bbm w&x&y&0\ebm^T$ with $w+x+y=0$\mk.
+   We also want this to be orthogonal to $u_1$, so we must have
+   $w=x$ \mk.   The equation $w+x+y=0$ now becomes $y=-2x$, so
+   $u_2=\bbm x&x&-2x&0\ebm^T$.  This gives 
+   \[ \|u_2\|^2 = x^2+x^2+4x^2+0 = 6x^2 \mk. \]
+   We want $u_2$ to be a unit vector, so we must have $x=1/\sqrt{6}$,
+   giving 
+   \[ u_2 = \bbm \frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{6}}
+                  & \frac{-2}{\sqrt{6}} & 0 \ebm^T \mk.
+   \]
+   (\textbf{Any approach to~(b) and~(c) that ends up with two orthonormal 
+   vectors in the kernel will be given 7/7.})
+  \item[(d)]
+   Next, to find an eigenvector of eigenvalue $9$ we row-reduce the
+   matrix $A-9I$ \mk:
+   \[
+   \bbm
+   -8&1&1&4\\
+   1&-8&1&4\\
+   1&1&-8&4\\
+   4&4&4&-8\\
+   \ebm
+   \to
+   \bbm
+   0&-63&9&36\\
+   1&-8&1&4\\
+   0&9&-9&0\\
+   0&36&0&-24\\
+   \ebm
+   \to
+   \bbm
+   0&-63&9&36\\
+   1&-8&1&4\\
+   0&1&-1&0\\
+   0&36&0&-24\\
+   \ebm
+   \to
+  \] \[
+   \bbm
+   0&0&-54&36\\
+   1&0&-7&4\\
+   0&1&-1&0\\
+   0&0&36&-24\\
+   \ebm
+   \to
+   \bbm
+   0&0&-54&36\\
+   1&0&-7&4\\
+   0&1&-1&0\\
+   0&0&1&-2/3\\
+   \ebm
+   \to
+   \bbm
+   0&0&0&0\\
+   1&0&0&-2/3\\
+   0&1&0&-2/3\\
+   0&0&1&-2/3\\
+   \ebm \mks{2}
+   \]
+   From this we see that the eigenvectors of eigenvalue $9$ are 
+   multiples of the vector $a=\bbm 2&2&2&3\ebm^T$ \mk.  We note that
+   $\|a\|^2=4+4+4+9=21$.  To
+   get a unit vector we therefore take 
+   \[ u_3 = a/\sqrt{21} = 
+       \bbm \frac{2}{\sqrt{21}} &
+            \frac{2}{\sqrt{21}} &
+            \frac{2}{\sqrt{21}} &
+            \frac{3}{\sqrt{21}} \ebm^T. \mk
+   \]
+
+   Finally, to find an eigenvector of eigenvalue $-5$ we
+   row-reduce the matrix $A+5I$ \mk:
+   \[
+   \bbm
+   6&1&1&4\\
+   1&6&1&4\\
+   1&1&6&4\\
+   4&4&4&6\\
+   \ebm
+   \to
+   \bbm
+   0&-5&-35&-20\\
+   0&5&-5&0\\
+   1&1&6&4\\
+   0&0&-20&-10\\
+   \ebm
+   \to
+   \bbm
+   0&-5&-35&-20\\
+   0&1&-1&0\\
+   1&1&6&4\\
+   0&0&-20&-10\\
+   \ebm
+   \to
+  \] \[
+   \bbm
+   0&0&1&1/2\\
+   0&1&0&1/2\\
+   1&0&7&4\\
+   0&0&0&0\\
+   \ebm
+   \to
+   \bbm
+   0&0&1&1/2\\
+   0&1&0&1/2\\
+   1&0&0&1/2\\
+   0&0&0&0\\
+   \ebm \mks{2}
+   \]
+
+   From this we see that the eigenvectors of eigenvalue $-5$ are 
+   multiples of the vector $b=\bbm 1&1&1&-2\ebm^T$ \mk.  We note that
+   $\|b\|^2=1+1+1+4=7$.  To
+   get a unit vector we therefore take 
+   \[ u_3 = a/\sqrt{7} = 
+       \bbm \frac{1}{\sqrt{7}} &
+            \frac{1}{\sqrt{7}} &
+            \frac{1}{\sqrt{7}} &
+            \frac{-2}{\sqrt{7}} \ebm^T \mk.
+   \]
+
+   It is standard that when $s$ and $t$ are eigenvectors of a
+   symmetric matrix with distinct eigenvalues, we have $s.t=0$.  This
+   gives $u_1.u_3=u_1.u_4=u_2.u_3=u_2.u_4=u_3.u_4=0$, and the
+   remaining identity $u_1.u_2=0$ is clear by inspection (as are the
+   others, in fact).  Thus, we have an orthonormal basis of
+   eigenvectors. 
+  \item[(e)] The general theory tells us that we can take 
+   \[ P = \left[\begin{array}{c|c|c|c}
+           &&& \\ u_1 & u_2 & u_3 & u_4 \\ &&&
+          \end{array}\right]
+        = \bbm 
+            1/\sqrt{2} & 1/\sqrt{6} &  2/\sqrt{21} &  1/\sqrt{7} \\
+           -1/\sqrt{2} & 1/\sqrt{6} &  2/\sqrt{21} &  1/\sqrt{7} \\
+           0 &          -2/\sqrt{6} &  2/\sqrt{21} &  1/\sqrt{7} \\
+           0 &           0          &  3/\sqrt{21} & -2/\sqrt{7}
+          \ebm \mks{2}
+   \]
+   \[ D = \bbm \lm_1 & 0 & 0 & 0 \\ 
+               0 & \lm_2 & 0 & 0 \\
+               0 & 0 & \lm_3 & 0 \\
+               0 & 0 & 0 & \lm_4 \ebm 
+        = \bbm 0 & 0 & 0 & 0 \\ 
+               0 & 0 & 0 & 0 \\
+               0 & 0 & 9 & 0 \\
+               0 & 0 & 0 & -5 \ebm \mk
+   \]
+  \item[(f)] We have $Q=a^TAa$, where $a=\bbm w&x&y&z\ebm^T$.  It is
+   standard that with an orthonormal sequence of eigenvectors as
+   above, we have $Q=\sum_i\lm_i(u_i.a)^2$.  In our case
+   $\lm_1=\lm_2=0$ so this reduces to 
+   \begin{align*}
+     Q &= 9(u_3.a)^2 - 5(u_4.a)^2 \mk =
+          (3u_3.a)^2 - (\sqrt{5}u_4.a)^2 \\
+       &= \left(\frac{6w+6x+6y+9z}{\sqrt{21}}\right)^2 - 
+          \left(\sqrt{5}\frac{w+x+y-2z}{\sqrt{7}}\right)^2. \mk
+   \end{align*} 
+   We may thus take
+   \begin{align*}
+    F &= (6w+6x+6y+9z)/\sqrt{21} \\
+    G &= (w+x+y-2z)\sqrt{5/7}. \mk
+   \end{align*}
+ \end{itemize}
+\end{solution}
+
+
+\begin{problem}[2011-12]
+ Consider the matrix
+ \[ A = \bbm 1&1&2&2 \\ 1&1&2&2 \\ 2&2&1&1 \\ 2&2&1&1 \ebm. \]
+ You may assume that $\det(A-tI)=t^4-4t^3-12t^2$.
+ \begin{itemize}
+  \item[(a)] Find the eigenvalues of $A$. \mrks{2}
+  \item[(b)] Find an orthonormal basis of $\R^4$ consisting of
+   eigenvectors of $A$. \mrks{14}
+  \item[(c)] Find an orthogonal matrix $P$ and a diagonal matrix $D$
+   such that $A=PDP^T$. \mrks{4}
+  \item[(d)] Express the quadratic form
+   \[ Q = w^2+x^2+y^2+z^2 + 2(wx+yz) + 4(wy+wz+xy+xz) \] 
+   as $Q=F^2-G^2$, where $F$ and $G$ are linear forms.  Hence express
+   $Q$ as a product of two linear forms.  \mrks{5}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] The characteristic polynomial factorises as
+   $\chi_A(t)=t^2(t^2-4t-12)=t^2(t-6)(t+2)$, so the eigenvalues are
+   $0$, $6$ and $-2$. \mks{2}
+  \item[(b)] It is easy to see that a vector $\bbm w&x&y&z\ebm^T$ is
+   an eigenvector of eigenvalue $0$ if and only if
+   $w+x+2y+2z=2w+2x+y+z=0$ \mks{2}, which reduces to $x=-w$ and $z=-y$
+   \mk.  If we  put 
+   \[ u_1 = \bbm 1/\sqrt{2}&-1/\sqrt{2}&0&0\ebm^T \hspace{4em}
+      u_2 = \bbm 0&0&1/\sqrt{2}&-1/\sqrt{2}\ebm^T
+   \]
+   then $u_1$ and $u_2$ are orthonormal and are eigenvectors of
+   eigenvalue $0$ \mks{2}. 
+
+   Next, to find an eigenvector of eigenvalue $6$ we row-reduce the
+   matrix $A-6I$ \mk:
+   \[ 
+    \bbm -5&1&2&2 \\ 1&-5&2&2 \\ 2&2&-5&1 \\ 2&2&1&-5 \ebm
+    \to
+    \bbm 0&-24&12&12 \\ 1&-5&2&2 \\ 0&12&-9&-3 \\ 0&12&-3&-9 \ebm
+    \to
+    \bbm 0&-24&12&12 \\ 1&-5&2&2 \\ 0&12&-9&-3 \\ 0&0&6&-6 \ebm
+   \] \[
+    \to
+    \bbm 0&-24&0&24 \\ 1&-5&0&4 \\ 0&12&0&-12 \\ 0&0&1&-1 \ebm
+    \to
+    \bbm 0&1&0&-1 \\ 1&-5&0&4 \\ 0&0&0&0 \\ 0&0&1&-1 \ebm
+    \to
+    \bbm 1&0&0&-1 \\ 0&1&0&-1 \\ 0&0&1&-1 \\ 0&0&0&0  \ebm \mks{2}.
+   \]
+   From this we see that the eigenvectors of eigenvalue $6$ are the
+   vectors of the form $a=\bbm w&w&w&w\ebm^T$ \mk.  We note that
+   $\|a\|=\sqrt{w^2+w^2+w^2+w^2}=\sqrt{4w^2}=2|w|$.  To get a unit
+   vector we take $w=1/2$ giving 
+   \[ u_3 = \bbm \half & \half & \half & \half \ebm^T. \mk \]
+
+   Finally, to find an eigenvector of eigenvalue $-2$ we
+   row-reduce the matrix $A+2I$:
+   \[ 
+    \bbm 3&1&2&2 \\ 1&3&2&2 \\ 2&2&3&1 \\ 2&2&1&3 \ebm
+    \to
+    \bbm 0&-8&-4&-4 \\ 1&3&2&2 \\ 0&-4&-1&-3 \\ 0&-4&-3&-1 \ebm
+    \to
+    \bbm 0&1&1/2&1/2 \\ 1&3&2&2 \\ 0&0&1&-1 \\ 0&0&-1&1 \ebm
+   \] \[
+    \to
+    \bbm 0&1&0&1 \\ 1&3&0&4 \\ 0&0&1&-1 \\ 0&0&0&0 \ebm
+    \to
+    \bbm 1&0&0&1 \\ 0&1&0&1 \\ 0&0&1&-1 \\ 0&0&0&0 \ebm \mks{2}
+   \]
+   From this we see that the eigenvectors of eigenvalue $-2$ are the
+   vectors $\bbm w&x&y&z\ebm^T$ satisfying $w+z=x+z=y-z=0$, or in
+   other words the vectors of the form $\bbm w&w&-w&-w\ebm^T$ \mk.  To get
+   a unit vector we again take $w=1/2$, giving 
+   \[ u_4 = \bbm \half & \half & -\half & -\half\ebm^T. \mk \]
+   It is standard that when $a$ and $b$ are eigenvectors of a
+   symmetric matrix with distinct eigenvalues, we have $a.b=0$.  This
+   gives $u_1.u_3=u_1.u_4=u_2.u_3=u_2.u_4=u_3.u_4=0$, and the
+   remaining identity $u_1.u_2=0$ is clear by inspection (as are the
+   others, in fact).  Thus, we have an orthonormal basis of
+   eigenvectors. 
+  \item[(c)] The general theory tells us that we can take 
+   \[ P = \left[\begin{array}{c|c|c|c}
+           &&& \\ u_1 & u_2 & u_3 & u_4 \\ &&&
+          \end{array}\right]
+        = \bbm 
+            1/\sqrt{2} & 0 &  1/2 &  1/2 \\
+           -1/\sqrt{2} & 0 &  1/2 &  1/2 \\
+           0 &  1/\sqrt{2} &  1/2 & -1/2 \\
+           0 & -1/\sqrt{2} &  1/2 & -1/2 \\
+          \ebm \mks{2}
+   \]
+   \[ D = \bbm \lm_1 & 0 & 0 & 0 \\ 
+               0 & \lm_2 & 0 & 0 \\
+               0 & 0 & \lm_3 & 0 \\
+               0 & 0 & 0 & \lm_4 \ebm 
+        = \bbm 0 & 0 & 0 & 0 \\ 
+               0 & 0 & 0 & 0 \\
+               0 & 0 & 6 & 0 \\
+               0 & 0 & 0 & -2 \ebm \mks{2}
+   \]
+  \item[(d)] We have $Q=a^TAa$, where $a=\bbm w&x&y&z\ebm^T$.  It is
+   standard that with an orthonormal sequence of eigenvectors as
+   above, we have $Q=\sum_i\lm_i(u_i.a)^2$.  In our case
+   $\lm_1=\lm_2=0$ so this reduces to 
+   \[ Q = 6(u_3.a)^2 - 2(u_4.a)^2 \mks{2} =
+       (\sqrt{6}(w+x+y+z)/2)^2 - (\sqrt{2}(w+x-y-z)/2)^2. \mk
+   \] 
+   We may thus take
+   \begin{align*}
+    F &= \sqrt{6}(w+x+y+z)/2 \\
+    G &= \sqrt{2}(w+x-y-z)/2. \mk
+   \end{align*}
+   This in turn gives $Q=LM$, where 
+   \begin{align*}
+    L &= F+G = \frac{\sqrt{6}+\sqrt{2}}{2}(w+x)+\frac{\sqrt{6}-\sqrt{2}}{2}(y+z) \\
+    M &= F-G = \frac{\sqrt{6}-\sqrt{2}}{2}(w+x)+\frac{\sqrt{6}+\sqrt{2}}{2}(y+z). \mk
+   \end{align*}
+ \end{itemize}
+\end{solution}
+
+\begin{problem}[Mock 1]
+ Put 
+ \[ A = \bbm
+         9&6&2&3\\
+         6&0&0&2\\
+         2&0&0&6\\
+         3&2&6&9
+        \ebm \qquad
+    u_1 = \bbm 1\\-2\\2\\-1 \ebm \qquad
+    u_2 = \bbm 1\\-2\\-2\\1 \ebm \qquad
+    u_3 = \bbm 2\\1\\-1\\-2 \ebm \qquad
+    u_4 = \bbm 2\\1\\1\\2 \ebm
+ \]
+ \begin{itemize}
+  \item[(a)] Show that $\det(A)=1024=2^{10}$. \mrks{4}
+  \item[(b)] Show that the vectors $u_i$ are eigenvectors for $A$, and
+   determine the corresponding eigenvalues.  \mrks{6} \\
+   \textbf{Note:} You do not need to find the characteristic
+   polynomial or perform any row-reduction.
+  \item[(c)] Find an orthogonal matrix $P$ and a diagonal matrix $D$
+   such that $A=PDP^T$. \mrks{6}
+  \item[(d)] Express the quadratic form
+   \[ Q = 9(w^2+z^2)+12(wx+yz)+6wz+4(wy+xz) \]
+   as $Q=F^2+G^2-H^2-J^2$, where $F,G,H$ and $J$ are linear forms.
+   \mrks{6} 
+  \item[(e)] What are the rank and signature of $Q$? \mrks{3}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] We expand the determinant along the second row.  The $6$
+   at the beginning of the row is in the $(2,1)$ slot and so has a
+   sign $(-1)^{2+1}=-1$.  The $2$ at the end of the row is in the
+   $(2,4)$ slot and so has a sign $(-1)^{2+4}=+1$.  This gives
+   \[ \det(A) = -6\det\bbm 6&2&3 \\ 0&0&6 \\ 2&6&9 \ebm 
+                +2\det\bbm 9&6&2 \\ 2&0&0 \\ 3&2&6 \ebm. \mk
+   \]
+   Each of the above $3\tm 3$ determinants can be expanded along the
+   middle row:
+   \begin{align*}
+    \det\bbm 6&2&3 \\ 0&0&6 \\ 2&6&9 \ebm &=
+       -6\det\bbm 6&2 \\ 2&6\ebm = -6\tm 32 = -192 \mk \\
+    \det\bbm 9&6&2 \\ 2&0&0 \\ 3&2&6 \ebm &= 
+       -2\det\bbm 6&2\\2&6\ebm = -2\tm 32 = -64. \mk
+   \end{align*}
+   Putting this together we get
+   \[ \det(A) = -6\tm(-192) + 2\tm(-64) = 1024. \mk \]
+  \item[(b)] We have
+   \begin{align*}
+    Au_1 &= 
+     \bbm 9&6&2&3\\ 6&0&0&2\\ 2&0&0&6\\ 3&2&6&9 \ebm
+     \bbm 1\\-2\\2\\-1 \ebm = 
+     \bbm -2\\4\\-4\\2 \ebm = -2u_1 \\
+    Au_2 &=
+     \bbm 9&6&2&3\\ 6&0&0&2\\ 2&0&0&6\\ 3&2&6&9 \ebm
+     \bbm 1\\-2\\-2\\1 \ebm =
+     \bbm -4\\8\\8\\-4 \ebm = -4u_2 \\
+    Au_3 &=
+     \bbm 9&6&2&3\\ 6&0&0&2\\ 2&0&0&6\\ 3&2&6&9 \ebm
+     \bbm 2\\1\\-1\\-2 \ebm =
+     \bbm 16\\8\\-8\\-16\ebm = 8u_3 \\
+    Au_4 &=
+     \bbm 9&6&2&3\\ 6&0&0&2\\ 2&0&0&6\\ 3&2&6&9 \ebm
+     \bbm 2\\1\\1\\2 \ebm =
+     \bbm 32\\16\\16\\32 \ebm = 16u_4 \mks{4}
+   \end{align*}
+   From this we see that the vectors $u_i$ are eigenvctors for $A$,
+   with eigenvalues $\lm_1=-2$, $\lm_2=-4$, $\lm_3=8$ and $\lm_4=16$
+   \mks{2}. 
+  \item[(c)] We need to find an orthonormal basis for $\R^4$
+   consisting of eigenvectors for $A$ \mk.  The matrix $A$ is symmetric,
+   and the vectors $u_i$ are eigenvectors for $A$ with distinct
+   eigenvalues, so the general theory tells us that they are all
+   orthogonal to each other.  (Alternatively, we can just check that
+   directly $u_i.u_j=0$ for all $i\neq j$.) \mk  However, we do not have
+   an orthonormal basis because $u_i$ is not a unit vector.  Instead,
+   we have $u_1.u_1=1^2+(-2)^2+2^2+(-1)^2=10$ \mk, and similar
+   calculations show that $u_2.u_2=u_3.u_3=u_4.u_4=10$ as well.  It
+   follows that if we put $v_i=u_i/\sqrt{10}$ then the list
+   $v_1,v_2,v_3,v_4$ is an orthonormal basis as required \mk.
+
+   The general theory now tells us that we can take 
+   \[ P = \left[\begin{array}{c|c|c|c}
+           &&& \\ v_1 & v_2 & v_3 & v_4 \\ &&&
+          \end{array}\right]
+        = \bbm 
+            1/\sqrt{10} &  1/\sqrt{10} &  2/\sqrt{10} &  2/\sqrt{10} \\
+           -2/\sqrt{10} & -2/\sqrt{10} &  1/\sqrt{10} &  1/\sqrt{10} \\
+            2/\sqrt{10} & -2/\sqrt{10} & -1/\sqrt{10} &  1/\sqrt{10} \\
+           -1/\sqrt{10} &  1/\sqrt{10} & -2/\sqrt{10} &  2/\sqrt{10}
+          \ebm \mk
+   \]
+   \[ D = \bbm \lm_1 & 0 & 0 & 0 \\ 
+               0 & \lm_2 & 0 & 0 \\
+               0 & 0 & \lm_3 & 0 \\
+               0 & 0 & 0 & \lm_4 \ebm 
+        = \bbm -2 &  0 & 0 & 0 \\ 
+                0 & -4 & 0 & 0 \\
+                0 &  0 & 8 & 0 \\
+                0 &  0 & 0 & 16 \ebm \mk
+   \]
+  \item[(d)] We have $Q=a^TAa$, where $a=\bbm w&x&y&z\ebm^T$ \mk.  It is
+   standard that with an orthonormal sequence of eigenvectors as
+   above, we have $Q=\sum_i\lm_i(v_i.a)^2$ \mk.  In our case this gives
+   \begin{align*}
+    Q &= -2(a.v_1)^2-4(a.v_2)^2+8(a.v_3)^2+16(a.v_4)^2 \mk \\
+      &= (a.\sqrt{8}v_3)^2 + (a.4v_4)^2 - (a.\sqrt{2}v_1)^2 - (a.2v_2)^2 \mk.
+   \end{align*}
+   In other words, we have $Q=F^2+G^2-H^2-J^2$, where 
+   \begin{align*}
+    F &= a.\sqrt{8}v_3 = 4w/\sqrt{5}  + 2x/\sqrt{5}  - 2y/\sqrt{5}  - 4z/\sqrt{5} \\
+    G &= a.4v_4        = 8w/\sqrt{10} + 4x/\sqrt{10} + 4y/\sqrt{10} + 8z/\sqrt{10} \\
+    H &= a.\sqrt{2}v_1 =  w/\sqrt{5}  - 2x/\sqrt{5}  + 2y/\sqrt{5}  -  z/\sqrt{5} \\
+    J &= a.2v_2        = 2w/\sqrt{10} - 4x/\sqrt{10} - 4y/\sqrt{10} + 2z/\sqrt{10}
+         \mks{2}
+   \end{align*}
+  \item[(e)] The rank is the number of nonzero eigenvalues, which is
+   $4$ \mk.  The signature is the number of positive eigenvalues minus the
+   number of negative eigenvalues, which is $0$ \mks{2}.
+ \end{itemize}
+\end{solution}
+
+\begin{problem}[Mock 2]
+ Put 
+ \[ A = \bbm 2&3&7 \\ 3&2&3 \\ 7&3&2 \ebm. 
+ \]
+ You may assume the following row-reductions.  (Some of them are
+ useful, and some of them are not.)
+ \[
+   \bbm
+   2&3&7\\
+   3&2&3\\
+   7&3&2\\
+   \ebm \to 
+   \bbm
+   1&0&-1\\
+   0&1&3\\
+   0&0&0\\
+   \ebm \qquad
+   \bbm
+   7&3&7\\
+   3&7&3\\
+   7&3&7\\
+   \ebm \to
+   \bbm
+   1&0&1\\
+   0&1&0\\
+   0&0&0\\
+   \ebm \qquad
+   \bbm
+   9&3&7\\
+   3&9&3\\
+   7&3&9\\
+   \ebm \to
+   \bbm
+   1&0&0\\
+   0&1&0\\
+   0&0&1\\
+   \ebm
+  \] \[
+   \hspace{-3em}
+   \bbm
+   -2&3&7\\
+   3&-2&3\\
+   7&3&-2\\
+   \ebm \to
+   \bbm
+   1&0&0\\
+   0&1&0\\
+   0&0&1\\
+   \ebm \qquad
+   \bbm
+   -7&3&7\\
+   3&-7&3\\
+   7&3&-7\\
+   \ebm \to
+   \bbm
+   1&0&0\\
+   0&1&0\\
+   0&0&1\\
+   \ebm \qquad
+   \bbm
+   -9&3&7\\
+   3&-9&3\\
+   7&3&-9\\
+   \ebm \to
+   \bbm
+   1&0&-1\\
+   0&1&-2/3\\
+   0&0&0\\
+   \ebm
+  \]
+ \begin{itemize}
+  \item[(a)] Find the eigenvalues of $A$. \mrks{6}
+  \item[(b)] Find an orthogonal matrix $P$ and a diagonal matrix $D$
+   such that $A=PDP^T$. \mrks{10}
+  \item[(c)] Express the quadratic form
+   \[ Q = 2x^2+2y^2+2z^2+6xy+6yz+14xz \]
+   as $Q=L^2-M^2$, where $L$ and $M$ are linear forms.  Hence find
+   linear forms $F$ and $G$ such that $Q=FG$.
+   \mrks{7} 
+  \item[(d)] What are the rank and signature of $Q$? \mrks{2}
+ \end{itemize}
+\end{problem}
+\begin{solution}
+ \begin{itemize}
+  \item[(a)] The first of the given row-reductions shows that $A$
+   reduces a matrix with a row of zeros.  It follows that
+   $\det(A-0I)=\det(A)=0$, and thus that $0$ is an eigenvalue of $A$.
+   Similarly, the second and sixth row-reductions shows that $A+5I$
+   and $A-11I$ reduce to matrices with a row of zeros, so
+   $\det(A+5I)=\det(A-11I)=0$, so $-5$ and $11$ are the other two
+   eigenvalues.  
+
+   For a more standard but less efficient approach, we can calculate
+   the characteristic polynomial:
+   \begin{align*}
+    \chi_A(t) &= 
+     \det\bbm 2-t&3&7\\ 3&2-t&3\\ 7&3&2-t \ebm \mk \\
+     &= (2-t)\det\bbm 2-t&3 \\ 3&2-t\ebm 
+       -3 \det\bbm 3&3\\ 7&2-t \ebm 
+       +7 \det\bbm 3&2-t\\7&3 \ebm \mk \\
+    \det\bbm 2-t&3 \\ 3&2-t\ebm &= 
+     (2-t)^2-9 = t^2-4t-5 \\
+    \det\bbm 3&3\\ 7&2-t \ebm &= 
+     6-3t-21 = -3t-15 \\
+    \det\bbm 3&2-t\\7&3 \ebm &=
+     9 - (14-7t) = 7t - 5 \mks{2} \\
+    \chi_A(t) &= (2-t)(t^2-4t-5) -3(-3t-15) + 7(7t-5) \\
+              &= 2t^2-8t-10-t^3+4t^2+5t+9t+45+49t-35 \\
+     &= -t^3 +6t^2 +55t \mk = -(t^2-6t-55)t = -(t-11)(t+5)t. 
+   \end{align*}
+   We again see that the eigenvalues are $\lm_1=11$ and $\lm_2=-5$ and
+   $\lm_3=0$ \mk. 
+  \item[(b)] We first need to find a system of eigenvectors for $A$.
+   Using the fact that
+   \[ A-11I = 
+       \bbm
+       -9&3&7\\
+       3&-9&3\\
+       7&3&-9\\
+       \ebm \to
+       \bbm
+       1&0&-1\\
+       0&1&-2/3\\
+       0&0&0\\
+       \ebm
+   \]
+   we see that an eigenvector $u_1=\bbm x&y&z\ebm^T$ of eigenvalue
+   $11$ must satisfy $x-z=y-(2/3)z=0$.  We take $z=3$ giving
+   $u_1=\bbm 3&2&3\ebm^T$ \mks{2}.  Similarly, using the fact that 
+   \[ A+5I = 
+       \bbm
+       7&3&7\\
+       3&7&3\\
+       7&3&7\\
+       \ebm \to
+       \bbm
+       1&0&1\\
+       0&1&0\\
+       0&0&0\\
+       \ebm
+   \]
+   we see that the vector $u_2=\bbm 1&0&-1\ebm^T$ is an eigenvector of
+   eigenvalue $-5$ \mks{2}.  Finally, using the row-reduction 
+   \[ A = 
+       \bbm
+       2&3&7\\
+       3&2&3\\
+       7&3&2\\
+       \ebm \to 
+       \bbm
+       1&0&-1\\
+       0&1&3\\
+       0&0&0\\
+       \ebm
+   \]
+   we see that the vector $u_3=\bbm 1&-3&1\ebm$ is an eigenvector of
+   eigenvalue $0$ \mks{2}.  As $A$ is symmetric and these three eigenvectors
+   have different eigenvalues, they are automatically orthogonal.
+   Next, we have 
+   \begin{align*}
+    u_1.u_1 &= 3^2+2^2+3^2 = 22 \\
+    u_2.u_2 &= 1^2+(-1)^2 = 2 \\
+    u_3.u_3 &= 1^2+(-3)^2+1^2 = 11.
+   \end{align*}
+   It follows that the vectors 
+   \[ v_1 = \frac{u_1}{\sqrt{22}} =
+             \bbm 3/\sqrt{22}\\ 2/\sqrt{22} \\ 3/\sqrt{22}\ebm 
+      \qquad
+      v_2 = \frac{u_2}{\sqrt{2}} = 
+             \bbm 0 \\ 1/\sqrt{2} \\ -1/\sqrt{2} \ebm \\
+      \qquad
+      v_3 = \frac{u_3}{\sqrt{11}} = 
+             \bbm 1/\sqrt{11} \\ -3/\sqrt{11} \\ 1/\sqrt{11}\ebm
+   \] 
+   form an orthonormal basis for $\R^3$ consisting of eigenvectors of
+   $A$ \mks{2}.  It follows in turn that $A=PDP^T$, where 
+   \begin{align*}
+    P &= \left[\begin{array}{c|c|c}
+          && \\ v_1 & v_2 & v_3 \\ && 
+         \end{array}\right]
+       = \bbm 3/\sqrt{22} &  0          &  1/\sqrt{11} \\
+              2/\sqrt{22} &  1/\sqrt{2} & -3/\sqrt{11} \\
+              3/\sqrt{22} & -1/\sqrt{2} &  1/\sqrt{11} \ebm \\
+    D &= \diag(\lm_1,\lm_2,\lm_3) = 
+          \bbm 11 & 0 & 0 \\ 0 & -5 & 0 \\ 0 & 0 & 0 \ebm \mks{2}. 
+   \end{align*}
+  \item[(c)] We note that $Q=a^TAa$, where $a=\bbm x&y&z\ebm^T$ and
+   $A$ is as above.  The general theory therefore tells us that 
+   \[ Q = \sum_{i=1}^3 \lm_i(a.v_i)^2 = 11(a.v_1)^2 - 5 (a.v_2)^2 \mks{2}. \]
+   Thus, if we put 
+   \begin{align*}
+    L &= \sqrt{11}\; a.v_1 
+       = (3x+2y+3z)/\sqrt{2} \\
+    M &= \sqrt{5}\; a.v_2 = \sqrt{5/2}(y-z)
+   \end{align*}
+   then $Q=L^2-M^2$ \mks{2}.  This can be factored as $Q=FG$, where 
+   \begin{align*}
+    F &= L+M = (3x+(2+\sqrt{5})y+(3-\sqrt{5}z)/\sqrt{2} \\
+    G &= L-M = (3x+(2-\sqrt{5})y+(3+\sqrt{5}z)/\sqrt{2} \mks{3}.
+   \end{align*}
+  \item[(d)] The rank is the number of nonzero eigenvalues, which is
+   $2$ \mk.  The signature is the number of positive eigenvalues minus the
+   number of negative eigenvalues, which is $0$ \mk.
+ \end{itemize}
+\end{solution}
+
+\end{document}
