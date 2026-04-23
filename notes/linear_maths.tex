@@ -357,7 +357,7 @@ Next recall that the matrix product $AB$ is only defined when the
 number of columns of $A$ is the same as the number of rows of $B$.  In
 other words, $A$ must be an $m\tm n$ matrix and $B$ must be an
 $n\tm p$ matrix for some positive integers $n$, $m$ and $p$.  It then
-works out that $AB$ is an $n\tm p$ matrix.  To explain the rule for
+works out that $AB$ is an $m\tm p$ matrix.  To explain the rule for
 multiplication, we divide $A$ into rows as before, and we divide $B$
 into columns, say
 \[ B = \left[\begin{array}{c|c|c}
@@ -623,7 +623,7 @@ This applies, in particular, to row and column vectors.
  in \dfn{reduced row-echelon form} (RREF) \index{RREF} if the following hold:
  \begin{itemize}
   \item[\textbf{RREF0}:]
-   Any rows of zeros come at the bottom of the matrix, after all the
+   Any rows of zeros comes at the bottom of the matrix, after all the
    nonzero rows.
   \item[\textbf{RREF1}:]
    In any nonzero row, the first nonzero entry is equal to $1$.  These
@@ -704,10 +704,10 @@ look at the examples given afterwards).
    always false, so the system has no solutions.
   \item[(c)] Now suppose that there is no pivot to the right of the
    bar, but that every column to the left of the bar has a pivot.
-   Because of RREF3, this means that the only nonzero entries in the
-   whole matrix are the $1$'s in the pivot positions, so each equation
-   directly gives the value of one of the variables and we have a
-   unique solution.
+   Because of RREF3, this means that the only nonzero entries to
+   the left of the bar are the $1$'s in the pivot positions, so
+   each equation directly gives the value of one of the variables
+   and we have a unique solution.
   \item[(d)] Suppose instead that there is no pivot to the right of the
    bar, but that only some of the columns to the left of the bar
    contain pivots.  Each column to the left of the bar corresponds to
@@ -1188,7 +1188,7 @@ the solution set.  We thus have the following method:
  (At stage $1$ we subtracted twice the first row from the second, and
  also subtracted three times the first row from the third.  At
  stage~$2$ we added four times the second row to the third.  At
- stage~$3$ we multiplied the last row by $-1$, then cleared the
+ stage~$3$ we multiplied the last row by $-1/4$, then cleared the
  entries above all the pivots.
  Note that this is not a complete row-reduction as defined in
  Method~\ref{meth-RREF}, since we have neglected to scale the first
@@ -1213,8 +1213,8 @@ the solution set.  We thus have the following method:
  planes usually have a line where they intersect, and if we take the
  intersection with a third plane then we usually get a single point.
  However, this can go wrong if the planes are placed in a special
- way.  In this example, the planes $2x+y+z=-1$ and $4x+2y+3z=-1$
- intersect in the line where $z=-3$ and $y=2-2x$.  This runs parallel
+ way.  In this example, the planes $2x+y+z=1$ and $4x+2y+3z=-1$
+ intersect in the line where $z=-3$ and $y=4-2x$.  This runs parallel
  to the third plane where $6x+3y-z=11$, but shifted sideways, so there
  is no point where all three planes meet.
  \[ \includegraphics[scale=0.5,clip=true,
@@ -3105,7 +3105,7 @@ and
  Proposition~\ref{prop-transpose-anti}) gives $AW^T=I_n$, so we can
  take $V=W^T$ to see that~(j) holds.
 
- Conversely, suppose that~(i) holds.  Let $v_1,\dotsc,v_r$ be the
+ Conversely, suppose that~(i) holds.  Let $v_1,\dotsc,v_n$ be the
  columns of $A$.  As we have discussed previously, a linear relation
  $\lm_1v_1+\dotsb+\lm_nv_n=0$ gives a vector $\lm$ with $A\lm=0$.
  As $UA=I_n$ this gives $\lm=UA\lm=U0=0$, so our linear relation is
@@ -3967,7 +3967,7 @@ because $\det(t I_n-A)=(-1)^n\det(A-t\,I_n)$.  Note also that in Maple
 we need to specify the variable $t$ as well as the matrix $A$.  If you
 just enter \verb+CharacteristicPolynomial(A)+ you will get an error.
 The corresponding syntax in Python is \verb|A.charpoly(t)|; this
-calculates $\det(tI_n-A)$, so we do not need to correct the sign.
+calculates $\det(tI_n-A)$, so we again need to correct the sign.
 
 \begin{example}\label{eg-chi-two}
  For any $2\tm 2$ matrix $A=\bbm a&b \\ c&d\ebm$ we have
@@ -4004,7 +4004,11 @@ not invertible iff $\det(B)=0$ (by Theorem~\ref{thm-inv-det-pre}).
 Using this, we obtain the following result:
 \begin{theorem}\label{thm-chi-roots}
  Let $A$ be a square matrix.  Then the eigenvalues of $A$ are the
- roots of the characteristic polynomial $\chi_A(t)$.
+ roots\footnote{More precisely: the real roots, since we have
+ required our eigenvectors to have real entries. An analogous
+ theory for vectors with complex entries leads to complex
+ eigenvalues, and these are all the complex roots of $\chi_A(t)$.}
+ of the characteristic polynomial $\chi_A(t)$.
 \end{theorem}
 
 \begin{corollary}\label{cor-eigen-transpose}
@@ -4055,7 +4059,7 @@ Using this, we obtain the following result:
 \end{example}
 
 In the above example we solved the equation $(A+I_3)u=0$ in a rather
-\emph{ad hoc} way.  A more systematic approach would be use row
+\emph{ad hoc} way.  A more systematic approach would be to use row
 reduction, as follows.
 \begin{method}\label{meth-eigen}
  \index{eigenvalue}\index{eigenvector}\index{characteristic polynomial}
@@ -4218,7 +4222,7 @@ reduction, as follows.
  vector $\bbm 0 & 1 & 1 & 0\ebm^T$ is an eigenvector of eigenvalue $2$.
 \end{example}
 
-There is an important connecton between eigenvectors and linear
+There is an important connection between eigenvectors and linear
 independence, as follows.
 
 \begin{proposition}\label{prop-independent-eigenvectors}
@@ -4788,7 +4792,7 @@ easy.  This can be souped up to give a formula for $A^k$, as follows.
  $UV=I_4$, so $U$ is invertible with $U^{-1}=V$.  Using
  Theorem~\ref{thm-inverse}, it follows that the vectors $u_i$ form a
  basis.  We now see that $A=UDU^{-1}$, and thus that
- $A^k=UD^kU^{-1}$.  More explicitly, we have
+ $A^k=UD^kU^{-1}$.  More explicitly, for each $k \geq 1$, we have
  \begin{align*}
   A^k &= 
    \frac{1}{9}
@@ -4821,6 +4825,8 @@ easy.  This can be souped up to give a formula for $A^k$, as follows.
         0 &  0 &  0 & 6(-1)^k \\
         0 &  0 &  0 & 9(-1)^k \ebm
  \end{align*}
+ (For $k = 0$, this is not the case, since $0^k$ is no
+ longer $0$ here.)
 \end{example}
 
 \begin{example}\label{eg-diag-v}
@@ -4839,7 +4845,7 @@ easy.  This can be souped up to give a formula for $A^k$, as follows.
  Also, it should be noticed that we are tacitly assuming that
  $t \neq 0$, since some of our row operations will involve
  division by $t$.  However, it is easy to check that the
- end result (a formula for $\det(C)$) will hold in the
+ end result (a formula for $\chi_A(t)$) will hold in the
  $t = 0$ case as well.}
  \[
     \bbm 2-t & 2   & 2   & 2 \\
@@ -5137,12 +5143,12 @@ $x=UU^{-1}c=c$.  Thus, $c$ is just the initial value of $x$.
   \left[\begin{array}{ccc|ccc}
     1 &  0 &  1 &  1 &  0 &  0 \\
    -1 &  1 &  1 &  0 &  1 &  0 \\
-    0 & -1 &  1 &  0 &  0 &  0 
+    0 & -1 &  1 &  0 &  0 &  1 
   \end{array}\right] \to 
   \left[\begin{array}{ccc|ccc}
     1 &  0 &  1 &  1 &  0 &  0 \\
     0 &  0 &  3 &  1 &  1 &  1 \\
-    0 & -1 &  1 &  0 &  0 &  0 
+    0 & -1 &  1 &  0 &  0 &  1 
   \end{array}\right] \to 
  \]
  \[
@@ -5193,7 +5199,7 @@ some ideas that are less visible in more streamlined methods.
  \begin{itemize}
   \item[(a)] $a_0=-1$
   \item[(b)] $a_1=0$
-  \item[(c)] $a_{i+2}=6a_{i+1}-8a_i$ for all $i\geq 2$.
+  \item[(c)] $a_{i+2}=6a_{i+1}-8a_i$ for all $i\geq 0$.
  \end{itemize}
  This gives
  \begin{align*}
@@ -5531,7 +5537,7 @@ The transition matrix has an important property as follows:
 \begin{proof}
  Probabilities always lie between $0$ and $1$.  If we are in state $i$
  at time $t$, then we must be in some state at time $t+1$ (and we
- cannot be in two different states), so the sum of the probabilites for
+ cannot be in two different states), so the sum of the probabilities for
  the various different states must be equal to $1$.  In other words,
  we have $\sum_jp_{j\xla{}i}=1$, and the probabilities $p_{j\xla{}i}$
  are the entries in the $i$'th column of $P$, so the column sums are
@@ -5631,7 +5637,7 @@ diagonalising $P$.
  probability that it is in state $3$ at time $t=5$?
 
  To calculate this, we need to know the eigenvalues and eigenvectors
- of the transtion matrix $P$.  The characteristic polynomial is
+ of the transition matrix $P$.  The characteristic polynomial is
  \[ \chi_P(t) = \det\bbm
      0.3-t & 0.0 & 0.0 \\
      0.7 & 0.4-t & 0.0 \\
@@ -6754,7 +6760,7 @@ to identify $V$ with $\R^r$ for some $r$.  In more detail:
  $\CV$, but $\CV$ is assumed to be independent, so it must be the
  trivial relation.  This means that all the coefficients $\lm_i-\mu_i$
  are zero, so $\lm=\mu$ as required.  It is now meaningful to define
- $\psi(u)$ to be the unique vector $\lm$ with $\psi(\lm)=u$.  We leave
+ $\psi(u)$ to be the unique vector $\lm$ with $\phi(\lm)=u$.  We leave
  it as an exercise to check that this has all the stated properties.
 \end{proof}
 
@@ -6800,8 +6806,8 @@ to identify $V$ with $\R^r$ for some $r$.  In more detail:
    basis for $\R^d$, so in particular it is linearly independent.  We
    claim that the original list $\CW$ is also linearly independent.
    To see this, consider a linear relation $\sum_j\lm_jw_j=0$.  By
-   applying $\psi$ to both sides, we get $\sum_i\lm_j\psi(w_j)=0$.  As
-   the vectors $\psi(w_j)$ are independent we see that $\lm_j=0$ for
+   applying $\psi$ to both sides, we get $\sum_j\lm_j\psi(w_j)=0$.  As
+   the vectors $\psi(w_j)$ are independent, we see that $\lm_j=0$ for
    all $j$.  This means that the original relation is the trivial one,
    as required.  As $\CW$ is linearly independent and spans $V$, it is
    a basis for $V$.
@@ -7002,7 +7008,7 @@ We now return to the proof of Proposition~\ref{prop-canonical-basis}.
  Let $v_1,\dotsc,v_d$ be the columns
  of $B^T$ and let $w_1,\dotsc,w_d$ be the columns of $C^T$.
  Thus, $v_1^T, \dotsc, v_d^T$ are the rows of $B$,
- and $w_1^T, \dots, w_d^T$ are the columns of $C$.
+ and $w_1^T, \dots, w_d^T$ are the rows of $C$.
 
  Recall that each of the $d$ rows of $B$ contains a single
  pivot.
@@ -7133,7 +7139,7 @@ vectors, then we proceed as follows.
  $u_2=\bbm 0&1&-2&1\ebm^T$ form the canonical basis for $V$.
 \end{example}
 
-We next need a method for finding the canonical basis for subspace
+We next need a method for finding the canonical basis for a subspace
 when that subspace is originally given as an annihilator.
 
 \begin{method}\label{meth-ann-basis}
@@ -7142,7 +7148,7 @@ when that subspace is originally given as an annihilator.
  To find the canonical basis for $V$:
  \begin{itemize}
   \item[(a)] Write out the equations $x.u_r=0,\dotsc,x.u_1=0$, listing
-   the variables in backwards order ($x_r$ down to $x_1$).
+   the variables in backwards order ($x_n$ down to $x_1$).
   \item[(b)] Solve by row-reduction in the usual way (remembering to
    list the variables in backwards order throughout).
   \item[(c)] Write the general solution as a sum of terms, each of
@@ -7606,7 +7612,7 @@ of Method~\ref{meth-ann-basis} is as follows:
  Suppose that $V=\spn(v_1,\dotsc,v_r)$.
  \begin{itemize}
   \item[(a)] Write out the equations $x.v_r=0,\dotsc,x.v_1=0$, listing
-   the variables in backwards order ($x_r$ down to $x_1$).
+   the variables in backwards order ($x_n$ down to $x_1$).
   \item[(b)] Solve by row-reduction in the usual way.
   \item[(c)] Write the general solution as a sum of terms, each of
    which is an independent variable times a constant vector.
@@ -7796,7 +7802,7 @@ This justifies the following methods:
  \index{dimension formula}
  \index{dimension!of sum and intersection}
  \index{subspace!sum of!dimension}
- \index{subspace!intersection of of!dimension}
+ \index{subspace!intersection of!dimension}
  The dimensions of $V$, $W$, $V\cap W$ and $V+W$ are linked by the
  following important formula:
  \[ \dim(V\cap W) + \dim(V+W) = \dim(V) + \dim(W). \]
@@ -7939,10 +7945,10 @@ This justifies the following methods:
 
 \begin{remark}
  We can use Remark~\ref{rem-dim-formula} to check our work in
- Example~\ref{eg-sum-meet-i}.  The list $(v_1,v_2,v_3)$ is easily seen
+ Example~\ref{eg-sum-meet-iii}.  The list $(v_1,v_2,v_3)$ is easily seen
  to be linearly independent, and by definition it spans $V$, so we
  have $\dim(V)=3$.  Similarly $\dim(W)=3$.  We showed that $V+W=\R^4$,
- so $\dim(V+W)=4$.  We also a produced vectors $u_1$ and $u_2$ that
+ so $\dim(V+W)=4$.  We also produced vectors $u_1$ and $u_2$ that
  form a basis for $V\cap W$, so $\dim(V\cap W)=2$.  As expected, we
  have
  \[ \dim(V+W)+\dim(V\cap W) = 4+2 = 6 = 3+3 = \dim(V)+\dim(W). \]
@@ -8129,7 +8135,7 @@ terminology.
  is in RREF, or equivalently:
  \begin{itemize}
   \item[\textbf{RCEF0}:]
-   Any column of zeros come at the right hand end of the matrix, after
+   Any column of zeros comes at the right hand end of the matrix, after
    all the nonzero columns.
   \item[\textbf{RCEF1}:]
    In any nonzero column, the first nonzero entry is equal to $1$.  These
@@ -8420,7 +8426,7 @@ $r$, which is the number of $1$s in $A$.
 \begin{definition}\label{defn-orthogonal}
  \index{matrix!orthogonal}
  Let $A$ be an $n\tm n$ matrix.  We say that $A$ is an
- \dfn{orthogonal matrix} it is invertible and $A^{-1}=A^T$.
+ \dfn{orthogonal matrix} if it is invertible and $A^{-1}=A^T$.
 \end{definition}
 
 \begin{definition}\label{defn-orthonormal}
@@ -8648,7 +8654,7 @@ The following proposition is known as the \dfn{spectral theorem}:
  polynomials it can be factored as $\chi_A(t)=\prod_{i=1}^n(\lm_i-t)$
  for some complex numbers $\lm_1,\dotsc,\lm_n$.  By
  Proposition~\ref{prop-symmetric-eigen}(a) these are in fact all
- real.  Some of them might be the same, but that would be a concidence
+ real.  Some of them might be the same, but that would be a coincidence
  which could only happen if the matrix $A$ was very simple or had some
  kind of hidden symmetry.  Thus, our proof of
  Proposition~\ref{prop-symmetric-diag} covers almost all cases (but
@@ -9070,7 +9076,7 @@ The following proposition is known as the \dfn{spectral theorem}:
    -2 \det \bbm 2 & 3 & 0 \\ 0 & -t & 2 \\ 0 & 2 & -t \ebm \\
   \det \bbm -t & 3 & 0 \\ 3 & -t & 2 \\ 0 & 2 & -t \ebm &=
    -t(t^2-4) - 3(-3t) = 13t - t^3 \\
-  \det \bbm 2 & 3 & 0 \\ 0 & -t & 2 \\ 0 & t & -2 \ebm &= 
+  \det \bbm 2 & 3 & 0 \\ 0 & -t & 2 \\ 0 & 2 & -t \ebm &= 
    2(t^2-4) - 3(0-0) = 2t^2-8 \\
   \chi_B(t) &= -t(13t-t^3) -2(2t^2-8) = t^4-17t^2+16 \\
    &= (t^2-1)(t^2-16) = (t-1)(t+1)(t-4)(t+4).
@@ -9145,7 +9151,7 @@ implicit in the examples.
  \item Method~\ref{meth-span-canonical}: Find the canonical basis for
   $\spn(v_1,\dotsc,v_r)$.
  \item Method~\ref{meth-ann-basis}: Find the canonical basis for
-  $\ann(u_1,\dotsc,u_s)$
+  $\ann(u_1,\dotsc,u_s)$.
  \item Method~\ref{meth-ann-basis-matrix}: version of
   Method~\ref{meth-ann-basis} formulated purely in terms of matrices.
  \item Method~\ref{meth-span-eqs}: Given vectors $v_1,\dotsc,v_r$,
@@ -9940,7 +9946,7 @@ that it works in general.)
      \sum_\sg \sgn(\sg)\prod_{i=1}^n c_{i,\sg(i)} =
      \sum_\sg \sgn(\sg)\prod_{i=1}^n \sum_{j=1}^n a_{ij}b_{j,\sg(i)}.
  \]
- Here we have (for each $\sigma$) a product of sums,
+ Here we have (for each $\sg$) a product of sums,
  which can be expanded out as in
  Lemma~\ref{lem-expand} (with $m_{ij}=a_{ij}b_{j,\sg(i)}$).  This
  gives
@@ -10201,7 +10207,11 @@ this rule works in general.
 \end{proof}
 
 We can now show that determinants can be ``expanded along the $p$'th
-row''.\index{expansion of determinant}
+row''.\index{expansion of determinant}\footnote{For $n = 1$,
+this relies on the fact (easy to check if one is willing to take
+the empty set seriously) that the $0 \tm 0$ matrix
+(there is only one such, and it has no entries) has determinant
+$1$.}
 
 \begin{proposition}\label{prop-det-expand}
  Let $A$ be an $n\tm n$ matrix.  Let $1 \leq p \leq n$.
@@ -10390,7 +10400,7 @@ as well as on the following lemma:
  as in Lemma~\ref{lem-jumps-pivots} here (viz., that
  the columns of $B^T$ form a basis for some subspace
  $V \subseteq \R^n$); but we do know that $B$ is a
- RREF matrix whose each row has a pivot, and this
+ RREF matrix each of whose rows has a pivot, and this
  suffices to make the reasoning from the proof of
  Lemma~\ref{lem-jumps-pivots} work.}.
  Let $\lm_1, \lm_2, \lm_3$ be any scalars
