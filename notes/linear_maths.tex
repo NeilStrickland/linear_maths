@@ -140,7 +140,7 @@ Throughout these notes, $\R$ will denote the set of all real numbers,
 and $\Z$ will denote the set of all integers.  We will sometimes refer
 to a real number as a \dfn{scalar}.
 
-We write $M_{m\times n}(\R)$ to denote the set of all real $m\times n$
+We write $M_{m\tm n}(\R)$ to denote the set of all real $m\tm n$
 matrices, that is matrices with $m$ rows and $n$ columns, with real
 numbers as entries.
 \[
@@ -153,7 +153,7 @@ numbers as entries.
   \end{array}
 \]
 As a short-hand, we write $M_n(\R)$ to stand for the set of real
-$n\times n$ (square) matrices.  We write $I_n$ for the $n\tm n$
+$n\tm n$ (square) matrices.  We write $I_n$ for the $n\tm n$
 identity matrix, so $I_n\in M_n(\R)$ is the diagonal matrix
 whose diagonal entries are $1, 1, \ldots, 1$ and all other
 entries are $0$'s.  For example
@@ -430,7 +430,7 @@ it is another $p\tm m$ matrix.
 
 Note, however, that it would \textbf{not} generally be true (or even
 meaningful) to say that $(AB)^T=A^TB^T$: to make things work properly,
-the order of $A$ and $B$ \textbf{must} be reversed on the right hand
+the order of $A$ and $B$ \textbf{must} be reversed on the right-hand
 side.  Indeed, as $A^T$ is an $n\tm m$ matrix and $B^T$ is a $p\tm n$
 matrix then $A^TB^T$ is not even defined unless $p=m$.
 
@@ -532,7 +532,7 @@ is equivalent to the single matrix equation
 \]
 
 The only point to watch here is that we need to move all constants to
-the right hand side, move all variables to the left hand side, write
+the right-hand side, move all variables to the left-hand side, write
 the variables in the same order in each equation, and fill any gaps
 with zeros.  For example, the system
 \begin{align*}
@@ -562,7 +562,7 @@ solve certain multivariable quadratic equations.
 
 A matrix equation $\vA \vx=\vb$ can be expressed more compactly by
 just writing down the \dfn{augmented matrix} $[\vA|\vb]$, where $\vb$ is
-added to $\vA$ as an extra column at the right hand end.  For example,
+added to $\vA$ as an extra column at the right-hand end.  For example,
 the augmented matrices for the three systems discussed above are
 \[ \left[\begin{array}{cccc|c}
         1 & 2  & 3  & 4  & 1 \\
@@ -714,7 +714,7 @@ look at the examples given afterwards).
    one of the variables.  Variables corresponding to columns with
    pivots are called \dfn{dependent variables}; the others are called
    \dfn{independent variables}.  If we move all independent variables
-   to the right hand side, then each equation expresses one dependent
+   to the right-hand side, then each equation expresses one dependent
    variable in terms of the independent variables.  The independent
    variables can take any values that we choose (so there will be
    infinitely many solutions).  If we just want one solution rather
@@ -1314,7 +1314,7 @@ the solution set.  We thus have the following method:
 
 \begin{remark}
  Often we want to solve a \dfn{homogeneous} equation $Ax=0$, where
- the right hand side is zero.  This means that the relevant augmented
+ the right-hand side is zero.  This means that the relevant augmented
  matrix is $[A|0]$.  Row operations will not change the fact that the last
  column is zero, so the RREF of $[A|0]$ will just be $[A'|0]$, where
  $A'$ is the RREF of $A$.  In this context we can save writing by
@@ -2114,7 +2114,7 @@ why the method is correct.
     a_3 = \bbm 3 \\ 5 \ebm.
  \]
  Let $v=\bbm x \\ y\ebm$ be an arbitrary vector in $\R^2$.  Just by
- expanding out the right hand side, we see that
+ expanding out the right-hand side, we see that
  \[ \bbm x \\ y \ebm =
      (2y-4x)\bbm 1 \\ 2 \ebm + (x-y)\bbm 2\\ 3\ebm + x\bbm 3\\5 \ebm,
  \]
@@ -3559,6 +3559,7 @@ more efficient to stop the row-reduction at an earlier stage.
    $p$'th row and the $q$'th column from $A$.  This is a square matrix
    of shape $(n-1)\tm(n-1)$.
   \item[(b)] We put $m_{pq}=\det(M_{pq})$.
+   (For $n = 1$, this is understood to mean the number $1$.)
   \item[(c)] We let $\adj(A)$ denote the $n\tm n$ matrix with entries
    $\adj(A)_{qp}=(-1)^{p+q}m_{pq}$.  (Note that we have $qp$ on the
    left and $pq$ on the right here.)
@@ -4715,9 +4716,9 @@ eigenvector of eigenvalue $\lm$, we have
  A^2v &= A(Av)= A(\lm v) = \lm Av = \lm^2v \\
  A^3v &= A(A^2v) = A(\lm^2 v) = \lm^2Av = \lm^3 v 
 \end{align*}
-and so on, so $A^kv=\lm^kv$ for all $k$.  On the left hand side here
+and so on, so $A^kv=\lm^kv$ for all $k$.  On the left-hand side here
 we have powers of the matrix $A$, which are hard to calculate, but on
-the right hand side we just have powers of the number $\lm$, which are
+the right-hand side we just have powers of the number $\lm$, which are
 easy.  This can be souped up to give a formula for $A^k$, as follows.
 
 \begin{proposition}\label{prop-diag-powers}
@@ -5777,7 +5778,7 @@ This is not a coincidence, as we now explain.
 \begin{remark}\label{rem-stationary}
  It often happens that the distribution vectors $r_n$ converge (as
  $n\to\infty$) to a distribution $r_{\infty}$, whose $i$'th component
- is the long term average probability of the system being in state
+ is the long-term average probability of the system being in state
  $i$.  Because $Pr_n=r_{n+1}$ we then have
  \[ P r_\infty = P\lim_{n\to\infty} r_n =
      \lim_{n\to\infty} Pr_n = \lim_{n\to\infty} r_{n+1} = r_\infty,
@@ -5879,7 +5880,7 @@ effect of each link.
 
 For a different perspective, we could imagine surfing the web
 randomly.  Once per second, we choose one of the links on the current
-page at random, and click it.  Let $r_i$ denote the long run average
+page at random, and click it.  Let $r_i$ denote the long-run average
 proportion of the time that we spend on page $S_i$.  It turns out that
 this is a reasonable measure of the quality of $S_i$, in terms of the
 principles mentioned above.  Indeed, if there are lots of links from
@@ -7002,9 +7003,9 @@ We now return to the proof of Proposition~\ref{prop-canonical-basis}.
  \left(\text{number of pivots of $C$}\right)
  = \left(\text{number of rows of $C$}\right).
  \]
- The left hand sides of these two equalities are equal (since the
+ The left-hand sides of these two equalities are equal (since the
  number of pivots of $B$ equals the number of pivots of $C$).
- Thus, so are the right hand sides.
+ Thus, so are the right-hand sides.
  In other words, the matrices $B$ and $C$ have the same number of rows.
  Let $d$ be this number.
  Thus, both $B$ and $C$ are $d\tm n$-matrices.
@@ -7042,15 +7043,15 @@ We now return to the proof of Proposition~\ref{prop-canonical-basis}.
  \end{equation}
  Let us now compare the $p_i$'th components (or equivalently, the $q_i$'th
  components) on both sides of this equality.
- On the left hand side we have $1$ (since the $p_i$'th
- component of $v_i$ is $1$), and on the right hand
+ On the left-hand side we have $1$ (since the $p_i$'th
+ component of $v_i$ is $1$), and on the right-hand
  side the $\lm_i w_i$ term of the sum $\sum_j \lm_j w_j$ contributes
  $\lm_i$, and the other terms contribute nothing (since the $q_i$'th
  component of $w_j$ is $1$ when $i=j$, and $0$ when $i\neq j$).
  We conclude that $\lm_i=1$.  Now, instead, let us compare
  the $p_k$'th components on both sides of
  \eqref{pf.prop-canonical-basis.vi-through-wj}, where $k\neq i$.
- On the left hand side we get $0$, and on the right hand side the
+ On the left-hand side we get $0$, and on the right-hand side the
  $\lm_k w_k$ term of the sum $\sum_j \lm_j w_j$
  contributes $\lm_k$, and the other terms contribute nothing.  We
  conclude that $\lm_k = 0$ for $k\neq i$.  The equation
@@ -7403,7 +7404,8 @@ general case.
        &         &      &          &          &      &          & x_9= & - d_{10}x_{10}
  \end{array}\]
  This gives
- \[ x =
+ \begin{align*}
+   x &=
      \bbm x_1 \\
           -a_3x_3-a_5x_5-a_6x_6-a_8x_8-a_{10}x_{10} \\
           x_3 \\
@@ -7415,14 +7417,15 @@ general case.
           -d_{10}x_{10} \\
           x_{10}
      \ebm
-     =
+     \\
+     &=
      x_1 \bbm 1 \\   0     \\  0  \\ 0       \\  0  \\  0  \\ 0       \\  0  \\ 0       \\  0  \ebm +
      x_3 \bbm 0 \\ -a_3    \\  1  \\ 0       \\  0  \\  0  \\ 0       \\  0  \\ 0       \\  0  \ebm +
      x_5 \bbm 0 \\ -a_5    \\  0  \\ -b_5    \\  1  \\  0  \\ 0       \\  0  \\ 0       \\  0  \ebm +
      x_6 \bbm 0 \\ -a_6    \\  0  \\ -b_6    \\  0  \\  1  \\ 0       \\  0  \\ 0       \\  0  \ebm +
      x_8 \bbm 0 \\ -a_8    \\  0  \\ -b_8    \\  0  \\  0  \\ -c_8    \\  1  \\ 0       \\  0  \ebm +
      x_{10} \bbm 0 \\ -a_{10} \\  0  \\ -b_{10} \\  0  \\  0  \\ -c_{10} \\  0  \\ -d_{10} \\  1  \ebm,
- \]
+ \end{align*}
  or in other words
  \[ x = x_1d_1 + x_3d_2 + x_5d_3 + x_6d_4 + x_8d_5 + x_{10}d_6. \]
  This proves that an arbitrary element $x\in V$ can be written (in
@@ -7683,7 +7686,7 @@ to save time.
  algebraic argument, consider an arbitrary point $a=\bbm x\\y \ebm$.
  If we put
  \[ v = \frac{2y-x}{3}\bbm 1\\ 2\ebm \hspace{4em}
-    w = \frac{2x-y}{3}\bbm 2\\ 1\ebm.
+    w = \frac{2x-y}{3}\bbm 2\\ 1\ebm,
  \]
  we find that $v\in V$ and $w\in W$ and $a=v+w$, which shows that
  $a\in V+W$ as claimed.
@@ -7692,31 +7695,31 @@ to save time.
 \begin{example}\label{eg-sum-meet-ii}
  Put
  \begin{align*}
-  V &= \{\bbm w&x&y&z\ebm^T\in\R^4\st w=y \text{ and } x=z\} \\
-  W &= \{\bbm w&x&y&z\ebm^T\in\R^4\st w+z=x+y=0\}.
+  V &= \{\bbm t&x&y&z\ebm^T\in\R^4\st t=y \text{ and } x=z\} \\
+  W &= \{\bbm t&x&y&z\ebm^T\in\R^4\st t+z=x+y=0\}.
  \end{align*}
- For a vector $u=\bbm w&x&y&z\ebm^T$ to lie in $V\cap W$ we must have
- $w=y$ and $x=z$ and $w=-z$ and $x=-y$.  From this it follows easily
- that $u=\bbm w&-w&w&-w\ebm^T$, so $V\cap W$ is just the set of
+ For a vector $u=\bbm t&x&y&z\ebm^T$ to lie in $V\cap W$ we must have
+ $t=y$ and $x=z$ and $t=-z$ and $x=-y$.  From this it follows easily
+ that $u=\bbm t&-t&t&-t\ebm^T$, so $V\cap W$ is just the set of
  multiples of $\bbm 1&-1&1&-1\ebm^T$.
 
  Now put
- \[ U = \{\bbm w&x&y&z\ebm^T \st w-x-y+z=0\}
+ \[ U = \{\bbm t&x&y&z\ebm^T \st t-x-y+z=0\}
       = \ann(\bbm 1&-1&-1&1\ebm^T).
  \]
  We claim that $V+W=U$.  To see this, consider a vector
- $u=\bbm w&x&y&z\ebm^T$.   In one direction, suppose that $u\in V+W$.
+ $u=\bbm t&x&y&z\ebm^T$.   In one direction, suppose that $u\in V+W$.
  This means that $u$ can be written as $u=v+w$ for some $v\in V$ and
  $w\in W$.  By inspecting the definition of $V$ we see that
  $v=\bbm p&q&p&q\ebm^T$ for some $p,q\in\R$.  Similarly, by inspecting
  the definition of $W$ we see that $w=\bbm -r&-s&s&r\ebm^T$ for some
  $r,s\in\R$.  This gives $u=\bbm p-r&q-s&p+s&q+r\ebm^T$, so
- \[ w-x-y+z = (p-r)-(q-s)-(p+s)+(q+r)
+ \[ t-x-y+z = (p-r)-(q-s)-(p+s)+(q+r)
      =p-r-q+s-p-s+q+r = 0,
  \]
  proving that $u\in U$ as required.
 
- In the opposite direction, suppose we have $u\in U$, so $z=x+y-w$.
+ In the opposite direction, suppose we have $u\in U$, so $z=x+y-t$.
  Put $v=\bbm y&x&y&x\ebm^T$ and $w=\bbm w-y&0&0&y-w\ebm^T$.  We find
  that $v\in V$ and $w\in W$ and $v+w=u$, which proves that $u\in V+W$
  as required.
@@ -7797,8 +7800,9 @@ This justifies the following methods:
   \item[(b)] Find a list $\CW'$ such that $W=\ann(\CW')$ (in the same
    way).
   \item[(c)] Now $V\cap W$ is the annihilator of the combined list
-   $\CV',\CW'$.  This list can again be made canonical by row-reduction
-   if required.
+   $\CV',\CW'$.
+   We can use Method~\ref{meth-ann-basis} to find a canonical basis
+   for this annihilator.
  \end{itemize}
 \end{method}
 
@@ -7813,7 +7817,7 @@ This justifies the following methods:
  Thus, if we know three of these four dimensions, we can rearrange the
  formula to find the fourth one.  Alternatively, if you believe that
  you have found bases for $V$, $W$, $V\cap W$ and $V+W$, you can use
- the formula as a check that your bases are correct.
+ the formula as a consistency check for your bases.
 
  It is not too hard to prove the formula, but it requires some ideas
  that are a little different from those that we are emphasising in
@@ -8139,7 +8143,7 @@ terminology.
  is in RREF, or equivalently:
  \begin{itemize}
   \item[\textbf{RCEF0}:]
-   Any column of zeros comes at the right hand end of the matrix, after
+   Any column of zeros comes at the right-hand end of the matrix, after
    all the nonzero columns.
   \item[\textbf{RCEF1}:]
    In any nonzero column, the first nonzero entry is equal to $1$.  These
@@ -8329,7 +8333,7 @@ $r$, which is the number of $1$s in $A$.
  Every nonzero entry in $B$ is either a pivot or to the right of a
  pivot, so after these operations we just have the pivots from $B$ and
  everything else is zero.  We now just move all columns of zeros to
- the right hand end (again, by a sequence of column operations),
+ the right-hand end (again, by a sequence of column operations),
  which leaves a matrix $C$ in normal form.  As $C$
  was obtained from $B$ by a sequence of elementary column operations,
  we have $C=BV$ for some invertible $m\tm m$ matrix $V$
@@ -8545,7 +8549,8 @@ really two different ways of looking at the same thing:
  \end{itemize}
 \end{lemma}
 \begin{proof}
- We only need to prove (a), since it is obvious that (b) is a consequence.
+ We only need to prove (a), since it is obvious that (b) is a
+ consequence of (a).
  Put $p=A^Tu$ and $q=Av$, so the claim is that $u.q=p.v$.  By
  the definition of matrix multiplication, we have
  $q_i=\sum_jA_{ij}v_j$, so $u.q=\sum_iu_iq_i=\sum_{i,j}u_iA_{ij}v_j$.
@@ -9357,7 +9362,7 @@ implicit in the examples.
    \draw[red,->,shorten >=2mm,shorten <=2mm] (6,2) -- (6,0);
   \end{tikzpicture}
  \end{center}
- We have $2<4$ but $\sg(2)=5>\sg(4)=2$, so the pair $(2,4)$ is a
+ We have $2<4$ but $\sg(2)=3>\sg(4)=2$, so the pair $(2,4)$ is a
  reversal for $\sg$.  In terms of the picture, this corresponds to the
  fact that the line starting at $2$ crosses over the line starting at
  $4$.  Similarly:
@@ -9482,7 +9487,7 @@ $2\tm 2$ and $3\tm 3$ matrices.
       a_{11} & a_{12} & a_{13} \\
       a_{21} & a_{22} & a_{23} \\
       a_{31} & a_{32} & a_{33}
-     \ebm
+     \ebm .
  \]
  The determinant is a sum over all the possible permutations of the
  set $N=\{1,2,3\}$.  These can be tabulated as follows:
@@ -9897,13 +9902,13 @@ formula we get
     =
     \sum_{i=1}^3\sum_{j=1}^3\sum_{k=1}^3 m_{1i} m_{2j} m_{3k}.
 \]
-The left hand side can be rewritten as
+The left-hand side can be rewritten as
 \[ \left(\sum_{j=1}^3m_{1j}\right)
    \left(\sum_{j=1}^3m_{2j}\right)
    \left(\sum_{j=1}^3m_{3j}\right)
 \]
-or as $\prod_{i=1}^3\sum_{j=1}^3m_{ij}$.  We now consider the right
-hand side.  Write $N=\{1,2,3\}$ as before.  For any three numbers $i$,
+or as $\prod_{i=1}^3\sum_{j=1}^3m_{ij}$.  We now consider the
+right-hand side.  Write $N=\{1,2,3\}$ as before.  For any three numbers $i$,
 $j$ and $k$ as above we can define a function $\tht\colon N\to N$ by
 $\tht(1)=i$ and $\tht(2)=j$ and $\tht(3)=k$.  Taking the sum over all
 possible $i$, $j$ and $k$ is the same as taking the sum over all
@@ -10090,12 +10095,12 @@ an empty product of numbers is $1$.)
   m_{11} &= M_{11} = d & m_{12} &= M_{12} = c \\
   m_{21} &= M_{21} = b & m_{22} &= M_{22} = a.
  \end{align*}
- Next, we have $\det(A)=ad-bc$.  To find $m^*_{11}$ we find the term
- containing $a$ and remove the $a$ leaving $m^*_{11}=d$.  Proceeding
+ Next, we have $\det(A)=ad-bc$.  To find $m^*_{11}$, we find the term
+ containing $a$ and remove the $a$, leaving $m^*_{11}=d$.  Proceeding
  in the same way we get
  \begin{align*}
-  m^*_{11} &=  d & m^*_{12} = -c \\
-  m^*_{21} &= -b & m^*_{22} = a.
+  m^*_{11} &=  d & m^*_{12} &= -c \\
+  m^*_{21} &= -b & m^*_{22} &= a.
  \end{align*}
 \end{example}
 
@@ -10130,8 +10135,8 @@ an empty product of numbers is $1$.)
   m_{33} &= ae-bd
  \end{align*}
  On the other hand, we have seen that
- \[ \det(A) = aei-afh-bdi+bfg+cdh-ceg \]
- To find $m^*_{11}$ we take all the terms involving $a$ (giving
+ \[ \det(A) = aei-afh-bdi+bfg+cdh-ceg . \]
+ To find $m^*_{11}$, we take all the terms involving $a$ (giving
  $aei-afh$) and remove the $a$ to leave $m^*_{11}=ei-fh$.  The other
  terms $m^*_{ij}$ can be determined in the same way:
  \begin{align*}
@@ -10350,7 +10355,7 @@ In the case $n=3$ and $q=1$, this is saying
  $\sgn(\sg\circ\tau) = \sgn(\sg) \cdot \sgn(\tau) = -\sgn(\sg)$,
  whereas both $a_{i,\sg(k)}\,a_{i,\sg(i)}$ and
  $\prod_{l\neq i,k} a_{l,\sg(l)}$ stay unchanged if $\sg$
- is replaced by $\sg\circ\tau$).  Using this we
+ is replaced by $\sg\circ\tau$).  Using this, we
  see that the terms $\Gm(\sg)$ with $\sg(i)<\sg(k)$ cancel against the
  terms $\Gm(\sg)$ with $\sg(i)>\sg(k)$, leaving $b_{ik}=0$.  This
  completes the proof that $A\adj(A)=\det(A) I_n$.
@@ -10435,8 +10440,8 @@ Let $C$ and $D$ be two matrices in RREF that can be obtained
 from $A$ by sequences of row operations.
 We must prove that $C = D$.
 
-Let $m$ and $n$ be such that $A$ is an $m \times n$ matrix.
-Thus, $C$ and $D$ are $m \times n$ matrices, too.
+Let $m$ and $n$ be such that $A$ is an $m \tm n$ matrix.
+Thus, $C$ and $D$ are $m \tm n$ matrices, too.
 
 Let $\overline{C}$ be the matrix $C$ with its zero rows
 removed.
