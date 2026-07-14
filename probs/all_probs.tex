@@ -480,9 +480,9 @@
  $a_1,\dotsc,a_4$. 
 \end{exercise}
 \begin{solution}
- The left hand matrix is $[a_1|a_2|a_3|a_4|b]$, so the row-reduction
+ The left-hand matrix is $[a_1|a_2|a_3|a_4|b]$, so the row-reduction
  tells us that the equation $\lm_1a_1+\dotsb+\lm_4a_4=b$ is equivalent
- to the system of equations corresponding to the right hand matrix,
+ to the system of equations corresponding to the right-hand matrix,
  namely 
  \begin{align*}
   \lm_1+3\lm_3 &= 6 \\
@@ -1452,7 +1452,8 @@
     \left[\begin{array}{c|c}  I&0 \\ \hline 0&I\end{array}\right].
  \]
  This is clear provided that we believe that we can treat the $2\tm 2$
- blocks as though they were just numbers when we perform the above
+ blocks as though they were just numbers (except that they lack
+ commutativity of multiplication) when we perform the above
  matrix product.  This is not completely obvious, but it can be
  justified. 
 
@@ -1489,7 +1490,7 @@
  (Subtract multiples of row $1$ from rows $3$ and $4$; subtract
  multiples of row $2$ from rows $3$ and $4$; swap rows $1$ and $3$,
  and also swap rows $2$ and $4$.)  The matrix $A^{-1}$ appears as the
- right hand half of the final result.
+ right-hand half of the final result.
 \end{solution}
 
 \section{Lecture 7}
@@ -1606,7 +1607,7 @@
 \end{solution}
 
 \begin{exercise}\label{ex-adjugate-circulant}
- Find the adjugate, determinant and inverse of the matrix
+ Find the adjugate, determinant and (if it exists) inverse of the matrix
  $C=\bbm a & b & c \\
          b & c & a \\
          c & a & b \ebm$.  \\
@@ -1617,14 +1618,14 @@
 \begin{solution}
  The minors are 
  \begin{align*}
-  m_{11} &= \det\bbm c & a \\ a & b \ebm = bc-a^2 &
-  m_{12} &= \det\bbm b & a \\ c & b \ebm = b^2-ac &
-  m_{13} &= \det\bbm b & c \\ c & a \ebm = ab-c^2 \\
-  m_{21} &= \det\bbm b & c \\ a & b \ebm = b^2-ac &
-  m_{22} &= \det\bbm a & c \\ c & b \ebm = ab-c^2 &
-  m_{23} &= \det\bbm a & b \\ c & a \ebm = a^2-bc \\
-  m_{31} &= \det\bbm b & c \\ c & a \ebm = ab-c^2 &
-  m_{32} &= \det\bbm a & c \\ b & a \ebm = a^2-bc &
+  m_{11} &= \det\bbm c & a \\ a & b \ebm = bc-a^2, &
+  m_{12} &= \det\bbm b & a \\ c & b \ebm = b^2-ac, &
+  m_{13} &= \det\bbm b & c \\ c & a \ebm = ab-c^2, \\
+  m_{21} &= \det\bbm b & c \\ a & b \ebm = b^2-ac, &
+  m_{22} &= \det\bbm a & c \\ c & b \ebm = ab-c^2, &
+  m_{23} &= \det\bbm a & b \\ c & a \ebm = a^2-bc, \\
+  m_{31} &= \det\bbm b & c \\ c & a \ebm = ab-c^2, &
+  m_{32} &= \det\bbm a & c \\ b & a \ebm = a^2-bc, &
   m_{33} &= \det\bbm a & b \\ b & c \ebm = ac-b^2. 
  \end{align*}
  This gives
@@ -1634,17 +1635,19 @@
                    m_{13} & -m_{23} &  m_{33} \ebm 
            = \bbm  bc-a^2 & ac-b^2 & ab-c^2 \\
                    ac-b^2 & ab-c^2 & bc-a^2 \\
-                   ab-c^2 & bc-a^2 & ac-b^2 \ebm
+                   ab-c^2 & bc-a^2 & ac-b^2 \ebm ;
                    \\
   \det(C) &= C_{11}m_{11} - C_{12}m_{12} + C_{13}m_{13} 
            = a(bc-a^2) - b(b^2-ac) + c(ab-c^2) \\
-          &= 3abc-a^3-b^3-c^3 \\
+          &= 3abc-a^3-b^3-c^3 ; \\
   C^{-1}  &= \frac{\adj(C)}{\det(C)} 
            = \frac{1}{3abc-a^3-b^3-c^3}
              \bbm  bc-a^2 & ac-b^2 & ab-c^2 \\
                    ac-b^2 & ab-c^2 & bc-a^2 \\
                    ab-c^2 & bc-a^2 & ac-b^2 \ebm
  \end{align*}
+ (the latter inverse exists if and only if $\det(C) \neq 0$,
+ that is, $3abc-a^3-b^3-c^3 \neq 0$).
 \end{solution}
 
 \begin{exercise}\label{ex-adjugate-hilbert}
@@ -1656,30 +1659,30 @@
 \begin{solution}
  The minors are 
  \begin{align*}
-  m_{11} &= \det\bbm 1/3&1/4 \\ 1/4&1/5 \ebm = \frac{1}{240} &
-  m_{12} &= \det\bbm 1/2&1/4 \\ 1/3&1/5 \ebm = \frac{1}{60} &
-  m_{13} &= \det\bbm 1/2&1/3 \\ 1/3&1/4 \ebm = \frac{1}{72} \\
-  m_{21} &= \det\bbm 1/2&1/3 \\ 1/4&1/5 \ebm = \frac{1}{60} &
-  m_{22} &= \det\bbm 1  &1/3 \\ 1/3&1/5 \ebm = \frac{4}{45} &
-  m_{23} &= \det\bbm 1  &1/2 \\ 1/3&1/4 \ebm = \frac{1}{12} \\
-  m_{31} &= \det\bbm 1/2&1/3 \\ 1/3&1/4 \ebm = \frac{1}{72} &
-  m_{32} &= \det\bbm 1  &1/3 \\ 1/2&1/4 \ebm = \frac{1}{12} &
+  m_{11} &= \det\bbm 1/3&1/4 \\ 1/4&1/5 \ebm = \frac{1}{240}, &
+  m_{12} &= \det\bbm 1/2&1/4 \\ 1/3&1/5 \ebm = \frac{1}{60}, &
+  m_{13} &= \det\bbm 1/2&1/3 \\ 1/3&1/4 \ebm = \frac{1}{72}, \\
+  m_{21} &= \det\bbm 1/2&1/3 \\ 1/4&1/5 \ebm = \frac{1}{60}, &
+  m_{22} &= \det\bbm 1  &1/3 \\ 1/3&1/5 \ebm = \frac{4}{45}, &
+  m_{23} &= \det\bbm 1  &1/2 \\ 1/3&1/4 \ebm = \frac{1}{12}, \\
+  m_{31} &= \det\bbm 1/2&1/3 \\ 1/3&1/4 \ebm = \frac{1}{72}, &
+  m_{32} &= \det\bbm 1  &1/3 \\ 1/2&1/4 \ebm = \frac{1}{12}, &
   m_{33} &= \det\bbm 1  &1/2 \\ 1/2&1/3 \ebm = \frac{1}{12}.
  \end{align*}
  This gives
  \begin{align*} 
   \adj(H) &= \bbm  m_{11} & -m_{21} &  m_{31} \\
                   -m_{12} &  m_{22} & -m_{32} \\
-                   m_{13} & -m_{23} &  m_{33} \ebm 
+                   m_{13} & -m_{23} &  m_{33} \ebm
            = \renewcommand{\arraystretch}{1.3} \bbm 
                    \frac{1}{240} & -\frac{1}{60} & \frac{1}{72} \\
                   -\frac{1}{60} &  \frac{4}{45} & -\frac{1}{12} \\
-                   \frac{1}{72} & -\frac{1}{12} &  \frac{1}{12} \ebm
+                   \frac{1}{72} & -\frac{1}{12} &  \frac{1}{12} \ebm ;
                    \\
   \det(H) &= H_{11}m_{11} - H_{12}m_{12} + H_{13}m_{13} 
            = \frac{1}{240} - \frac{1}{2}\tm\frac{1}{60} +
              \frac{1}{3}\tm\frac{1}{72} \\
-          &= \frac{1}{2160} \\
+          &= \frac{1}{2160} ; \\
   H^{-1} &= \adj(H)/\det(H) 
            = \renewcommand{\arraystretch}{1.3} \bbm 
                    \frac{2160}{240} & -\frac{2160}{60} & \frac{2160}{72} \\
@@ -2630,11 +2633,11 @@
    equal to $\frac{1}{10}$ and one entry equal to $\frac{6}{10}$,
    adding up to $(4\tm 1 + 6)/10=1$.  Thus, the matrix is stochastic.
   \item[(e)] We claim that for all $k\geq 0$ we have
-   $B^k=2^{-k}I_5+(1-2^{-k})A/5$.  When $k=0$ the left hand side is
-   $B^0=I_5$, whereas the right hand side is $2^0I_5+(1-2^0)A=I_5$, as
-   required.  When $k=1$ the left hand side is
+   $B^k=2^{-k}I_5+(1-2^{-k})A/5$.  When $k=0$ the left-hand side is
+   $B^0=I_5$, whereas the right-hand side is $2^0I_5+(1-2^0)A/5=I_5$, as
+   required.  When $k=1$ the left-hand side is
    $B^1=B=\half I_5+\tfrac{1}{10}A$.  We also have
-   $2^{-1}=1-2^{-1}=\half$ so on the right hand side we have
+   $2^{-1}=1-2^{-1}=\half$ so on the right-hand side we have
    $\half I_5+\frac{1}{10}A$ again, as required.
 
    Now suppose that the claim is true for a particular value of $k$.
@@ -2862,7 +2865,7 @@
   D := DiagonalMatrix(L);
   E := DiagonalMatrix([exp(L[1]*t),exp(L[2]*t),exp(L[3]*t)]);
   c := <1,0,0>;
-  x := U . E . U^(-1);
+  x := U . E . U^(-1) . c;
  \end{verbatim}
  Maple responds with 
  \[ x := 
@@ -3800,14 +3803,14 @@
 
 \begin{exercise}\label{ex-span-form-i}
  Let $V$ be the set of vectors of the form
- \[ v = \bbm 2p-q  & q+r+s & 3p+2s & r-s \ebm \]
+ \[ v = \bbm 2p-q  & q+r+s & 3p+2s & r-s \ebm^T \]
  (where $p$, $q$, $r$ and $s$ are arbitrary real numbers).  Find a
  list of vectors whose span is $V$.
 \end{exercise}
 \begin{solution}
  This is similar to examples~\ref{eg-span-form-i}
  and~\ref{eg-span-form-ii}.  The general form for elements of $V$ is 
- \[ v = \bbm 2p-q  & q+r+s & 3p+2s & r-s \ebm
+ \[ v = \bbm 2p-q  & q+r+s & 3p+2s & r-s \ebm^T
       = p \bbm  2\\0\\3\\ 0 \ebm + 
         q \bbm -1\\1\\0\\ 0 \ebm +
         r \bbm  0\\1\\0\\ 1 \ebm +
@@ -4021,6 +4024,7 @@
        1 & -5 & -2 & -6 \\
        0 &  6 &  6 &  6 
      \ebm 
+     \to
      \bbm
        1 &  0 &  3 & -1 \\
        0 &  1 &  1 &  1 
@@ -4094,15 +4098,15 @@
 \begin{solution}
  A general element of $V$ has the form
  \[ v = 
-     \bbm p+q & p+2q & p+r & p+3r \ebm = 
+     \bbm p+q & p+2q & p+r & p+3r \ebm^T = 
      p \bbm 1\\1\\1\\1\ebm + 
      q \bbm 1\\2\\0\\0\ebm +
      r \bbm 0\\0\\1\\3\ebm.
  \]
  In other words, the elements of $V$ are precisely the linear
  combinations of the vectors
- \[ v_1 = \bbm 1 \\ 1 \\ 1 \\ 1 \ebm \hspace{4em} 
-    v_2 = \bbm 1 \\ 2 \\ 0 \\ 0 \ebm \hspace{4em} 
+ \[ v_1 = \bbm 1 \\ 1 \\ 1 \\ 1 \ebm , \hspace{4em} 
+    v_2 = \bbm 1 \\ 2 \\ 0 \\ 0 \ebm , \hspace{4em} 
     v_3 = \bbm 0 \\ 0 \\ 1 \\ 3 \ebm.
  \]
  For the canonical basis, we perform the following row-reduction:
@@ -4364,9 +4368,9 @@
  \]
  From this we see that the canonical basis for $\ker(A)$ consists of
  the vectors 
- \[ v_1 = \bbm 1 \\ 0 \\ -1 \\ 0 \ebm 
+ \[ v_1 = \bbm 1 \\ 0 \\ 0 \\ -1 \ebm 
     \hspace{3em} \text{and} \hspace{3em}
-    v_2 = \bbm 0 \\ 1 \\  0 \\ -1 \ebm. 
+    v_2 = \bbm 0 \\ 1 \\ -1 \\ 0 \ebm. 
  \]
 \end{solution}
 
@@ -4374,10 +4378,10 @@
 
 \begin{exercise}\label{ex-plus-cap-i}
  Put 
- \[ v_1 = \bbm 1 \\ 3 \\ 5 \\ 3 \ebm 
-    v_2 = \bbm 1 \\ 1 \\ 1 \\ -3 \ebm 
-    w_1 = \bbm 1 \\ 2 \\ 3 \\ 4 \ebm
-    w_2 = \bbm 3 \\ 2 \\ 1 \\ 0 \ebm
+ \[ v_1 = \bbm 1 \\ 3 \\ 5 \\ 3 \ebm , \quad
+    v_2 = \bbm 1 \\ 1 \\ 1 \\ -3 \ebm , \quad
+    w_1 = \bbm 1 \\ 2 \\ 3 \\ 4 \ebm , \quad
+    w_2 = \bbm 3 \\ 2 \\ 1 \\ 0 \ebm ,
  \]
  and $V=\spn(v_1,v_2)$ and $W=\spn(w_1,w_2)$.
  \begin{itemize}
@@ -4639,7 +4643,7 @@
           x_2 \bbm 0\\1\\0\\-1/2\ebm.
    \]
    It follows that $V=\ann(w_1,w_2)$, where
-   $w_1=\bbm 1&0&-1/3&0\ebm^T$ and $w_2=\bbm 0&1&0&-1/2\ebm$.
+   $w_1=\bbm 1&0&-1/3&0\ebm^T$ and $w_2=\bbm 0&1&0&-1/2\ebm^T$.
 
    Note that we could also have started with the equations
    $x.v'_2=x.v'_1=0$ instead of $x.v_2=x.v_1=0$ and we would still
