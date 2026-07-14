@@ -5272,7 +5272,8 @@ some ideas that are less visible in more streamlined methods.
 \begin{example}\label{eg-difference-ii}
  We will find the sequence satisfying $b_0=3$ and $b_1=6$ and
  $b_2=14$ and
- \[ b_{i+3} = 6b_i-11b_{i+1}+6b_{i+2}. \]
+ \[ b_{i+3} = 6b_i-11b_{i+1}+6b_{i+2}
+     \qquad \text{ for all } i \geq 0. \]
  The first step is to note that the vectors
  $v_i=\bbm b_i&b_{i+1}&b_{i+2}\ebm^T$ satisfy $v_0=\bbm 3&6&14\ebm^T$ and
  \[ v_{i+1} =
@@ -6324,7 +6325,7 @@ than $3$.
    Proposition~\ref{prop-subspace-lin-comb}.  Thus, we have $V=\R^2$.
   \item[(c)] Suppose instead that neither~(a) nor~(b) holds.  As~(a)
    does not hold, we can choose a nonzero vector $v\in V$.  Let $L$ be
-   the set of all scalar multiples of $v$, which is a straight line
+   the set of all scalar multiples of $v$; this is a straight line
    through the origin.  As $V$ is a subspace and $v\in V$ we know that
    every multiple of $v$ lies in $V$, or in other words that
    $L\sse V$.  Now let $w$ be any vector in $V$.  As~(b) does
@@ -6340,8 +6341,10 @@ than $3$.
  \begin{itemize}
   \item[(a)] $\spn(\CW)$ is the set of all vectors $v\in\R^n$ that can
    be expressed as a linear combination of the list $\CW$.
+   This is called the \emph{span} of $\CW$.
   \item[(b)] $\ann(\CW)$ is the set of all vectors $u\in\R^n$ such
    that $u.w_1=\dotsb=u.w_r=0$.
+   This is called the \emph{annihilator} of $\CW$.
  \end{itemize}
 \end{definition}
 
@@ -7628,7 +7631,18 @@ of Method~\ref{meth-ann-basis} is as follows:
  \end{itemize}
 \end{method}
 
-There is also a purely matrix-based version:
+The correctness of this method relies on the following theorem,
+whose proof we will omit to save time:
+
+\begin{theorem}\label{thm-ann-ann}
+ \index{annihilator!of annihilator}
+ Suppose that $V$ is a subspace of $\R^n$.
+ Let $\ann(V)$ be written as $\ann(V) = \spn(u_1,\ldots, u_s)$
+ for some vectors $u_1, \ldots, u_s$.
+ Then, $V = \ann(u_1,\ldots, u_s)$.
+\end{theorem}
+
+There is also a purely matrix-based version of Method~\ref{meth-span-eqs}:
 
 \begin{method}\label{meth-span-eqs-matrix}
  \index{span!describing as annihilator}
@@ -7637,9 +7651,6 @@ There is also a purely matrix-based version:
  in Method~\ref{meth-ann-basis-matrix}.  Then $V$ is also the annihilator of
  the columns of $D^T$.
 \end{method}
-
-The proof of correctness is not especially hard, but we will omit it
-to save time.
 
 \section{Sums and intersections of subspaces}
 \label{sec-sum-meet}
@@ -8289,7 +8300,8 @@ The next result is a little more subtle:
       0_{(n-r)\tm r} & 0_{(n-r)\tm(m-r)}
      \end{array}\right]}
  \]
- for some $r$.  (The case $r=0$ is allowed, in which case $A$ is just
+ for some nonnegative integer $r \leq \min(n, m)$.
+ (The case $r=0$ is allowed, in which case $A$ is just
  the zero matrix.)
 \end{definition}
 
@@ -8311,8 +8323,8 @@ $r$, which is the number of $1$s in $A$.
  Any $n\tm m$ matrix $A$ can be converted to a matrix $C$ in normal
  form by a sequence of row and column operations.  Moreover:
  \begin{itemize}
-  \item[(a)] There is an invertible $n\tm n$ matrix $U$ and an invertible
-   $m\tm m$ matrix $V$ such that $C=UAV$.
+  \item[(a)] There exist an invertible $n\tm n$ matrix $U$ and an
+   invertible $m\tm m$ matrix $V$ such that $C=UAV$.
   \item[(b)] The rank of $A$ is the same as the rank of $C$, which is
    the number of $1$s in $C$.
  \end{itemize}
@@ -8337,7 +8349,7 @@ $r$, which is the number of $1$s in $A$.
  which leaves a matrix $C$ in normal form.  As $C$
  was obtained from $B$ by a sequence of elementary column operations,
  we have $C=BV$ for some invertible $m\tm m$ matrix $V$
- (by Corollary~\ref{cor-co-elem}).  As $B=UA$,
+ (by Proposition~\ref{cor-co-elem}).  As $B=UA$,
  it follows that $C=UAV$.  Propositions~\ref{prop-co-rank}
  and~\ref{prop-ro-rank} tell us that neither row nor column operations
  affect the rank, so $\rnk(A)=\rnk(C)$, and because $C$ is in normal
@@ -8374,7 +8386,7 @@ $r$, which is the number of $1$s in $A$.
 
 \begin{example}\label{eg-normal-form-ii}
  Consider the matrix
- \[ A = \bbm 1&2&3 \\ 2&3&4 \\ 3&4&5 \\ 4&5&6 \ebm \]
+ \[ A = \bbm 1&2&3 \\ 2&3&4 \\ 3&4&5 \\ 4&5&6 \ebm . \]
  This can be reduced to normal form as follows:
  \[ A \to
     \bbm 1&2&3 \\ 0&-1&-2 \\ 0&-2&-4 \\ 0&-3&-6 \ebm 
@@ -8704,7 +8716,7 @@ The following proposition is known as the \dfn{spectral theorem}:
     v_5 = \bbm  1 \\  1 \\  1 \\  1 \\  1 \ebm 
  \]
  It is easy to check directly that 
- \[ Av_1=Av_2=Av_3=Av_4=0 \hspace{5em} Av_5=5v_5 \]
+ \[ Av_1=Av_2=Av_3=Av_4=0, \hspace{5em} Av_5=5v_5, \qquad \text{ and} \]
  \[ v_1.v_2=v_1.v_3=v_1.v_4=v_1.v_5=
     v_2.v_3=v_2.v_4=v_2.v_5=v_3.v_4=v_3.v_5=v_4.v_5 = 0,
  \]
@@ -9120,7 +9132,7 @@ The following proposition is known as the \dfn{spectral theorem}:
  Let $Q(x)$ be a quadratic form on $\R^n$.  Let $r$ and $s$
  be as in Proposition~\ref{prop-quadratic-diag}.
  It can be shown that these $r$ and $s$ are uniquely
- determined (i.e., independent on the choice of
+ determined (i.e., independent of the choice of
  $v_1,\dotsc,v_r,w_1,\dotsc,w_s$).
  The \dfn{rank}\index{quadratic form!rank} of $Q$ is defined
  to be $r+s$, and the \dfn{signature}\index{quadratic form!signature}

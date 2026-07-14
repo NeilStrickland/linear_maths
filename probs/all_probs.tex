@@ -84,7 +84,7 @@
  \end{align*}
  The other products are undefined.  For example, $A$ is a $2\tm 4$
  matrix (with $4$ columns) and $B$ is a $2\tm 2$ matrix (with $2$
- rows).  As the numer of columns in $A$ is different from the number
+ rows).  As the number of columns in $A$ is different from the number
  of rows in $B$, we cannot define the product $AB$.  
 \end{solution}
 
@@ -583,7 +583,7 @@
    The solution is $\lm_1=-1-2\lm_3$ and $\lm_2=2+\lm_3$ with $\lm_3$
    arbitrary.  We can take $\lm_3=0$ giving $\lm_1=-1$ and $\lm_2=2$,
    which means that $v=-u_1+2u_2$.
-  \item[(b)] As in Remark~\ref{rem-delete-cols} we can delete the fourth
+  \item[(c)] As in Remark~\ref{rem-delete-cols} we can delete the fourth
    column and we still have a valid row-reduction
    \[
      \left[\begin{array}{c|c|c|c}
@@ -1089,7 +1089,7 @@
   b_2-b_3 &= \bbm 5&5&5\ebm^T = 5(b_1-b_2),
  \end{align*}
  and this rearranges to give a nontrivial linear relation
- $6b_1-5b_2+b_3=0$.  This proves that the list $b_1,b_2,b_3$ is
+ $5b_1-6b_2+b_3=0$.  This proves that the list $b_1,b_2,b_3$ is
  linearly dependent, so again we do not have a basis.  This can also
  be seen by row-reducing the matrix $[b_1|b_2|b_3]$:
  \[ 
@@ -1211,7 +1211,7 @@
  on the whole list.  However, the whole list is a basis for $\R^5$, so
  in particular it is linearly independent.  Thus, the above linear
  relation must be the trivial one, so the coefficients
- $\lm,0,\mu,0,\nu,0$ must all be zero.  As $\lm,\mu$ and $\nu$ are
+ $\lm,0,\mu,0,\nu$ must all be zero.  As $\lm,\mu$ and $\nu$ are
  zero, we see that the original relation on the list $a_1,a_3,a_5$ is
  the trivial relation.  This means that the list $a_1,a_3,a_5$ is
  linearly independent, as claimed.
@@ -1335,7 +1335,7 @@
  \begin{itemize}
   \item[(1)] Multiply row $3$ by $-1$.
   \item[(2)] Add $-10$ times row $3$ to row $1$.
-  \item[(3)] Add $-11$ times row $3$ ro row $2$.
+  \item[(3)] Add $-11$ times row $3$ to row $2$.
   \item[(4)] Swap rows $1$ and $3$.
   \item[(5)] Multiply row $2$ by $-1$.
   \item[(6)] Add row $2$ to row $3$.
@@ -1745,13 +1745,13 @@
 \end{exercise}
 \begin{solution}
  The characteristic polynomial is
-    $$ \det (A - tI_3) =
+    \[ \det (A - tI_3) =
     \det \bbm
     1-t & 4 & 6 \\
     0 & 2-t & 5 \\
     0 & 0 & 3-t
     \ebm=-(t-1)(t-2)(t-3).
-    $$
+    \]
  (Recall that the determinant of an upper triangular $3 \times 3$
  matrix is the product of the diagonal entries.) Hence the
  eigenvalues of $A$ are $1$, $2$ and $3$.
@@ -1771,46 +1771,46 @@
  the general solution of the system is given by $z = 0$, $y = 0$,
  $x = \mu$ where $\mu$ can be any number; therefore the set of
  eigenvectors of $A$ corresponding to the eigenvalue $1$ is
- $$
+ \[
  \left\{ \mu \left[ \begin{array}{c} 1\\0\\0
  \end{array} \right] : 0 \neq \mu \in \R \right\}.
- $$
+ \]
 
  To find the eigenvectors corresponding to the eigenvalue $2$, we
  solve the system of linear equations $(A - 2I_3)\left[
  \begin{array}{c}x \\ y\\z
  \end{array} \right] = 0$. The augmented matrix of this system
- $$
+ \[
  \big(A - 2I_3|0\big) = \bbm -1& 4&
  6&0\\0&0&5&0\\0&0&1&0\ebm \sim \bbm -1& 4&
  6&0\\0&0&1&0\\0&0&0&0\ebm,
- $$
+ \]
  in row echelon form. We therefore see by back substitution that
  the general solution of the system is given by $z = 0$, $y = \mu$,
  $x = 4\mu$ where $\mu$ can be any number; therefore the set of
  eigenvectors of $A$ corresponding to the eigenvalue $2$ is
- $$
+ \[
  \left\{ \mu \left[ \begin{array}{c} 4\\1\\0
  \end{array} \right] : 0 \neq \mu \in \R \right\}.
- $$
+ \]
 
  To find the eigenvectors corresponding to the eigenvalue $3$, we
  solve the system of linear equations $(A - 3I_3)\left[
  \begin{array}{c}x \\ y\\z
  \end{array} \right] = 0$. The augmented matrix of this system
- $$
+ \[
  \big(A - 3I_3|0\big) = \bbm -2& 4&
  6&0\\0&-1&5&0\\0&0&0&0\ebm
- $$
+ \]
  is in row echelon form. We therefore see by back substitution that
  the general solution of the system is given by $z = \mu$, $y =
  5\mu$, $x = \frac{1}{2}(4(5\mu) + 6\mu) = 13\mu$,  where $\mu$ can
  be any number; therefore the set of eigenvectors of $A$
  corresponding to the eigenvalue $3$ is
- $$
+ \[
  \left\{ \mu \left[ \begin{array}{c} 13\\5\\1
  \end{array} \right] : 0 \neq \mu \in \R \right\}.
- $$
+ \]
 \end{solution}
 
 \begin{exercise}\label{ex-evectors-ii}
@@ -1834,76 +1834,80 @@
  solve the system of linear equations $(B - 3I_3)\left[
  \begin{array}{c}x \\ y\\z
  \end{array} \right] = 0$. The augmented matrix of this system
- $$
+ \[
  \big(B - 3I_3|0\big) = \bbm 0& 2&
  1&0\\0&-2&2&0\\0&1&-4&0\ebm \sim \bbm 0& 2&
  1&0\\0&0&3&0\\0&0&-\frac{9}{2}&0\ebm \sim \bbm
  0& 2& 1&0\\0&0&3&0\\0&0&0&0\ebm,
- $$
+ \]
  in row echelon form. We therefore see by back substitution that
  the general solution of the system is given by $z = 0$, $y = 0$,
  $x = \mu$ where $\mu$ can be any number; therefore the set of
  eigenvectors of $B$ corresponding to the eigenvalue $3$ is
- $$
+ \[
  \left\{ \mu \left[ \begin{array}{c} 1\\0\\0
  \end{array} \right] : 0 \neq \mu \in \R \right\}.
- $$
+ \]
 
  To find the eigenvectors corresponding to the eigenvalue
  $\sqrt{3}$, we solve the system of linear equations $(B -
  \sqrt{3}I_3)\left[
  \begin{array}{c}x \\ y\\z
  \end{array} \right] = 0$. The augmented matrix of this system
- $$
+ \[
  \big(B - \sqrt{3}I_3|0\big) = \bbm 3-\sqrt{3}& 2&
  1&0\\0&1-\sqrt{3}&2&0\\0&1&-1-\sqrt{3}&0\ebm \sim
  \bbm 3-\sqrt{3}& 2&
  1&0\\0&1&-1-\sqrt{3}&0\\0&0&0&0\ebm,
- $$
+ \]
  in row echelon form. We therefore see by back substitution that
  the general solution of the system is given by $z = \mu$, $y =
- (1+\sqrt{3})\mu$, and $${\textstyle x =
+ (1+\sqrt{3})\mu$, and
+ \[
+ {\textstyle x =
  \left[\frac{(-2(1+\sqrt{3})-1)}{(3-\sqrt{3})}\right]\mu =
  \left[\frac{(-3
  -2\sqrt{3})(3+\sqrt{3})}{(3-\sqrt{3})(3+\sqrt{3})}\right]\mu =
  \left[\frac{-15-9\sqrt{3}}{6}\right]\mu =
  \left[\frac{-5-3\sqrt{3}}{2}\right]\mu,}
- $$
+ \]
  where $\mu$ can be any number; therefore the set of eigenvectors
  of $B$ corresponding to the eigenvalue $\sqrt{3}$ is
- $$
+ \[
  \left\{ \mu \left[ \begin{array}{c}
  \frac{-5-3\sqrt{3}}{2}\\[2pt]1+\sqrt{3}\\[2pt]1
  \end{array} \right] : 0 \neq \mu \in \R \right\}.
- $$
+ \]
 
  To find the eigenvectors corresponding to the eigenvalue
  $-\sqrt{3}$, we solve the system of linear equations $(B +
  \sqrt{3}I_3)\left[
  \begin{array}{c}x \\ y\\z
  \end{array} \right] = 0$. The augmented matrix of this system
- $$
+ \[
  \big(B + \sqrt{3}I_3|0\big) = \bbm 3+\sqrt{3}& 2&
  1&0\\0&1+\sqrt{3}&2&0\\0&1&-1+\sqrt{3}&0\ebm \sim
  \bbm 3+\sqrt{3}& 2&
  1&0\\0&1&-1+\sqrt{3}&0\\0&0&0&0\ebm,
- $$
+ \]
  in row echelon form. We therefore see by back substitution that
  the general solution of the system is given by $z = \mu$, $y =
- (1-\sqrt{3})\mu$, and $${\textstyle x =
+ (1-\sqrt{3})\mu$, and
+ \[
+ {\textstyle x =
  \left[\frac{(-2(1-\sqrt{3})-1)}{(3+\sqrt{3})}\right]\mu =
  \left[\frac{(-3
  +2\sqrt{3})(3-\sqrt{3})}{(3+\sqrt{3})(3-\sqrt{3})}\right]\mu =
  \left[\frac{-15+9\sqrt{3}}{6}\right]\mu =
  \left[\frac{-5+3\sqrt{3}}{2}\right]\mu,}
- $$
+ \]
  where $\mu$ can be any number; therefore the set of eigenvectors
  of $B$ corresponding to the eigenvalue $-\sqrt{3}$ is
- $$
+ \[
  \left\{ \mu \left[ \begin{array}{c}
  \frac{-5+3\sqrt{3}}{2}\\[2pt]1-\sqrt{3}\\[2pt]1
  \end{array} \right] : 0 \neq \mu \in \R \right\}.
- $$
+ \]
 \end{solution}
 
 \begin{exercise}\label{ex-evectors-iii}
@@ -1927,25 +1931,32 @@
  solution.
 
  When $k = 0$, the augmented matrix of $(\dagger_0)$ is
- $$\big(N|0\big)= \bbm
- 0&1&0&0&0\\0&0&1&0&0\\0&0&0&1&0\\0&0&0&0&0\ebm$$ and this
+ \[
+ \big(N|0\big)= \bbm
+ 0&1&0&0&0\\0&0&1&0&0\\0&0&0&1&0\\0&0&0&0&0\ebm
+ \]
+ and this
  is already in row echelon form. Thus we see by back substitution
  that the complete solution of $(\dagger_0)$ is $w = 0$, $z = 0$,
  $y= 0$, $x = \mu$, where $\mu$ can be any number. Thus there is a
  non-trivial solution to $(\dagger_0)$, and so $0$ is an eigenvalue
  of $N$. Also the set of eigenvectors of $N$ corresponding to the
  eigenvalue $0$ is
- $$
+ \[
  \left\{ \mu\bbm 1\\0\\0\\0\ebm : 0 \neq \mu
  \in \R \right\}.
- $$
+ \]
 
  Now consider the case where $k \neq 0$. Then the augmented matrix
- of $(\dagger_k)$ is $$\big(N-kI_4|0\big) = \bbm
- k&1&0&0&0\\0&k&1&0&0\\0&0&k&1&0\\0&0&0&k&0\ebm$$ and this
+ of $(\dagger_k)$ is
+ \[
+ \big(N-kI_4|0\big) = \bbm
+ -k&1&0&0&0\\0&-k&1&0&0\\0&0&-k&1&0\\0&0&0&-k&0\ebm
+ \]
+ and this
  is already in row echelon form. We see, by back substitution, that
  (because $k \neq 0$) the complete solution of $(\dagger_k)$ is $w
- = 0$, $z = 0$, $y = 0$, $x=0$. Thus the only solution of
+ = 0$, $z = 0$, $y = 0$, $x = 0$. Thus the only solution of
  $(\dagger_k)$ is the trivial one, and therefore $k$ is not an
  eigenvalue of $N$.
 \end{solution}
@@ -1992,7 +2003,7 @@
  solve the system of linear equations $(A - 1I_3)\left[
  \begin{array}{c}x \\ y\\z
  \end{array} \right] = 0$. The augmented matrix of this system
- $$
+ \[
  \big(A - I_3|0\big) = \bbm 2 & -5 & 5 &0\\
      2 & -5 & 5 &0\\
      2 & -2 & 2&0\ebm \sim
@@ -2002,43 +2013,43 @@
  \bbm 2 & -5 & 5 &0\\
      0 & 3 & -3 &0\\
      0 & 0 & 0&0\ebm,
- $$
+ \]
  in row echelon form. We therefore see by back substitution that
  the general solution of the system is given by $z = \mu$, $y =
  \mu$, $x = \frac{1}{2}(5\mu - 5\mu) = 0$ where $\mu$ can be any
  number; therefore the set of eigenvectors of $A$ corresponding to
  the eigenvalue $1$ is
- $$
+ \[
  \left\{ \mu \left[ \begin{array}{c} 0\\1\\1
  \end{array} \right] : 0 \neq \mu \in \R \right\}.
- $$
+ \]
 
  To find the eigenvectors corresponding to the eigenvalue $-2$, we
  solve the system of linear equations $(A + 2I_3)\left[
  \begin{array}{c}x \\ y\\z
  \end{array} \right] = 0$. The augmented matrix of this system
- $$
+ \[
  \big(A +2 I_3|0\big) = \bbm 5 & -5 & 5 &0\\
      2 & -2 & 5 &0\\
      2 & -2 & 5&0\ebm \sim
  \bbm 1 & -1 & 1 &0\\
      0 & 0 & 3 &0\\
      0 & 0 & 0&0\ebm,
- $$
+ \]
  in row echelon form. We therefore see by back substitution that
  the general solution of the system is given by $z = 0$, $y = \mu$,
  $x = \mu$ where $\mu$ can be any number; therefore the set of
  eigenvectors of $A$ corresponding to the eigenvalue $-2$ is
- $$
+ \[
  \left\{ \mu \left[ \begin{array}{c} 1\\1\\0
  \end{array} \right] : 0 \neq \mu \in \R \right\}.
- $$
+ \]
 
  To find the eigenvectors corresponding to the eigenvalue $3$, we
  solve the system of linear equations $(A - 3I_3)\left[
  \begin{array}{c}x \\ y\\z
  \end{array} \right] = 0$. The augmented matrix of this system
- $$
+ \[
  \big(A - 3I_3|0\big) = \bbm 0 & -5 & 5 &0\\
      2 & -7 & 5 &0\\
      2 & -2 & 0&0\ebm \sim
@@ -2051,15 +2062,15 @@
  \bbm 2 & -2 & 0 &0\\
      0 & -5 & 5 &0\\
      0 & 0 & 0&0\ebm,
- $$
+ \]
  in row echelon form. We therefore see by back substitution that
  the general solution of the system is given by $z = \mu$, $y =
  \mu$, $x = \mu$,  where $\mu$ can be any number; therefore the set
  of eigenvectors of $A$ corresponding to the eigenvalue $3$ is
- $$
+ \[
  \left\{ \mu \left[ \begin{array}{c} 1\\1\\1
  \end{array} \right] : 0 \neq \mu \in \R \right\}.
- $$
+ \]
 \end{solution}
 
 \begin{exercise}\label{ex-evectors-independent}
@@ -2079,12 +2090,12 @@
  v_{i,t_i}$ are linearly independent eigenvectors of $A$ all
  corresponding to the eigenvalue
  $\lambda_i$. We show that
- $$
+ \[
  v_{1,1}, \ldots, v_{1,t_1},
  v_{2,1}, \ldots, v_{2,t_2},
  \ldots,
  v_{h,1}, \ldots, v_{h,t_h}
- $$
+ \]
  (taken all together) are linearly independent by induction on $h$.
 
  When $h = 1$, there is nothing to prove, because we are given that
@@ -2094,21 +2105,22 @@
  distinct eigenvalues of $A$.
 
  Let
- $$
+ \[
  a_{1,1}, \ldots, a_{1,t_1},
  a_{2,1}, \ldots, a_{2,t_2},
  \ldots,
  a_{h,1}, \ldots, a_{h,t_h}
- $$
+ \]
  be scalars such that
  \begin{equation}
  \sum_{i=1}^h \sum_{j=1}^{t_i} a_{i,j}v_{i,j} = 0.
  \label{sol.lin-ind-eigenvecs.1}
  \end{equation}
  Then
- $$
+ \[
  0 = A0 = A\left[\sum_{i=1}^h \sum_{j=1}^{t_i} a_{i,j}v_{i,j}\right]
- = \sum_{i=1}^h \sum_{j=1}^{t_i} a_{i,j}Av_{i,j}$$
+ = \sum_{i=1}^h \sum_{j=1}^{t_i} a_{i,j}Av_{i,j}
+ \]
  and so
  \begin{equation}
  \sum_{i=1}^h \sum_{j=1}^{t_i} a_{i,j}\lambda_iv_{i,j} = 0
@@ -2118,48 +2130,49 @@
  $i = 1, \ldots, h$. If we
  now subtract $\lambda_h$ times \eqref{sol.lin-ind-eigenvecs.1} from
  \eqref{sol.lin-ind-eigenvecs.2} we get
- $$
+ \[
  \sum_{i=1}^h \sum_{j=1}^{t_i} a_{i,j}(\lambda_i - \lambda_h)v_{i,j} = 0,
- $$
+ \]
  that is
- $$
+ \[
  \sum_{i=1}^{h-1} \sum_{j=1}^{t_i} a_{i,j}(\lambda_i - \lambda_h)v_{i,j} = 0
- $$
+ \]
  (since the addends for $i=h$ are zero).
 
- By the induction hypothesis, $$
+ By the induction hypothesis,
+ \[
  v_{1,1}, \ldots, v_{1,t_1},
  v_{2,1}, \ldots, v_{2,t_2},
  \ldots,
  v_{h-1,1}, \ldots, v_{h-1,t_{h-1}}
- $$
+ \]
  (taken all together) are linearly independent. Therefore
- $$
+ \[
  a_{i,j}(\lambda_i - \lambda_h) = 0 \quad \text{~for all~} j = 1,
  \ldots, t_i
  \text{~and~} i = 1, \ldots, h-1.
- $$
+ \]
  Since $\lambda_i - \lambda_h \neq 0$ for all $i = 1, \ldots, h-1$, it follows that
- $$
+ \[
  a_{i,j} = 0 \quad \text{~for all~} j = 1, \ldots, t_i
  \text{~and~} i = 1, \ldots, h-1.
- $$
+ \]
  With this information, equation \eqref{sol.lin-ind-eigenvecs.1} now simplifies to
- $$
+ \[
  \sum_{j=1}^{t_h} a_{h,j}v_{h,j} = 0,
- $$
+ \]
  and so it follows from the fact that $v_{h,1}, \ldots, v_{h,t_h}$ are
  linearly independent that $a_{h,1}= \cdots = a_{h,t_h} = 0$.
  Thus, $a_{i,j} = 0$ for all $j = 1, \ldots, t_i$
  and all $i = 1, \ldots, h$.
 
  We have now shown that
- $$
+ \[
  v_{1,1}, \ldots, v_{1,t_1},
  v_{2,1}, \ldots, v_{2,t_2},
  \ldots,
  v_{h,1}, \ldots, v_{h,t_h}
- $$
+ \]
  are linearly independent. This completes the inductive step. By the
  Principle of
  Mathematical Induction, the claim is proved.
@@ -2642,7 +2655,7 @@
      &= 2^{-k-1}I_5 +
          \left(\half(1-2^{-k})+\half 2^{-k}+\half(1-2^{-k})\right)A/5 \\
      &= 2^{-k-1}I_5 +
-         \left(\half-2^{-k-1}+2^{-k-1}+\half-2^{-k-1})\right)A/5 \\
+         \left(\half-2^{-k-1}+2^{-k-1}+\half-2^{-k-1}\right)A/5 \\
      &= 2^{-k-1}I_5 + (1-2^{-k-1})A/5.
    \end{align*}
    This is the case $k+1$ of our claim.  It follows by induction that
@@ -2867,7 +2880,7 @@
  \]
  which is the solution for $x$.  Some comments on these commands:
  \begin{itemize}
-  \item Maple usually uses the symbol $D$ for differentiataion, so if
+  \item Maple usually uses the symbol $D$ for differentiation, so if
    we want to use $D$ as the name of a matrix, we need to enter
    \verb+unprotect('D')+ first.  The quotation marks are important
    here.
@@ -2900,12 +2913,12 @@
  \def\Fibb{\textstyle 1-\sqrt{2}}
 
  We have
- $$
+ \[
  \chi_A(t) = \left|  \begin{array}{cc}1-t & 1\\2& 1-t
  \end{array} \right| = (t-1)^2 -2 = t^2 - 2t - 1 =
  \left[t - 1-\sqrt{2}\right]\left[t -
  1+\sqrt{2}\right].
- $$
+ \]
 
  We thus see that the eigenvalues of $A$ are $\lambda_1 = \Fiba$ and
  $\lambda_2 = \Fibb$. There are two distinct eigenvalues, and so it
@@ -2946,7 +2959,7 @@
  $\lambda_2$.
 
  We have
- $$
+ \[
  \left[ \begin{array}{c}u_{0}\\ v_0 \end{array} \right] =
  \left[ \begin{array}{c}1\\ 0 \end{array} \right]
  \quad \mbox{~and~} \quad
@@ -2955,13 +2968,13 @@
  \left[ \begin{array}{c}u_{n-1}\\ v_{n-1} \end{array} \right] =
  A\left[ \begin{array}{c}u_{n-1}\\ v_{n-1} \end{array} \right]
  \quad\textrm{\ for\ } n>0.
- $$
+ \]
  Therefore
- $$
+ \[
  \left[ \begin{array}{c}u_{n}\\ v_{n} \end{array} \right] =
  A^{n} \left[\begin{array}{c}1\\ 0 \end{array} \right]
  \quad\textrm{\ for\ } n>0.
- $$
+ \]
  We calculate this by using the above eigenvectors $w_1$ and $w_2$ of
  $A$. Since $w_1$ and $w_2$ are eigenvectors of $A$ corresponding to
  different eigenvalues, they are linearly independent, and so form a
@@ -2969,12 +2982,12 @@
  We express
  $\left[ \begin{array}{cc}1&0 \end{array} \right]^T$
  as a linear combination of $w_1$ and $w_2$:
- $$
+ \[
  \left[ \begin{array}{c}1\\ 0 \end{array} \right] =
  {\textstyle \half \left[ \begin{array}{c}1\\ \sqrt{2} \end{array} \right] +
  \half \left[ \begin{array}{c}1\\ -\sqrt{2} \end{array} \right] =
  \half w_1 + \half w_2}.
- $$
+ \]
  Therefore, for all $n > 0$,
  \begin{align*}
  \left[ \begin{array}{c}u_{n}\\ v_{n} \end{array} \right] &=
@@ -2992,10 +3005,11 @@
        \end{array} \right].
  \end{align*}
  Thus
- $$ u_n={\textstyle \half}\left( (1+\sqrt{2})^n + (1-\sqrt{2})^n\right)
+ \[
+    u_n={\textstyle \half}\left( (1+\sqrt{2})^n + (1-\sqrt{2})^n\right)
     \quad \text{~and~} \quad
     v_n={\textstyle \frac{1}{\sqrt{2}}}\left((1+\sqrt{2})^n-(1-\sqrt{2})^n\right)
- $$
+ \]
  for all $n > 0$.
 \end{solution}
 
@@ -3189,30 +3203,33 @@
  proportions of students who are awake and who are asleep after
  $5k$ minutes of the lecture, respectively, and set $v_k
  = \bbm a_k & b_k \ebm^T$. We have
-     $$
+     \[
      \left[\begin{array}{cc} a_0\\ b_0 \end{array}\right]
      =\left[\begin{array}{cc} 1\\ 0 \end{array}\right]
     \quad \text{~and~} \quad \left[\begin{array}{cc} a_{k+1}\\ b_{k+1}
     \end{array}\right]=
      \left[\begin{array}{cc} \frac{9}{10} & \frac{1}{10}\\[3pt]
      \frac{1}{10} & \frac{9}{10}
-     \end{array}\right] \left[\begin{array}{cc} a_k\\ b_k \end{array}\right] $$
+     \end{array}\right] \left[\begin{array}{cc} a_k\\ b_k \end{array}\right]
+     \]
  for $k = 0, \ldots, 9$. Set
- $$ A =
+ \[
+    A =
        \left[\begin{array}{cc} \frac{9}{10} & \frac{1}{10}\\[3pt]
      \frac{1}{10} & \frac{9}{10}
-     \end{array}\right].$$
+     \end{array}\right].
+ \]
  We are thus considering the difference equation $v_{k+1} = Av_k$, so
  that $v_k =
  A^kv_0$ for $k = 0, \ldots, 10$, and we wish to find $v_{10} = A^{10}v_0$.
 
  The matrix $A$ is stochastic, and so has $1$ as an eigenvalue. The characteristic polynomial of $A$ is
- $$
+ \[
  \chi_A(t) = \left| \begin{array}{cc} \frac{9}{10} - t & \frac{1}{10}\\[3pt] \frac{1}{10}
  & \frac{9}{10} - t \end{array} \right| =
  {\textstyle \left(t - \frac{9}{10}\right)^2 -
  \left(\frac{1}{10}\right)^2 = (t - 1)\left( t - \frac{8}{10}\right)}.
- $$
+ \]
  Thus the eigenvalues of $A$ are $1$ and $\frac{8}{10}$. Since $A$ has $2$ distinct
  eigenvalues, we can find a basis for $\R^2$ consisting of
  eigenvectors of $A$.
@@ -3220,7 +3237,7 @@
  To find an eigenvector of $A$ corresponding to the eigenvalue $\lambda_1 :=1$,
  we need to solve the system of linear equations
  $(A - I_2)\bbm x & y \ebm^T = 0$. This has augmented matrix
- $$
+ \[
  \bbm A - I_2|0 \ebm = \left[\begin{array}{cc|c}
  - \frac{1}{10} & \frac{1}{10} & 0\\[3pt]
  \frac{1}{10}
@@ -3228,7 +3245,7 @@
   \left[\begin{array}{cc|c}- \frac{1}{10} & \frac{1}{10} & 0\\[2pt]
  0
  & 0 & 0\end{array} \right],
- $$
+ \]
  and so $w_1 :=\bbm 1 & 1\ebm^T$ is an eigenvector of $A$ corresponding to
  the eigenvalue $1$.
 
@@ -3237,7 +3254,7 @@
  equations
  $\left[A -{\textstyle \frac{8}{10}} I_2\right]\bbm x & y \ebm^T = 0$. This has
  augmented matrix
- $$
+ \[
  \bbm A -{\textstyle \frac{8}{10}} I_2|0 \ebm =
  \left[\begin{array}{cc|c} \frac{1}{10} & \frac{1}{10} & 0\\[3pt]
  \frac{1}{10}
@@ -3245,7 +3262,7 @@
   \left[\begin{array}{cc|c} \frac{1}{10} & \frac{1}{10} & 0\\[2pt]
  0
  & 0 & 0\end{array} \right],
- $$
+ \]
  and so $w_2 :=\bbm 1 & -1\ebm^T$ is an eigenvector of $A$ corresponding to
  the eigenvalue $\frac{8}{10}$.
 
@@ -3254,28 +3271,30 @@
  eigenvectors corresponding to distinct eigenvalues of $A$, form a
  basis for $\R^2$. We express $v_0$ as a linear combination of these
  two eigenvectors:
- $$
+ \[
  v_0 =\left[\begin{array}{cc} 1\\ 0 \end{array}\right] = {\textstyle
  \half}\left[\begin{array}{c} 1 \\ 1 \end{array}\right] +
  {\textstyle \half}\left[\begin{array}{c} 1 \\ -1
  \end{array}\right] = {\textstyle \half w_1 + \half w_2}.
- $$
+ \]
 
  We have
- $${\textstyle v_k = A^kv_0 =
+ \[
+   {\textstyle v_k = A^kv_0 =
     A^k\left(\half w_1 + \half w_2\right) =
     \half A^kw_1 + \half A^kw_2 =
     \half\lambda_1^kw_1 + \half\lambda_2^kw_2 =
     \half 1^kw_1 + \half(0.8)^kw_2}.
- $$ In particular,
- $$
+ \]
+ In particular,
+ \[
   v_{10} = \left[\begin{array}{cc} a_{10}\\ b_{10} \end{array}\right] =
  {\textstyle \half w_1 + \half(0.8)^{10}w_2} =
  {\textstyle \half}
     \left[\begin{array}{c} 1 \\ 1 \end{array}\right] +
  {\textstyle \half}(0.8)^{10}
     \left[\begin{array}{c} 1 \\ -1 \end{array}\right].
- $$
+ \]
  Since $(0.8)^{10} \approx 0.107374$, we conclude that
  approximately $55.37\%$ of students are awake at the end of the
  lecture.

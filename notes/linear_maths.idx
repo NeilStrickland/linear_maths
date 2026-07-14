@@ -209,6 +209,7 @@
 \indexentry{basis!canonical!for an annihilator|hyperpage}{79}
 \indexentry{annihilator!canonical basis|hyperpage}{79}
 \indexentry{span!describing as annihilator|hyperpage}{81}
+\indexentry{annihilator!of annihilator|hyperpage}{81}
 \indexentry{span!describing as annihilator|hyperpage}{81}
 \indexentry{subspace!sum of|hyperpage}{81}
 \indexentry{subspace!intersection of|hyperpage}{81}
@@ -240,8 +241,8 @@
 \indexentry{orthonormal|hyperpage}{89}
 \indexentry{matrix!symmetric|hyperpage}{90}
 \indexentry{symmetric|hyperpage}{90}
-\indexentry{eigenvalue!of symmetric matrix|hyperpage}{90}
-\indexentry{eigenvector!of symmetric matrix|hyperpage}{90}
+\indexentry{eigenvalue!of symmetric matrix|hyperpage}{91}
+\indexentry{eigenvector!of symmetric matrix|hyperpage}{91}
 \indexentry{spectral theorem|hyperpage}{91}
 \indexentry{basis!orthonormal|hyperpage}{91}
 \indexentry{basis!of eigenvectors|hyperpage}{91}
