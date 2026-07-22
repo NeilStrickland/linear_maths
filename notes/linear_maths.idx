@@ -70,6 +70,7 @@
 \indexentry{transpose|hyperpage}{31}
 \indexentry{duality|hyperpage}{31}
 \indexentry{invertible|hyperpage}{32}
+\indexentry{inverse|hyperpage}{32}
 \indexentry{invertible|hyperpage}{32}
 \indexentry{transpose|hyperpage}{32}
 \indexentry{elementary matrix|hyperpage}{32}
@@ -236,38 +237,42 @@
 \indexentry{row rank|hyperpage}{89}
 \indexentry{column rank|hyperpage}{89}
 \indexentry{rank!bounded by size of matrix|hyperpage}{89}
-\indexentry{matrix!orthogonal|hyperpage}{89}
-\indexentry{orthogonal matrix|hyperpage}{89}
-\indexentry{orthonormal|hyperpage}{89}
-\indexentry{matrix!symmetric|hyperpage}{90}
-\indexentry{symmetric|hyperpage}{90}
-\indexentry{eigenvalue!of symmetric matrix|hyperpage}{91}
-\indexentry{eigenvector!of symmetric matrix|hyperpage}{91}
-\indexentry{spectral theorem|hyperpage}{91}
-\indexentry{basis!orthonormal|hyperpage}{91}
-\indexentry{basis!of eigenvectors|hyperpage}{91}
-\indexentry{diagonalisation!orthogonal|hyperpage}{92}
-\indexentry{matrix!symmetric!square root|hyperpage}{94}
-\indexentry{linear form|hyperpage}{94}
-\indexentry{quadratic form|hyperpage}{94}
-\indexentry{quadratic form!diagonalisation|hyperpage}{95}
-\indexentry{diagonalisation!of quadratic form|hyperpage}{95}
-\indexentry{rank|hyperpage}{97}
-\indexentry{quadratic form!rank|hyperpage}{97}
-\indexentry{signature|hyperpage}{97}
-\indexentry{quadratic form!signature|hyperpage}{97}
-\indexentry{permutation|hyperpage}{97}
-\indexentry{reversal|hyperpage}{98}
-\indexentry{signature|hyperpage}{98}
-\indexentry{even permutation|hyperpage}{98}
-\indexentry{odd permutation|hyperpage}{98}
-\indexentry{inversion|hyperpage}{98}
-\indexentry{transposition|hyperpage}{99}
-\indexentry{minor matrices|hyperpage}{105}
-\indexentry{minor determinants|hyperpage}{105}
-\indexentry{cofactor|hyperpage}{105}
-\indexentry{expansion of determinant|hyperpage}{106}
-\indexentry{Laplace expansion along the $p$'th row|hyperpage}{107}
-\indexentry{Laplace expansion along the $q$'th column|hyperpage}{107}
-\indexentry{adjugate|hyperpage}{107}
-\indexentry{jump!in terms of pivots|hyperpage}{108}
+\indexentry{rank-nullity theorem|hyperpage}{90}
+\indexentry{theorem!rank-nullity|hyperpage}{90}
+\indexentry{nullity!rank-nullity theorem|hyperpage}{90}
+\indexentry{rank!rank-nullity theorem|hyperpage}{90}
+\indexentry{matrix!orthogonal|hyperpage}{92}
+\indexentry{orthogonal matrix|hyperpage}{92}
+\indexentry{orthonormal|hyperpage}{92}
+\indexentry{matrix!symmetric|hyperpage}{92}
+\indexentry{symmetric|hyperpage}{92}
+\indexentry{eigenvalue!of symmetric matrix|hyperpage}{93}
+\indexentry{eigenvector!of symmetric matrix|hyperpage}{93}
+\indexentry{spectral theorem|hyperpage}{93}
+\indexentry{basis!orthonormal|hyperpage}{93}
+\indexentry{basis!of eigenvectors|hyperpage}{93}
+\indexentry{diagonalisation!orthogonal|hyperpage}{95}
+\indexentry{matrix!symmetric!square root|hyperpage}{96}
+\indexentry{linear form|hyperpage}{96}
+\indexentry{quadratic form|hyperpage}{96}
+\indexentry{quadratic form!diagonalisation|hyperpage}{97}
+\indexentry{diagonalisation!of quadratic form|hyperpage}{97}
+\indexentry{rank|hyperpage}{99}
+\indexentry{quadratic form!rank|hyperpage}{99}
+\indexentry{signature|hyperpage}{99}
+\indexentry{quadratic form!signature|hyperpage}{99}
+\indexentry{permutation|hyperpage}{100}
+\indexentry{reversal|hyperpage}{100}
+\indexentry{inversion|hyperpage}{100}
+\indexentry{signature|hyperpage}{101}
+\indexentry{even permutation|hyperpage}{101}
+\indexentry{odd permutation|hyperpage}{101}
+\indexentry{transposition|hyperpage}{101}
+\indexentry{minor matrices|hyperpage}{107}
+\indexentry{minor determinants|hyperpage}{107}
+\indexentry{cofactor|hyperpage}{107}
+\indexentry{expansion of determinant|hyperpage}{109}
+\indexentry{Laplace expansion along the $p$'th row|hyperpage}{109}
+\indexentry{Laplace expansion along the $q$'th column|hyperpage}{109}
+\indexentry{adjugate|hyperpage}{110}
+\indexentry{jump!in terms of pivots|hyperpage}{110}

@@ -27,6 +27,12 @@
 
 \input{../macros/macros}
 
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\tup}[1]{\left( #1 \right)}
+\newcommand{\ive}[1]{\left[ #1 \right]}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{conj}[theorem]{Conjecture}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -79,7 +85,7 @@
 \begin{document}
 
 \title{Linear Mathematics for Applications}
-\author{Neil Strickland \\ with corrections and minor changes by Darij Grinberg}
+\author{Neil Strickland \\ with corrections and additions by Darij Grinberg}
 \date{\today}
 
 \maketitle
@@ -230,6 +236,8 @@ For example, we have
    \bbm 1000 \\ 100 \\ 10 \\ 1 \ebm =
     1000 + 200 + 30 + 4 = 1234.
 \]
+Note that the dot product is symmetric: i.e., we have $u.v=v.u$
+for all $u,v\in\R^n$.
 
 Next, recall that we can multiply an $m\tm n$ matrix by a vector in
 $\R^n$ to get a vector in $\R^m$.  
@@ -274,11 +282,11 @@ rule for multiplying a matrix by a vector is then
 \] 
 
 In Example~\ref{eg-At-i} we have 
-\[ v_1 = \bbm a \\ b \\ c \ebm \hspace{4em}
-   v_2 = \bbm d \\ e \\ f \ebm \hspace{4em}
-   t   = \bbm x \\ y \\ z \ebm \hspace{4em}
-   At = \bbm v_1.t \\ v_2.t \ebm 
-      = \bbm ax+by+cz \\ dx+ey+fz \ebm
+\[ v_1 = \bbm a \\ b \\ c \ebm, \hspace{4em}
+   v_2 = \bbm d \\ e \\ f \ebm, \hspace{4em}
+   t   = \bbm x \\ y \\ z \ebm, \hspace{4em}
+   At = \bbm v_1.t \\ v_2.t \ebm
+      = \bbm ax+by+cz \\ dx+ey+fz \ebm,
 \]
 as expected.  
 
@@ -287,12 +295,12 @@ be written in the form
 \[ At = t_1u_1 + \dotsb + t_nu_n. \]
 
 In Example~\ref{eg-At-i} we have 
-\[ u_1 = \bbm a \\ d \ebm \qquad
-   u_2 = \bbm b \\ e \ebm \qquad
-   u_3 = \bbm c \\ f \ebm \qquad
-   t_1 = x \qquad
-   t_2 = y \qquad
-   t_3 = z
+\[ u_1 = \bbm a \\ d \ebm, \qquad
+   u_2 = \bbm b \\ e \ebm, \qquad
+   u_3 = \bbm c \\ f \ebm, \qquad
+   t_1 = x, \qquad
+   t_2 = y, \qquad
+   t_3 = z,
 \]
 so 
 \[ t_1u_1+t_2u_2+t_3u_3 = 
@@ -1903,7 +1911,7 @@ why the method is correct.
  relation $-v_1-v_2+v_3+v_4=0$.
 \end{example}
 \begin{example}\label{eg-dep-ii-matrix}
- In Example~\ref{eg-dep-ii} (a) we considered the list
+ In Example~\ref{eg-dep-ii}(a) we considered the list
  \[ a_1 = \bbm  1 \\  2 \ebm \hspace{3em}
     a_2 = \bbm 12 \\  1 \ebm \hspace{3em}
     a_3 = \bbm -1 \\ -1 \ebm \hspace{3em}
@@ -1957,7 +1965,7 @@ why the method is correct.
  $\lm_2=\frac{1}{23}\lm_3-\frac{5}{23}\lm_4$ we get $\lm_1=3$ and
  $\lm_2=1$ giving a different relation
  \[ 3a_1 + a_2 + 3a_3 - 4a_4 = 0. \]
- This is the relation that we observed in Example~\ref{eg-dep-ii} (a).
+ This is the relation that we observed in Example~\ref{eg-dep-ii}(a).
 \end{example}
 \begin{example}\label{eg-indep-i-matrix}
  In Example~\ref{eg-indep-i} we considered the list $\CU$ given by
@@ -2425,6 +2433,7 @@ We now explain why Method~\ref{meth-check-span} is valid.
    pivot, we see that $\lm_2=0$.  Continuing in this way, we see that
    all the coefficients $\lm_i$ are zero, so $\sum_i\lm_ir_i=0$, which
    contradicts the assumption that $e_k=\lm_1r_1+\dotsb+\lm_mr_m$.
+   \qedhere
  \end{itemize}
 \end{proof}
 
@@ -2570,6 +2579,7 @@ things that go by the name ``duality''.
    other words, the only linear relation on $\CV$ is the trivial one.
    This means that $\CV$ is linearly independent, and it also spans
    $\R^n$, so it is a basis.
+   \qedhere
  \end{itemize}
 \end{proof}
 
@@ -2882,6 +2892,7 @@ B.rref()[0]
   columns of $A^T$ form a basis.  By
   Proposition~\ref{prop-duality-bases}, the columns of $A$ must form a
   basis as well.
+  \qedhere
  \end{itemize}
 \end{proof}
 
@@ -3134,6 +3145,7 @@ and
  conditions~(a) to~(j) in Theorem~\ref{thm-inverse} hold.  If so, we
  write $A^{-1}$ for the unique matrix satisfying $A^{-1}A=I_n=AA^{-1}$
  (which exists by the Theorem).
+ This matrix $A^{-1}$ is then called the \dfn{inverse} of $A$.
 \end{definition}
 
 \begin{remark}\label{rem-transpose-inverse}
@@ -3701,6 +3713,7 @@ more efficient to stop the row-reduction at an earlier stage.
  This relation can be rewritten as $Av = 0$,
  where $v$ is the (nonzero) vector
  $\begin{bmatrix} \lm_1 & \cdots & \lm_n \end{bmatrix}^T$.
+ \qedhere
 \end{itemize}
 \end{proof}
 
@@ -4737,7 +4750,10 @@ easy.  This can be souped up to give a formula for $A^k$, as follows.
  so we can discard the terms $U^{-1}U$ leaving
  \[ A^4 = UDDDDU^{-1} = UD^4 U^{-1}. \]
  It is clear that the general case works the same way, so
- $A^k=UD^kU^{-1}$ for all $k$.  One could give a more formal proof by
+ $A^k=UD^kU^{-1}$ for all $k$
+ (including the case $k=0$, which can easily be checked by hand:
+ both $A^0$ and $D^0$ are the identity matrix).
+ One could give a more formal proof by
  induction if desired.  Next, it is clear from the definition of
  matrix multiplication that
  \[ \diag(\lm_1,\dotsc,\lm_n)\diag(\mu_1,\dotsc,\mu_n) =
@@ -5597,7 +5613,7 @@ diagonalising $P$.
 \begin{example}\label{eg-markov-i-again}
  In Example~\ref{eg-markov-i} we considered a Markov chain with
  transition matrix $P=\bbm 0.8 & 0.2\\ 0.2 & 0.8 \ebm$.  The
- characteristic polynomial is $\chi_P(t)=t^2-1.6t+0.6$ so the
+ characteristic polynomial is $\chi_P(t)=t^2-1.6t+0.6$, so the
  eigenvalues are $(1.6\pm\sqrt{2.56-4\tm 0.6})/2$, which works out as
  $0.6$ and $1$.  The vector $u_1=\bbm 1\\ -1\ebm$ is an eigenvector of
  eigenvalue $0.6$, and $u_2=\bbm 1\\ 1\ebm$ is an eigenvector of
@@ -5631,7 +5647,7 @@ diagonalising $P$.
  When $n$ is large, we observe that $(0.6)^n$ will be very small, so
  $r_n\simeq\bbm 0.5\\0.5\ebm$, so it is almost equally probable that
  $X$ will be in either of the two states.  This should be intuitively
- plausible, given the symmetry of the situation.
+ plausible, given the symmetry of the transition rules.
 \end{example}
 
 \begin{example}\label{eg-markov-ii-again}
@@ -6026,7 +6042,9 @@ We can use Maple to calculate the corresponding ranking vector
 The first two commands define $n$ and $P$.  Next, we want to find $r$,
 which must satisfy $Pr=r$ or in other words $(P-I_n)r=0$.  The command 
 \verb+NS := NullSpace(P - IdentityMatrix(n))+ defines \verb+NS+ 
-to be a set of vectors that satisfy this equation.  In this case (as
+to be a set of vectors that satisfy this equation
+(more precisely, a basis for the space of all such vectors; see
+Definition~\ref{defn-subspace-basis} for what this means).  In this case (as
 in most cases) this is a set with only one element.  The command
 \verb+r := NS[1]+ defines $r$ to be the first (and only) element in
 the set \verb+NS+.  We now have $Pr=r$, but the normalisation
@@ -6044,7 +6062,7 @@ rewrite all fractions as (approximate) decimals, which we do using the
        \ebm.
 \]
 This means that page $1$ has rank $0.0$ (because there are no links to
-it), page $2$ has rank $0.277$ and so on.  We can also use Maple to
+it), page $2$ has rank $\approx 0.278$ and so on.  We can also use Maple to
 verify that $r$ is the limit of the vectors $P^kq$:
 \begin{verbatim}
  q := Vector(n,[1/n $ n]);
@@ -6332,6 +6350,7 @@ than $3$.
    not hold, the list $(v,w)$ is linearly dependent, so
    Lemma~\ref{lem-multiples} tells us that $w$ is a multiple of $v$
    and so lies in $L$.  This shows that $V\sse L$, so $V=L$.
+   \qedhere
  \end{itemize}
 \end{proof}
 
@@ -6654,6 +6673,7 @@ conversion.
    before, we have $u.w_i=0$ for all $i$.  It follows that
    $(tu).w_i=t(u.w_i)=0$ for all $i$, so $tu\in\ann(\CW)$.  Thus,
    $\ann(\CW)$ is closed under scalar multiplication.
+   \qedhere
  \end{itemize}
 \end{proof}
 
@@ -6679,6 +6699,7 @@ conversion.
    $tu=\sum_i\kp_iw_i$, which expresses $tu$ as a linear combination of
    $\CW$, so $tu\in\spn(\CW)$.  Thus, $\spn(\CW)$ is closed under
    scalar multiplication.
+   \qedhere
  \end{itemize}
 \end{proof}
 
@@ -6817,6 +6838,7 @@ to identify $V$ with $\R^r$ for some $r$.  In more detail:
    all $j$.  This means that the original relation is the trivial one,
    as required.  As $\CW$ is linearly independent and spans $V$, it is
    a basis for $V$.
+   \qedhere
  \end{itemize}
 \end{proof}
 
@@ -7631,16 +7653,16 @@ of Method~\ref{meth-ann-basis} is as follows:
  \end{itemize}
 \end{method}
 
-The correctness of this method relies on the following theorem,
-whose proof we will omit to save time:
+The correctness of this method relies on the following theorem:
 
-\begin{theorem}\label{thm-ann-ann}
+\begin{theorem}[span-annihilator duality]\label{thm-ann-ann}
  \index{annihilator!of annihilator}
- Suppose that $V$ is a subspace of $\R^n$.
- Let $\ann(V)$ be written as $\ann(V) = \spn(u_1,\ldots, u_s)$
- for some vectors $u_1, \ldots, u_s$.
- Then, $V = \ann(u_1,\ldots, u_s)$.
+ Let $v_1, \ldots, v_r$ and $u_1, \ldots, u_s$ be two lists of vectors in $\R^n$.
+ Assume that $\ann(v_1, \ldots, v_r) = \spn(u_1,\ldots, u_s)$.
+ Then, $\spn(v_1, \ldots, v_r) = \ann(u_1,\ldots, u_s)$.
 \end{theorem}
+
+We will prove this theorem in Section~\ref{sec-rank}.
 
 There is also a purely matrix-based version of Method~\ref{meth-span-eqs}:
 
@@ -7731,7 +7753,7 @@ There is also a purely matrix-based version of Method~\ref{meth-span-eqs}:
  proving that $u\in U$ as required.
 
  In the opposite direction, suppose we have $u\in U$, so $z=x+y-t$.
- Put $v=\bbm y&x&y&x\ebm^T$ and $w=\bbm w-y&0&0&y-w\ebm^T$.  We find
+ Put $v=\bbm y&x&y&x\ebm^T$ and $w=\bbm t-y&0&0&y-t\ebm^T$.  We find
  that $v\in V$ and $w\in W$ and $v+w=u$, which proves that $u\in V+W$
  as required.
 \end{example}
@@ -7772,6 +7794,7 @@ as follows.
    \[ x.v_1=\dotsb=x.v_r=x.w_1=\dotsb=x.w_s=0. \]
    This is precisely the condition for $x$ to lie in
    $\ann(v_1,\dotsc,v_r,w_1,\dotsc,w_s)$.
+   \qedhere
  \end{itemize}
 \end{proof}
 
@@ -8076,7 +8099,8 @@ This justifies the following methods:
     = \left\{\bbm x_1 \\ x_2 \\  x_3 \\  x_4\ebm \st x_1+x_4=x_2+x_3=0 \right\}
     = \ann(b_1,b_2).
  \]
- For $V$, we note that the equations $x.v'_1=0$ and $x.v'_2=0$ are
+ For $V$, we use Method~\ref{meth-span-eqs} again:
+ Note that the equations $x.v'_1=0$ and $x.v'_2=0$ are
  \begin{align*}
   -2x_4-x_3+x_1 &= 0 \\
   3x_4+2x_3+x_2 &= 0.
@@ -8116,7 +8140,7 @@ This justifies the following methods:
 \end{example}
 
 
-\section{Rank and normal form}
+\section{Rank, nullity and normal form}
 \label{sec-rank}
 
 Let $A$ be an $m\tm n$ matrix.  
@@ -8440,6 +8464,259 @@ $r$, which is the number of $1$s in $A$.
  $\rnk(A)\leq m$, so $\rnk(A)\leq\min(n,m)$.
 \end{proof}
 
+We next study the nullity of a matrix. As we will eventually see
+(Theorem~\ref{thm-rank-nullity}), the rank and the nullity
+of a matrix determine each other. However, we need some preliminary
+work before we can prove this.
+We begin by showing that nullity is invariant under multiplication
+by invertible matrices:
+
+\begin{lemma}\label{lem-nullity-invar}
+ Let $A$ be an $n\tm m$ matrix.
+ Let $U$ be an invertible $n\tm n$ matrix,
+ and let $V$ be an invertible $m\tm m$ matrix.
+ Then, $\nullity(A) = \nullity(UAV)$.
+\end{lemma}
+
+\begin{proof}
+ Let $B = UAV$. Then, $A = U^{-1}BV^{-1}$. Hence,
+ the relation between the matrices $A$ and $B$ is
+ mutual: each can be obtained from the other by
+ multiplying with invertible matrices on the left
+ and the right.
+
+ Let $(v_1, v_2, \ldots, v_k)$ be a basis of
+ $\ker(B)$. Then, by the definition of nullity,
+ we have $\nullity(B) = \dim(\ker(B)) = k$. Moreover, the vectors
+ $v_1, v_2, \ldots, v_k$ are linearly independent.
+ Thus, the vectors $V v_1, V v_2, \ldots, V v_k$
+ are linearly independent as well (since any
+ nontrivial linear relation
+ $\lambda_1 V v_1 + \lambda_2 V v_2 + \cdots + \lambda_k V v_k = 0$
+ between them would yield
+ \begin{align*}
+ \lambda_1 v_1 + \lambda_2 v_2 + \cdots + \lambda_k v_k
+ &= V^{-1}\left(V\left(\lambda_1 v_1 + \lambda_2 v_2 + \cdots + \lambda_k v_k\right)\right)
+ \\
+ &= V^{-1}\left(\lambda_1 V v_1 + \lambda_2 V v_2 + \cdots + \lambda_k V v_k\right)
+ = V^{-1}\left(0\right) = 0,
+ \end{align*}
+ contradicting the linear independence of
+ $v_1, v_2, \ldots, v_k$). But these vectors
+ $V v_1, V v_2, \ldots, V v_k$ all belong to
+ $\ker(A)$: Indeed, each $i$ satisfies $v_i \in \ker(B)$,
+ thus $B v_i = 0$; but $UAV = B$ leads to
+ $UAV v_i = B v_i = 0$ and therefore
+ $AV v_i = U^{-1} 0 = 0$, so that $V v_i \in \ker(A)$.
+ So we have found $k$ linearly independent
+ vectors $V v_1, V v_2, \ldots, V v_k$ in $\ker(A)$.
+ By Definition~\ref{defn-dim}, this entails
+ $k \leq \dim(\ker(A)) = \nullity(A)$.
+ In other words, $\nullity(B) \leq \nullity(A)$ (since $k = \nullity(B)$).
+ 
+ But, as we said before, the relation between the matrices $A$ and $B$ is
+ mutual. Thus, the same argument that gave us the inequality
+ $\nullity(B) \leq \nullity(A)$
+ can be applied with the roles of $A$ and $B$ switched (and with $U$ and
+ $V$ replaced by $U^{-1}$ and $V^{-1}$), and then gives us the inequality
+ $\nullity(A) \leq \nullity(B)$. Combining these two inequalities, we obtain
+ $\nullity(A) = \nullity(B) = \nullity(UAV)$.
+\end{proof}
+
+Next, we extend Proposition~\ref{prop-normal-form} by another
+observation:
+
+\begin{proposition}\label{prop-normal-form-c}
+ Let $A$ be an $n\tm m$ matrix, and let $C$ be a matrix in normal
+ form obtained from $A$ by a sequence of row and column operations.
+ Then, the nullity of $A$ is the same as the nullity of $C$, which
+ is the number of zero columns of $C$.
+\end{proposition}
+
+\begin{proof}
+As we saw in the proof of Proposition~\ref{prop-normal-form},
+there exist an invertible $n\tm n$ matrix $U$ and an
+invertible $m\tm m$ matrix $V$ such that $C=UAV$.
+By Lemma~\ref{lem-nullity-invar}, these $U$ and $V$ then satisfy
+ $\nullity(A) = \nullity(UAV) = \nullity(C)$ (since $UAV=C$).
+It remains to show that this nullity is the
+number of zero columns of $C$.
+For this purpose, we recall that $C$ is in normal form, i.e., can
+be written as
+\[ C = {\renewcommand{\arraystretch}{1.3}
+     \left[\begin{array}{c|c}
+      I_r & 0_{r\tm (m-r)} \\ \hline
+      0_{(n-r)\tm r} & 0_{(n-r)\tm(m-r)}
+     \end{array}\right]}
+ \]
+for some $r \leq \min(n,m)$ (by Definition~\ref{defn-normal-form}).
+Thus, for each vector $v = \bbm v_1 & v_2 & \cdots & v_m \ebm^T
+\in \R^m$, we have $Cv = \bbm v_1 & v_2 & \cdots & v_r & 0 & 0 & \cdots & 0 \ebm^T$
+(with $n-r$ zeros at the bottom);
+in particular, we have $Cv = 0$ if and only if $v_1 = v_2 = \cdots = v_r = 0$.
+Therefore, $\ker(C)$ consists of those vectors $v = \bbm v_1 & v_2 & \cdots & v_m \ebm^T$
+that satisfy $v_1 = v_2 = \cdots = v_r = 0$.
+These vectors are precisely the linear combinations of the $m-r$
+standard basis vectors $e_{r+1}, e_{r+2}, \ldots, e_m$.
+Therefore, the list $\left(e_{r+1}, e_{r+2}, \ldots, e_m\right)$
+is a basis of $\ker(C)$ (since $e_{r+1}, e_{r+2}, \ldots, e_m$
+are clearly linearly independent). Consequently, $\dim(\ker(C))$
+is the length of this list, that is, $m-r$.
+In other words, the nullity of $C$ is $m-r$.
+But $m-r$ is visibly the number of zero columns of $C$.
+So we conclude that the nullity of $C$ is the number of
+zero columns of $C$; and the proof is complete.
+\end{proof}
+
+\begin{theorem}[Rank-nullity theorem]\label{thm-rank-nullity}
+ \index{rank-nullity theorem}\index{theorem!rank-nullity}
+ \index{nullity!rank-nullity theorem}\index{rank!rank-nullity theorem}
+ Let $A$ be an $n\tm m$ matrix.
+ Then, $\rnk(A) + \nullity(A) = m$.
+\end{theorem}
+
+\begin{proof}
+Proposition~\ref{prop-normal-form} shows that
+$A$ can be converted to a matrix $C$ in normal
+form by a sequence of row and column operations.
+Furthermore, Proposition~\ref{prop-normal-form}(b)
+shows that the rank of $A$ is the number of $1$s in $C$,
+whereas Proposition~\ref{prop-normal-form-c}
+shows that the nullity of $A$ is the number of
+zero columns of $C$.
+But $C$ is in normal form, so each nonzero column of
+$C$ contains exactly one $1$.
+Thus, the number of $1$s in $C$ is exactly the number
+of nonzero columns of $C$.
+Hence,
+\begin{align*}
+& \underbrace{\rnk(A)}_{\substack{= \tup{\text{number of $1$s in $C$}}
+\\ = \tup{\text{number of nonzero columns of $C$}}}}
++ \underbrace{\nullity(A)}_{= \tup{\text{number of zero columns of $C$}}}
+\\
+&= \tup{\text{number of nonzero columns of $C$}}
++ \tup{\text{number of zero columns of $C$}}
+\\
+&= \tup{\text{number of all columns of $C$}} = m
+\qquad \left(\text{since $C$ is an $n\tm m$ matrix}\right).
+\end{align*}
+This proves the theorem.
+\end{proof}
+
+Restating Theorem~\ref{thm-rank-nullity} in terms of vectors,
+we obtain the following:
+
+\begin{theorem}\label{thm-span-ann}
+ Let $\CV$ be a list of vectors in $\R^n$.
+ Then, $\dim(\spn(\CV)) + \dim(\ann(\CV)) = n$.
+\end{theorem}
+
+\begin{proof}
+Let $\CV = (v_1, \ldots, v_k)$.
+Define the $k\tm n$ matrix
+ \[ \renewcommand{\arraystretch}{1.3} 
+   A = \left[\begin{array}{ccc}
+        & v_1^T & \\ \hline
+        & \vdots & \\ \hline
+        & v_k^T &
+       \end{array}\right].
+ \]
+Then, Proposition~\ref{prop-ker-ann} tells us that
+$\ker(A) = \ann(v_1,\dotsc,v_k) = \ann(\CV)$,
+so that
+\[
+\dim(\ann(\CV)) = \dim(\ker(A)) = \nullity(A).
+\]
+
+On the other hand, $v_1, \ldots, v_k$ are the columns
+of $A^T$ (since $v_1^T, \ldots, v_k^T$ are the rows of $A$).
+Therefore, their span $\spn(v_1, \ldots, v_k)$ is
+the span of the columns of $A^T$, that is, the image of $A^T$
+(by Proposition~\ref{prop-img-span}, applied to $A^T$
+instead of $A$). Hence, its dimension
+$\dim(\spn(v_1, \ldots, v_k))$ is the dimension
+of $\img(A^T)$, which is $\rnk(A^T)$ (by the definition
+of rank) and therefore also equals $\rnk(A)$ (by
+Proposition~\ref{prop-equal-rank}).
+So we have shown that $\dim(\spn(v_1, \ldots, v_k))
+= \rnk(A)$. In other words, $\dim(\spn(\CV)) = \rnk(A)$
+(since $\CV = (v_1, \ldots, v_k)$).
+Adding this to $\dim(\ann(\CV)) = \nullity(A)$, we obtain
+\[
+\dim(\spn(\CV)) + \dim(\ann(\CV))
+= \rnk(A) + \nullity(A) = n
+\]
+(by Theorem~\ref{thm-rank-nullity}, applied to the
+$k\tm n$ matrix $A$).
+\end{proof}
+
+We also will need another basic property of dimension:
+
+\begin{lemma}\label{dim-subdim}
+Let $U$ and $V$ be two subspaces of $\R^n$ such that $U \subseteq V$.
+If $\dim(U) \geq \dim(V)$, then $U = V$.
+\end{lemma}
+
+\begin{proof}
+Let $d = \dim(V)$.
+Let $(u_1, \ldots, u_k)$ be a basis of $U$.
+Then, $\dim(U) = k$.
+Moreover, $(u_1, \ldots, u_k)$ is a linearly independent
+list in $V$ (since $U \subseteq V$), and thus has
+at most $d$ elements (by Corollary~\ref{cor-basis-numerical}(a)).
+In other words, $k \leq d$.
+
+Now assume that $\dim(U) \geq \dim(V)$.
+Then, $k = \dim(U) \geq \dim(V) = d$.
+Combining this with $k \leq d$, we obtain $k = d$.
+Hence, $(u_1, \ldots, u_k)$ is a linearly independent
+list of length $d$ in $V$, and thus a basis of $V$
+(by Corollary~\ref{cor-basis-numerical}(d)).
+This shows that $V = \spn(u_1, \ldots, u_k)$.
+But we also have $U = \spn(u_1, \ldots, u_k)$
+(since $(u_1, \ldots, u_k)$ is a basis of $U$).
+Comparing these, we obtain $U = V$.
+\end{proof}
+
+We can now easily prove Theorem~\ref{thm-ann-ann}:
+
+\begin{proof}[Proof of Theorem~\ref{thm-ann-ann}.]
+Set $\CV = (v_1, \ldots, v_r)$ and $\CU = (u_1, \ldots, u_s)$.
+Thus, we have $\ann(\CV) = \spn(\CU)$, and we must show that
+$\spn(\CV) = \ann(\CU)$.
+
+Each $u_i$ belongs to $\spn(\CU) = \ann(\CV)$ and thus
+satisfies $u_i.v_j = 0$ for all $j$.
+In other words, $v_j.u_i = 0$ for all $i$ and $j$ (since
+the symmetry of the dot product yields $v_j.u_i = u_i.v_j$).
+This, in turn, shows that each $v_j$ belongs to $\ann(\CU)$.
+Hence, so does any linear combination of $v_1, \ldots, v_r$
+(since Proposition~\ref{prop-ann-subspace} shows that
+$\ann(\CU)$ is a subspace).
+In other words, $\spn(\CV) \subseteq \ann(\CU)$.
+It remains to prove the opposite inclusion.
+
+Theorem~\ref{thm-span-ann} yields
+$\dim(\spn(\CV)) + \dim(\ann(\CV)) = n$
+and
+$\dim(\spn(\CU)) + \dim(\ann(\CU)) = n$;
+thus
+\[
+\dim(\spn(\CU)) + \dim(\ann(\CU))
+= n = \dim(\spn(\CV)) + \dim(\ann(\CV))
+= \dim(\spn(\CV)) + \dim(\spn(\CU))
+\]
+(since $\ann(\CV) = \spn(\CU)$).
+Subtracting $\dim(\spn(\CU))$ from this, we obtain
+$\dim(\ann(\CU)) = \dim(\spn(\CV))$.
+Thus, $\dim(\spn(\CV)) \geq \dim(\ann(\CU))$.
+Lemma~\ref{dim-subdim} therefore yields
+$\spn(\CV) = \ann(\CU)$ (since $\spn(\CV)$ and $\ann(\CU)$
+are two subspaces of $\R^n$ satisfying
+$\spn(\CV) \subseteq \ann(\CU)$).
+This proves the theorem.
+\end{proof}
+
 \section{Orthogonal and symmetric matrices}
 \label{sec-symmetric}
 
@@ -8490,8 +8767,10 @@ really two different ways of looking at the same thing:
 \end{proposition}
 \begin{proof}
  By definition, $A$ is orthogonal if and only if $A^T$ is an inverse
- for $A$, or in other words $A^TA=I_n$.  Let the columns of $A$ be
- $v_1,\dotsc,v_n$.  Then 
+ for $A$, or in other words $A^TA=I_n$
+ (since Theorem~\ref{thm-inverse} shows that $A^TA=I_n$ is sufficient
+ to make $A^T$ an inverse of $A$).
+ Let the columns of $A$ be $v_1,\dotsc,v_n$.  Then 
  \[ 
   A^TA = {\renewcommand{\arraystretch}{1.3}
   \left[\begin{array}{ccc}
@@ -8541,13 +8820,13 @@ really two different ways of looking at the same thing:
  The matrices $A$ and $B$ are symmetric, but $C$ and $D$ are not.
  \begin{align*}
     A &
-     = \bbm 1 & 2 & 3 \\ 2 & 2 & 3 \\ 3 & 3 & 3 \ebm &
+     = \bbm 1 & 2 & 3 \\ 2 & 2 & 3 \\ 3 & 3 & 3 \ebm, &
     B &
-     = \bbm 111 & 11 & 1 \\ 11 & 111 & 11 \\ 1 & 11 & 111 \ebm\\
+     = \bbm 111 & 11 & 1 \\ 11 & 111 & 11 \\ 1 & 11 & 111 \ebm,\\
     C &
-     = \bbm 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \ebm &
+     = \bbm 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \ebm, &
     D &
-     = \bbm 1 & 10 & 1000 \\ 1 & 10 & 1000 \\ 1 & 10 & 1000 \ebm
+     = \bbm 1 & 10 & 1000 \\ 1 & 10 & 1000 \\ 1 & 10 & 1000 \ebm.
  \end{align*}
 \end{example}
 
@@ -8628,6 +8907,7 @@ really two different ways of looking at the same thing:
    this becomes $\lm\;u.v=\mu\;u.v$, so $(\lm-\mu)u.v=0$.  As
    $\lm\neq\mu$ we can divide by $\lm-\mu$ to get $u.v=0$, which means
    that $u$ and $v$ are orthogonal.
+   \qedhere
  \end{itemize}
 \end{proof}
 
@@ -8765,12 +9045,12 @@ The following proposition is known as the \dfn{spectral theorem}:
        0          & -2/\sqrt{6} &  1/\sqrt{12} &  1/\sqrt{20} & 1/\sqrt{5} \\
        0          &  0          & -3/\sqrt{12} &  1/\sqrt{20} & 1/\sqrt{5} \\
        0          &  0          &  0           & -4/\sqrt{20} & 1/\sqrt{5}
-     \ebm
+     \ebm,
      \hspace{4em}
     D = 
      \bbm
       0&0&0&0&0 \\ 0&0&0&0&0 \\ 0&0&0&0&0 \\ 0&0&0&0&0 \\ 0&0&0&0&5
-     \ebm
+     \ebm.
  \]
  The general theory tells us that $A=UDU^T$.  We can check this directly:
  \begin{align*}
@@ -8893,11 +9173,11 @@ The following proposition is known as the \dfn{spectral theorem}:
        1/\sqrt{2} &  1/\sqrt{5} & -\sqrt{3/10} \\
        1/\sqrt{2} & -1/\sqrt{5} &  \sqrt{3/10} \\
        0          &  \sqrt{3/5} &  \sqrt{2/5} 
-      \ebm
+      \ebm,
   \hspace{5em}
   D = \bbm 
        1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & -3 
-      \ebm
+      \ebm,
  \]
  then $U$ is an orthogonal matrix and $A=UDU^T$.
 \end{example}
@@ -8986,7 +9266,7 @@ The following proposition is known as the \dfn{spectral theorem}:
      5 &  0 & -8 &  0 \\
      0 & -8 &  0 &  6 \\
     -7 &  0 &  6 &  0
-    \ebm
+    \ebm.
  \]
 \end{remark}
 
@@ -10224,7 +10504,10 @@ this rule works in general.
  i<n$, so $l(\lm)=n-p$ and $\sgn(\lm)=(-1)^{n-p}$.  Similarly we have
  $\sgn(\rho)=(-1)^{n-q}$ and so
  $\sgn(\lm)\sgn(\rho)=(-1)^{2n-p-q}=(-1)^{p+q}$.  We therefore have
- $m_{pq}=(-1)^{p+q}m^*_{pq}$ as claimed.
+ $m_{pq}=(-1)^{p+q}m^*_{pq}$.
+ Thus,
+ $m^*_{pq}=(-1)^{-(p+q)}m_{pq}=(-1)^{p+q}m_{pq}$,
+ as claimed.
 \end{proof}
 
 We can now show that determinants can be ``expanded along the $p$'th
