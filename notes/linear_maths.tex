@@ -648,8 +648,8 @@ This applies, in particular, to row and column vectors.
  list of variables) is in RREF if the corresponding augmented matrix
  is in RREF.
 
- If RREF0, RREF1 and RREF2 are satisfied but not RREF3 then we say
- that $A$ is in (unreduced) row-echelon form.
+ If RREF0, RREF1 and RREF2 are satisfied but not necessarily RREF3,
+ then we say that $A$ is in (unreduced) row-echelon form.
 \end{definition}
 
 \begin{example}\label{eg-rref-matrices}
@@ -1470,9 +1470,10 @@ $v_1,\dotsc,v_k$.  This makes it clear that $w$ is a linear
 combination of $v_1,\dotsc,v_k$ if and only if there is a vector $\lm$
 which solves the matrix equation $A\lm=w$.  Using
 Theorem~\ref{thm-row-ops} we see that the equation $A\lm=w$ has the
-same solutions as the equation $A'\lm=w'$, which can be solved easily
-by Method~\ref{meth-RREF-solve}.  We thus arrive at the following
-method: 
+same solutions as the equation $A'\lm=w'$, where $[A' | w']$ is
+obtained by row-reducing $[A | w]$.  But the latter equation
+can be solved easily by Method~\ref{meth-RREF-solve}.  We thus arrive
+at the following method: 
 
 \begin{method}\label{meth-find-lincomb}
  \index{linear combination}
@@ -2360,8 +2361,8 @@ We now explain why Method~\ref{meth-check-span} is valid.
    of length $n$ can be expressed as a linear combination of the rows
    of $D$.
   \item[(b)] Suppose instead that the $k$'th column of $D$ does not contain
-   a pivot.  Then the standard basis vector $e_k$ \textbf{cannot} be
-   expressed as a linear combination of the rows of $D$.
+   a pivot.  Then the (transposed) standard basis vector $e_k^T$
+   \textbf{cannot} be expressed as a linear combination of the rows of $D$.
  \end{itemize}
 \end{lemma}
 \begin{proof}
@@ -2404,8 +2405,9 @@ We now explain why Method~\ref{meth-check-span} is valid.
    are just the coefficients $\lm_1$, $\lm_2$ and $\lm_3$.  This is
    not a special feature of this example: it simply reflects the fact
    that pivot columns contain nothing except the pivot.  Now choose a
-   non-pivot column, say column number $6$, and consider the standard
-   basis vector $e_6$.  Suppose we try to write $e_6$ as
+   non-pivot column, say column number $6$, and consider the
+   (transposed) standard
+   basis vector $e_6^T$.  Suppose we try to write $e_6^T$ as
    $\lm_1r_1+\lm_2r_2+\lm_3r_3$, or in other words to solve
    \[ \begin{array}{rccccccccl}
         [ & 0 & \RED{\mathbf{0}} & 0 & 0 &
@@ -2420,19 +2422,19 @@ We now explain why Method~\ref{meth-check-span} is valid.
    $\lm_2$ has to be zero.  By looking in column 8, we see that
    $\lm_3$ has to be zero.  This means that
    $\lm_1r_1+\lm_2r_2+\lm_3r_3=0$, so $\lm_1r_1+\lm_2r_2+\lm_3r_3$
-   cannot be equal to $e_6$.
+   cannot be equal to $e_6^T$.
 
    This line of argument works more generally.  Suppose that $D$ is an
    RREF matrix and that the $k$'th column has no pivot.  We claim that
-   $e_k$ is not a linear combination of the rows of $D$.  We can remove
+   $e_k^T$ is not a linear combination of the rows of $D$.  We can remove
    any rows of zeros from $D$ without affecting the question, so we
    may assume that every row is nonzero, so every row contains a
-   pivot.  Suppose that $e_k=\lm_1r_1+\dotsb+\lm_mr_m$ say.  By
+   pivot.  Suppose that $e_k^T=\lm_1r_1+\dotsb+\lm_mr_m$ say.  By
    looking in the column that contains the first pivot, we see that
    $\lm_1=0$.  By looking in the column that contains the second
    pivot, we see that $\lm_2=0$.  Continuing in this way, we see that
    all the coefficients $\lm_i$ are zero, so $\sum_i\lm_ir_i=0$, which
-   contradicts the assumption that $e_k=\lm_1r_1+\dotsb+\lm_mr_m$.
+   contradicts the assumption that $e_k^T=\lm_1r_1+\dotsb+\lm_mr_m$.
    \qedhere
  \end{itemize}
 \end{proof}
@@ -4611,7 +4613,7 @@ To prove this, we need two standard facts about matrix multiplication.
  an eigenvector of eigenvalue $\lm_i$.
 \end{proof}
 
-We can now recycle some examples from Section~\ref{sec-bases}.
+We can now recycle some examples from Section~\ref{sec-eigen}.
 
 \begin{example}\label{eg-diag-i}
  Consider the matrix $A=\bbm 1&1&1 \\ 0&2&2 \\ 0&0&3\ebm$.  
